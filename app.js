@@ -52,8 +52,11 @@ function renderDashboard(){
       <div class="muted" style="margin-top:7px">Residuo guida: ${fmt(b-x)}</div>
     </div>`}).join("")}
     <div class="section-title"><h2>Acquisti recenti</h2><span class="muted">${fmt(s)} spesi</span></div>
-    ${bought.length?bought.slice().reverse().slice(0,8).map(playerRow).join(""):`<div class="card muted">Nessun acquisto ancora.</div>`}
+    ${bought.length?`<div class="toolbar" style="margin-bottom:10px"><button id="undoLastPurchaseBtn" class="ghost">↩️ Annulla ultimo acquisto</button></div>`:""}
+    ${bought.length?bought.slice().sort((a,b)=>(state.purchases[b.id]?.at||0)-(state.purchases[a.id]?.at||0)).slice(0,8).map(playerRow).join(""):`<div class="card muted">Nessun acquisto ancora.</div>`}
   `;
+  const undoBtn=$("#undoLastPurchaseBtn");
+  if(undoBtn) undoBtn.onclick=undoLastPurchase;
 }
 function playerRow(p){
   const b=state.purchases[p.id]; const sig=b?signal(p,b.price):null;
@@ -105,29 +108,81 @@ function openPlayer(id){
       ${p.notes?`<div class="line"><span>Note</span><b>${p.notes}</b></div>`:""}
     </div>
     <div class="dialog-actions">
-      ${b?`<button class="dangerbtn" onclick="removePurchase(${p.id})">Annulla acquisto</button>`:`<button class="primary" onclick="startPurchase(${p.id})">Acquista</button>`}
+      ${b?`<button class="ghost" onclick="editPurchase(${p.id})">✏️ Modifica acquisto</button><button class="dangerbtn" onclick="removePurchase(${p.id})">Annulla acquisto</button>`:`<button class="primary" onclick="startPurchase(${p.id})">Acquista</button>`}
     </div>
   </div>`;
   $("#playerDialog").showModal();
 }
 let purchaseId=null;
+let purchaseMode="new";
+
 function startPurchase(id){
-  purchaseId=id; const p=players.find(x=>x.id===id);
-  $("#playerDialog").close(); $("#purchaseTitle").textContent="Acquista "+p.name;
-  $("#purchasePrice").value=""; $("#purchaseSignal").textContent="";
-  $("#purchaseDialog").showModal(); $("#purchasePrice").focus();
+  purchaseId=id;
+  purchaseMode="new";
+  const p=players.find(x=>x.id===id);
+  $("#playerDialog").close();
+  $("#purchaseTitle").textContent="Acquista "+p.name;
+  $("#confirmPurchase").textContent="Conferma";
+  $("#purchasePrice").value="";
+  $("#purchaseSignal").textContent="";
+  $("#purchaseDialog").showModal();
+  $("#purchasePrice").focus();
 }
+
+window.editPurchase=id=>{
+  purchaseId=id;
+  purchaseMode="edit";
+  const p=players.find(x=>x.id===id);
+  const current=state.purchases[id];
+  $("#playerDialog").close();
+  $("#purchaseTitle").textContent="Modifica "+p.name;
+  $("#confirmPurchase").textContent="Salva";
+  $("#purchasePrice").value=current?.price ?? "";
+  const s=signal(p,current?.price ?? "");
+  $("#purchaseSignal").className="signal "+s.c;
+  $("#purchaseSignal").textContent=s.t;
+  $("#purchaseDialog").showModal();
+  $("#purchasePrice").focus();
+  $("#purchasePrice").select();
+};
 $("#purchasePrice").addEventListener("input",e=>{
   const p=players.find(x=>x.id===purchaseId),s=signal(p,e.target.value);
   $("#purchaseSignal").className="signal "+s.c; $("#purchaseSignal").textContent=s.t;
 });
 $("#purchaseForm").addEventListener("submit",e=>{
   if(e.submitter?.value==="cancel")return;
-  e.preventDefault(); const price=Number($("#purchasePrice").value);
-  if(!price||price<1)return;
-  state.purchases[purchaseId]={price,at:Date.now()};save();$("#purchaseDialog").close();refresh();
+  e.preventDefault();
+  const price=Number($("#purchasePrice").value);
+  if(!price||price<5||price%5!==0)return;
+  const previous=state.purchases[purchaseId];
+  state.purchases[purchaseId]={
+    price,
+    at: purchaseMode==="edit" && previous?.at ? previous.at : Date.now()
+  };
+  save();
+  $("#purchaseDialog").close();
+  refresh();
 });
-window.removePurchase=id=>{delete state.purchases[id];save();$("#playerDialog").close();refresh()}
+window.removePurchase=id=>{
+  delete state.purchases[id];
+  save();
+  $("#playerDialog").close();
+  refresh();
+}
+
+function undoLastPurchase(){
+  const entries=Object.entries(state.purchases);
+  if(!entries.length) return;
+  const [lastId,lastData]=entries.sort((a,b)=>(b[1]?.at||0)-(a[1]?.at||0))[0];
+  const p=players.find(x=>x.id===Number(lastId));
+  if(!p) return;
+  if(confirm(`Annullare l'ultimo acquisto?\n\n${p.name} — ${lastData.price} crediti`)){
+    delete state.purchases[lastId];
+    save();
+    refresh();
+  }
+}
+
 function renderSquad(){
   const b=purchasedPlayers();
   $("#squadView").innerHTML=`<div class="section-title"><h2>La mia rosa</h2><span class="muted">${b.length}/25</span></div>
