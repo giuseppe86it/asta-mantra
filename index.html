@@ -10,7 +10,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=1.16">
   <title>Asta Mantra</title>
 </head>
 <body>
@@ -63,14 +63,15 @@
       </label>
       <div id="purchaseSignal" class="signal"></div>
       <div class="dialog-actions">
-        <button type="button" id="cancelPurchase" class="ghost">Annulla</button>
+        <button type="button" id="cancelPurchase" class="ghost"
+          onclick="if(document.activeElement)document.activeElement.blur();const d=this.closest('dialog');if(d&&d.open)d.close();document.getElementById('purchasePrice').value='';document.getElementById('purchaseSignal').textContent='';return false;">Annulla</button>
         <button id="confirmPurchase" value="default" class="primary">Conferma</button>
       </div>
     </form>
   </dialog>
 
-  <script src="players.js"></script>
-  <script src="formations.js"></script>
-  <script src="app.js"></script>
+  <script src="players.js?v=1.16"></script>
+  <script src="formations.js?v=1.16"></script>
+  <script src="app.js?v=1.16"></script>
 </body>
 </html>

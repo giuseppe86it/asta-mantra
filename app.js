@@ -347,7 +347,9 @@ $("#purchasePrice").addEventListener("input",e=>{
   $("#purchaseSignal").className="signal "+s.c; $("#purchaseSignal").textContent=s.t;
 });
 $("#cancelPurchase").addEventListener("click",()=>{
-  $("#purchaseDialog").close();
+  if(document.activeElement) document.activeElement.blur();
+  const dialog=$("#purchaseDialog");
+  if(dialog.open) dialog.close();
   $("#purchasePrice").value="";
   $("#purchaseSignal").textContent="";
   purchaseId=null;
@@ -483,4 +485,4 @@ function lockInit(){
   $("#unlockBtn").onclick=()=>{if($("#pinInput").value===state.pin)$("#lock").classList.add("hidden");else $("#lockText").textContent="PIN errato. Riprova."};
 }
 refresh();lockInit();
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.16").catch(()=>{}));

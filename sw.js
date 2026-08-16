@@ -1,6 +1,6 @@
 
-const CACHE="asta-mantra-v1.15";
-const ASSETS=["./","./index.html","./styles.css","./app.js","./players.js","./formations.js","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png","./favicon-32.png"];
+const CACHE="asta-mantra-v1.16";
+const ASSETS=["./","./index.html","./styles.css?v=1.16","./app.js?v=1.16","./players.js?v=1.16","./formations.js?v=1.16","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png","./favicon-32.png"];
 
 self.addEventListener("install", event => {
   event.waitUntil(
