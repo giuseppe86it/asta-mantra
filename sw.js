@@ -1,6 +1,6 @@
 
-const CACHE="asta-mantra-v1.6";
-const ASSETS=["./","./index.html","./styles.css","./app.js","./players.js","./manifest.webmanifest","./icon-192.svg","./icon-512.svg"];
+const CACHE="asta-mantra-v1.7";
+const ASSETS=["./","./index.html","./styles.css","./app.js","./players.js","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png","./favicon-32.png"];
 
 self.addEventListener("install", event => {
   event.waitUntil(
