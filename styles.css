@@ -1425,3 +1425,359 @@ label{display:block;color:var(--muted);font-size:13px;margin:12px 0}label input{
     font-size:8px !important;
   }
 }
+
+
+/* v1.17 — Motore doppia strategia A/B */
+.strategy-engine{
+  background:#101a2c;
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:8px;
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+.strategy-engine.strategy-switch{border-color:#8a5b10}
+.strategy-engine-top{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  align-items:flex-start;
+}
+.strategy-engine-top>div:first-child{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  min-width:0;
+}
+.strategy-kicker{
+  color:var(--accent);
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.07em;
+}
+.strategy-engine-top strong{
+  font-size:11px;
+  line-height:1.15;
+}
+.strategy-scores{
+  display:flex;
+  gap:4px;
+  flex:0 0 auto;
+}
+.strategy-scores span{
+  padding:4px 6px;
+  border-radius:8px;
+  background:#172238;
+  color:var(--muted);
+  font-size:8px;
+  font-weight:900;
+}
+.strategy-scores span.recommended{
+  background:#173c2f;
+  color:#8df0c5;
+}
+.strategy-buttons{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:6px;
+}
+.strategy-btn{
+  border:1px solid #33445f;
+  background:#172238;
+  color:var(--text);
+  border-radius:9px;
+  padding:6px 8px;
+  display:flex;
+  justify-content:center;
+  align-items:baseline;
+  gap:6px;
+}
+.strategy-btn b{font-size:11px}
+.strategy-btn span{font-size:8px;color:var(--muted)}
+.strategy-btn.active{
+  background:#173c2f;
+  border-color:#2a8d69;
+}
+.strategy-btn.active b,.strategy-btn.active span{color:#8df0c5}
+.strategy-reason{
+  color:var(--muted);
+  font-size:8px;
+  line-height:1.25;
+}
+.dash-budget-label{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  padding:0 2px;
+  align-items:center;
+}
+.dash-budget-label b{font-size:9px}
+.dash-budget-label span{font-size:8px;color:var(--muted)}
+.strategy-plan-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:12px;
+}
+.strategy-plan-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+.strategy-plan-head>div:first-child{
+  display:flex;
+  flex-direction:column;
+}
+.strategy-plan-head span{color:var(--muted);font-size:11px}
+.strategy-plan-head strong{font-size:20px}
+.strategy-plan-score{
+  font-size:24px;
+  font-weight:900;
+  color:var(--accent);
+}
+.strategy-plan-card .strategy-reason{
+  margin-top:9px;
+  font-size:11px;
+}
+.strategy-compare-grid .strategy-best{
+  outline:2px solid var(--accent);
+}
+@media(min-width:700px){
+  .strategy-engine-top strong{font-size:14px}
+  .strategy-kicker{font-size:10px}
+  .strategy-scores span{font-size:10px}
+  .strategy-btn b{font-size:14px}
+  .strategy-btn span{font-size:11px}
+  .strategy-reason{font-size:10px}
+}
+
+
+/* v1.18 — scheda T + redistribuzione offensivi per ruolo principale */
+.role-redistribution{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  overflow:auto;
+  margin-top:8px;
+  padding:7px 8px;
+  background:#101a2c;
+  border:1px solid var(--line);
+  border-radius:11px;
+  scrollbar-width:none;
+}
+.role-redistribution::-webkit-scrollbar{display:none}
+.role-redistribution span{
+  color:var(--muted);
+  font-size:9px;
+  white-space:nowrap;
+  margin-right:auto;
+}
+.role-redistribution b{
+  flex:0 0 auto;
+  padding:3px 6px;
+  border-radius:7px;
+  background:#172238;
+  font-size:9px;
+}
+.chip small{
+  margin-left:4px;
+  opacity:.7;
+  font-size:8px;
+}
+.primary-role-badge{
+  background:#2a2440 !important;
+  color:#d8b4fe !important;
+}
+.role-sheet-summary{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:7px;
+  margin-bottom:12px;
+}
+.role-sheet-summary>div{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:9px 8px;
+  text-align:center;
+}
+.role-sheet-summary span{
+  display:block;
+  color:var(--muted);
+  font-size:8px;
+}
+.role-sheet-summary strong{
+  display:block;
+  margin-top:2px;
+  font-size:20px;
+}
+.role-sheet-section{
+  margin:14px 0 20px;
+}
+.role-sheet-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:10px;
+  margin:0 2px 7px;
+}
+.role-sheet-head>div{
+  display:flex;
+  flex-direction:column;
+}
+.role-sheet-head b{
+  font-size:15px;
+}
+.role-sheet-head span{
+  color:var(--muted);
+  font-size:9px;
+}
+.role-sheet-head>strong{
+  font-size:18px;
+  color:var(--accent);
+}
+@media(min-width:700px){
+  .role-redistribution span,.role-redistribution b{font-size:11px}
+  .role-sheet-head span{font-size:11px}
+}
+
+
+/* v1.19 — mercato avversari / Venduto */
+.player.sold{
+  opacity:.58;
+  border-style:dashed;
+}
+.player.sold .price{
+  color:#fca5a5;
+  font-size:11px;
+}
+.soldbtn{
+  background:#3a2026;
+  border:1px solid #7f3441;
+  color:#fecdd3;
+}
+.strategy-market-status{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:5px;
+  padding-top:2px;
+}
+.strategy-market-status span{
+  background:#0b1424;
+  border:1px solid #263550;
+  border-radius:8px;
+  padding:5px 4px;
+  text-align:center;
+  font-size:7px;
+  color:var(--muted);
+}
+.strategy-market-status b{
+  display:block;
+  margin-top:1px;
+  font-size:9px;
+  color:var(--text);
+}
+@media(min-width:700px){
+  .strategy-market-status span{font-size:9px}
+  .strategy-market-status b{font-size:11px}
+}
+
+
+/* v1.20 — shortlist strategica + listone completo */
+.pool-switch{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:7px;
+  margin-bottom:9px;
+}
+.pool-switch button{
+  min-height:45px;
+  border:1px solid #33445f;
+  border-radius:11px;
+  background:#101a2c;
+  color:var(--text);
+  display:flex;
+  justify-content:center;
+  align-items:baseline;
+  gap:7px;
+}
+.pool-switch button b{font-size:12px}
+.pool-switch button span{
+  font-size:9px;
+  color:var(--muted);
+  padding:2px 5px;
+  border-radius:999px;
+  background:#172238;
+}
+.pool-switch button.active{
+  border-color:#2a8d69;
+  background:#173c2f;
+}
+.pool-switch button.active b,
+.pool-switch button.active span{color:#8df0c5}
+
+.market-universe-strip{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  overflow:auto;
+  margin:8px 0;
+  padding:7px 8px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#0b1424;
+  scrollbar-width:none;
+}
+.market-universe-strip::-webkit-scrollbar{display:none}
+.market-universe-strip span{
+  margin-right:auto;
+  color:var(--muted);
+  font-size:8px;
+  white-space:nowrap;
+}
+.market-universe-strip b{
+  flex:0 0 auto;
+  font-size:8px;
+  padding:3px 6px;
+  border-radius:7px;
+  background:#172238;
+}
+
+.strategic-badge{
+  background:#173c2f !important;
+  color:#8df0c5 !important;
+}
+.listone-badge{
+  background:#1e293b !important;
+  color:#cbd5e1 !important;
+}
+.market-player .price{font-size:11px}
+
+.full-market-mini{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-wrap:wrap;
+  padding:5px 6px;
+  border-radius:8px;
+  background:#0b1424;
+  border:1px solid #263550;
+}
+.full-market-mini span{font-size:7px;color:var(--muted)}
+.full-market-mini b{font-size:8px}
+.full-market-mini small{
+  margin-left:auto;
+  font-size:7px;
+  color:var(--muted);
+}
+
+@media(min-width:700px){
+  .pool-switch button b{font-size:15px}
+  .pool-switch button span{font-size:11px}
+  .market-universe-strip span,.market-universe-strip b{font-size:10px}
+  .full-market-mini span,.full-market-mini small{font-size:9px}
+  .full-market-mini b{font-size:10px}
+}

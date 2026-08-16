@@ -1,3 +1,15 @@
+VERSIONE 1.20 — doppio bacino: 200 strategici + listone completo esteso; acquisto/venduto anche fuori shortlist; algoritmo A/B usa tutto il mercato residuo; indicatori quantità + qualità residua.
+
+VERSIONE 1.19 — bottone Venduto per giocatori assegnati ad altre squadre; lista Venduti e algoritmo A/B sensibile alla disponibilità residua del mercato.
+
+VERSIONE 1.18 — scheda T dedicata; offensivi redistribuiti per ruolo principale W/T/A/Pc; T compatibili separati dai T principali.
+
+VERSIONE 1.17 — doppia strategia A/B: 4-3-1-2 vs 4-3-3, motore di raccomandazione, switch manuale e budget automatici.
+
+VERSIONE 1.16 — fix rinforzato Annulla: chiusura inline indipendente da app.js, blur tastiera iPhone e cache-busting degli asset principali.
+
+VERSIONE 1.15 — fix pulsante Annulla nel popup acquisto su iPhone/Safari: chiusura immediata senza validazione del prezzo.
+
 VERSIONE 1.14 — Probabili Formazioni: 2 squadre affiancate per pagina, 10 pagine verticali.
 
 VERSIONE 1.13 — Probabili Formazioni in elenco: POR, DIF, CEN, ATT con nome completo e ruolo Mantra.
