@@ -1,0 +1,25 @@
+ASTA MANTRA v1.26 — LISTONE SYNC
+
+File/cartelle da caricare nel repository GitHub:
+- index.html
+- app.js
+- styles.css
+- sw.js
+- listone-current.json
+- scripts/
+- .github/
+
+IMPORTANTE:
+La cartella .github può essere nascosta nel Finder.
+Premi Command + Shift + . per mostrare/nascondere i file nascosti.
+
+Dopo il commit:
+1. Apri la scheda Actions del repository.
+2. Cerca “Aggiorna listone Fantacalcio”.
+3. Attendi il primo controllo.
+4. Se è verde, attendi anche il nuovo deploy di GitHub Pages.
+5. Apri la PWA → Giocatori → Aggiorna Listone.
+6. Controlla l'anteprima e premi Aggiorna listone solo se vuoi applicarla.
+
+Se il workflow è rosso, NON viene sovrascritto il vecchio snapshot:
+l'app continua a usare il listone precedente.

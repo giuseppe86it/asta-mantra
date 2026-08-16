@@ -1,45 +1,28 @@
+const CACHE="asta-mantra-v1.26";
+const ASSETS=["./","./index.html","./styles.css?v=1.26","./app.js?v=1.26","./players.js?v=1.26","./formations.js?v=1.26","./market.js?v=1.26","./listone-current.json","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png","./favicon-32.png"];
 
-const CACHE="asta-mantra-v1.25.1";
-const ASSETS=["./","./index.html","./styles.css?v=1.25","./app.js?v=1.25.1","./players.js?v=1.25","./formations.js?v=1.25","./market.js?v=1.25","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png","./favicon-32.png"];
-
-self.addEventListener("install", event => {
-  event.waitUntil(
-    caches.open(CACHE)
-      .then(cache => cache.addAll(ASSETS))
-      .then(() => self.skipWaiting())
-  );
+self.addEventListener("install",event=>{
+  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()));
 });
-
-self.addEventListener("activate", event => {
-  event.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))
-      .then(() => self.clients.claim())
-  );
+self.addEventListener("activate",event=>{
+  event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));
 });
-
-self.addEventListener("fetch", event => {
-  if (event.request.mode === "navigate") {
-    event.respondWith(
-      fetch(event.request)
-        .then(response => {
-          const copy = response.clone();
-          caches.open(CACHE).then(cache => cache.put("./index.html", copy));
-          return response;
-        })
-        .catch(() => caches.match("./index.html"))
-    );
+self.addEventListener("fetch",event=>{
+  const url=new URL(event.request.url);
+  if(url.pathname.endsWith("/listone-current.json")){
+    event.respondWith(fetch(event.request,{cache:"no-store"}).then(response=>{
+      if(response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put("./listone-current.json",copy))}
+      return response;
+    }).catch(()=>caches.match("./listone-current.json")));
     return;
   }
-
-  event.respondWith(
-    caches.match(event.request).then(cached => {
-      if (cached) return cached;
-      return fetch(event.request).then(response => {
-        const copy = response.clone();
-        caches.open(CACHE).then(cache => cache.put(event.request, copy));
-        return response;
-      });
-    })
-  );
+  if(event.request.mode==="navigate"){
+    event.respondWith(fetch(event.request).then(response=>{
+      const copy=response.clone();caches.open(CACHE).then(cache=>cache.put("./index.html",copy));return response;
+    }).catch(()=>caches.match("./index.html")));
+    return;
+  }
+  event.respondWith(caches.match(event.request).then(cached=>cached||fetch(event.request).then(response=>{
+    const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy));return response;
+  })));
 });

@@ -1,4 +1,3 @@
-
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const strategicPlayers = window.PLAYERS || [];
@@ -7,12 +6,38 @@ const marketMeta = window.MARKET_META || {};
 const players = strategicPlayers; // compatibilità con il codice storico
 const formations = window.FORMATIONS || [];
 
+const LISTONE_SYNC_STORAGE="am_listone_sync";
+const LISTONE_SYNC_SCHEMA=1;
+
+function safeJsonParse(raw,fallback=null){
+  try{return raw?JSON.parse(raw):fallback}catch{return fallback}
+}
+let appliedListoneSync=safeJsonParse(localStorage.getItem(LISTONE_SYNC_STORAGE),null);
+let pendingListoneSnapshot=null;
+
 function normalizePlayerName(name){
   return String(name||"")
     .normalize("NFD").replace(/[\u0300-\u036f]/g,"")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g,"")
     .trim();
+}
+function validMantraRole(role){
+  const allowed=new Set(["Por","Dd","Ds","Dc","B","E","M","C","W","T","A","Pc"]);
+  const tokens=String(role||"").split("/").filter(Boolean);
+  return tokens.length>0 && tokens.every(x=>allowed.has(x));
+}
+function inferRepartoFromRole(role,classic=""){
+  const c=String(classic||"").toUpperCase();
+  if(c==="P")return "POR";
+  if(c==="D")return "DIF";
+  if(c==="C")return "CEN";
+  if(c==="A")return "ATT";
+  const t=String(role||"").split("/");
+  if(t.includes("Por"))return "POR";
+  if(t.some(x=>["W","T","A","Pc"].includes(x)))return "ATT";
+  if(t.some(x=>["E","M","C"].includes(x)))return "CEN";
+  return "DIF";
 }
 function marketTier(fvm){
   const v=Number(fvm||0);
@@ -26,7 +51,7 @@ function marketTier(fvm){
 function enrichMarketPlayer(p){
   return {
     ...p,
-    maxPrice:Number(p.marketMax||Math.max(1,Math.round(Number(p.fvm||0)*2.5))),
+    maxPrice:Number(p.maxPrice??p.marketMax??Math.max(1,Math.round(Number(p.fvm||0)*2.5))),
     tier:p.tier||marketTier(p.fvm),
     starter:p.starter||"Listone",
     setPieces:p.setPieces||"—",
@@ -34,22 +59,84 @@ function enrichMarketPlayer(p){
     u21:!!p.u21,
     modifier:p.modifier||"—",
     notes:p.notes||"LISTONE COMPLETO · MAX neutro da FVM ×2,5",
-    strategic:!!p.strategic
+    strategic:!!p.strategic,
+    officialActive:p.officialActive!==false,
+    outOfListone:!!p.outOfListone,
+    syncPendingRole:!!p.syncPendingRole
   };
 }
-function buildAllPlayers(){
+function basePlayerMap(){
   const byName=new Map();
-  marketSeed.forEach(p=>byName.set(normalizePlayerName(p.name),enrichMarketPlayer(p)));
-  strategicPlayers.forEach(p=>{
-    byName.set(normalizePlayerName(p.name),enrichMarketPlayer({...p,strategic:true}));
-  });
+  marketSeed.forEach(p=>byName.set(normalizePlayerName(p.name),enrichMarketPlayer({...p,strategic:false})));
+  strategicPlayers.forEach(p=>byName.set(normalizePlayerName(p.name),enrichMarketPlayer({...p,strategic:true})));
+  return byName;
+}
+function buildAllPlayers(){
+  const byName=basePlayerMap();
+  const sync=appliedListoneSync;
+  if(sync?.schema===LISTONE_SYNC_SCHEMA && Array.isArray(sync.players)){
+    const seen=new Set();
+    sync.players.forEach(s=>{
+      const key=s.key||normalizePlayerName(s.name);
+      if(!key)return;
+      seen.add(key);
+      const base=byName.get(key);
+      const strategic=!!base?.strategic;
+      const role=validMantraRole(s.role)?s.role:(base?.role||"?");
+      const fvm=Number(s.fvm??base?.fvm??0);
+      let merged={
+        ...(base||{}),
+        id:base?.id??s.id??`fc_${key}`,
+        name:s.name||base?.name||key,
+        club:s.club||base?.club||"—",
+        role,
+        reparto:s.reparto||base?.reparto||inferRepartoFromRole(role,s.classic||base?.classic||""),
+        classic:s.classic||base?.classic||"",
+        quote:Number(s.quote??base?.quote??0),
+        fvm,
+        strategic,
+        officialActive:s.active!==false,
+        outOfListone:s.active===false,
+        syncPendingRole:!validMantraRole(role),
+        syncSource:sync.sourceName||"Fantacalcio.it",
+        syncGeneratedAt:sync.generatedAt||""
+      };
+      if(strategic){
+        merged.maxPrice=Number(base.maxPrice||Math.max(1,Math.round(fvm*2.5)));
+        merged.tier=base.tier;
+        merged.starter=base.starter;
+        merged.setPieces=base.setPieces;
+        merged.u23=base.u23;
+        merged.u21=base.u21;
+        merged.modifier=base.modifier;
+        merged.notes=base.notes;
+        merged.primaryRole=base.primaryRole;
+      }else{
+        merged.marketMax=Math.max(1,Math.round(fvm*2.5));
+        merged.maxPrice=merged.marketMax;
+        merged.tier=marketTier(fvm);
+        merged.notes=merged.outOfListone?"FUORI LISTONE · storico mercato":"LISTONE SINCRONIZZATO · MAX neutro da FVM ×2,5";
+      }
+      byName.set(key,enrichMarketPlayer(merged));
+    });
+    if(sync.complete===true){
+      byName.forEach((p,key)=>{
+        if(!seen.has(key))byName.set(key,enrichMarketPlayer({...p,officialActive:false,outOfListone:true}));
+      });
+    }
+  }
   return [...byName.values()];
 }
-const allPlayers = buildAllPlayers();
-function getPlayer(id){
-  return allPlayers.find(p=>String(p.id)===String(id));
+let allPlayers=buildAllPlayers();
+
+function currentStrategicPlayers(){
+  return allPlayers.filter(p=>p.strategic && (!p.outOfListone || state?.purchases?.[p.id] || state?.sold?.[p.id]));
 }
-function idArg(id){return JSON.stringify(String(id));}
+function isMarketEligiblePlayer(p){
+  return !!p && !p.outOfListone && validMantraRole(p.role);
+}
+function getPlayer(id){return allPlayers.find(p=>String(p.id)===String(id))}
+function idArg(id){return JSON.stringify(String(id))}
 function esc(value){
   return String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch]));
 }
@@ -243,7 +330,7 @@ function strategyDepth(strategyId,bought){
   };
 }
 function marketEligiblePlayers(roles){
-  return allPlayers.filter(p=>roles.some(r=>roleTokens(p.role).includes(r)));
+  return allPlayers.filter(p=>isMarketEligiblePlayer(p)&&roles.some(r=>roleTokens(p.role).includes(r)));
 }
 function marketRemainingPlayers(roles){
   return marketEligiblePlayers(roles).filter(p=>!state.purchases[p.id]&&!state.sold[p.id]);
@@ -365,12 +452,12 @@ function primaryOffensiveRole(p){
 }
 function roleFilterCount(role){
   if(role==="T"){
-    return players.filter(p=>roleTokens(p.role).includes("T")).length;
+    return currentStrategicPlayers().filter(p=>roleTokens(p.role).includes("T")).length;
   }
   if(["W","A","Pc"].includes(role)){
-    return players.filter(p=>primaryOffensiveRole(p)===role).length;
+    return currentStrategicPlayers().filter(p=>primaryOffensiveRole(p)===role).length;
   }
-  return players.filter(p=>roleTokens(p.role).includes(role)).length;
+  return currentStrategicPlayers().filter(p=>roleTokens(p.role).includes(role)).length;
 }
 function playerMatchesRoleFilter(p,role,mode=state.poolMode){
   if(role==="Tutti") return true;
@@ -454,7 +541,7 @@ function playerMatchesFamily(p,family){
 function familyInflation(id){return inflationStats(p=>playerMatchesFamily(p,id))}
 function familyMarketHealth(id){
   const f=familyById(id); if(!f)return {total:0,remaining:0,countShare:0,qualityShare:0};
-  const all=allPlayers.filter(p=>playerMatchesFamily(p,f));
+  const all=allPlayers.filter(p=>isMarketEligiblePlayer(p)&&playerMatchesFamily(p,f));
   const remaining=all.filter(p=>!state.purchases[p.id]&&!state.sold[p.id]);
   const qAll=all.reduce((a,p)=>a+Math.max(1,playerQuality(p)),0);
   const qRem=remaining.reduce((a,p)=>a+Math.max(1,playerQuality(p)),0);
@@ -697,6 +784,8 @@ function renderDashboard(){
         ${nextPhase?`<button id="nextPhaseBtn" class="phase-next">Termina ${currentPhase.id} → passa a ${nextPhase.id}</button>`:`<div class="phase-complete">Ultimo reparto · fase ATT</div>`}
       </section>
 
+      ${listoneDashboardBadgeHTML()}
+
       <div class="dash-metrics">
         <div class="dash-metric">
           <span>Budget</span><strong>${fmt(rem)}</strong><small>residuo</small>
@@ -826,6 +915,7 @@ function renderDashboard(){
   const undoBtn=$("#undoLastPurchaseBtn");if(undoBtn)undoBtn.onclick=undoLastPurchase;
   const nextBtn=$("#nextPhaseBtn");if(nextBtn)nextBtn.onclick=nextAuctionPhase;
   const liveBtn=$("#openLiveBtn");if(liveBtn)liveBtn.onclick=openAuctionLive;
+  const listoneBtn=$("#dashboardListoneBtn");if(listoneBtn)listoneBtn.onclick=()=>switchView("playersView");
   renderPlan("#dashboardPlanContent");
 }
 
@@ -1016,7 +1106,7 @@ function restoreActionReturnContext(){
 let liveSelectedId=null;
 function liveCandidateList(query=""){
   const q=String(query||"").trim().toLowerCase();
-  let list=allPlayers.filter(p=>!state.purchases[p.id]&&!state.sold[p.id]);
+  let list=allPlayers.filter(p=>isMarketEligiblePlayer(p)&&!state.purchases[p.id]&&!state.sold[p.id]);
   if(q){
     list=list.filter(p=>(p.name+" "+p.club+" "+p.role).toLowerCase().includes(q));
   }else{
@@ -1090,6 +1180,146 @@ window.liveSell=id=>{
   openSoldDialog(id,ctx);
 };
 
+
+function listoneSyncDateLabel(iso){
+  if(!iso)return "mai";
+  const d=new Date(iso);
+  if(Number.isNaN(d.getTime()))return "data non disponibile";
+  return new Intl.DateTimeFormat("it-IT",{day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"}).format(d);
+}
+function listoneSyncAgeLabel(){
+  const iso=appliedListoneSync?.generatedAt;
+  if(!iso)return "base inclusa nell'app";
+  const ms=Date.now()-new Date(iso).getTime();
+  if(!Number.isFinite(ms)||ms<0)return listoneSyncDateLabel(iso);
+  const min=Math.floor(ms/60000);
+  if(min<1)return "adesso";
+  if(min<60)return `${min} min fa`;
+  const h=Math.floor(min/60);
+  if(h<24)return `${h} h fa`;
+  return listoneSyncDateLabel(iso);
+}
+function listoneSyncIsOfficial(){return appliedListoneSync?.sourceKind==="official-fantacalcio"}
+function listoneSyncCardHTML(){
+  const official=listoneSyncIsOfficial();
+  const active=allPlayers.filter(p=>isMarketEligiblePlayer(p)).length;
+  return `<section class="listone-sync-card ${official?"synced":"bootstrap"}">
+    <div class="listone-sync-copy">
+      <span class="listone-sync-kicker">LISTONE FANTACALCIO</span>
+      <b>${official?"✅ Sincronizzato":"⏳ In attesa del primo sync GitHub"}</b>
+      <small>${active} attivi · ${official?`ultimo controllo ${listoneSyncAgeLabel()}`:"la base locale resta utilizzabile"}</small>
+    </div>
+    <button id="updateListoneBtn" class="listone-sync-btn">🔄 Aggiorna</button>
+  </section>`;
+}
+function listoneDashboardBadgeHTML(){
+  const official=listoneSyncIsOfficial();
+  return `<button class="listone-dashboard-status ${official?"ok":""}" id="dashboardListoneBtn">
+    <span>${official?"✅":"⏳"} LISTONE</span>
+    <b>${official?listoneSyncAgeLabel():"sync da attivare"}</b>
+  </button>`;
+}
+function syncSnapshotValid(snapshot){
+  return snapshot&&snapshot.schema===LISTONE_SYNC_SCHEMA&&snapshot.complete===true
+    &&snapshot.sourceKind==="official-fantacalcio"&&Array.isArray(snapshot.players)
+    &&Number(snapshot.activePlayers)>=450&&Number(snapshot.unclassified||0)===0;
+}
+function computeListoneChanges(snapshot){
+  const current=new Map(allPlayers.map(p=>[normalizePlayerName(p.name),p]));
+  const incoming=new Map(snapshot.players.map(p=>[p.key||normalizePlayerName(p.name),p]));
+  const changes=[];
+  incoming.forEach((s,key)=>{
+    const cur=current.get(key);
+    if(s.active!==false&&!cur){changes.push({type:"new",name:s.name,text:`Nuovo · ${s.club} · ${s.role} · FVM ${s.fvm||0}`});return}
+    if(!cur)return;
+    if(s.active===false&&!cur.outOfListone){changes.push({type:"out",name:cur.name,text:"Esce dal listone ufficiale · storico preservato"});return}
+    if(s.active===false)return;
+    if(s.club&&s.club!==cur.club)changes.push({type:"club",name:s.name,text:`Club ${cur.club} → ${s.club}`});
+    if(validMantraRole(s.role)&&s.role!==cur.role)changes.push({type:"role",name:s.name,text:`Ruolo Mantra ${cur.role} → ${s.role}`});
+    if(Number(s.fvm)!==Number(cur.fvm))changes.push({type:"fvm",name:s.name,text:`FVM ${cur.fvm||0} → ${s.fvm||0}`});
+    if(Number(s.quote||0)!==Number(cur.quote||0)&&Number(s.quote||0)>0)changes.push({type:"quote",name:s.name,text:`Quotazione ${cur.quote||0} → ${s.quote||0}`});
+  });
+  current.forEach((cur,key)=>{
+    if(!cur.outOfListone&&!incoming.has(key))changes.push({type:"out",name:cur.name,text:"Non presente nel nuovo snapshot · storico preservato"});
+  });
+  const counts={new:0,out:0,club:0,role:0,fvm:0,quote:0};
+  changes.forEach(x=>counts[x.type]=(counts[x.type]||0)+1);
+  return {changes,counts};
+}
+function syncChangeTag(type){return ({new:"NUOVO",out:"FUORI",club:"CLUB",role:"RUOLO",fvm:"FVM",quote:"QUOTA"})[type]||type.toUpperCase()}
+function openListoneSyncDialog(html){
+  $("#listoneSyncDialogContent").innerHTML=html;
+  const d=$("#listoneSyncDialog");if(!d.open)d.showModal();
+}
+function closeListoneSyncDialog(){pendingListoneSnapshot=null;if($("#listoneSyncDialog").open)$("#listoneSyncDialog").close()}
+window.closeListoneSyncDialog=closeListoneSyncDialog;
+
+async function checkListoneUpdate(){
+  openListoneSyncDialog(`<div class="dialog-body listone-sync-dialog">
+    <div class="listone-sync-modal-head"><div><span class="eyebrow">FANTACALCIO.IT</span><h2>Controllo listone</h2></div><button class="ghost" onclick="closeListoneSyncDialog()">✕</button></div>
+    <div class="listone-sync-loading"><span class="sync-spinner"></span><b>Scarico l'ultimo snapshot validato…</b><small>Nessun dato dell'asta viene modificato durante il controllo.</small></div>
+    <button class="ghost full-btn" onclick="closeListoneSyncDialog()">Annulla controllo</button>
+  </div>`);
+  try{
+    const res=await fetch(`./listone-current.json?t=${Date.now()}`,{cache:"no-store"});
+    if(!res.ok)throw new Error(`HTTP ${res.status}`);
+    const snapshot=await res.json();
+    if(snapshot?.sourceKind!=="official-fantacalcio"){
+      openListoneSyncDialog(`<div class="dialog-body listone-sync-dialog">
+        <div class="listone-sync-modal-head"><div><span class="eyebrow">PRIMO AVVIO</span><h2>Sync non ancora pronto</h2></div><button class="ghost" onclick="closeListoneSyncDialog()">✕</button></div>
+        <div class="listone-sync-warning">⏳ Il file presente è ancora la base iniziale dell'app. Il workflow GitHub deve completare almeno un controllo ufficiale prima di poter aggiornare.</div>
+        <p class="muted">La tua asta non viene toccata. Puoi continuare a usare normalmente il listone già presente e riprovare tra qualche minuto.</p>
+        <button class="primary full-btn" onclick="closeListoneSyncDialog()">Chiudi</button>
+      </div>`);return;
+    }
+    if(!syncSnapshotValid(snapshot))throw new Error(`snapshot non valido (${snapshot?.activePlayers||0} attivi, ${snapshot?.unclassified||0} senza ruolo)`);
+    const diff=computeListoneChanges(snapshot);
+    pendingListoneSnapshot=snapshot;
+    if(!diff.changes.length){
+      openListoneSyncDialog(`<div class="dialog-body listone-sync-dialog">
+        <div class="listone-sync-modal-head"><div><span class="eyebrow">LISTONE UFFICIALE</span><h2>Sei già aggiornato ✅</h2></div><button class="ghost" onclick="closeListoneSyncDialog()">✕</button></div>
+        <div class="listone-sync-success-box"><b>${snapshot.activePlayers} giocatori attivi</b><span>Snapshot ${listoneSyncDateLabel(snapshot.generatedAt)}</span></div>
+        <p class="muted">Non risultano differenze rispetto ai dati applicati nell'app.</p><button class="primary full-btn" onclick="closeListoneSyncDialog()">Continua</button>
+      </div>`);return;
+    }
+    const c=diff.counts,preview=diff.changes.slice(0,24);
+    openListoneSyncDialog(`<div class="dialog-body listone-sync-dialog">
+      <div class="listone-sync-modal-head"><div><span class="eyebrow">LISTONE UFFICIALE</span><h2>Aggiornamento trovato</h2><small class="muted">${snapshot.activePlayers} attivi · ${listoneSyncDateLabel(snapshot.generatedAt)}</small></div><button class="ghost" onclick="closeListoneSyncDialog()">✕</button></div>
+      <div class="sync-summary-grid">
+        <div><strong>+${c.new||0}</strong><span>nuovi</span></div><div><strong>−${c.out||0}</strong><span>fuori</span></div>
+        <div><strong>${(c.club||0)+(c.role||0)}</strong><span>club/ruoli</span></div><div><strong>${(c.fvm||0)+(c.quote||0)}</strong><span>valori</span></div>
+      </div>
+      <div class="sync-change-list">
+        ${preview.map(x=>`<div class="sync-change-row"><span class="sync-change-tag ${x.type}">${syncChangeTag(x.type)}</span><div><b>${esc(x.name)}</b><small>${esc(x.text)}</small></div></div>`).join("")}
+        ${diff.changes.length>preview.length?`<div class="muted sync-more">+ altre ${diff.changes.length-preview.length} modifiche</div>`:""}
+      </div>
+      <div class="sync-preserve-note">🔒 Restano intatti acquisti, Venduti, prezzi pagati, squadre, lega e MAX strategici personalizzati.</div>
+      <div class="sync-dialog-actions"><button class="ghost" onclick="closeListoneSyncDialog()">Annulla</button><button class="primary" id="applyListoneSyncBtn">Aggiorna listone</button></div>
+    </div>`);
+    $("#applyListoneSyncBtn").onclick=applyPendingListoneUpdate;
+  }catch(err){
+    openListoneSyncDialog(`<div class="dialog-body listone-sync-dialog">
+      <div class="listone-sync-modal-head"><div><span class="eyebrow">NESSUNA MODIFICA APPLICATA</span><h2>Controllo non riuscito</h2></div><button class="ghost" onclick="closeListoneSyncDialog()">✕</button></div>
+      <div class="listone-sync-warning">⚠️ ${esc(err?.message||"Errore di rete")}</div>
+      <p class="muted">Per sicurezza l'app mantiene l'ultimo listone valido. L'asta e le rose non vengono modificate.</p>
+      <button class="primary full-btn" onclick="closeListoneSyncDialog()">Chiudi</button>
+    </div>`);
+  }
+}
+window.checkListoneUpdate=checkListoneUpdate;
+function applyPendingListoneUpdate(){
+  const snapshot=pendingListoneSnapshot;if(!syncSnapshotValid(snapshot))return;
+  appliedListoneSync=snapshot;localStorage.setItem(LISTONE_SYNC_STORAGE,JSON.stringify(snapshot));
+  allPlayers=buildAllPlayers();pendingListoneSnapshot=null;invalidateAuctionIntel();refresh();
+  openListoneSyncDialog(`<div class="dialog-body listone-sync-dialog">
+    <div class="listone-sync-modal-head"><div></div><button class="ghost" onclick="closeListoneSyncDialog()">✕</button></div>
+    <div class="listone-sync-finished"><span>✅</span><h2>Listone aggiornato</h2><p>${snapshot.activePlayers} giocatori attivi · ${listoneSyncDateLabel(snapshot.generatedAt)}</p></div>
+    <div class="listone-sync-success-box"><b>Dati asta preservati</b><span>Ricalcolati scarsità, mercato, inflazione e Auction Intelligence.</span></div>
+    <button class="primary full-btn" onclick="closeListoneSyncDialog()">Continua</button>
+  </div>`);
+}
+window.applyPendingListoneUpdate=applyPendingListoneUpdate;
+
 function playerRow(p){
   const b=state.purchases[p.id], sold=isSold(p.id); const sig=b?signal(p,b.price):null;
   const strategic=!!p.strategic;
@@ -1098,6 +1328,7 @@ function playerRow(p){
       <h3>${p.name}
         ${p.notes&&p.notes.includes("TARGET")?'<span class="badge target">TARGET</span>':""}
         ${strategic?'<span class="badge strategic-badge">200</span>':'<span class="badge listone-badge">LISTONE</span>'}
+        ${p.outOfListone?'<span class="badge out-listone-badge">FUORI LISTONE</span>':""}
       </h3>
       <div class="meta">${p.club} · ${p.role} · ${p.tier||"—"}</div>
       ${p.reparto==="ATT"&&primaryOffensiveRole(p)?`<span class="badge primary-role-badge">PRIM. ${primaryOffensiveRole(p)}</span>`:""}
@@ -1114,7 +1345,7 @@ function playerRow(p){
 function playerViewData(){
   const visiblePool=state.filter==="Venduti"
     ? allPlayers
-    : state.poolMode==="all" ? allPlayers : strategicPlayers;
+    : state.poolMode==="all" ? allPlayers : currentStrategicPlayers();
 
   const baseFiltered=visiblePool.filter(p=>{
     const q=state.query.trim().toLowerCase();
@@ -1123,7 +1354,8 @@ function playerViewData(){
     if(state.filter==="Venduti"){
       okr=isSold(p.id);
     }else{
-      okr=playerMatchesRoleFilter(p,state.filter,state.poolMode) && !isSold(p.id);
+      const visibleMarket=!p.outOfListone || !!state.purchases[p.id];
+      okr=visibleMarket && playerMatchesRoleFilter(p,state.filter,state.poolMode) && !isSold(p.id);
     }
     return okq&&okr;
   });
@@ -1187,8 +1419,8 @@ function renderPlayers(){
   let roles=["Tutti",...roleOrder,"Venduti"];
   const data=playerViewData();
 
-  const modePool=state.poolMode==="all"?allPlayers:strategicPlayers;
-  const availableModePool=modePool.filter(p=>!isSold(p.id));
+  const modePool=state.poolMode==="all"?allPlayers:currentStrategicPlayers();
+  const availableModePool=modePool.filter(p=>isMarketEligiblePlayer(p)&&!isSold(p.id)&&!state.purchases[p.id]);
   const offensiveDist={
     W:modePool.filter(p=>primaryOffensiveRole(p)==="W").length,
     T:modePool.filter(p=>primaryOffensiveRole(p)==="T").length,
@@ -1197,12 +1429,13 @@ function renderPlayers(){
   };
 
   $("#playersView").innerHTML=`
+    ${listoneSyncCardHTML()}
     <div class="pool-switch">
       <button id="poolStrategic" class="${state.poolMode==="strategic"?"active":""}">
-        <b>Strategici</b><span>${strategicPlayers.length}</span>
+        <b>Strategici</b><span>${currentStrategicPlayers().filter(p=>!p.outOfListone).length}</span>
       </button>
       <button id="poolAll" class="${state.poolMode==="all"?"active":""}">
-        <b>Tutto il listone</b><span>${allPlayers.length}</span>
+        <b>Tutto il listone</b><span>${allPlayers.filter(p=>!p.outOfListone).length}</span>
       </button>
     </div>
 
@@ -1241,6 +1474,8 @@ function renderPlayers(){
 
     <div id="playerResultsCount" class="muted" style="margin:8px 2px">${playerResultsInfo(data.list)}</div>
     <div id="playerResults">${data.content}</div>`;
+
+  $("#updateListoneBtn").onclick=checkListoneUpdate;
 
   $("#poolStrategic").onclick=()=>{
     state.poolMode="strategic";
@@ -1301,7 +1536,8 @@ function openPlayer(id){
       ${strategic?`<div class="line"><span>Giovane</span><b>${p.u21?"U21 + U23":p.u23?"U23":"—"}</b></div>`:""}
       ${strategic?`<div class="line"><span>Modificatore</span><b>${p.modifier||"—"}</b></div>`:""}
       <div class="line"><span>Fit ${state.strategy} · ${activeStrategy().module}</span><b>${strategyPlayerFit(p).length?strategyPlayerFit(p).join(" · "):"ruolo condiviso / non chiave"}</b></div>
-      <div class="line"><span>Stato mercato</span><b>${b?"MIO":sold?"VENDUTO":"DISPONIBILE"}</b></div>
+      <div class="line"><span>Stato mercato</span><b>${b?"MIO":sold?"VENDUTO":p.outOfListone?"FUORI LISTONE":"DISPONIBILE"}</b></div>
+      ${p.syncGeneratedAt?`<div class="line"><span>Listone ufficiale</span><b>${listoneSyncDateLabel(p.syncGeneratedAt)}</b></div>`:""}
       <div class="line"><span>Scarsità live</span><b>${riskIcon(live.risk)} ${live.risk}/100 · ${live.activeComp} rivali probabili</b></div>
       ${sold?`<div class="line"><span>Assegnato a</span><b>${esc(soldTeamName(state.sold[p.id]))}</b></div>`:""}
       ${sold?`<div class="line"><span>Prezzo vendita</span><b>${Number(state.sold[p.id]?.price)>0?fmt(state.sold[p.id].price)+" cr":"—"}</b></div>`:""}
@@ -1312,7 +1548,9 @@ function openPlayer(id){
         ? `<button class="ghost" onclick='editPurchase(${idArg(p.id)})'>✏️ Modifica acquisto</button><button class="dangerbtn" onclick='removePurchase(${idArg(p.id)})'>Annulla acquisto</button>`
         : sold
           ? `<button class="ghost" onclick='editSold(${idArg(p.id)})'>✏️ Modifica vendita</button><button class="ghost" onclick='restoreSold(${idArg(p.id)})'>↩️ Ripristina mercato</button>`
-          : `<button class="primary" onclick='startPurchase(${idArg(p.id)})'>Acquista</button><button class="soldbtn" onclick='markSold(${idArg(p.id)})'>🔒 Venduto</button>`
+          : p.outOfListone
+            ? `<button class="ghost" onclick="playerDialog.close()">Chiudi</button>`
+            : `<button class="primary" onclick='startPurchase(${idArg(p.id)})'>Acquista</button><button class="soldbtn" onclick='markSold(${idArg(p.id)})'>🔒 Venduto</button>`
       }
     </div>
   </div>`;
@@ -1505,8 +1743,9 @@ function renderPlan(targetSelector="#dashboardPlanContent"){
   const rec=strategyRecommendation(bought,getAuctionIntel());
   const lineup=bestLineupMatch(st,bought);
   const poolByRep={POR:0,DIF:0,CEN:0,ATT:0};
-  strategicPlayers.forEach(p=>poolByRep[p.reparto]=(poolByRep[p.reparto]||0)+1);
-  const movement=strategicPlayers.length-poolByRep.POR;
+  const strategicNow=currentStrategicPlayers().filter(p=>!p.outOfListone);
+  strategicNow.forEach(p=>poolByRep[p.reparto]=(poolByRep[p.reparto]||0)+1);
+  const movement=strategicNow.length-poolByRep.POR;
 
   const roleCounts={};
   ["Por","Ds","Dc","Dd","B","E","M","C","W","T","A","Pc"].forEach(r=>{
@@ -1567,7 +1806,7 @@ function renderPlan(targetSelector="#dashboardPlanContent"){
 
     <div class="section-title"><h2>Bacino strategico</h2></div>
     <div class="grid">
-      <div class="card metric"><span>Shortlist</span><strong>${strategicPlayers.length}/200</strong><span>strategici</span></div>
+      <div class="card metric"><span>Shortlist</span><strong>${strategicNow.length}/200</strong><span>strategici</span></div>
       <div class="card metric"><span>Portieri</span><strong>${poolByRep.POR}/24</strong><span>3 × 8</span></div>
       <div class="card metric"><span>Movimento</span><strong>${movement}/176</strong><span>shortlist</span></div>
       <div class="card metric"><span>Listone algoritmo</span><strong>${allPlayers.length}</strong><span>universo mercato</span></div>
@@ -1575,10 +1814,10 @@ function renderPlan(targetSelector="#dashboardPlanContent"){
 
     <div class="section-title"><h2>Distribuzione offensivi principali</h2></div>
     <div class="card">
-      <div class="line"><span>W principali</span><b>${strategicPlayers.filter(p=>primaryOffensiveRole(p)==="W").length}</b></div>
-      <div class="line"><span>T principali</span><b>${strategicPlayers.filter(p=>primaryOffensiveRole(p)==="T").length}</b></div>
-      <div class="line"><span>A principali</span><b>${strategicPlayers.filter(p=>primaryOffensiveRole(p)==="A").length}</b></div>
-      <div class="line"><span>Pc principali</span><b>${strategicPlayers.filter(p=>primaryOffensiveRole(p)==="Pc").length}</b></div>
+      <div class="line"><span>W principali</span><b>${strategicNow.filter(p=>primaryOffensiveRole(p)==="W").length}</b></div>
+      <div class="line"><span>T principali</span><b>${strategicNow.filter(p=>primaryOffensiveRole(p)==="T").length}</b></div>
+      <div class="line"><span>A principali</span><b>${strategicNow.filter(p=>primaryOffensiveRole(p)==="A").length}</b></div>
+      <div class="line"><span>Pc principali</span><b>${strategicNow.filter(p=>primaryOffensiveRole(p)==="Pc").length}</b></div>
       <div class="line"><span>T compatibili totali</span><b>${roleCounts.T||0}</b></div>
     </div>
 
@@ -1750,8 +1989,8 @@ function renderSettings(){
   $("#setPin").onclick=()=>{let p=prompt("Scegli un PIN numerico (4-8 cifre):");if(/^\d{4,8}$/.test(p||"")){localStorage.setItem("am_pin",p);state.pin=p;alert("PIN salvato.")}};
   if($("#removePin"))$("#removePin").onclick=()=>{localStorage.removeItem("am_pin");state.pin="";renderSettings()};
   $("#resetBtn").onclick=()=>{if(confirm("Vuoi davvero cancellare acquisti e giocatori venduti e riportare la fase asta ai POR?")){state.purchases={};state.sold={};state.auctionPhase="POR";save();saveSold();saveAuctionPhase();refresh()}};
-  $("#exportBtn").onclick=()=>{let blob=new Blob([JSON.stringify({version:6,purchases:state.purchases,sold:state.sold,strategy:state.strategy,poolMode:state.poolMode,league:state.league,auctionPhase:state.auctionPhase},null,2)],{type:"application/json"});let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="AstaMantra-backup.json";a.click();URL.revokeObjectURL(a.href)};
-  $("#importFile").onchange=e=>{let f=e.target.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let o=JSON.parse(rd.result);state.purchases=o.purchases||{};state.sold=o.sold||{};state.league=o.league||state.league||null;if(STRATEGIES[o.strategy]){state.strategy=o.strategy;localStorage.setItem("am_strategy",o.strategy)}if(["strategic","all"].includes(o.poolMode)){state.poolMode=o.poolMode;localStorage.setItem("am_pool_mode",o.poolMode)}if(AUCTION_PHASES.some(x=>x.id===o.auctionPhase)){state.auctionPhase=o.auctionPhase;saveAuctionPhase()}save();saveSold();saveLeague();refresh();alert("Backup importato.")}catch{alert("File non valido.")}};rd.readAsText(f)};
+  $("#exportBtn").onclick=()=>{let blob=new Blob([JSON.stringify({version:7,purchases:state.purchases,sold:state.sold,strategy:state.strategy,poolMode:state.poolMode,league:state.league,auctionPhase:state.auctionPhase,listoneSync:appliedListoneSync},null,2)],{type:"application/json"});let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="AstaMantra-backup.json";a.click();URL.revokeObjectURL(a.href)};
+  $("#importFile").onchange=e=>{let f=e.target.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let o=JSON.parse(rd.result);state.purchases=o.purchases||{};state.sold=o.sold||{};state.league=o.league||state.league||null;if(STRATEGIES[o.strategy]){state.strategy=o.strategy;localStorage.setItem("am_strategy",o.strategy)}if(["strategic","all"].includes(o.poolMode)){state.poolMode=o.poolMode;localStorage.setItem("am_pool_mode",o.poolMode)}if(AUCTION_PHASES.some(x=>x.id===o.auctionPhase)){state.auctionPhase=o.auctionPhase;saveAuctionPhase()}if(o.listoneSync?.schema===LISTONE_SYNC_SCHEMA&&Array.isArray(o.listoneSync.players)){appliedListoneSync=o.listoneSync;localStorage.setItem(LISTONE_SYNC_STORAGE,JSON.stringify(appliedListoneSync));allPlayers=buildAllPlayers()}save();saveSold();saveLeague();invalidateAuctionIntel();refresh();alert("Backup importato.")}catch{alert("File non valido.")}};rd.readAsText(f)};
 }
 function switchView(id){
   state.view=id;$$('.view').forEach(v=>v.classList.toggle("active",v.id===id));$$('.tab').forEach(t=>t.classList.toggle("active",t.dataset.view===id));
@@ -1775,4 +2014,4 @@ function lockInit(){
   $("#unlockBtn").onclick=()=>{if($("#pinInput").value===state.pin)$("#lock").classList.add("hidden");else $("#lockText").textContent="PIN errato. Riprova."};
 }
 refresh();lockInit();
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.25.1").catch(()=>{}));
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.26").catch(()=>{}));
