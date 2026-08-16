@@ -1,3 +1,21 @@
+VERSIONE 1.14 — Probabili Formazioni: 2 squadre affiancate per pagina, 10 pagine verticali.
+
+VERSIONE 1.13 — Probabili Formazioni in elenco: POR, DIF, CEN, ATT con nome completo e ruolo Mantra.
+
+VERSIONE 1.12 — Probabili Formazioni: 3 campetti grandi per pagina, 7 pagine verticali, nomi e ruoli Mantra più leggibili.
+
+VERSIONE 1.11 — fix visualizzazione Probabili Formazioni su Safari: campi e giocatori sempre visibili, 4 squadre effettive per pagina.
+
+VERSIONE 1.10 — Probabili Formazioni: 4 campetti più grandi per pagina, 5 pagine verticali.
+
+VERSIONE 1.9 — box 'Probabili Formazioni': 5 campetti affiancati, 4 pagine a scorrimento verticale.
+
+VERSIONE 1.8 — 20 formazioni tipo su campetto, 5 visibili nel carosello verticale
+Dati formazione congelati da Fantacalcio.it al 16/08/2026; ruoli Mantra mostrati in campo.
+
+VERSIONE 1.7 — nuova icona Home Screen: gallo stilizzato con martelletto da asta
+Aggiunte icone PNG ottimizzate per iPhone e PWA (180, 192, 512 px).
+
 ASTA MANTRA — PWA PRIVATA
 ==========================
 

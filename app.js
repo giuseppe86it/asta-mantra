@@ -147,6 +147,61 @@ function clubCounterHTML(bought){
   </div>`;
 }
 
+function formationBroadGroup(role){
+  const tokens=String(role||"").split("/").map(x=>x.trim()).filter(Boolean);
+  if(tokens.includes("Por")) return "POR";
+  if(tokens.some(r=>["W","A","Pc"].includes(r))) return "ATT";
+  if(tokens.some(r=>["B","Ds","Dc","Dd"].includes(r))) return "DIF";
+  return "CEN";
+}
+
+function formationListCardHTML(f,index){
+  const groups={POR:[],DIF:[],CEN:[],ATT:[]};
+
+  (f.lines||[]).flat().forEach(p=>{
+    const g=formationBroadGroup(p.role);
+    groups[g].push(p);
+  });
+
+  const labels={POR:"POR",DIF:"DIF",CEN:"CEN",ATT:"ATT"};
+
+  return `<article class="formation-list-card"
+      role="button"
+      tabindex="0"
+      onclick="openFormation(${index})"
+      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFormation(${index})}"
+      aria-label="${f.team}, ${f.module}">
+    <div class="formation-list-head">
+      <div>
+        <b>${f.team}</b>
+        <span>${f.club}</span>
+      </div>
+      <strong>${f.module}</strong>
+    </div>
+
+    <div class="formation-role-list">
+      ${["POR","DIF","CEN","ATT"].map(group=>`
+        <div class="formation-role-row formation-role-${group.toLowerCase()}">
+          <div class="formation-role-label">${labels[group]}</div>
+          <div class="formation-role-players">
+            ${groups[group].map(p=>`
+              <span class="formation-name-chip">
+                <b>${p.name}</b>
+                <em>${p.role}</em>
+              </span>
+            `).join("") || `<span class="formation-empty">—</span>`}
+          </div>
+        </div>
+      `).join("")}
+    </div>
+
+    <div class="formation-list-foot">
+      <span>Agg. ${f.updated}</span>
+      <span>tocca per dettaglio ›</span>
+    </div>
+  </article>`;
+}
+
 function formationCarouselHTML(){
   if(!formations.length){
     return `<div class="formation-box">
@@ -158,63 +213,35 @@ function formationCarouselHTML(){
   }
 
   const pages=[];
-  for(let i=0;i<formations.length;i+=4){
-    pages.push(formations.slice(i,i+4));
+  for(let i=0;i<formations.length;i+=2){
+    pages.push(formations.slice(i,i+2));
   }
 
-  return `<section class="formation-box" aria-label="Probabili Formazioni">
+  return `<section class="formation-box formation-list-box" aria-label="Probabili Formazioni">
     <div class="formation-box-head">
       <div>
         <b>Probabili Formazioni</b>
-        <span>Fantacalcio.it · 16/08/2026</span>
+        <span>Fantacalcio.it · titolari + ruoli Mantra</span>
       </div>
-      <small>4 per pagina · scorri ↑</small>
+      <small>2 squadre · scorri ↑</small>
     </div>
 
-    <div class="formation-vertical-carousel">
+    <div class="formation-list-carousel formation-list-carousel-2col">
       ${pages.map((page,pageIndex)=>`
-        <div class="formation-page" data-page="${pageIndex+1}">
+        <div class="formation-list-page formation-list-page-2col" data-page="${pageIndex+1}">
           ${page.map(f=>{
             const index=formations.indexOf(f);
-            return formationCardHTML(f,index);
+            return formationListCardHTML(f,index);
           }).join("")}
         </div>
       `).join("")}
     </div>
 
-    <div class="formation-page-hint">
-      <span>1</span><i></i><span>5</span>
-      <small>swipe verticale</small>
+    <div class="formation-page-hint formation-list-hint">
+      <span>1</span><i></i><span>10</span>
+      <small>2 squadre per pagina</small>
     </div>
   </section>`;
-}
-
-function formationCardHTML(f,index){
-  const pitchLines=(f.lines||[]).slice().reverse().map(line=>
-    `<div class="formation-line">${
-      line.map(p=>`<div class="formation-player" title="${p.name} · ${p.role}">
-        <b>${p.name}</b><span>${p.role}</span>
-      </div>`).join("")
-    }</div>`
-  ).join("");
-
-  return `<div class="formation-card formation-card-mini"
-      role="button"
-      tabindex="0"
-      onclick="openFormation(${index})"
-      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFormation(${index})}"
-      aria-label="${f.team}, ${f.module}">
-    <div class="formation-card-head">
-      <b>${f.club || f.team.slice(0,3).toUpperCase()}</b>
-      <span>${f.module}</span>
-    </div>
-    <div class="mini-pitch">
-      <span class="pitch-half" aria-hidden="true"></span>
-      <span class="pitch-circle" aria-hidden="true"></span>
-      <div class="formation-lines">${pitchLines}</div>
-    </div>
-    <div class="formation-team-name">${f.team}</div>
-  </div>`;
 }
 
 window.openFormation=index=>{

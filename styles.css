@@ -854,3 +854,574 @@ label{display:block;color:var(--muted);font-size:13px;margin:12px 0}label input{
     font-size:10px;
   }
 }
+
+
+/* v1.12 — Opzione B: 3 campetti grandi per pagina */
+.formation-vertical-carousel{
+  height:232px !important;
+}
+
+.formation-page{
+  height:232px !important;
+  min-height:232px !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  grid-auto-columns:minmax(0,1fr) !important;
+  gap:7px !important;
+  padding:6px !important;
+}
+
+.formation-card.formation-card-mini{
+  height:220px !important;
+  grid-template-rows:29px minmax(0,1fr) 23px !important;
+  border-radius:12px !important;
+}
+
+.formation-card-mini .formation-card-head{
+  height:29px !important;
+  min-height:29px !important;
+  padding:0 7px !important;
+}
+
+.formation-card-mini .formation-card-head b{
+  font-size:10px !important;
+}
+
+.formation-card-mini .formation-card-head span{
+  font-size:8.2px !important;
+}
+
+.formation-card-mini .mini-pitch::before{
+  inset:6px !important;
+}
+
+.formation-card-mini .formation-lines{
+  inset:9px 5px !important;
+}
+
+.formation-card-mini .formation-line{
+  gap:3px !important;
+}
+
+.formation-card-mini .formation-player{
+  max-width:49% !important;
+  padding:3px 3px !important;
+  border-radius:5px !important;
+}
+
+.formation-card-mini .formation-player b{
+  font-size:7px !important;
+  line-height:1.05 !important;
+  letter-spacing:-.02em;
+}
+
+.formation-card-mini .formation-player span{
+  font-size:6.1px !important;
+  line-height:1 !important;
+}
+
+.formation-card-mini .formation-team-name{
+  height:23px !important;
+  min-height:23px !important;
+  padding:0 7px !important;
+  font-size:8.8px !important;
+}
+
+.formation-page-hint{
+  height:17px;
+}
+
+.formation-page-hint span,
+.formation-page-hint small{
+  font-size:8px;
+}
+
+@media(max-width:360px){
+  .formation-vertical-carousel,
+  .formation-page{
+    height:215px !important;
+    min-height:215px !important;
+  }
+
+  .formation-card.formation-card-mini{
+    height:203px !important;
+    grid-template-rows:27px minmax(0,1fr) 21px !important;
+  }
+
+  .formation-card-mini .formation-card-head{
+    height:27px !important;
+    min-height:27px !important;
+  }
+
+  .formation-card-mini .formation-player{
+    padding:2px 2px !important;
+  }
+
+  .formation-card-mini .formation-player b{
+    font-size:6.3px !important;
+  }
+
+  .formation-card-mini .formation-player span{
+    font-size:5.5px !important;
+  }
+}
+
+@media(min-width:700px){
+  .formation-vertical-carousel,
+  .formation-page{
+    height:330px !important;
+    min-height:330px !important;
+  }
+
+  .formation-card.formation-card-mini{
+    height:316px !important;
+    grid-template-rows:37px minmax(0,1fr) 31px !important;
+  }
+
+  .formation-card-mini .formation-card-head{
+    height:37px !important;
+    min-height:37px !important;
+    padding:0 10px !important;
+  }
+
+  .formation-card-mini .formation-card-head b{
+    font-size:14px !important;
+  }
+
+  .formation-card-mini .formation-card-head span{
+    font-size:11px !important;
+  }
+
+  .formation-card-mini .formation-player{
+    padding:4px 6px !important;
+  }
+
+  .formation-card-mini .formation-player b{
+    font-size:11px !important;
+  }
+
+  .formation-card-mini .formation-player span{
+    font-size:9px !important;
+  }
+
+  .formation-card-mini .formation-team-name{
+    height:31px !important;
+    min-height:31px !important;
+    font-size:12px !important;
+    padding:0 10px !important;
+  }
+}
+
+
+/* v1.13 — Probabili Formazioni in elenco per reparto */
+.formation-list-box{
+  padding:9px !important;
+}
+
+.formation-list-carousel{
+  height:286px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  scroll-snap-type:y mandatory;
+  overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-y;
+  scrollbar-width:none;
+  border-radius:12px;
+  background:#0e1728;
+}
+
+.formation-list-carousel::-webkit-scrollbar{
+  display:none;
+}
+
+.formation-list-page{
+  height:286px;
+  min-height:286px;
+  padding:5px;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+}
+
+.formation-list-card{
+  height:276px;
+  display:grid;
+  grid-template-rows:38px minmax(0,1fr) 24px;
+  background:#101a2c;
+  border:1px solid #2a3854;
+  border-radius:12px;
+  overflow:hidden;
+  color:var(--text);
+  cursor:pointer;
+}
+
+.formation-list-card:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:-2px;
+}
+
+.formation-list-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:0 10px;
+  background:#0b1424;
+  border-bottom:1px solid var(--line);
+}
+
+.formation-list-head>div{
+  display:flex;
+  align-items:baseline;
+  gap:7px;
+  min-width:0;
+}
+
+.formation-list-head b{
+  font-size:14px;
+  white-space:nowrap;
+}
+
+.formation-list-head span{
+  color:var(--muted);
+  font-size:9px;
+  font-weight:800;
+}
+
+.formation-list-head strong{
+  flex:0 0 auto;
+  color:var(--accent);
+  font-size:12px;
+}
+
+.formation-role-list{
+  display:grid;
+  grid-template-rows:repeat(4,minmax(0,1fr));
+  min-height:0;
+  padding:3px 8px;
+}
+
+.formation-role-row{
+  display:grid;
+  grid-template-columns:36px minmax(0,1fr);
+  gap:6px;
+  align-items:center;
+  min-height:0;
+  border-bottom:1px solid rgba(148,163,184,.14);
+}
+
+.formation-role-row:last-child{
+  border-bottom:0;
+}
+
+.formation-role-label{
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.04em;
+  color:var(--muted);
+  text-align:center;
+  padding:5px 2px;
+  border-radius:7px;
+  background:#172238;
+}
+
+.formation-role-por .formation-role-label{color:#93c5fd}
+.formation-role-dif .formation-role-label{color:#c4b5fd}
+.formation-role-cen .formation-role-label{color:#86efac}
+.formation-role-att .formation-role-label{color:#fca5a5}
+
+.formation-role-players{
+  display:flex;
+  align-items:center;
+  align-content:center;
+  gap:4px;
+  flex-wrap:wrap;
+  min-width:0;
+  padding:3px 0;
+}
+
+.formation-name-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+  min-width:0;
+  max-width:100%;
+  padding:3px 5px;
+  border:1px solid #33445f;
+  border-radius:7px;
+  background:#121f34;
+  white-space:nowrap;
+}
+
+.formation-name-chip b{
+  font-size:8.4px;
+  line-height:1.05;
+  color:#f8fafc;
+}
+
+.formation-name-chip em{
+  font-style:normal;
+  font-size:7.3px;
+  line-height:1;
+  font-weight:900;
+  color:#8df0c5;
+}
+
+.formation-empty{
+  color:var(--muted);
+  font-size:10px;
+}
+
+.formation-list-foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  padding:0 10px;
+  color:var(--muted);
+  font-size:7.5px;
+  background:#0b1424;
+  border-top:1px solid var(--line);
+}
+
+.formation-list-hint{
+  padding-top:5px;
+}
+
+@media(max-width:360px){
+  .formation-list-carousel,
+  .formation-list-page{
+    height:272px;
+    min-height:272px;
+  }
+
+  .formation-list-card{
+    height:262px;
+    grid-template-rows:35px minmax(0,1fr) 22px;
+  }
+
+  .formation-role-row{
+    grid-template-columns:32px minmax(0,1fr);
+    gap:4px;
+  }
+
+  .formation-name-chip{
+    padding:3px 4px;
+    gap:2px;
+  }
+
+  .formation-name-chip b{
+    font-size:7.7px;
+  }
+
+  .formation-name-chip em{
+    font-size:6.7px;
+  }
+}
+
+@media(min-width:700px){
+  .formation-list-carousel,
+  .formation-list-page{
+    height:360px;
+    min-height:360px;
+  }
+
+  .formation-list-card{
+    height:348px;
+    grid-template-rows:48px minmax(0,1fr) 30px;
+  }
+
+  .formation-list-head b{
+    font-size:19px;
+  }
+
+  .formation-list-head span{
+    font-size:11px;
+  }
+
+  .formation-list-head strong{
+    font-size:15px;
+  }
+
+  .formation-role-row{
+    grid-template-columns:52px minmax(0,1fr);
+    gap:10px;
+  }
+
+  .formation-role-label{
+    font-size:12px;
+  }
+
+  .formation-name-chip{
+    padding:5px 7px;
+    gap:5px;
+  }
+
+  .formation-name-chip b{
+    font-size:11.5px;
+  }
+
+  .formation-name-chip em{
+    font-size:9.5px;
+  }
+
+  .formation-list-foot{
+    font-size:9px;
+  }
+}
+
+
+/* v1.14 — due squadre affiancate per pagina */
+.formation-list-carousel-2col{
+  height:304px !important;
+}
+
+.formation-list-page-2col{
+  height:304px !important;
+  min-height:304px !important;
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:7px !important;
+  padding:5px !important;
+}
+
+.formation-list-page-2col .formation-list-card{
+  width:100%;
+  min-width:0;
+  height:294px !important;
+  grid-template-rows:36px minmax(0,1fr) 22px !important;
+}
+
+.formation-list-page-2col .formation-list-head{
+  padding:0 7px !important;
+  gap:5px !important;
+}
+
+.formation-list-page-2col .formation-list-head>div{
+  gap:4px !important;
+}
+
+.formation-list-page-2col .formation-list-head b{
+  font-size:10.5px !important;
+}
+
+.formation-list-page-2col .formation-list-head span{
+  font-size:7px !important;
+}
+
+.formation-list-page-2col .formation-list-head strong{
+  font-size:8.5px !important;
+}
+
+.formation-list-page-2col .formation-role-list{
+  padding:3px 5px !important;
+}
+
+.formation-list-page-2col .formation-role-row{
+  grid-template-columns:29px minmax(0,1fr) !important;
+  gap:4px !important;
+}
+
+.formation-list-page-2col .formation-role-label{
+  font-size:7px !important;
+  padding:4px 1px !important;
+}
+
+.formation-list-page-2col .formation-role-players{
+  gap:3px !important;
+  padding:2px 0 !important;
+}
+
+.formation-list-page-2col .formation-name-chip{
+  gap:2px !important;
+  padding:3px 4px !important;
+  border-radius:6px !important;
+}
+
+.formation-list-page-2col .formation-name-chip b{
+  font-size:7.2px !important;
+}
+
+.formation-list-page-2col .formation-name-chip em{
+  font-size:6.2px !important;
+}
+
+.formation-list-page-2col .formation-list-foot{
+  padding:0 6px !important;
+  font-size:6.2px !important;
+}
+
+@media(max-width:360px){
+  .formation-list-carousel-2col,
+  .formation-list-page-2col{
+    height:292px !important;
+    min-height:292px !important;
+  }
+
+  .formation-list-page-2col .formation-list-card{
+    height:282px !important;
+    grid-template-rows:34px minmax(0,1fr) 21px !important;
+  }
+
+  .formation-list-page-2col .formation-list-head b{
+    font-size:9.7px !important;
+  }
+
+  .formation-list-page-2col .formation-name-chip b{
+    font-size:6.8px !important;
+  }
+
+  .formation-list-page-2col .formation-name-chip em{
+    font-size:5.8px !important;
+  }
+}
+
+@media(min-width:700px){
+  .formation-list-carousel-2col,
+  .formation-list-page-2col{
+    height:430px !important;
+    min-height:430px !important;
+  }
+
+  .formation-list-page-2col .formation-list-card{
+    height:418px !important;
+    grid-template-rows:52px minmax(0,1fr) 32px !important;
+  }
+
+  .formation-list-page-2col .formation-list-head b{
+    font-size:17px !important;
+  }
+
+  .formation-list-page-2col .formation-list-head span{
+    font-size:10px !important;
+  }
+
+  .formation-list-page-2col .formation-list-head strong{
+    font-size:13px !important;
+  }
+
+  .formation-list-page-2col .formation-role-row{
+    grid-template-columns:46px minmax(0,1fr) !important;
+    gap:8px !important;
+  }
+
+  .formation-list-page-2col .formation-role-label{
+    font-size:10px !important;
+  }
+
+  .formation-list-page-2col .formation-name-chip{
+    padding:5px 6px !important;
+    gap:4px !important;
+  }
+
+  .formation-list-page-2col .formation-name-chip b{
+    font-size:10.5px !important;
+  }
+
+  .formation-list-page-2col .formation-name-chip em{
+    font-size:8.5px !important;
+  }
+
+  .formation-list-page-2col .formation-list-foot{
+    font-size:8px !important;
+  }
+}

@@ -1,5 +1,5 @@
 
-const CACHE="asta-mantra-v1.11";
+const CACHE="asta-mantra-v1.14";
 const ASSETS=["./","./index.html","./styles.css","./app.js","./players.js","./formations.js","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png","./favicon-32.png"];
 
 self.addEventListener("install", event => {
