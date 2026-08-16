@@ -199,7 +199,7 @@ $("#purchaseForm").addEventListener("submit",e=>{
   if(e.submitter?.value==="cancel")return;
   e.preventDefault();
   const price=Number($("#purchasePrice").value);
-  if(!price||price<5||price%5!==0)return;
+  if(!Number.isInteger(price) || price < 1) return;
   const previous=state.purchases[purchaseId];
   state.purchases[purchaseId]={
     price,
