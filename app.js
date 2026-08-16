@@ -51,6 +51,9 @@ function renderDashboard(){
       <div class="progress"><i style="width:${Math.min(100,x/b*100)}%"></i></div>
       <div class="muted" style="margin-top:7px">Residuo guida: ${fmt(b-x)}</div>
     </div>`}).join("")}
+    <div class="section-title"><h2>Giocatori per club</h2><span class="muted">massimo 5</span></div>
+    ${clubCounterHTML(bought)}
+
     <div class="section-title"><h2>Acquisti recenti</h2><span class="muted">${fmt(s)} spesi</span></div>
     ${bought.length?`<div class="toolbar" style="margin-bottom:10px"><button id="undoLastPurchaseBtn" class="ghost">↩️ Annulla ultimo acquisto</button></div>`:""}
     ${bought.length?bought.slice().sort((a,b)=>(state.purchases[b.id]?.at||0)-(state.purchases[a.id]?.at||0)).slice(0,8).map(playerRow).join(""):`<div class="card muted">Nessun acquisto ancora.</div>`}
@@ -58,6 +61,49 @@ function renderDashboard(){
   const undoBtn=$("#undoLastPurchaseBtn");
   if(undoBtn) undoBtn.onclick=undoLastPurchase;
 }
+
+function clubCounterHTML(bought){
+  if(!bought.length){
+    return `<div class="card muted">Nessun club ancora presente in rosa.</div>`;
+  }
+
+  const counts={};
+  bought.forEach(p=>{
+    counts[p.club]=(counts[p.club]||0)+1;
+  });
+
+  const rows=Object.entries(counts)
+    .sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0]))
+    .map(([club,count])=>{
+      let cls="";
+      let label="";
+      if(count>5){
+        cls="club-stop";
+        label=" ⛔ STOP";
+      }else if(count===5){
+        cls="club-full";
+        label=" 🔴 PIENO";
+      }else if(count===4){
+        cls="club-warning";
+        label=" 🟠 ATTENZIONE";
+      }else{
+        cls="club-safe";
+      }
+
+      const pct=Math.min(100,(count/5)*100);
+
+      return `<div class="club-counter ${cls}">
+        <div class="club-counter-head">
+          <b>${club}</b>
+          <span><strong>${count}/5</strong>${label}</span>
+        </div>
+        <div class="progress"><i style="width:${pct}%"></i></div>
+      </div>`;
+    }).join("");
+
+  return `<div class="card club-counter-card">${rows}</div>`;
+}
+
 function playerRow(p){
   const b=state.purchases[p.id]; const sig=b?signal(p,b.price):null;
   return `<div class="player ${b?"bought":""}" data-id="${p.id}">

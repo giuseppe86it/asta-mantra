@@ -37,3 +37,16 @@ label{display:block;color:var(--muted);font-size:13px;margin:12px 0}label input{
 .toolbar{display:flex;gap:8px;flex-wrap:wrap}.dangerbtn{background:#44202b;color:#fecdd3;border:0;border-radius:12px;padding:10px 13px}
 .install-note{font-size:13px;color:var(--muted);line-height:1.45}
 @media(min-width:700px){.view{max-width:900px;margin:auto}.grid{grid-template-columns:repeat(4,1fr)}}
+
+
+/* v1.3 — contatore giocatori per club */
+.club-counter-card{padding:8px 14px}
+.club-counter{padding:11px 0;border-bottom:1px solid var(--line)}
+.club-counter:last-child{border-bottom:0}
+.club-counter-head{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px}
+.club-counter-head span{font-size:12px;color:var(--muted);text-align:right}
+.club-counter-head strong{font-size:15px;color:var(--text)}
+.club-warning .club-counter-head strong{color:var(--warn)}
+.club-full .club-counter-head strong,.club-stop .club-counter-head strong{color:var(--danger)}
+.club-warning .progress i{background:var(--warn)}
+.club-full .progress i,.club-stop .progress i{background:var(--danger)}
