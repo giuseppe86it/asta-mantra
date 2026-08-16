@@ -90,6 +90,53 @@ const STRATEGIES = {
     depth:"4 profili W/A · 3 profili A/Pc"
   }
 };
+
+const AUCTION_PHASES = [
+  {id:"POR",label:"Portieri",icon:"🧤"},
+  {id:"DIF",label:"Difensori",icon:"🛡️"},
+  {id:"CEN",label:"Centrocampisti",icon:"⚙️"},
+  {id:"ATT",label:"Attaccanti",icon:"⚡"}
+];
+const PHASE_ROLE_INDEX = {Por:0,Dd:1,Ds:1,Dc:1,B:1,E:2,M:2,C:2,W:3,T:3,A:3,Pc:3};
+const INTEL_FAMILIES = [
+  {id:"Dd",label:"Dd",roles:["Dd"]},
+  {id:"Ds",label:"Ds",roles:["Ds"]},
+  {id:"Dc",label:"Dc",roles:["Dc","B"]},
+  {id:"MC",label:"M/C",roles:["M","C"]},
+  {id:"T",label:"T",roles:["T"]},
+  {id:"WA",label:"W/A",roles:["W","A"]},
+  {id:"APc",label:"A/Pc",roles:["A","Pc"]},
+  {id:"Pc",label:"Pc",roles:["Pc"]}
+];
+
+// Gli 11 schemi Mantra ufficiali. Gli slot alternativi sono rappresentati
+// come insiemi di ruoli compatibili; servono per stimare la struttura potenziale
+// delle rose avversarie durante l'asta a reparti.
+const MANTRA_MODULES = [
+  {id:"343",name:"3-4-3",slots:[
+    ["Por"],["Dc"],["Dc"],["Dc","B"],["E"],["M","C"],["C"],["E"],["W","A"],["A","Pc"],["W","A"]]},
+  {id:"3412",name:"3-4-1-2",slots:[
+    ["Por"],["Dc"],["Dc"],["Dc","B"],["E"],["M","C"],["C"],["E"],["T"],["A","Pc"],["A","Pc"]]},
+  {id:"3421",name:"3-4-2-1",slots:[
+    ["Por"],["Dc"],["Dc"],["Dc","B"],["M"],["M","C"],["E","W"],["E"],["T"],["T","A"],["A","Pc"]]},
+  {id:"352",name:"3-5-2",slots:[
+    ["Por"],["Dc"],["Dc"],["Dc","B"],["E","W"],["M","C"],["M"],["C"],["E"],["A","Pc"],["A","Pc"]]},
+  {id:"3511",name:"3-5-1-1",slots:[
+    ["Por"],["Dc"],["Dc"],["Dc","B"],["E","W"],["M"],["M"],["C"],["E","W"],["T","A"],["A","Pc"]]},
+  {id:"433",name:"4-3-3",slots:[
+    ["Por"],["Dd"],["Dc"],["Dc"],["Ds"],["M","C"],["M"],["C"],["W","A"],["A","Pc"],["W","A"]]},
+  {id:"4312",name:"4-3-1-2",slots:[
+    ["Por"],["Dd"],["Dc"],["Dc"],["Ds"],["M","C"],["M"],["C"],["T"],["T","A","Pc"],["A","Pc"]]},
+  {id:"442",name:"4-4-2",slots:[
+    ["Por"],["Dd"],["Dc"],["Dc"],["Ds"],["M","C"],["C"],["E","W"],["E"],["A","Pc"],["A","Pc"]]},
+  {id:"4141",name:"4-1-4-1",slots:[
+    ["Por"],["Dd"],["Dc"],["Dc"],["Ds"],["M"],["C","T"],["T"],["E","W"],["W"],["A","Pc"]]},
+  {id:"4411",name:"4-4-1-1",slots:[
+    ["Por"],["Dd"],["Dc"],["Dc"],["Ds"],["M"],["C"],["E","W"],["E","W"],["T","A"],["A","Pc"]]},
+  {id:"4231",name:"4-2-3-1",slots:[
+    ["Por"],["Dd"],["Dc"],["Dc"],["Ds"],["M"],["M","C"],["W","T"],["T"],["W","A"],["A","Pc"]]}
+].map(m=>({...m,slots:m.slots.map((roles,i)=>({label:roles.join("/"),roles}))}));
+
 const SERIES_A_CLUBS = [
   ["ATA","Atalanta"],["BOL","Bologna"],["CAG","Cagliari"],["COM","Como"],["FIO","Fiorentina"],
   ["FRO","Frosinone"],["GEN","Genoa"],["INT","Inter"],["JUV","Juventus"],["LAZ","Lazio"],
@@ -106,7 +153,8 @@ const state = {
   query:"",
   strategy: localStorage.getItem("am_strategy") || "A",
   poolMode: localStorage.getItem("am_pool_mode") || "strategic",
-  league: JSON.parse(localStorage.getItem("am_league")||"null")
+  league: JSON.parse(localStorage.getItem("am_league")||"null"),
+  auctionPhase: localStorage.getItem("am_auction_phase") || "POR"
 };
 function save(){localStorage.setItem("am_purchases",JSON.stringify(state.purchases))}
 function saveSold(){localStorage.setItem("am_sold",JSON.stringify(state.sold))}
@@ -114,6 +162,7 @@ function saveLeague(){
   if(state.league) localStorage.setItem("am_league",JSON.stringify(state.league));
   else localStorage.removeItem("am_league");
 }
+function saveAuctionPhase(){localStorage.setItem("am_auction_phase",state.auctionPhase)}
 function soldPlayers(){return allPlayers.filter(p=>state.sold[p.id])}
 function isSold(id){return !!state.sold[id]}
 function leagueTeamById(id){return state.league?.teams?.find(t=>t.id===id)||null}
@@ -243,7 +292,7 @@ function strategyMarket(strategyId,bought=purchasedPlayers()){
     text:`W/A mercato ${wa.remaining}/${wa.total} · A/Pc ${apc.remaining}/${apc.total}`
   };
 }
-function strategyScore(strategyId,bought=purchasedPlayers()){
+function strategyScore(strategyId,bought=purchasedPlayers(),intel=null){
   const st=STRATEGIES[strategyId];
   const full=bestLineupMatch(st,bought);
   const key=bestLineupMatch(st,bought,st.keySlots);
@@ -253,6 +302,11 @@ function strategyScore(strategyId,bought=purchasedPlayers()){
   const qsum=keyPlayers.reduce((a,p)=>a+playerQuality(p),0);
   const quality=Math.min(1,qsum/900);
   const prior=strategyId==="A"?3:0;
+  const riskFor=id=>Number(intel?.scarcity?.[id]?.risk||0);
+  const strategicRisk=strategyId==="A"
+    ? .58*riskFor("T")+.42*riskFor("APc")
+    : .62*riskFor("WA")+.38*riskFor("APc");
+  const auctionAdjustment=intel?Math.round(3-8*(strategicRisk/100)):0;
 
   const score=Math.round(
     35
@@ -262,12 +316,13 @@ function strategyScore(strategyId,bought=purchasedPlayers()){
     +6*quality
     +12*market.value
     +prior
+    +auctionAdjustment
   );
 
-  return {score:Math.min(100,score),full,key,depth,quality,market};
+  return {score:Math.min(100,Math.max(0,score)),full,key,depth,quality,market,auctionAdjustment,strategicRisk};
 }
-function strategyRecommendation(bought=purchasedPlayers()){
-  const A=strategyScore("A",bought),B=strategyScore("B",bought);
+function strategyRecommendation(bought=purchasedPlayers(),intel=null){
+  const A=strategyScore("A",bought,intel),B=strategyScore("B",bought,intel);
   const delta=A.score-B.score;
   let recommended="A",status="BASE";
   if(bought.length<3){
@@ -330,6 +385,254 @@ function fmt(n){return Number(n||0).toLocaleString("it-IT")}
 function purchasedPlayers(){return allPlayers.filter(p=>state.purchases[p.id])}
 function spent(){return Object.values(state.purchases).reduce((a,x)=>a+Number(x.price||0),0)}
 function countClub(club){return purchasedPlayers().filter(p=>p.club===club).length}
+
+function clamp(v,min=0,max=1){return Math.min(max,Math.max(min,v))}
+function phaseIndex(id=state.auctionPhase){
+  const i=AUCTION_PHASES.findIndex(x=>x.id===id);
+  return i<0?0:i;
+}
+function rolePhaseIndex(role){return PHASE_ROLE_INDEX[role]??3}
+function playerAuctionPhase(p){
+  const tokens=roleTokens(p?.role);
+  if(tokens.includes("Por"))return "POR";
+  if(tokens.some(r=>["W","T","A","Pc"].includes(r)))return "ATT";
+  if(tokens.some(r=>["E","M","C"].includes(r)))return "CEN";
+  return "DIF";
+}
+function phaseForRep(rep){return ({POR:"POR",DIF:"DIF",CEN:"CEN",ATT:"ATT"})[rep]||"ATT"}
+function setAuctionPhase(id){
+  if(!AUCTION_PHASES.some(x=>x.id===id))return;
+  state.auctionPhase=id;saveAuctionPhase();refresh();
+}
+window.setAuctionPhase=setAuctionPhase;
+function nextAuctionPhase(){
+  const i=phaseIndex();
+  if(i<AUCTION_PHASES.length-1)setAuctionPhase(AUCTION_PHASES[i+1].id);
+}
+window.nextAuctionPhase=nextAuctionPhase;
+
+function teamItems(team,excludePlayerId=null){
+  let items=rosterForLeagueTeam(team);
+  if(excludePlayerId!=null)items=items.filter(x=>String(x.p.id)!==String(excludePlayerId));
+  return items;
+}
+function teamEconomy(team,excludePlayerId=null){
+  const items=teamItems(team,excludePlayerId);
+  const spentValue=items.reduce((a,x)=>a+Number(x.price||0),0);
+  const remaining=Math.max(0,DEFAULT_BUDGET-spentValue);
+  const missing=Math.max(0,25-items.length);
+  const minimumToFinish=missing;
+  const free=Math.max(0,remaining-minimumToFinish);
+  const maxNext=missing>0?Math.max(0,remaining-Math.max(0,missing-1)):0;
+  const byRep={POR:0,DIF:0,CEN:0,ATT:0};
+  items.forEach(x=>{const rep=playerAuctionPhase(x.p);if(byRep[rep]!=null)byRep[rep]+=Number(x.price||0)});
+  return {items,spent:spentValue,remaining,missing,minimumToFinish,free,maxNext,byRep};
+}
+function mineTeam(){return state.league?.teams?.find(t=>t.isMine)||{id:"mine",name:"La mia squadra",isMine:true}}
+
+function neutralPrice(p){return Math.max(1,Math.round(Number(p?.fvm||0)*2.5))}
+function auctionTransactions(){
+  const tx=[];
+  Object.entries(state.purchases).forEach(([id,data])=>{const p=getPlayer(id);if(p&&Number(data.price)>0)tx.push({p,price:Number(data.price),teamId:"mine",at:data.at||0})});
+  Object.entries(state.sold).forEach(([id,data])=>{const p=getPlayer(id);if(p&&Number(data.price)>0)tx.push({p,price:Number(data.price),teamId:data.teamId||"",at:data.at||0})});
+  return tx;
+}
+function inflationStats(filterFn=()=>true){
+  const rows=auctionTransactions().filter(x=>filterFn(x.p,x));
+  const actual=rows.reduce((a,x)=>a+x.price,0);
+  const expected=rows.reduce((a,x)=>a+neutralPrice(x.p),0);
+  const pct=expected?((actual/expected)-1)*100:0;
+  return {count:rows.length,actual,expected,pct,confidence:clamp(rows.length/8)};
+}
+function familyById(id){return INTEL_FAMILIES.find(x=>x.id===id)}
+function playerMatchesFamily(p,family){
+  const f=typeof family==="string"?familyById(family):family;
+  if(!f)return false;
+  const tokens=roleTokens(p.role);
+  return f.roles.some(r=>tokens.includes(r));
+}
+function familyInflation(id){return inflationStats(p=>playerMatchesFamily(p,id))}
+function familyMarketHealth(id){
+  const f=familyById(id); if(!f)return {total:0,remaining:0,countShare:0,qualityShare:0};
+  const all=allPlayers.filter(p=>playerMatchesFamily(p,f));
+  const remaining=all.filter(p=>!state.purchases[p.id]&&!state.sold[p.id]);
+  const qAll=all.reduce((a,p)=>a+Math.max(1,playerQuality(p)),0);
+  const qRem=remaining.reduce((a,p)=>a+Math.max(1,playerQuality(p)),0);
+  return {total:all.length,remaining:remaining.length,countShare:all.length?remaining.length/all.length:0,qualityShare:qAll?qRem/qAll:0};
+}
+
+function fastSlotMatch(slots,players){
+  const ordered=players.slice().sort((a,b)=>playerQuality(b)-playerQuality(a));
+  const assigned=Array(slots.length).fill(null);
+  function tryPlayer(p,seen){
+    const opts=[];
+    for(let i=0;i<slots.length;i++)if(slotCompatible(p,slots[i]))opts.push(i);
+    opts.sort((a,b)=>{
+      const aa=assigned[a]?1:0,bb=assigned[b]?1:0;
+      return aa-bb || slots[a].roles.length-slots[b].roles.length;
+    });
+    for(const i of opts){
+      if(seen.has(i))continue;
+      seen.add(i);
+      if(!assigned[i] || tryPlayer(assigned[i],seen)){
+        assigned[i]=p;return true;
+      }
+    }
+    return false;
+  }
+  ordered.forEach(p=>tryPlayer(p,new Set()));
+  return {assign:assigned,filled:assigned.filter(Boolean).length,total:slots.length};
+}
+function slotFinality(slot,currentPhase=phaseIndex()){
+  const phases=slot.roles.map(rolePhaseIndex);
+  const minP=Math.min(...phases),maxP=Math.max(...phases);
+  if(currentPhase>maxP)return 1;
+  if(currentPhase===maxP)return .62;
+  if(currentPhase>=minP)return .35;
+  return .10;
+}
+function modulePredictionForTeam(team){
+  const econ=teamEconomy(team);
+  const roster=econ.items.map(x=>x.p);
+  const movement=roster.filter(p=>!roleTokens(p.role).includes("Por"));
+  const spendTotal=Math.max(1,econ.items.reduce((a,x)=>a+x.price,0));
+  const recent=econ.items.slice().sort((a,b)=>(b.p&&((state.purchases[b.p.id]?.at)||(state.sold[b.p.id]?.at))||0)-((a.p&&((state.purchases[a.p.id]?.at)||(state.sold[a.p.id]?.at)))||0)).slice(0,4);
+
+  const scored=MANTRA_MODULES.map(module=>{
+    const match=fastSlotMatch(module.slots,roster);
+    let weightedPossible=0,weightedFilled=0,quality=0,depth=0;
+    module.slots.forEach((slot,i)=>{
+      if(slot.roles.includes("Por"))return;
+      const f=.35+1.65*slotFinality(slot);
+      weightedPossible+=f;
+      if(match.assign[i]){
+        weightedFilled+=f;
+        quality+=f*clamp(playerQuality(match.assign[i])/220);
+      }
+      const compatible=roster.filter(p=>slotCompatible(p,slot)).length;
+      depth+=f*clamp((compatible-1)/2);
+    });
+    const coverage=weightedPossible?weightedFilled/weightedPossible:0;
+    const qualityScore=weightedPossible?quality/weightedPossible:0;
+    const depthScore=weightedPossible?depth/weightedPossible:0;
+    const assignedIds=new Set(match.assign.filter(Boolean).map(p=>String(p.id)));
+    const coherentSpend=econ.items.filter(x=>assignedIds.has(String(x.p.id))).reduce((a,x)=>a+x.price,0)/spendTotal;
+    const recentFit=recent.length?recent.filter(x=>module.slots.some(slot=>slotCompatible(x.p,slot))).length/recent.length:0;
+    const score=100*(.52*coverage+.15*qualityScore+.10*depthScore+.15*coherentSpend+.08*recentFit);
+    return {module,score,match,coverage,quality:qualityScore,depth:depthScore,coherentSpend,recentFit};
+  });
+  const maxScore=Math.max(...scored.map(x=>x.score),0);
+  const temp=8;
+  const weights=scored.map(x=>Math.exp((x.score-maxScore)/temp));
+  const wsum=weights.reduce((a,b)=>a+b,0)||1;
+  scored.forEach((x,i)=>x.prob=weights[i]/wsum);
+  scored.sort((a,b)=>b.prob-a.prob);
+  const gap=(scored[0]?.prob||0)-(scored[1]?.prob||0);
+  const phaseBase=[.08,.25,.48,.72][phaseIndex()]||.08;
+  const sample=clamp(movement.length/14);
+  const confidence=clamp(phaseBase*.55+sample*.35+gap*.75,0.05,.96);
+  return {team,econ,ranked:scored,top:scored[0],confidence};
+}
+function missingDemandForPrediction(pred,familyId){
+  const family=familyById(familyId);if(!family)return 0;
+  let demand=0;
+  pred.ranked.forEach(r=>{
+    let units=0;
+    r.module.slots.forEach((slot,i)=>{
+      if(r.match.assign[i])return;
+      const intersection=slot.roles.filter(role=>family.roles.includes(role));
+      if(!intersection.length)return;
+      const share=intersection.length/slot.roles.length;
+      units+=Math.max(.45,share);
+    });
+    demand+=r.prob*units;
+  });
+  return demand;
+}
+function buildAuctionIntel(){
+  const teams=state.league?.teams?.length?state.league.teams:[mineTeam()];
+  const predictions={};
+  teams.forEach(t=>predictions[t.id]=modulePredictionForTeam(t));
+  const opponents=teams.filter(t=>!t.isMine);
+  const demand={};
+  INTEL_FAMILIES.forEach(f=>{
+    const teamRows=opponents.map(t=>{
+      const pred=predictions[t.id];
+      const units=missingDemandForPrediction(pred,f.id);
+      const econ=pred.econ;
+      const money=clamp(econ.maxNext/350);
+      const need=clamp(units/1.5);
+      const pressure=need*(.45+.55*money)*pred.confidence;
+      return {team:t,units,pressure,maxNext:econ.maxNext,pred};
+    }).sort((a,b)=>b.pressure-a.pressure);
+    demand[f.id]={teams:teamRows,totalPressure:teamRows.reduce((a,x)=>a+x.pressure,0),likelyTeams:teamRows.filter(x=>x.pressure>=.22).length};
+  });
+  const scarcity={};
+  INTEL_FAMILIES.forEach(f=>{
+    const health=familyMarketHealth(f.id);
+    const inf=familyInflation(f.id);
+    const supply=.5*health.countShare+.5*health.qualityShare;
+    const demandNorm=clamp((demand[f.id]?.totalPressure||0)/Math.max(1,health.remaining/8));
+    const infNorm=inf.count?clamp(Math.max(0,inf.pct)/50):0;
+    const risk=Math.round(100*clamp(.56*(1-supply)+.29*demandNorm+.15*infNorm));
+    scarcity[f.id]={...health,inflation:inf,risk,demandNorm,likelyTeams:demand[f.id]?.likelyTeams||0};
+  });
+  const economy=teams.map(t=>({team:t,...teamEconomy(t)})).sort((a,b)=>b.remaining-a.remaining||b.maxNext-a.maxNext);
+  const repInflation={};
+  ["POR","DIF","CEN","ATT"].forEach(rep=>repInflation[rep]=inflationStats(p=>playerAuctionPhase(p)===rep));
+  const leagueSpend={POR:0,DIF:0,CEN:0,ATT:0};
+  economy.forEach(e=>Object.keys(leagueSpend).forEach(r=>leagueSpend[r]+=e.byRep[r]||0));
+  return {predictions,demand,scarcity,economy,repInflation,overallInflation:inflationStats(),leagueSpend};
+}
+let auctionIntelCache=null;
+function getAuctionIntel(){return auctionIntelCache||(auctionIntelCache=buildAuctionIntel())}
+function invalidateAuctionIntel(){auctionIntelCache=null}
+
+function riskClass(risk){return risk>=70?"risk-red":risk>=50?"risk-orange":risk>=30?"risk-yellow":"risk-green"}
+function riskIcon(risk){return risk>=70?"🔴":risk>=50?"🟠":risk>=30?"🟡":"🟢"}
+function familyRiskForPlayer(p,intel=getAuctionIntel()){
+  const ids=INTEL_FAMILIES.filter(f=>playerMatchesFamily(p,f)).map(f=>f.id);
+  if(!ids.length)return {risk:0,ids:[]};
+  const values=ids.map(id=>intel.scarcity[id]?.risk||0);
+  return {risk:Math.round(values.reduce((a,b)=>a+b,0)/values.length),ids};
+}
+function playerInflation(p,intel=getAuctionIntel()){
+  const familyIds=INTEL_FAMILIES.filter(f=>playerMatchesFamily(p,f)).map(f=>f.id);
+  const stats=familyIds.map(id=>intel.scarcity[id]?.inflation).filter(x=>x&&x.count);
+  if(stats.length)return stats.reduce((a,x)=>a+x.pct,0)/stats.length;
+  return intel.repInflation[p.reparto]?.pct||intel.overallInflation.pct||0;
+}
+function competitionForPlayer(p,intel=getAuctionIntel()){
+  if(!state.league)return [];
+  return opponentTeams().map(team=>{
+    const pred=intel.predictions[team.id];
+    const matching=INTEL_FAMILIES.filter(f=>playerMatchesFamily(p,f));
+    const pressure=matching.length?Math.max(...matching.map(f=>intel.demand[f.id]?.teams.find(x=>x.team.id===team.id)?.pressure||0)):0;
+    return {team,pressure,maxNext:pred?.econ.maxNext||0,module:pred?.top?.module.name||"—",confidence:pred?.confidence||0};
+  }).sort((a,b)=>b.pressure-a.pressure||b.maxNext-a.maxNext);
+}
+function liveMaxForPlayer(p,intel=getAuctionIntel()){
+  const base=Math.max(1,Number(p.maxPrice||neutralPrice(p)));
+  const inf=clamp(playerInflation(p,intel),-35,70);
+  const risk=familyRiskForPlayer(p,intel).risk;
+  const comp=competitionForPlayer(p,intel);
+  const activeComp=comp.filter(x=>x.pressure>=.22).length;
+  const factor=clamp(1+(inf/100)*.25+((risk-35)/100)*.16+Math.min(.07,activeComp*.018),.78,1.25);
+  const mine=teamEconomy(mineTeam());
+  const live=Math.round(base*factor);
+  return {base,live:Math.min(live,mine.maxNext||live),rawLive:live,inflation:inf,risk,activeComp,competition:comp};
+}
+
+function updateSoldEconomicNote(){
+  const team=leagueTeamById($("#soldTeamSelect")?.value);
+  if(!team){
+    if($("#soldLeagueNote"))$("#soldLeagueNote").textContent="Nessuna lega creata: vendita registrata senza squadra.";
+    return;
+  }
+  const econ=teamEconomy(team,soldPlayerId);
+  $("#soldLeagueNote").textContent=`${team.name}: ${fmt(econ.remaining)} cr residui · ${econ.missing} posti · MAX prossimo ${fmt(econ.maxNext)}.`;
+}
+
 function signal(p, price){
   price=Number(price||0); let m=Number(p.maxPrice||0);
   if(!price) return {t:"Inserisci il prezzo",c:""};
@@ -338,9 +641,16 @@ function signal(p, price){
   if(price<=m) return {t:"🟠 LIMITE",c:"orange"};
   return {t:"⛔ STOP",c:"red"};
 }
+function pctLabel(v,count=1){
+  if(!count)return "—";
+  const n=Math.round(Number(v||0));
+  return `${n>0?"+":""}${n}%`;
+}
 function renderDashboard(){
+  invalidateAuctionIntel();
+  const intel=getAuctionIntel();
   const bought=purchasedPlayers(), s=spent(), rem=DEFAULT_BUDGET-s;
-  const st=activeStrategy(), budgets=st.budgets, rec=strategyRecommendation(bought);
+  const st=activeStrategy(), budgets=st.budgets, rec=strategyRecommendation(bought,intel);
   const byRep={POR:0,DIF:0,CEN:0,ATT:0};
   bought.forEach(p=>byRep[p.reparto]+=Number(state.purchases[p.id].price||0));
 
@@ -348,6 +658,10 @@ function renderDashboard(){
   const u21=bought.filter(p=>p.u21).length;
   const porCount=bought.filter(p=>p.reparto==="POR").length;
   const movCount=bought.length-porCount;
+  const mineEcon=teamEconomy(mineTeam());
+  const currentPhase=AUCTION_PHASES[phaseIndex()];
+  const nextPhase=AUCTION_PHASES[phaseIndex()+1]||null;
+  const leader=intel.economy[0];
 
   const clubAlerts=SERIES_A_CLUBS
     .map(([code])=>[code,countClub(code)])
@@ -358,41 +672,62 @@ function renderDashboard(){
   if(porCount>3) alerts.push(`Portieri oltre limite: ${porCount}/3`);
   if(movCount>22) alerts.push(`Movimento oltre limite: ${movCount}/22`);
   if(clubAlerts.length) alerts.push("Club oltre 5: "+clubAlerts.map(([c,n])=>`${c} ${n}/5`).join(", "));
+  if(mineEcon.remaining<mineEcon.minimumToFinish) alerts.push(`Crediti insufficienti per chiudere ${mineEcon.missing} slot a 1`);
 
   const recent=bought.slice()
     .sort((a,b)=>(state.purchases[b.id]?.at||0)-(state.purchases[a.id]?.at||0))
     .slice(0,5);
 
+  const scarcityOrder=["Dd","Ds","Dc","MC","T","WA","APc","Pc"];
+  const opponentPredictions=state.league
+    ? opponentTeams().map(t=>intel.predictions[t.id]).filter(Boolean)
+    : [];
+
   $("#dashboardView").innerHTML=`
-    <div class="dashboard-cockpit">
+    <div class="dashboard-cockpit auction-intel-dashboard">
+
+      <section class="auction-phase-card">
+        <div class="auction-phase-top">
+          <div><span class="strategy-kicker">FASE ASTA</span><strong>${currentPhase.icon} ${currentPhase.label}</strong></div>
+          <button id="openLiveBtn" class="live-launch">⚡ ASTA LIVE</button>
+        </div>
+        <div class="auction-phase-track">
+          ${AUCTION_PHASES.map((ph,i)=>`<button class="phase-step ${ph.id===state.auctionPhase?"active":""} ${i<phaseIndex()?"done":""}" onclick="setAuctionPhase('${ph.id}')"><span>${ph.icon}</span><b>${ph.id}</b></button>`).join("")}
+        </div>
+        ${nextPhase?`<button id="nextPhaseBtn" class="phase-next">Termina ${currentPhase.id} → passa a ${nextPhase.id}</button>`:`<div class="phase-complete">Ultimo reparto · fase ATT</div>`}
+      </section>
 
       <div class="dash-metrics">
         <div class="dash-metric">
-          <span>Budget</span>
-          <strong>${fmt(rem)}</strong>
-          <small>residuo</small>
+          <span>Budget</span><strong>${fmt(rem)}</strong><small>residuo</small>
         </div>
         <div class="dash-metric">
-          <span>Rosa</span>
-          <strong>${bought.length}/25</strong>
-          <small>${porCount} POR · ${movCount} mov.</small>
+          <span>Rosa</span><strong>${bought.length}/25</strong><small>${porCount} POR · ${movCount} mov.</small>
         </div>
         <div class="dash-metric ${u23>=2?"metric-ok":"metric-warn"}">
-          <span>U23</span>
-          <strong>${u23}/2</strong>
-          <small>minimo</small>
+          <span>U23</span><strong>${u23}/2</strong><small>minimo</small>
         </div>
         <div class="dash-metric ${u21>=1?"metric-ok":"metric-warn"}">
-          <span>U21</span>
-          <strong>${u21}/1</strong>
-          <small>minimo</small>
+          <span>U21</span><strong>${u21}/1</strong><small>minimo</small>
         </div>
       </div>
+
+      <section class="completion-card">
+        <div class="intel-section-head"><div><span>CONTROLLO ROSA</span><b>Quanto possiamo realmente spendere</b></div><strong>${fmt(mineEcon.maxNext)} MAX</strong></div>
+        <div class="completion-grid">
+          <div><span>Posti mancanti</span><b>${mineEcon.missing}</b></div>
+          <div><span>Minimo per finire</span><b>${fmt(mineEcon.minimumToFinish)}</b></div>
+          <div><span>Crediti liberi</span><b>${fmt(mineEcon.free)}</b></div>
+          <div><span>MAX prossimo</span><b>${fmt(mineEcon.maxNext)}</b></div>
+        </div>
+        <div class="completion-status"><span>A XI <b>${rec.A.full.filled}/11</b></span><span>B XI <b>${rec.B.full.filled}/11</b></span><span>U23 <b>${u23}/2</b></span><span>U21 <b>${u21}/1</b></span><span>Club <b>${clubAlerts.length?"⚠️":"✅"}</b></span></div>
+        <small>Il MAX conserva 1 credito per ognuno degli altri ${Math.max(0,mineEcon.missing-1)} slot da completare.</small>
+      </section>
 
       <div class="strategy-engine ${rec.recommended===state.strategy?"strategy-hold":"strategy-switch"}">
         <div class="strategy-engine-top">
           <div>
-            <span class="strategy-kicker">MOTORE STRATEGIA</span>
+            <span class="strategy-kicker">MOTORE STRATEGIA + ASTA</span>
             <strong>${rec.headline}</strong>
           </div>
           <div class="strategy-scores">
@@ -401,68 +736,97 @@ function renderDashboard(){
           </div>
         </div>
         <div class="strategy-buttons">
-          <button class="strategy-btn ${state.strategy==="A"?"active":""}" onclick="setStrategy('A')">
-            <b>A</b><span>4-3-1-2</span>
-          </button>
-          <button class="strategy-btn ${state.strategy==="B"?"active":""}" onclick="setStrategy('B')">
-            <b>B</b><span>4-3-3</span>
-          </button>
+          <button class="strategy-btn ${state.strategy==="A"?"active":""}" onclick="setStrategy('A')"><b>A</b><span>4-3-1-2</span></button>
+          <button class="strategy-btn ${state.strategy==="B"?"active":""}" onclick="setStrategy('B')"><b>B</b><span>4-3-3</span></button>
         </div>
         <div class="strategy-reason">${rec.reason}</div>
         <div class="strategy-market-status">
-          <span>Venduti ad altri <b>${soldPlayers().length}</b></span>
+          <span>Venduti <b>${soldPlayers().length}</b></span>
           <span>A mercato <b>${Math.round(rec.A.market.value*100)}%</b></span>
           <span>B mercato <b>${Math.round(rec.B.market.value*100)}%</b></span>
         </div>
         <div class="full-market-mini">
-          <span>Listone algoritmo</span>
-          <b>${allPlayers.length} giocatori</b>
+          <span>Listone algoritmo</span><b>${allPlayers.length} giocatori</b>
           <small>${allPlayers.filter(p=>!state.sold[p.id]&&!state.purchases[p.id]).length} ancora disponibili</small>
         </div>
       </div>
 
-      <div class="dash-budget-label">
-        <b>Budget guida ${state.strategy} · ${st.module}</b>
-        <span>${fmt(budgets.POR+budgets.DIF+budgets.CEN+budgets.ATT)} crediti</span>
-      </div>
+      <section class="intel-card inflation-card">
+        <div class="intel-section-head">
+          <div><span>INFLAZIONE REALE</span><b>Prezzi pagati vs FVM ×2,5</b></div>
+          <strong class="${intel.overallInflation.pct>10?"inflation-up":intel.overallInflation.pct<-10?"inflation-down":""}">${pctLabel(intel.overallInflation.pct,intel.overallInflation.count)}</strong>
+        </div>
+        <div class="rep-intel-grid">
+          ${["POR","DIF","CEN","ATT"].map(rep=>{const x=intel.repInflation[rep];return `<div><span>${rep}</span><b>${pctLabel(x.pct,x.count)}</b><small>${x.count} acquisti</small></div>`}).join("")}
+        </div>
+        <small class="intel-note">Indice ponderato sui crediti: i top pesano più dei giocatori acquistati a 1.</small>
+      </section>
+
+      <section class="intel-card scarcity-card">
+        <div class="intel-section-head"><div><span>SCARSITÀ + DOMANDA</span><b>Mercato residuo e pressione avversari</b></div><strong>${state.league?`${opponentTeams().length} rivali`:"—"}</strong></div>
+        <div class="scarcity-grid">
+          ${scarcityOrder.map(id=>{const f=familyById(id),x=intel.scarcity[id];return `<div class="scarcity-tile ${riskClass(x.risk)}"><span>${riskIcon(x.risk)} ${f.label}</span><b>${x.risk}</b><small>${x.remaining}/${x.total} · infl ${pctLabel(x.inflation.pct,x.inflation.count)}</small><small>${x.likelyTeams} squadre · domanda ${Math.round(x.demandNorm*100)}%</small></div>`}).join("")}
+        </div>
+        ${!state.league?'<small class="intel-note">Crea la lega per attivare la domanda prevista degli avversari.</small>':''}
+      </section>
+
+      <section class="intel-card economy-card">
+        <div class="intel-section-head">
+          <div><span>POTENZA ECONOMICA</span><b>Classifica crediti residui</b></div>
+          <strong>${leader?`${esc(leader.team.name)} · ${fmt(leader.remaining)}`:"—"}</strong>
+        </div>
+        <div class="economy-ranking">
+          ${intel.economy.map((e,i)=>`<div class="economy-row ${i===0?"credit-leader":""} ${e.team.isMine?"mine-row":""}">
+            <span class="rank">${i===0?"💰":i+1}</span>
+            <div><b>${esc(e.team.name)}</b><small>${e.items.length}/25 · ${e.missing} posti</small></div>
+            <div class="economy-values"><b>${fmt(e.remaining)} cr</b><small>MAX ${fmt(e.maxNext)}</small></div>
+          </div>`).join("")}
+        </div>
+      </section>
+
+      <section class="intel-card league-spend-card">
+        <div class="intel-section-head"><div><span>SPESA LEGA PER REPARTO</span><b>Totale registrato</b></div><strong>${fmt(Object.values(intel.leagueSpend).reduce((a,b)=>a+b,0))}</strong></div>
+        <div class="rep-spend-bars">
+          ${["POR","DIF","CEN","ATT"].map(rep=>{const total=Math.max(1,Object.values(intel.leagueSpend).reduce((a,b)=>a+b,0));const pct=intel.leagueSpend[rep]/total*100;return `<div><span>${rep}<b>${fmt(intel.leagueSpend[rep])}</b></span><i><em style="width:${pct}%"></em></i></div>`}).join("")}
+        </div>
+      </section>
+
+      ${opponentPredictions.length?`<section class="intel-card module-forecast-card">
+        <div class="intel-section-head"><div><span>MODULI AVVERSARI</span><b>Previsione progressiva per fase</b></div><strong>${currentPhase.id}</strong></div>
+        <div class="module-forecast-list">
+          ${opponentPredictions.map(pred=>`<div><span><b>${esc(pred.team.name)}</b><small>${Math.round(pred.confidence*100)}% conf.</small></span><strong>${pred.top?.module.name||"—"}<small>${Math.round((pred.top?.prob||0)*100)}%</small></strong></div>`).join("")}
+        </div>
+      </section>`:""}
+
+      <div class="dash-budget-label"><b>Budget guida ${state.strategy} · ${st.module}</b><span>${fmt(DEFAULT_BUDGET)} crediti</span></div>
       <div class="dash-budget-grid">
         ${Object.entries(budgets).map(([rep,b])=>{
           const x=byRep[rep], left=b-x, pct=Math.min(100,Math.max(0,x/b*100));
-          return `<div class="dash-budget">
-            <div class="dash-budget-top"><b>${rep}</b><span>${fmt(x)}/${fmt(b)}</span></div>
-            <div class="mini-progress"><i style="width:${pct}%"></i></div>
-            <small>${left>=0?`${fmt(left)} rim.`:`${fmt(Math.abs(left))} oltre`}</small>
-          </div>`;
+          return `<div class="dash-budget"><div class="dash-budget-top"><b>${rep}</b><span>${fmt(x)}/${fmt(b)}</span></div><div class="mini-progress"><i style="width:${pct}%"></i></div><small>${left>=0?`${fmt(left)} rim.`:`${fmt(Math.abs(left))} oltre`}</small></div>`;
         }).join("")}
       </div>
 
       ${alerts.length?`<div class="dash-critical">⛔ ${alerts.join(" · ")}</div>`:""}
 
-      <div class="dash-club-title">
-        <b>20 CLUB SERIE A</b>
-        <span>max 5 giocatori</span>
-      </div>
+      <div class="dash-club-title"><b>20 CLUB SERIE A</b><span>max 5 giocatori</span></div>
       ${clubCounterHTML(bought)}
 
-      ${formationCarouselHTML()}
+      <details class="dashboard-plan-details">
+        <summary><span>🎯 Piano strategico completo</span><small>apri / chiudi</small></summary>
+        <div id="dashboardPlanContent"></div>
+      </details>
     </div>
 
     <div class="recent-section">
-      <div class="recent-heading">
-        <div>
-          <div class="eyebrow">Cronologia</div>
-          <h2>Ultimi 5 acquisti</h2>
-        </div>
-        <span class="muted">${fmt(s)} spesi</span>
-      </div>
-
+      <div class="recent-heading"><div><div class="eyebrow">Cronologia</div><h2>Ultimi 5 acquisti</h2></div><span class="muted">${fmt(s)} spesi</span></div>
       ${recent.length?`<div class="toolbar recent-toolbar"><button id="undoLastPurchaseBtn" class="ghost">↩️ Annulla ultimo</button></div>`:""}
       ${recent.length?recent.map(playerRow).join(""):`<div class="card muted">Nessun acquisto ancora.</div>`}
-    </div>
-  `;
+    </div>`;
 
-  const undoBtn=$("#undoLastPurchaseBtn");
-  if(undoBtn) undoBtn.onclick=undoLastPurchase;
+  const undoBtn=$("#undoLastPurchaseBtn");if(undoBtn)undoBtn.onclick=undoLastPurchase;
+  const nextBtn=$("#nextPhaseBtn");if(nextBtn)nextBtn.onclick=nextAuctionPhase;
+  const liveBtn=$("#openLiveBtn");if(liveBtn)liveBtn.onclick=openAuctionLive;
+  renderPlan("#dashboardPlanContent");
 }
 
 function clubCounterHTML(bought){
@@ -586,6 +950,17 @@ function formationCarouselHTML(){
   </section>`;
 }
 
+
+function renderFormationsView(){
+  $("#formationsView").innerHTML=`
+    <div class="section-title formations-page-title">
+      <div><div class="eyebrow">Serie A 26/27</div><h2>Probabili Formazioni</h2></div>
+      <span class="muted">${formations.length} squadre</span>
+    </div>
+    <div class="card formations-page-note">⚽ Le formazioni sono state spostate qui per lasciare la Dashboard dedicata al controllo live dell'asta. Tocca una squadra per aprire il campo completo.</div>
+    ${formations.length?`<div class="formations-dedicated-grid">${formations.map((f,i)=>formationListCardHTML(f,i)).join("")}</div>`:`<div class="card muted">Formazioni non disponibili.</div>`}`;
+}
+
 window.openFormation=index=>{
   const f=formations[index]; if(!f)return;
   const pitchLines=f.lines.slice().reverse().map(line=>`<div class="formation-line large">${line.map(p=>`<div class="formation-player large"><b>${p.name}</b><span>${p.role}</span></div>`).join("")}</div>`).join("");
@@ -595,6 +970,124 @@ window.openFormation=index=>{
     <p class="formation-source">Formazione tipo: Fantacalcio.it · Ruoli: Listone/guida Mantra 2026/27.</p>
   </div>`;
   $("#formationDialog").showModal();
+};
+
+
+let actionReturnContext=null;
+
+function captureActionReturnContext(playerId){
+  if($("#liveDialog")?.open){
+    return {
+      type:"live",
+      playerId,
+      query:$("#liveSearchInput")?.value||""
+    };
+  }
+  if($("#playerDialog")?.open){
+    return {type:"player",playerId};
+  }
+  return null;
+}
+
+function restoreActionReturnContext(){
+  const ctx=actionReturnContext;
+  actionReturnContext=null;
+  if(!ctx)return;
+
+  if(ctx.type==="player"){
+    openPlayer(ctx.playerId);
+    return;
+  }
+
+  if(ctx.type==="live"){
+    liveSelectedId=null;
+    renderAuctionLive();
+    $("#liveDialog").showModal();
+    const input=$("#liveSearchInput");
+    if(input){
+      input.value=ctx.query||"";
+      updateLiveResults(input.value);
+    }
+    if(ctx.playerId)selectLivePlayer(ctx.playerId);
+    setTimeout(()=>$("#liveSearchInput")?.focus(),30);
+  }
+}
+
+let liveSelectedId=null;
+function liveCandidateList(query=""){
+  const q=String(query||"").trim().toLowerCase();
+  let list=allPlayers.filter(p=>!state.purchases[p.id]&&!state.sold[p.id]);
+  if(q){
+    list=list.filter(p=>(p.name+" "+p.club+" "+p.role).toLowerCase().includes(q));
+  }else{
+    list=list.filter(p=>playerAuctionPhase(p)===state.auctionPhase);
+  }
+  list.sort((a,b)=>{
+    const phaseA=playerAuctionPhase(a)===state.auctionPhase?0:1;
+    const phaseB=playerAuctionPhase(b)===state.auctionPhase?0:1;
+    const targetA=(a.notes||"").includes("TARGET")?0:1;
+    const targetB=(b.notes||"").includes("TARGET")?0:1;
+    return phaseA-phaseB||targetA-targetB||Number(b.maxPrice||0)-Number(a.maxPrice||0);
+  });
+  return list.slice(0,18);
+}
+function liveResultHTML(p){
+  const live=liveMaxForPlayer(p);
+  return `<button class="live-result" data-id="${p.id}"><span><b>${esc(p.name)}</b><small>${p.club} · ${p.role} · FVM ${p.fvm||0}</small></span><strong>${riskIcon(live.risk)} ${fmt(live.live)}<small>MAX live</small></strong></button>`;
+}
+function updateLiveResults(query=""){
+  const list=liveCandidateList(query);
+  const target=$("#liveResults");if(!target)return;
+  target.innerHTML=list.length?list.map(liveResultHTML).join(""):'<div class="live-empty">Nessun giocatore trovato.</div>';
+  $$("#liveResults .live-result").forEach(btn=>btn.onclick=()=>selectLivePlayer(btn.dataset.id));
+}
+function selectLivePlayer(id){
+  const p=getPlayer(id);if(!p)return;
+  liveSelectedId=p.id;
+  const intel=getAuctionIntel(),live=liveMaxForPlayer(p,intel),mine=teamEconomy(mineTeam());
+  const comp=live.competition.slice(0,5);
+  const target=$("#liveSelected");if(!target)return;
+  target.innerHTML=`<div class="live-player-card">
+    <div class="live-player-head"><div><span>${p.club} · ${p.role}</span><b>${esc(p.name)}</b></div><strong>${riskIcon(live.risk)} ${live.risk}</strong></div>
+    <div class="live-price-grid">
+      <div><span>FVM</span><b>${p.fvm||0}</b></div>
+      <div><span>MAX iniziale</span><b>${fmt(live.base)}</b></div>
+      <div class="live-max"><span>MAX LIVE</span><b>${fmt(live.live)}</b></div>
+      <div><span>Inflazione</span><b>${pctLabel(live.inflation,1)}</b></div>
+    </div>
+    <div class="live-own-money"><span>Noi: ${fmt(mine.remaining)} cr · ${mine.missing} posti</span><b>MAX possibile ${fmt(mine.maxNext)}</b></div>
+    <div class="live-competition-title">Concorrenza prevista</div>
+    ${state.league?`<div class="live-competition">${comp.map(x=>`<div class="${x.pressure>=.45?"hot":x.pressure>=.22?"warm":"cool"}"><span><b>${esc(x.team.name)}</b><small>${x.module} · conf. ${Math.round(x.confidence*100)}%</small></span><strong>${Math.round(x.pressure*100)}%<small>MAX ${fmt(x.maxNext)}</small></strong></div>`).join("")}</div>`:'<div class="live-empty">Crea una lega per stimare la concorrenza avversaria.</div>'}
+    <div class="live-actions"><button class="primary" onclick='liveBuy(${idArg(p.id)})'>ACQUISTA</button><button class="soldbtn" onclick='liveSell(${idArg(p.id)})'>VENDUTO</button></div>
+  </div>`;
+}
+function renderAuctionLive(){
+  const phase=AUCTION_PHASES[phaseIndex()];
+  $("#liveDialogContent").innerHTML=`<div class="dialog-body live-dialog-body">
+    <div class="live-dialog-head"><div><span class="eyebrow">${phase.icon} Fase ${phase.id}</span><h2>Asta Live</h2></div><button id="closeLiveBtn" class="ghost">✕</button></div>
+    <input id="liveSearchInput" class="search live-search" placeholder="Cerca giocatore…" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <div id="liveSelected"></div>
+    <div class="live-results-label"><span>${phase.label}</span><small>tocca un giocatore</small></div>
+    <div id="liveResults"></div>
+  </div>`;
+  $("#closeLiveBtn").onclick=()=>$("#liveDialog").close();
+  $("#liveSearchInput").addEventListener("input",e=>updateLiveResults(e.target.value));
+  updateLiveResults("");
+}
+function openAuctionLive(){
+  liveSelectedId=null;renderAuctionLive();$("#liveDialog").showModal();
+  setTimeout(()=>$("#liveSearchInput")?.focus(),30);
+}
+window.openAuctionLive=openAuctionLive;
+window.liveBuy=id=>{
+  const ctx=captureActionReturnContext(id);
+  if($("#liveDialog").open)$("#liveDialog").close();
+  startPurchase(id,ctx);
+};
+window.liveSell=id=>{
+  const ctx=captureActionReturnContext(id);
+  if($("#liveDialog").open)$("#liveDialog").close();
+  openSoldDialog(id,ctx);
 };
 
 function playerRow(p){
@@ -787,6 +1280,7 @@ function bindPlayers(){
 function openPlayer(id){
   const p=getPlayer(id); if(!p)return;
   const b=state.purchases[p.id],sold=isSold(p.id),strategic=!!p.strategic;
+  const live=liveMaxForPlayer(p);
   $("#playerDialogContent").innerHTML=`<div class="dialog-body">
     <div class="section-title">
       <div><div class="eyebrow">${p.club} · ${p.role} · ${strategic?"STRATEGICO":"LISTONE"}</div><h2>${p.name}</h2></div>
@@ -794,7 +1288,9 @@ function openPlayer(id){
     </div>
     <div class="grid">
       <div class="card metric"><span>FVM</span><strong>${p.fvm||0}</strong></div>
-      <div class="card metric"><span>${strategic?"Prezzo MAX":"MAX da FVM"}</span><strong>${p.maxPrice}</strong></div>
+      <div class="card metric"><span>${strategic?"MAX iniziale":"MAX da FVM"}</span><strong>${p.maxPrice}</strong></div>
+      <div class="card metric"><span>MAX LIVE</span><strong>${fmt(live.live)}</strong></div>
+      <div class="card metric"><span>Inflazione</span><strong>${pctLabel(live.inflation,1)}</strong></div>
     </div>
     <div class="card" style="margin-top:10px">
       <div class="line"><span>Ruoli Mantra</span><b>${p.role}</b></div>
@@ -806,6 +1302,7 @@ function openPlayer(id){
       ${strategic?`<div class="line"><span>Modificatore</span><b>${p.modifier||"—"}</b></div>`:""}
       <div class="line"><span>Fit ${state.strategy} · ${activeStrategy().module}</span><b>${strategyPlayerFit(p).length?strategyPlayerFit(p).join(" · "):"ruolo condiviso / non chiave"}</b></div>
       <div class="line"><span>Stato mercato</span><b>${b?"MIO":sold?"VENDUTO":"DISPONIBILE"}</b></div>
+      <div class="line"><span>Scarsità live</span><b>${riskIcon(live.risk)} ${live.risk}/100 · ${live.activeComp} rivali probabili</b></div>
       ${sold?`<div class="line"><span>Assegnato a</span><b>${esc(soldTeamName(state.sold[p.id]))}</b></div>`:""}
       ${sold?`<div class="line"><span>Prezzo vendita</span><b>${Number(state.sold[p.id]?.price)>0?fmt(state.sold[p.id].price)+" cr":"—"}</b></div>`:""}
       ${p.notes?`<div class="line"><span>Note</span><b>${p.notes}</b></div>`:""}
@@ -825,8 +1322,9 @@ let purchaseId=null;
 let purchaseMode="new";
 
 let soldPlayerId=null;
-function openSoldDialog(id){
+function openSoldDialog(id,returnContext=undefined){
   const p=getPlayer(id); if(!p || state.purchases[p.id]) return;
+  actionReturnContext=returnContext===undefined?captureActionReturnContext(p.id):returnContext;
   soldPlayerId=p.id;
   const previous=state.sold[p.id]||{};
   $("#playerDialog").close();
@@ -838,7 +1336,7 @@ function openSoldDialog(id){
     const preferred=teams.some(t=>t.id===previous.teamId)?previous.teamId:teams[0].id;
     $("#soldTeamSelect").value=preferred;
     $("#soldTeamSelect").disabled=false;
-    $("#soldLeagueNote").textContent=`${state.league.name} · scegli la squadra che ha acquistato il giocatore.`;
+    updateSoldEconomicNote();
   }else{
     $("#soldTeamSelect").innerHTML='<option value="">Non assegnato</option>';
     $("#soldTeamSelect").disabled=true;
@@ -849,6 +1347,7 @@ function openSoldDialog(id){
   $("#soldPriceInput").focus();
   $("#soldPriceInput").select();
 }
+$("#soldTeamSelect").addEventListener("change",updateSoldEconomicNote);
 window.markSold=id=>openSoldDialog(id);
 window.editSold=id=>openSoldDialog(id);
 window.restoreSold=id=>{
@@ -860,11 +1359,17 @@ window.restoreSold=id=>{
   refresh();
 };
 
-$("#cancelSold").addEventListener("click",()=>{
+function cancelSoldFlow(){
   if(document.activeElement) document.activeElement.blur();
   if($("#soldDialog").open) $("#soldDialog").close();
   soldPlayerId=null;
   $("#soldPriceInput").value="";
+  restoreActionReturnContext();
+}
+$("#cancelSold").addEventListener("click",cancelSoldFlow);
+$("#soldDialog").addEventListener("cancel",e=>{
+  e.preventDefault();
+  cancelSoldFlow();
 });
 
 $("#soldForm").addEventListener("submit",e=>{
@@ -874,6 +1379,11 @@ $("#soldForm").addEventListener("submit",e=>{
   if(!Number.isInteger(price)||price<1)return;
   const previous=state.sold[p.id]||{};
   const teamId=opponentTeams().length?$("#soldTeamSelect").value:"";
+  const team=leagueTeamById(teamId);
+  if(team){
+    const econ=teamEconomy(team,p.id);
+    if(price>econ.maxNext){alert(`${team.name} può spendere al massimo ${econ.maxNext} crediti sul prossimo giocatore, altrimenti non potrebbe completare la rosa a 1 credito.`);return;}
+  }
   state.sold[p.id]={
     at:previous.at||Date.now(),
     price,
@@ -883,12 +1393,14 @@ $("#soldForm").addEventListener("submit",e=>{
   saveSold();
   $("#soldDialog").close();
   soldPlayerId=null;
+  actionReturnContext=null;
   refresh();
 });
 
-function startPurchase(id){
+function startPurchase(id,returnContext=undefined){
   const p=getPlayer(id);
   if(!p || isSold(p.id)) return;
+  actionReturnContext=returnContext===undefined?captureActionReturnContext(p.id):returnContext;
   purchaseId=p.id;
   purchaseMode="new";
   $("#playerDialog").close();
@@ -896,12 +1408,15 @@ function startPurchase(id){
   $("#confirmPurchase").textContent="Conferma";
   $("#purchasePrice").value="";
   $("#purchaseSignal").textContent="";
+  const econ=teamEconomy(mineTeam()),live=liveMaxForPlayer(p);
+  $("#purchaseEconomicInfo").innerHTML=`<span>MAX possibile <b>${fmt(econ.maxNext)}</b></span><span>MAX live <b>${fmt(live.live)}</b></span>`;
   $("#purchaseDialog").showModal();
   $("#purchasePrice").focus();
 }
 
 window.editPurchase=id=>{
   const p=getPlayer(id); if(!p)return;
+  actionReturnContext=captureActionReturnContext(p.id);
   purchaseId=p.id;
   purchaseMode="edit";
   const current=state.purchases[p.id];
@@ -912,6 +1427,8 @@ window.editPurchase=id=>{
   const s=signal(p,current?.price ?? "");
   $("#purchaseSignal").className="signal "+s.c;
   $("#purchaseSignal").textContent=s.t;
+  const econ=teamEconomy(mineTeam(),p.id),live=liveMaxForPlayer(p);
+  $("#purchaseEconomicInfo").innerHTML=`<span>MAX possibile <b>${fmt(econ.maxNext)}</b></span><span>MAX live <b>${fmt(live.live)}</b></span>`;
   $("#purchaseDialog").showModal();
   $("#purchasePrice").focus();
   $("#purchasePrice").select();
@@ -920,20 +1437,29 @@ $("#purchasePrice").addEventListener("input",e=>{
   const p=getPlayer(purchaseId),s=signal(p,e.target.value);
   $("#purchaseSignal").className="signal "+s.c; $("#purchaseSignal").textContent=s.t;
 });
-$("#cancelPurchase").addEventListener("click",()=>{
+function cancelPurchaseFlow(){
   if(document.activeElement) document.activeElement.blur();
   const dialog=$("#purchaseDialog");
   if(dialog.open) dialog.close();
   $("#purchasePrice").value="";
   $("#purchaseSignal").textContent="";
+  $("#purchaseEconomicInfo").textContent="";
   purchaseId=null;
   purchaseMode="new";
+  restoreActionReturnContext();
+}
+$("#cancelPurchase").addEventListener("click",cancelPurchaseFlow);
+$("#purchaseDialog").addEventListener("cancel",e=>{
+  e.preventDefault();
+  cancelPurchaseFlow();
 });
 
 $("#purchaseForm").addEventListener("submit",e=>{
   e.preventDefault();
   const price=Number($("#purchasePrice").value);
   if(!Number.isInteger(price) || price < 1) return;
+  const econ=teamEconomy(mineTeam(),purchaseMode==="edit"?purchaseId:null);
+  if(price>econ.maxNext){alert(`Puoi spendere al massimo ${econ.maxNext} crediti sul prossimo giocatore, conservando 1 credito per ogni slot successivo.`);return;}
   const previous=state.purchases[purchaseId];
   state.purchases[purchaseId]={
     price,
@@ -943,6 +1469,7 @@ $("#purchaseForm").addEventListener("submit",e=>{
   $("#purchaseDialog").close();
   purchaseId=null;
   purchaseMode="new";
+  actionReturnContext=null;
   refresh();
 });
 window.removePurchase=id=>{
@@ -971,10 +1498,11 @@ function renderSquad(){
   ${["POR","DIF","CEN","ATT"].map(rep=>`<div class="role-group"><h3>${rep}</h3>${b.filter(p=>p.reparto===rep).length?b.filter(p=>p.reparto===rep).map(playerRow).join(""):'<div class="card muted">Nessun giocatore.</div>'}</div>`).join("")}`;
   bindPlayers();
 }
-function renderPlan(){
+function renderPlan(targetSelector="#dashboardPlanContent"){
+  const target=$(targetSelector);if(!target)return;
   const bought=purchasedPlayers();
   const st=activeStrategy();
-  const rec=strategyRecommendation(bought);
+  const rec=strategyRecommendation(bought,getAuctionIntel());
   const lineup=bestLineupMatch(st,bought);
   const poolByRep={POR:0,DIF:0,CEN:0,ATT:0};
   strategicPlayers.forEach(p=>poolByRep[p.reparto]=(poolByRep[p.reparto]||0)+1);
@@ -987,7 +1515,7 @@ function renderPlan(){
 
   const budgetText=Object.values(st.budgets).map(fmt).join(" · ");
 
-  $("#planView").innerHTML=`
+  target.innerHTML=`
     <div class="section-title"><h2>Doppia strategia Mantra</h2></div>
 
     <div class="strategy-plan-card">
@@ -1067,8 +1595,7 @@ function renderPlan(){
     </div>
 
     <p class="install-note" style="margin-top:12px">
-      L'indice confronta copertura dell'XI, slot offensivi distintivi, profondità della rosa, qualità dei profili acquistati e disponibilità residua del mercato.
-      I giocatori marcati Venduto riducono il valore della strategia che dipende maggiormente dai loro ruoli. Il bottone A/B resta sempre manuale.
+      L'indice confronta copertura dell'XI, slot offensivi distintivi, profondità, qualità e mercato residuo. Nella v1.25 aggiunge anche scarsità, inflazione e pressione prevista degli avversari sui ruoli chiave. Il bottone A/B resta sempre manuale.
     </p>`;
 }
 function createLeague(){
@@ -1124,7 +1651,7 @@ function renderLeagues(){
       <div class="card league-empty-state">
         <div class="league-empty-icon">🏆</div>
         <h3>Nessuna lega creata</h3>
-        <p class="muted">Crea la lega per assegnare i giocatori venduti agli avversari e vedere la composizione delle rose.</p>
+        <p class="muted">Crea la lega per assegnare i giocatori venduti, calcolare crediti residui, spesa per reparto e prevedere i moduli degli avversari.</p>
         <button id="createLeagueBtn" class="primary">＋ Crea lega</button>
       </div>`;
     $("#createLeagueBtn").onclick=createLeague;
@@ -1132,19 +1659,21 @@ function renderLeagues(){
   }
 
   const league=state.league;
+  const intel=getAuctionIntel();
+  const leader=intel.economy[0];
   const unassigned=soldPlayers().filter(p=>!state.sold[p.id]?.teamId || (state.sold[p.id]?.leagueId && state.sold[p.id].leagueId!==league.id));
 
   $("#leagueView").innerHTML=`
     <div class="section-title league-title-row">
-      <div><div class="eyebrow">Lega attiva</div><h2>${esc(league.name)}</h2></div>
+      <div><div class="eyebrow">Lega attiva · fase ${state.auctionPhase}</div><h2>${esc(league.name)}</h2></div>
       <span class="muted">${league.size} squadre</span>
     </div>
 
-    <div class="league-summary-grid">
+    <div class="league-summary-grid intelligence-league-summary">
       <div class="card metric"><span>Partecipanti</span><strong>${league.size}</strong></div>
-      <div class="card metric"><span>Giocatori assegnati</span><strong>${soldPlayers().length-unassigned.length}</strong></div>
-      <div class="card metric"><span>Non assegnati</span><strong>${unassigned.length}</strong></div>
-      <div class="card metric"><span>Spesa avversari</span><strong>${fmt(Object.values(state.sold).reduce((a,s)=>a+Number(s.price||0),0))}</strong></div>
+      <div class="card metric"><span>Venduti assegnati</span><strong>${soldPlayers().length-unassigned.length}</strong></div>
+      <div class="card metric"><span>Inflazione</span><strong>${pctLabel(intel.overallInflation.pct,intel.overallInflation.count)}</strong></div>
+      <div class="card metric"><span>Leader crediti</span><strong>${leader?fmt(leader.remaining):"—"}</strong><span>${leader?esc(leader.team.name):"—"}</span></div>
     </div>
 
     <details class="league-edit-details">
@@ -1154,46 +1683,55 @@ function renderLeagues(){
         <div class="league-team-inputs">
           ${league.teams.map((t,i)=>`<label><span>${t.isMine?"⭐ Mia squadra":`Squadra ${i+1}`}</span><input class="team-name-input" data-team-id="${t.id}" maxlength="32" value="${esc(t.name)}"></label>`).join("")}
         </div>
-        <div class="dialog-actions league-edit-actions">
-          <button id="deleteLeagueBtn" class="dangerbtn">Elimina lega</button>
-          <button id="saveLeagueNamesBtn" class="primary">Salva nomi</button>
-        </div>
+        <div class="dialog-actions league-edit-actions"><button id="deleteLeagueBtn" class="dangerbtn">Elimina lega</button><button id="saveLeagueNamesBtn" class="primary">Salva nomi</button></div>
       </div>
     </details>
 
-    <div class="section-title"><h2>Rose della lega</h2><span class="muted">tocca per aprire</span></div>
-    <div class="league-rosters">
-      ${league.teams.map((team,i)=>{
-        const items=rosterForLeagueTeam(team);
-        const spend=items.reduce((a,x)=>a+x.price,0);
-        return `<details class="league-team-card" ${team.isMine?"open":""}>
+    <div class="section-title"><h2>Rose + Auction Intelligence</h2><span class="muted">tocca per aprire</span></div>
+    <div class="league-rosters intelligence-rosters">
+      ${league.teams.map(team=>{
+        const econ=teamEconomy(team);
+        const pred=intel.predictions[team.id];
+        const isLeader=leader?.team.id===team.id;
+        const likelyNeeds=INTEL_FAMILIES.map(f=>{
+          const row=intel.demand[f.id]?.teams.find(x=>x.team.id===team.id);
+          return row&&row.pressure>=.22?{f,row}:null;
+        }).filter(Boolean).sort((a,b)=>b.row.pressure-a.row.pressure).slice(0,4);
+        return `<details class="league-team-card intelligence-team-card ${isLeader?"credit-leader-card":""}" ${team.isMine?"open":""}>
           <summary>
-            <div><b>${esc(team.name)}</b>${team.isMine?'<span class="mine-badge">MIA</span>':''}</div>
-            <span>${items.length} gioc. · ${fmt(spend)} cr</span>
+            <div><b>${isLeader?"💰 ":""}${esc(team.name)}</b>${team.isMine?'<span class="mine-badge">MIA</span>':''}${isLeader?'<span class="leader-badge">LEADER CREDITI</span>':''}</div>
+            <span>${econ.items.length}/25 · ${fmt(econ.remaining)} cr · MAX ${fmt(econ.maxNext)}</span>
           </summary>
-          <div class="league-roster-body">${leagueRosterRows(items)}</div>
+          <div class="league-roster-body">
+            <div class="team-economy-grid">
+              <div><span>Speso</span><b>${fmt(econ.spent)}</b></div><div><span>Residuo</span><b>${fmt(econ.remaining)}</b></div><div><span>Posti</span><b>${econ.missing}</b></div><div><span>MAX prossimo</span><b>${fmt(econ.maxNext)}</b></div>
+            </div>
+            <div class="team-rep-spend">
+              ${["POR","DIF","CEN","ATT"].map(rep=>`<div><span>${rep}</span><b>${fmt(econ.byRep[rep])}</b></div>`).join("")}
+            </div>
+            ${team.isMine?`<div class="team-module-box mine-module"><span>Strategia nostra</span><b>${state.strategy} · ${activeStrategy().module}</b><small>Il motore A/B resta dedicato alla nostra rosa.</small></div>`:`<div class="team-module-box">
+              <span>Modulo previsto · confidenza ${Math.round((pred?.confidence||0)*100)}%</span>
+              <b>${pred?.top?.module.name||"—"} · ${Math.round((pred?.top?.prob||0)*100)}%</b>
+              <small>${(pred?.ranked||[]).slice(1,3).map(x=>`${x.module.name} ${Math.round(x.prob*100)}%`).join(" · ")||"Dati ancora insufficienti"}</small>
+            </div>
+            <div class="team-needs-box"><span>Domanda futura stimata</span><b>${likelyNeeds.length?likelyNeeds.map(x=>`${x.f.label} ${Math.round(x.row.pressure*100)}%`).join(" · "):"nessun ruolo forte ancora"}</b></div>`}
+            ${leagueRosterRows(econ.items)}
+          </div>
         </details>`;
       }).join("")}
     </div>
 
-    ${unassigned.length?`<div class="section-title"><h2>Venduti non assegnati</h2><span class="muted">${unassigned.length}</span></div>
-      <div class="card">${unassigned.map(p=>`<button class="unassigned-sale" data-id="${p.id}"><span>${p.name}<small>${p.club} · ${p.role}</small></span><b>${state.sold[p.id]?.price?fmt(state.sold[p.id].price)+" cr":"—"}</b></button>`).join("")}</div>`:""}
+    ${unassigned.length?`<div class="section-title"><h2>Venduti non assegnati</h2><span class="muted">${unassigned.length}</span></div><div class="card">${unassigned.map(p=>`<button class="unassigned-sale" data-id="${p.id}"><span>${p.name}<small>${p.club} · ${p.role}</small></span><b>${state.sold[p.id]?.price?fmt(state.sold[p.id].price)+" cr":"—"}</b></button>`).join("")}</div>`:""}
   `;
 
   $("#saveLeagueNamesBtn").onclick=()=>{
-    const leagueName=$("#editLeagueName").value.trim();
-    if(leagueName) state.league.name=leagueName;
-    $$(".team-name-input").forEach(inp=>{
-      const t=leagueTeamById(inp.dataset.teamId);
-      const name=inp.value.trim();
-      if(t&&name)t.name=name;
-    });
+    const leagueName=$("#editLeagueName").value.trim();if(leagueName)state.league.name=leagueName;
+    $$(".team-name-input").forEach(inp=>{const t=leagueTeamById(inp.dataset.teamId),name=inp.value.trim();if(t&&name)t.name=name});
     saveLeague();refresh();
   };
   $("#deleteLeagueBtn").onclick=()=>{
     if(!confirm(`Eliminare la lega “${state.league.name}”? I giocatori resteranno Venduti ma senza squadra assegnata.`))return;
-    Object.values(state.sold).forEach(s=>{s.teamId="";s.leagueId=""});
-    saveSold();state.league=null;saveLeague();refresh();
+    Object.values(state.sold).forEach(s=>{s.teamId="";s.leagueId=""});saveSold();state.league=null;saveLeague();refresh();
   };
   $$(".unassigned-sale").forEach(btn=>btn.onclick=()=>editSold(btn.dataset.id));
 }
@@ -1211,21 +1749,30 @@ function renderSettings(){
     <div class="card install-note" style="margin-top:10px"><b>Installazione su iPhone</b><br>Apri il sito in Safari → Condividi → Aggiungi alla schermata Home → attiva “Apri come app” se disponibile.</div>`;
   $("#setPin").onclick=()=>{let p=prompt("Scegli un PIN numerico (4-8 cifre):");if(/^\d{4,8}$/.test(p||"")){localStorage.setItem("am_pin",p);state.pin=p;alert("PIN salvato.")}};
   if($("#removePin"))$("#removePin").onclick=()=>{localStorage.removeItem("am_pin");state.pin="";renderSettings()};
-  $("#resetBtn").onclick=()=>{if(confirm("Vuoi davvero cancellare acquisti e giocatori venduti?")){state.purchases={};state.sold={};save();saveSold();refresh()}};
-  $("#exportBtn").onclick=()=>{let blob=new Blob([JSON.stringify({version:5,purchases:state.purchases,sold:state.sold,strategy:state.strategy,poolMode:state.poolMode,league:state.league},null,2)],{type:"application/json"});let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="AstaMantra-backup.json";a.click();URL.revokeObjectURL(a.href)};
-  $("#importFile").onchange=e=>{let f=e.target.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let o=JSON.parse(rd.result);state.purchases=o.purchases||{};state.sold=o.sold||{};state.league=o.league||state.league||null;if(STRATEGIES[o.strategy]){state.strategy=o.strategy;localStorage.setItem("am_strategy",o.strategy)}if(["strategic","all"].includes(o.poolMode)){state.poolMode=o.poolMode;localStorage.setItem("am_pool_mode",o.poolMode)}save();saveSold();saveLeague();refresh();alert("Backup importato.")}catch{alert("File non valido.")}};rd.readAsText(f)};
+  $("#resetBtn").onclick=()=>{if(confirm("Vuoi davvero cancellare acquisti e giocatori venduti e riportare la fase asta ai POR?")){state.purchases={};state.sold={};state.auctionPhase="POR";save();saveSold();saveAuctionPhase();refresh()}};
+  $("#exportBtn").onclick=()=>{let blob=new Blob([JSON.stringify({version:6,purchases:state.purchases,sold:state.sold,strategy:state.strategy,poolMode:state.poolMode,league:state.league,auctionPhase:state.auctionPhase},null,2)],{type:"application/json"});let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="AstaMantra-backup.json";a.click();URL.revokeObjectURL(a.href)};
+  $("#importFile").onchange=e=>{let f=e.target.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let o=JSON.parse(rd.result);state.purchases=o.purchases||{};state.sold=o.sold||{};state.league=o.league||state.league||null;if(STRATEGIES[o.strategy]){state.strategy=o.strategy;localStorage.setItem("am_strategy",o.strategy)}if(["strategic","all"].includes(o.poolMode)){state.poolMode=o.poolMode;localStorage.setItem("am_pool_mode",o.poolMode)}if(AUCTION_PHASES.some(x=>x.id===o.auctionPhase)){state.auctionPhase=o.auctionPhase;saveAuctionPhase()}save();saveSold();saveLeague();refresh();alert("Backup importato.")}catch{alert("File non valido.")}};rd.readAsText(f)};
 }
 function switchView(id){
-  state.view=id;$$(".view").forEach(v=>v.classList.toggle("active",v.id===id));$$(".tab").forEach(t=>t.classList.toggle("active",t.dataset.view===id));
-  if(id==="dashboardView")renderDashboard();if(id==="playersView")renderPlayers();if(id==="squadView")renderSquad();if(id==="planView")renderPlan();if(id==="leagueView")renderLeagues();if(id==="settingsView")renderSettings();
+  state.view=id;$$('.view').forEach(v=>v.classList.toggle("active",v.id===id));$$('.tab').forEach(t=>t.classList.toggle("active",t.dataset.view===id));
+  if(id==="dashboardView")renderDashboard();
+  if(id==="playersView")renderPlayers();
+  if(id==="squadView")renderSquad();
+  if(id==="leagueView")renderLeagues();
+  if(id==="formationsView")renderFormationsView();
+  if(id==="settingsView")renderSettings();
 }
-$$(".tab").forEach(t=>t.onclick=()=>switchView(t.dataset.view));
+$$('.tab').forEach(t=>t.onclick=()=>switchView(t.dataset.view));
 $("#settingsBtn").onclick=()=>switchView("settingsView");
-function refresh(){renderDashboard();renderPlayers();renderSquad();renderPlan();renderLeagues();if(state.view==="settingsView")renderSettings()}
+function refresh(){
+  renderDashboard();renderPlayers();renderSquad();renderLeagues();renderFormationsView();
+  if(state.view==="settingsView")renderSettings();
+}
+
 function lockInit(){
   if(!state.pin)return;
   $("#lock").classList.remove("hidden");$("#disablePinBtn").style.display="none";
   $("#unlockBtn").onclick=()=>{if($("#pinInput").value===state.pin)$("#lock").classList.add("hidden");else $("#lockText").textContent="PIN errato. Riprova."};
 }
 refresh();lockInit();
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.24").catch(()=>{}));
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.25.1").catch(()=>{}));

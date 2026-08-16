@@ -10,7 +10,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css?v=1.24">
+  <link rel="stylesheet" href="styles.css?v=1.25">
   <title>Asta Mantra</title>
 </head>
 <body>
@@ -36,7 +36,7 @@
     <section id="dashboardView" class="view active"></section>
     <section id="playersView" class="view"></section>
     <section id="squadView" class="view"></section>
-    <section id="planView" class="view"></section>
+    <section id="formationsView" class="view"></section>
     <section id="leagueView" class="view"></section>
     <section id="settingsView" class="view"></section>
   </main>
@@ -45,14 +45,18 @@
     <button data-view="dashboardView" class="tab active"><span>📊</span><small>Dashboard</small></button>
     <button data-view="playersView" class="tab"><span>🔎</span><small>Giocatori</small></button>
     <button data-view="squadView" class="tab"><span>👥</span><small>Rosa</small></button>
-    <button data-view="planView" class="tab"><span>🎯</span><small>Piano</small></button>
     <button data-view="leagueView" class="tab"><span>🏆</span><small>Leghe</small></button>
+    <button data-view="formationsView" class="tab"><span>⚽</span><small>Formazioni</small></button>
   </nav>
 
   <dialog id="playerDialog">
     <div id="playerDialogContent"></div>
   </dialog>
 
+
+  <dialog id="liveDialog">
+    <div id="liveDialogContent"></div>
+  </dialog>
 
   <dialog id="formationDialog">
     <div id="formationDialogContent"></div>
@@ -101,6 +105,7 @@
       <label>Prezzo pagato
         <input id="purchasePrice" type="number" min="1" step="1" inputmode="numeric" required>
       </label>
+      <div id="purchaseEconomicInfo" class="purchase-economic-info"></div>
       <div id="purchaseSignal" class="signal"></div>
       <div class="dialog-actions">
         <button type="button" id="cancelPurchase" class="ghost"
@@ -110,9 +115,9 @@
     </form>
   </dialog>
 
-  <script src="players.js?v=1.21"></script>
-  <script src="formations.js?v=1.21"></script>
-  <script src="market.js?v=1.21"></script>
-  <script src="app.js?v=1.22"></script>
+  <script src="players.js?v=1.25"></script>
+  <script src="formations.js?v=1.25"></script>
+  <script src="market.js?v=1.25"></script>
+  <script src="app.js?v=1.25.1"></script>
 </body>
 </html>
