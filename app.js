@@ -102,9 +102,6 @@ function renderDashboard(){
       </div>
       ${clubCounterHTML(bought)}
 
-      <div class="formation-panel-title">\n        <div><b>FORMAZIONI TIPO</b><span>Fantacalcio.it · 16/08/2026</span></div>
-        <small>5 visibili · scorri ↓</small>
-      </div>
       ${formationCarouselHTML()}
     </div>
 
@@ -151,15 +148,67 @@ function clubCounterHTML(bought){
 }
 
 function formationCarouselHTML(){
-  if(!formations.length) return `<div class="card muted">Formazioni non disponibili.</div>`;
-  return `<div class="formation-carousel">${formations.map((f,i)=>formationCardHTML(f,i)).join("")}</div>`;
+  if(!formations.length){
+    return `<div class="formation-box">
+      <div class="formation-box-head">
+        <div><b>Probabili Formazioni</b><span>Fantacalcio.it</span></div>
+      </div>
+      <div class="card muted">Formazioni non disponibili.</div>
+    </div>`;
+  }
+
+  const pages=[];
+  for(let i=0;i<formations.length;i+=5){
+    pages.push(formations.slice(i,i+5));
+  }
+
+  return `<section class="formation-box" aria-label="Probabili Formazioni">
+    <div class="formation-box-head">
+      <div>
+        <b>Probabili Formazioni</b>
+        <span>Fantacalcio.it · 16/08/2026</span>
+      </div>
+      <small>5 per pagina · scorri ↑</small>
+    </div>
+
+    <div class="formation-vertical-carousel">
+      ${pages.map((page,pageIndex)=>`
+        <div class="formation-page" data-page="${pageIndex+1}">
+          ${page.map(f=>{
+            const index=formations.indexOf(f);
+            return formationCardHTML(f,index);
+          }).join("")}
+        </div>
+      `).join("")}
+    </div>
+
+    <div class="formation-page-hint">
+      <span>1</span><i></i><span>4</span>
+      <small>swipe verticale</small>
+    </div>
+  </section>`;
 }
 
 function formationCardHTML(f,index){
-  const pitchLines=f.lines.slice().reverse().map(line=>`<div class="formation-line">${line.map(p=>`<div class="formation-player"><b>${p.name}</b><span>${p.role}</span></div>`).join("")}</div>`).join("");
-  return `<button class="formation-card" onclick="openFormation(${index})">
-    <div class="formation-card-head"><b>${f.team}</b><span>${f.module}</span><small>${f.updated.slice(-5)}</small></div>
-    <div class="mini-pitch"><i class="pitch-half"></i><i class="pitch-circle"></i><div class="formation-lines">${pitchLines}</div></div>
+  const pitchLines=f.lines.slice().reverse().map(line=>
+    `<div class="formation-line">${
+      line.map(p=>`<div class="formation-player" title="${p.name} · ${p.role}">
+        <b>${p.name}</b><span>${p.role}</span>
+      </div>`).join("")
+    }</div>`
+  ).join("");
+
+  return `<button class="formation-card formation-card-mini" onclick="openFormation(${index})" aria-label="${f.team}, ${f.module}">
+    <div class="formation-card-head">
+      <b>${f.club || f.team.slice(0,3).toUpperCase()}</b>
+      <span>${f.module}</span>
+    </div>
+    <div class="mini-pitch">
+      <i class="pitch-half"></i>
+      <i class="pitch-circle"></i>
+      <div class="formation-lines">${pitchLines}</div>
+    </div>
+    <div class="formation-team-name">${f.team}</div>
   </button>`;
 }
 

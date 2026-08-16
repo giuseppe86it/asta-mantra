@@ -309,3 +309,240 @@ label{display:block;color:var(--muted);font-size:13px;margin:12px 0}label input{
 .formation-dialog-body{padding:16px}.formation-modal-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.formation-modal-head h2{margin:2px 0 2px}.formation-modal-head p{font-size:11px;color:var(--muted);margin:0}.formation-player.large{padding:5px 7px;border-radius:8px}.formation-player.large b{font-size:11px}.formation-player.large span{font-size:9px}.formation-line.large{min-height:52px}.formation-source{font-size:10px;color:var(--muted);margin:8px 2px 0}
 #formationDialog{width:min(94vw,650px)}
 @media(max-width:360px){.formation-carousel{height:670px}.formation-card{height:126px}.mini-pitch{height:98px}.formation-player b{font-size:6.8px}.formation-player span{font-size:6px}}
+
+
+/* v1.9 — Box Probabili Formazioni: 5 campetti orizzontali × 4 pagine verticali */
+.formation-box{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:8px;
+  margin-top:2px;
+  overflow:hidden;
+}
+
+.formation-box-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:8px;
+  padding:0 2px 7px;
+}
+
+.formation-box-head>div{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  min-width:0;
+}
+
+.formation-box-head b{
+  font-size:12px;
+  line-height:1.1;
+  letter-spacing:.01em;
+}
+
+.formation-box-head span,
+.formation-box-head small{
+  color:var(--muted);
+  font-size:8px;
+  line-height:1.1;
+}
+
+.formation-box-head small{
+  white-space:nowrap;
+  text-align:right;
+}
+
+.formation-vertical-carousel{
+  height:158px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  scroll-snap-type:y mandatory;
+  overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-y;
+  scrollbar-width:none;
+  border-radius:11px;
+  background:#0e1728;
+}
+
+.formation-vertical-carousel::-webkit-scrollbar{
+  display:none;
+}
+
+.formation-page{
+  height:158px;
+  min-height:158px;
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:4px;
+  padding:4px;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+}
+
+.formation-card.formation-card-mini{
+  width:100%;
+  min-width:0;
+  height:150px;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  border-radius:9px;
+  background:#101a2c;
+  border:1px solid #2a3854;
+  overflow:hidden;
+  text-align:left;
+  color:var(--text);
+}
+
+.formation-card-mini .formation-card-head{
+  height:22px;
+  min-height:22px;
+  padding:0 4px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:2px;
+  background:#0b1424;
+}
+
+.formation-card-mini .formation-card-head b{
+  font-size:7.4px;
+  letter-spacing:.02em;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.formation-card-mini .formation-card-head span{
+  font-size:6.2px;
+  font-weight:800;
+  color:var(--accent);
+  white-space:nowrap;
+}
+
+.formation-card-mini .mini-pitch{
+  flex:1;
+  height:auto;
+  min-height:0;
+  margin:0;
+  background:linear-gradient(90deg,#12472d,#175a38 50%,#12472d);
+}
+
+.formation-card-mini .mini-pitch:before{
+  inset:3px;
+  border-color:rgba(255,255,255,.38);
+}
+
+.formation-card-mini .pitch-circle{
+  width:15px;
+  height:15px;
+}
+
+.formation-card-mini .formation-lines{
+  inset:3px 2px;
+}
+
+.formation-card-mini .formation-line{
+  min-height:10px;
+  gap:1px;
+}
+
+.formation-card-mini .formation-player{
+  max-width:46%;
+  padding:1px 1px;
+  border-radius:3px;
+  border-color:rgba(255,255,255,.28);
+  background:rgba(3,13,8,.80);
+  line-height:.92;
+}
+
+.formation-card-mini .formation-player b{
+  font-size:4.5px;
+  letter-spacing:-.03em;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.formation-card-mini .formation-player span{
+  font-size:4.1px;
+  color:#8df0c5;
+  margin-top:0;
+}
+
+.formation-team-name{
+  height:17px;
+  min-height:17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 2px;
+  font-size:6.3px;
+  font-weight:700;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  background:#0b1424;
+  color:#dce7f5;
+}
+
+.formation-page-hint{
+  height:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  color:var(--muted);
+  padding-top:5px;
+}
+
+.formation-page-hint span{
+  font-size:7px;
+  font-weight:700;
+}
+
+.formation-page-hint i{
+  width:34px;
+  height:2px;
+  border-radius:9px;
+  background:linear-gradient(90deg,var(--accent),#334155);
+}
+
+.formation-page-hint small{
+  font-size:7px;
+}
+
+/* Nasconde il vecchio layout v1.8, se ancora presente in cache parziale */
+.formation-panel-title{display:none}
+
+@media(max-width:360px){
+  .formation-box{padding:6px}
+  .formation-vertical-carousel,
+  .formation-page{
+    height:148px;
+    min-height:148px;
+  }
+  .formation-card.formation-card-mini{height:140px}
+  .formation-card-mini .formation-player b{font-size:4.1px}
+  .formation-card-mini .formation-player span{font-size:3.8px}
+  .formation-card-mini .formation-card-head b{font-size:6.8px}
+  .formation-card-mini .formation-card-head span{font-size:5.7px}
+}
+
+@media(min-width:700px){
+  .formation-vertical-carousel,
+  .formation-page{
+    height:215px;
+    min-height:215px;
+  }
+  .formation-card.formation-card-mini{height:207px}
+  .formation-card-mini .formation-player b{font-size:7.2px}
+  .formation-card-mini .formation-player span{font-size:6.2px}
+  .formation-card-mini .formation-card-head b{font-size:10px}
+  .formation-card-mini .formation-card-head span{font-size:8px}
+  .formation-team-name{font-size:9px;height:22px}
+}
