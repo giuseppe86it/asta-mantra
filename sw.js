@@ -1,5 +1,5 @@
 
-const CACHE="asta-mantra-v1.3";
+const CACHE="asta-mantra-v1.4";
 const ASSETS=["./","./index.html","./styles.css","./app.js","./players.js","./manifest.webmanifest","./icon-192.svg","./icon-512.svg"];
 
 self.addEventListener("install", event => {

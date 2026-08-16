@@ -242,7 +242,54 @@ function pickFor(slot,used,b){
 function renderPlan(){
   const b=purchasedPlayers(),used=new Set(),slots=["Por","Ds","Dc","Dc","Dd","M","M","C","W","Pc","W"];
   let xi=slots.map(s=>{let p=pickFor(s,used,b);if(p)used.add(p.id);return {s,p}});
-  $("#planView").innerHTML=`<div class="section-title"><h2>4-3-3 Mantra suggerito</h2></div>
+
+  const poolByRep={POR:0,DIF:0,CEN:0,ATT:0};
+  players.forEach(p=>poolByRep[p.reparto]=(poolByRep[p.reparto]||0)+1);
+  const movement=players.length-poolByRep.POR;
+  const roleCounts={};
+  ["Por","Ds","Dc","Dd","M","C","W","A","Pc"].forEach(r=>{
+    roleCounts[r]=players.filter(p=>roleTokens(p.role).includes(r)).length;
+  });
+
+  $("#planView").innerHTML=`
+    <div class="section-title"><h2>Strategia mercato — 8 squadre</h2></div>
+    <div class="grid">
+      <div class="card metric"><span>Bacino analizzato</span><strong>${players.length}/200</strong><span>mercato strategico</span></div>
+      <div class="card metric"><span>Portieri</span><strong>${poolByRep.POR}/24</strong><span>3 × 8 squadre</span></div>
+      <div class="card metric"><span>Movimento</span><strong>${movement}/176</strong><span>22 × 8 squadre</span></div>
+      <div class="card metric"><span>Struttura target</span><strong>3+22</strong><span>3 POR · 8 DIF · 7 CEN · 7 ATT</span></div>
+    </div>
+
+    <div class="section-title"><h2>Profondità strategica</h2></div>
+    <div class="card">
+      <div class="line"><span>Difensori nel bacino</span><b>${poolByRep.DIF}/64</b></div>
+      <div class="line"><span>Centrocampisti nel bacino</span><b>${poolByRep.CEN}/56</b></div>
+      <div class="line"><span>Attaccanti/W nel bacino</span><b>${poolByRep.ATT}/56</b></div>
+      <div class="line"><span>Budget guida</span><b>250 · 500 · 625 · 1125</b></div>
+    </div>
+
+    <div class="section-title"><h2>Copertura ruoli Mantra nel database</h2></div>
+    <div class="card">
+      ${["Por","Ds","Dc","Dd","M","C","W","A","Pc"].map(r=>`<div class="line"><span>${r}</span><b>${roleCounts[r]} opzioni</b></div>`).join("")}
+    </div>
+
+    <div class="section-title"><h2>Priorità del tuo 4-3-3</h2></div>
+    <div class="card">
+      <div class="line"><span>POR</span><b>Top/value + complementare + copertura</b></div>
+      <div class="line"><span>Ds</span><b>2 elementi realmente schierabili</b></div>
+      <div class="line"><span>Dc</span><b>4 — qualità media per modificatore</b></div>
+      <div class="line"><span>Dd</span><b>2 elementi realmente schierabili</b></div>
+      <div class="line"><span>M/C + M + C</span><b>7 totali, priorità multiruolo</b></div>
+      <div class="line"><span>W/A + A/Pc + W/A</span><b>7 totali, almeno 4 esterni + 3 punte</b></div>
+    </div>
+
+    <p class="install-note" style="margin-top:12px">
+      Il bacino 64 DIF / 56 CEN / 56 ATT è una griglia strategica costruita sul tuo obiettivo 8-7-7 per 8 squadre:
+      non è un vincolo regolamentare della lega. I giocatori con soli ruoli E/T/B che non coprono uno slot del tuo 4-3-3
+      vengono volutamente penalizzati o esclusi.
+    </p>
+
+    <div class="section-title"><h2>4-3-3 Mantra suggerito dalla tua rosa</h2></div>
     <div class="card">${xi.map(x=>`<div class="line"><span>${x.s}</span><b>${x.p?x.p.name:"— manca copertura —"}</b></div>`).join("")}</div>
     <p class="install-note" style="margin-top:12px">È una verifica automatica di copertura ruoli, non una formazione basata sull'avversario della giornata.</p>`;
 }
