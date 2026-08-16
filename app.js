@@ -158,7 +158,7 @@ function formationCarouselHTML(){
   }
 
   const pages=[];
-  for(let i=0;i<formations.length;i+=5){
+  for(let i=0;i<formations.length;i+=4){
     pages.push(formations.slice(i,i+5));
   }
 
@@ -168,7 +168,7 @@ function formationCarouselHTML(){
         <b>Probabili Formazioni</b>
         <span>Fantacalcio.it · 16/08/2026</span>
       </div>
-      <small>5 per pagina · scorri ↑</small>
+      <small>4 per pagina · scorri ↑</small>
     </div>
 
     <div class="formation-vertical-carousel">
@@ -183,7 +183,7 @@ function formationCarouselHTML(){
     </div>
 
     <div class="formation-page-hint">
-      <span>1</span><i></i><span>4</span>
+      <span>1</span><i></i><span>5</span>
       <small>swipe verticale</small>
     </div>
   </section>`;

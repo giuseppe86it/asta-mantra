@@ -546,3 +546,119 @@ label{display:block;color:var(--muted);font-size:13px;margin:12px 0}label input{
   .formation-card-mini .formation-card-head span{font-size:8px}
   .formation-team-name{font-size:9px;height:22px}
 }
+
+
+/* v1.10 — 4 campetti per pagina, più grandi e leggibili */
+.formation-vertical-carousel{
+  height:190px;
+}
+
+.formation-page{
+  height:190px;
+  min-height:190px;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:6px;
+  padding:5px;
+}
+
+.formation-card.formation-card-mini{
+  height:180px;
+  border-radius:11px;
+}
+
+.formation-card-mini .formation-card-head{
+  height:25px;
+  min-height:25px;
+  padding:0 5px;
+}
+
+.formation-card-mini .formation-card-head b{
+  font-size:8.6px;
+}
+
+.formation-card-mini .formation-card-head span{
+  font-size:7.2px;
+}
+
+.formation-card-mini .formation-player{
+  max-width:48%;
+  padding:2px 2px;
+  border-radius:4px;
+}
+
+.formation-card-mini .formation-player b{
+  font-size:5.7px;
+  line-height:1;
+}
+
+.formation-card-mini .formation-player span{
+  font-size:5px;
+  margin-top:1px;
+}
+
+.formation-card-mini .formation-team-name{
+  height:20px;
+  min-height:20px;
+  font-size:7.4px;
+}
+
+@media(max-width:360px){
+  .formation-vertical-carousel,
+  .formation-page{
+    height:178px;
+    min-height:178px;
+  }
+
+  .formation-card.formation-card-mini{
+    height:168px;
+  }
+
+  .formation-card-mini .formation-player b{
+    font-size:5.2px;
+  }
+
+  .formation-card-mini .formation-player span{
+    font-size:4.6px;
+  }
+
+  .formation-card-mini .formation-card-head b{
+    font-size:8px;
+  }
+
+  .formation-card-mini .formation-card-head span{
+    font-size:6.6px;
+  }
+}
+
+@media(min-width:700px){
+  .formation-vertical-carousel,
+  .formation-page{
+    height:260px;
+    min-height:260px;
+  }
+
+  .formation-card.formation-card-mini{
+    height:248px;
+  }
+
+  .formation-card-mini .formation-player b{
+    font-size:8.4px;
+  }
+
+  .formation-card-mini .formation-player span{
+    font-size:7px;
+  }
+
+  .formation-card-mini .formation-card-head b{
+    font-size:11px;
+  }
+
+  .formation-card-mini .formation-card-head span{
+    font-size:9px;
+  }
+
+  .formation-card-mini .formation-team-name{
+    font-size:10px;
+    height:24px;
+  }
+}
