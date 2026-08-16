@@ -2,6 +2,7 @@
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const players = window.PLAYERS || [];
+const formations = window.FORMATIONS || [];
 const DEFAULT_BUDGET = 2500;
 const BUDGETS = {POR:250,DIF:500,CEN:625,ATT:1125};
 const SERIES_A_CLUBS = [
@@ -100,6 +101,11 @@ function renderDashboard(){
         <span>max 5 giocatori</span>
       </div>
       ${clubCounterHTML(bought)}
+
+      <div class="formation-panel-title">\n        <div><b>FORMAZIONI TIPO</b><span>Fantacalcio.it · 16/08/2026</span></div>
+        <small>5 visibili · scorri ↓</small>
+      </div>
+      ${formationCarouselHTML()}
     </div>
 
     <div class="recent-section">
@@ -143,6 +149,30 @@ function clubCounterHTML(bought){
     }).join("")}
   </div>`;
 }
+
+function formationCarouselHTML(){
+  if(!formations.length) return `<div class="card muted">Formazioni non disponibili.</div>`;
+  return `<div class="formation-carousel">${formations.map((f,i)=>formationCardHTML(f,i)).join("")}</div>`;
+}
+
+function formationCardHTML(f,index){
+  const pitchLines=f.lines.slice().reverse().map(line=>`<div class="formation-line">${line.map(p=>`<div class="formation-player"><b>${p.name}</b><span>${p.role}</span></div>`).join("")}</div>`).join("");
+  return `<button class="formation-card" onclick="openFormation(${index})">
+    <div class="formation-card-head"><b>${f.team}</b><span>${f.module}</span><small>${f.updated.slice(-5)}</small></div>
+    <div class="mini-pitch"><i class="pitch-half"></i><i class="pitch-circle"></i><div class="formation-lines">${pitchLines}</div></div>
+  </button>`;
+}
+
+window.openFormation=index=>{
+  const f=formations[index]; if(!f)return;
+  const pitchLines=f.lines.slice().reverse().map(line=>`<div class="formation-line large">${line.map(p=>`<div class="formation-player large"><b>${p.name}</b><span>${p.role}</span></div>`).join("")}</div>`).join("");
+  $("#formationDialogContent").innerHTML=`<div class="dialog-body formation-dialog-body">
+    <div class="formation-modal-head"><div><div class="eyebrow">Probabile formazione</div><h2>${f.team} · ${f.module}</h2><p>Ruoli Mantra · aggiornamento ${f.updated}</p></div><button class="ghost" onclick="formationDialog.close()">✕</button></div>
+    <div class="large-pitch"><i class="pitch-half"></i><i class="pitch-circle"></i><div class="formation-lines">${pitchLines}</div></div>
+    <p class="formation-source">Formazione tipo: Fantacalcio.it · Ruoli: Listone/guida Mantra 2026/27.</p>
+  </div>`;
+  $("#formationDialog").showModal();
+};
 
 function playerRow(p){
   const b=state.purchases[p.id]; const sig=b?signal(p,b.price):null;
