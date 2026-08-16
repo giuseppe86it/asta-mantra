@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="108" fill="#0b1220"/>
+<circle cx="256" cy="256" r="168" fill="#ffffff" opacity=".08"/>
+<path d="M164 141h184v40H164zm0 190h184v40H164zM141 164h40v184h-40zm190 0h40v184h-40z" fill="#ffffff" opacity=".25"/>
+<circle cx="256" cy="256" r="83" fill="none" stroke="#34d399" stroke-width="18"/>
+<circle cx="256" cy="256" r="20" fill="#34d399"/>
+<text x="256" y="464" font-family="Arial, sans-serif" font-size="48" text-anchor="middle" fill="#ffffff" font-weight="700">MANTRA</text>
+</svg>

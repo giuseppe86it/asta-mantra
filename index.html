@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Asta Mantra">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.svg">
+  <link rel="apple-touch-icon" href="icon-192.svg">
+  <link rel="stylesheet" href="styles.css">
+  <title>Asta Mantra</title>
+</head>
+<body>
+  <div id="lock" class="lock hidden">
+    <div class="lock-card">
+      <h1>🔒 Asta Mantra</h1>
+      <p id="lockText">Inserisci il PIN.</p>
+      <input id="pinInput" type="password" inputmode="numeric" maxlength="8" placeholder="PIN">
+      <button id="unlockBtn" class="primary">Sblocca</button>
+      <button id="disablePinBtn" class="ghost">Disattiva PIN</button>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">Fantacalcio Mantra 26/27</div>
+      <h1>Asta Mantra</h1>
+    </div>
+    <button id="settingsBtn" class="icon-btn" aria-label="Impostazioni">⚙️</button>
+  </header>
+
+  <main id="app">
+    <section id="dashboardView" class="view active"></section>
+    <section id="playersView" class="view"></section>
+    <section id="squadView" class="view"></section>
+    <section id="planView" class="view"></section>
+    <section id="settingsView" class="view"></section>
+  </main>
+
+  <nav class="tabbar">
+    <button data-view="dashboardView" class="tab active"><span>📊</span><small>Dashboard</small></button>
+    <button data-view="playersView" class="tab"><span>🔎</span><small>Giocatori</small></button>
+    <button data-view="squadView" class="tab"><span>👥</span><small>Rosa</small></button>
+    <button data-view="planView" class="tab"><span>🎯</span><small>Piano</small></button>
+  </nav>
+
+  <dialog id="playerDialog">
+    <div id="playerDialogContent"></div>
+  </dialog>
+
+  <dialog id="purchaseDialog">
+    <form method="dialog" id="purchaseForm">
+      <h2 id="purchaseTitle">Acquista</h2>
+      <label>Prezzo pagato
+        <input id="purchasePrice" type="number" min="1" step="5" inputmode="numeric" required>
+      </label>
+      <div id="purchaseSignal" class="signal"></div>
+      <div class="dialog-actions">
+        <button value="cancel" class="ghost">Annulla</button>
+        <button id="confirmPurchase" value="default" class="primary">Conferma</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="players.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
