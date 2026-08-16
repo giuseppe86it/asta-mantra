@@ -231,6 +231,18 @@ const SERIES_A_CLUBS = [
   ["ROM","Roma"],["SAS","Sassuolo"],["TOR","Torino"],["UDI","Udinese"],["VEN","Venezia"]
 ];
 const roleOrder = ["Por","Ds","Dc","Dd","B","E","M","C","W","T","A","Pc"];
+const CLUB_KITS = {
+  ATA:"stripes-blue-black",BOL:"halves-red-blue",CAG:"halves-red-blue",COM:"solid-blue",FIO:"solid-purple",
+  FRO:"solid-yellow",GEN:"halves-red-blue",INT:"stripes-blue-black",JUV:"stripes-black-white",LAZ:"solid-sky",
+  LEC:"stripes-yellow-red",MIL:"stripes-red-black",MON:"halves-red-white",NAP:"solid-sky",PAR:"stripes-white-black",
+  ROM:"solid-maroon",SAS:"stripes-green-black",TOR:"solid-maroon",UDI:"stripes-white-black",VEN:"stripes-black-green-gold"
+};
+function escAttr(s){return String(s??"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");}
+function clubKitClass(club){return 'kit-'+String(CLUB_KITS[club]||'solid-neutral').replace(/[^a-z0-9-]/gi,'').toLowerCase();}
+function kitHTML(club,size='sm',label=''){
+  const aria=label?` aria-label="${escAttr(label)}" title="${escAttr(label)}"`:'';
+  return `<span class="club-kit ${clubKitClass(club)} kit-${size}"${aria}></span>`;
+}
 const state = {
   purchases: JSON.parse(localStorage.getItem("am_purchases")||"{}"),
   sold: JSON.parse(localStorage.getItem("am_sold")||"{}"),
@@ -816,7 +828,7 @@ function renderDashboard(){
       <div class="strategy-engine ${rec.recommended===state.strategy?"strategy-hold":"strategy-switch"}">
         <div class="strategy-engine-top">
           <div>
-            <span class="strategy-kicker">MOTORE STRATEGIA + ASTA</span>
+            <span class="strategy-kicker">STRATEGIA & MODULO</span>
             <strong>${rec.headline}</strong>
           </div>
           <div class="strategy-scores">
@@ -840,15 +852,18 @@ function renderDashboard(){
         </div>
       </div>
 
-      <section class="intel-card inflation-card">
-        <div class="intel-section-head">
-          <div><span>INFLAZIONE REALE</span><b>Prezzi pagati vs FVM ×2,5</b></div>
-          <strong class="${intel.overallInflation.pct>10?"inflation-up":intel.overallInflation.pct<-10?"inflation-down":""}">${pctLabel(intel.overallInflation.pct,intel.overallInflation.count)}</strong>
+      <section class="intel-card inflation-card hybrid-intelligence-card">
+        <div class="hybrid-card-title"><span class="hybrid-section-icon">◉</span><b>AUCTION INTELLIGENCE</b><span class="hybrid-phase-pill">${currentPhase.icon} FASE ${currentPhase.id}</span></div>
+        <div class="hybrid-intel-main">
+          <div><span>Inflazione reale</span><b class="${intel.overallInflation.pct>10?"inflation-up":intel.overallInflation.pct<-10?"inflation-down":""}">${pctLabel(intel.overallInflation.pct,intel.overallInflation.count)}</b><small>vs FVM ×2,5</small></div>
+          <div><span>Leader crediti</span><b>${leader?esc(leader.team.name):"—"}</b><small>${leader?fmt(leader.remaining)+" cr":"—"}</small></div>
+          <div><span>Crediti liberi reali</span><b>${fmt(mineEcon.free)}</b><small>su ${fmt(mineEcon.remaining)}</small></div>
+          <div><span>MAX prossimo</span><b>${fmt(mineEcon.maxNext)}</b><small>${mineEcon.missing} posti</small></div>
         </div>
-        <div class="rep-intel-grid">
-          ${["POR","DIF","CEN","ATT"].map(rep=>{const x=intel.repInflation[rep];return `<div><span>${rep}</span><b>${pctLabel(x.pct,x.count)}</b><small>${x.count} acquisti</small></div>`}).join("")}
+        <div class="hybrid-rep-title">Spesa nostra per reparto</div>
+        <div class="hybrid-rep-bars">
+          ${["POR","DIF","CEN","ATT"].map(rep=>{const total=Math.max(1,s);const pct=byRep[rep]/total*100;return `<div><span>${rep}</span><b>${fmt(byRep[rep])}</b><i><em style="width:${pct}%"></em></i></div>`}).join("")}
         </div>
-        <small class="intel-note">Indice ponderato sui crediti: i top pesano più dei giocatori acquistati a 1.</small>
       </section>
 
       <section class="intel-card scarcity-card">
@@ -936,7 +951,7 @@ function clubCounterHTML(bought){
       else if(count===4) cls="club-warning";
 
       return `<div class="club-tile ${cls}" title="${fullName}">
-        <b>${club}</b>
+        <div class="club-tile-main">${kitHTML(club,'tile',fullName)}<b>${club}</b></div>
         <strong>${count}/5</strong>
       </div>`;
     }).join("")}
@@ -982,8 +997,8 @@ function formationListCardHTML(f,index){
           <div class="formation-role-players">
             ${groups[group].map(p=>`
               <span class="formation-name-chip">
-                <b>${p.name}</b>
-                <em>${p.role}</em>
+                ${kitHTML(f.club,'xs',f.team)}
+                <span class="formation-chip-text"><b>${p.name}</b><em>${p.role}</em></span>
               </span>
             `).join("") || `<span class="formation-empty">—</span>`}
           </div>
@@ -1123,7 +1138,7 @@ function liveCandidateList(query=""){
 }
 function liveResultHTML(p){
   const live=liveMaxForPlayer(p);
-  return `<button class="live-result" data-id="${p.id}"><span><b>${esc(p.name)}</b><small>${p.club} · ${p.role} · FVM ${p.fvm||0}</small></span><strong>${riskIcon(live.risk)} ${fmt(live.live)}<small>MAX live</small></strong></button>`;
+  return `<button class="live-result" data-id="${p.id}"><span class="live-result-main">${kitHTML(p.club,'sm',p.club)}<span><b>${esc(p.name)}</b><small>${p.club} · ${p.role} · FVM ${p.fvm||0}</small></span></span><strong>${riskIcon(live.risk)} ${fmt(live.live)}<small>MAX live</small></strong></button>`;
 }
 function updateLiveResults(query=""){
   const list=liveCandidateList(query);
@@ -1138,7 +1153,7 @@ function selectLivePlayer(id){
   const comp=live.competition.slice(0,5);
   const target=$("#liveSelected");if(!target)return;
   target.innerHTML=`<div class="live-player-card">
-    <div class="live-player-head"><div><span>${p.club} · ${p.role}</span><b>${esc(p.name)}</b></div><strong>${riskIcon(live.risk)} ${live.risk}</strong></div>
+    <div class="live-player-head"><div class="live-player-identity">${kitHTML(p.club,'live',p.club)}<div><span>${p.club} · ${p.role}</span><b>${esc(p.name)}</b></div></div><strong>${riskIcon(live.risk)} ${live.risk}</strong></div>
     <div class="live-price-grid">
       <div><span>FVM</span><b>${p.fvm||0}</b></div>
       <div><span>MAX iniziale</span><b>${fmt(live.base)}</b></div>
@@ -1324,17 +1339,20 @@ function playerRow(p){
   const b=state.purchases[p.id], sold=isSold(p.id); const sig=b?signal(p,b.price):null;
   const strategic=!!p.strategic;
   return `<div class="player ${b?"bought":""} ${sold?"sold":""} ${strategic?"strategic-player":"market-player"}" data-id="${p.id}">
-    <div>
-      <h3>${p.name}
-        ${p.notes&&p.notes.includes("TARGET")?'<span class="badge target">TARGET</span>':""}
-        ${strategic?'<span class="badge strategic-badge">200</span>':'<span class="badge listone-badge">LISTONE</span>'}
-        ${p.outOfListone?'<span class="badge out-listone-badge">FUORI LISTONE</span>':""}
-      </h3>
-      <div class="meta">${p.club} · ${p.role} · ${p.tier||"—"}</div>
-      ${p.reparto==="ATT"&&primaryOffensiveRole(p)?`<span class="badge primary-role-badge">PRIM. ${primaryOffensiveRole(p)}</span>`:""}
-      <span class="badge">FVM ${p.fvm||0}</span>
-      ${strategic&&p.starter?`<span class="badge">${p.starter}</span>`:""}
-      ${p.u23?'<span class="badge">U23</span>':""}${p.u21?'<span class="badge">U21</span>':""}
+    <div class="player-main">
+      ${kitHTML(p.club,'row',p.club)}
+      <div class="player-copy">
+        <h3>${p.name}
+          ${p.notes&&p.notes.includes("TARGET")?'<span class="badge target">TARGET</span>':""}
+          ${strategic?'<span class="badge strategic-badge">200</span>':'<span class="badge listone-badge">LISTONE</span>'}
+          ${p.outOfListone?'<span class="badge out-listone-badge">FUORI LISTONE</span>':""}
+        </h3>
+        <div class="meta">${p.club} · ${p.role} · ${p.tier||"—"}</div>
+        ${p.reparto==="ATT"&&primaryOffensiveRole(p)?`<span class="badge primary-role-badge">PRIM. ${primaryOffensiveRole(p)}</span>`:""}
+        <span class="badge">FVM ${p.fvm||0}</span>
+        ${strategic&&p.starter?`<span class="badge">${p.starter}</span>`:""}
+        ${p.u23?'<span class="badge">U23</span>':""}${p.u21?'<span class="badge">U21</span>':""}
+      </div>
     </div>
     <div>
       <div class="price">${sold?"VENDUTO":b?fmt(b.price):"MAX "+fmt(p.maxPrice)}</div>
@@ -1518,7 +1536,7 @@ function openPlayer(id){
   const live=liveMaxForPlayer(p);
   $("#playerDialogContent").innerHTML=`<div class="dialog-body">
     <div class="section-title">
-      <div><div class="eyebrow">${p.club} · ${p.role} · ${strategic?"STRATEGICO":"LISTONE"}</div><h2>${p.name}</h2></div>
+      <div class="player-dialog-title">${kitHTML(p.club,'dialog',p.club)}<div><div class="eyebrow">${p.club} · ${p.role} · ${strategic?"STRATEGICO":"LISTONE"}</div><h2>${p.name}</h2></div></div>
       <button class="ghost" onclick="playerDialog.close()">✕</button>
     </div>
     <div class="grid">
@@ -1732,9 +1750,29 @@ function undoLastPurchase(){
 
 function renderSquad(){
   const b=purchasedPlayers();
-  $("#squadView").innerHTML=`<div class="section-title"><h2>La mia rosa</h2><span class="muted">${b.length}/25</span></div>
-  ${["POR","DIF","CEN","ATT"].map(rep=>`<div class="role-group"><h3>${rep}</h3>${b.filter(p=>p.reparto===rep).length?b.filter(p=>p.reparto===rep).map(playerRow).join(""):'<div class="card muted">Nessun giocatore.</div>'}</div>`).join("")}`;
-  bindPlayers();
+  const econ=teamEconomy(mineTeam());
+  const byRep={POR:0,DIF:0,CEN:0,ATT:0};
+  b.forEach(p=>byRep[p.reparto]+=Number(state.purchases[p.id]?.price||0));
+  const quota={POR:3,DIF:8,CEN:7,ATT:7};
+  const groupRows=rep=>{
+    const rows=b.filter(p=>p.reparto===rep);
+    if(!rows.length)return `<div class="hybrid-empty-roster"><span>＋</span><small>${rep==='ATT'?'Attaccanti ancora da acquistare':'Nessun giocatore acquistato'}</small></div>`;
+    return rows.map(p=>`<button class="hybrid-roster-player" onclick='openPlayer(${idArg(p.id)})'><span><b>${esc(p.name)}</b><small>${p.club} · ${p.role}</small></span><strong>${fmt(state.purchases[p.id]?.price||0)} cr</strong></button>`).join("");
+  };
+  const counts={POR:0,DIF:0,CEN:0,ATT:0};b.forEach(p=>counts[p.reparto]++);
+  $("#squadView").innerHTML=`
+    <div class="hybrid-page-head"><div><div class="eyebrow">La tua rosa</div><h2>Rosa Mantra</h2></div><span>25 posti</span></div>
+    <div class="hybrid-squad-kpis">
+      <div><span>Speso</span><b>${fmt(econ.spent)}</b></div><div><span>Residuo</span><b>${fmt(econ.remaining)}</b></div><div><span>Posti</span><b>${b.length}/25</b></div><div><span>MAX prossimo</span><b>${fmt(econ.maxNext)}</b></div>
+    </div>
+    <div class="hybrid-squad-reps">${["POR","DIF","CEN","ATT"].map(rep=>`<div><span>${rep}</span><b>${fmt(byRep[rep])}</b></div>`).join("")}</div>
+    <div class="hybrid-squad-strategy">
+      <button class="${state.strategy==='A'?'active':''}" onclick="setStrategy('A')"><i>A</i><span>Strategia nostra · A<b>4-3-1-2</b></span></button>
+      <button class="${state.strategy==='B'?'active':''}" onclick="setStrategy('B')"><i>B</i><span>Alternativa · B<b>4-3-3</b></span></button>
+    </div>
+    <div class="hybrid-roster-groups">
+      ${["POR","DIF","CEN","ATT"].map(rep=>`<section class="hybrid-roster-group"><div class="hybrid-roster-head"><b>${rep}</b><span>${counts[rep]}/${quota[rep]}</span></div>${groupRows(rep)}</section>`).join("")}
+    </div>`;
 }
 function renderPlan(targetSelector="#dashboardPlanContent"){
   const target=$(targetSelector);if(!target)return;
@@ -2014,4 +2052,4 @@ function lockInit(){
   $("#unlockBtn").onclick=()=>{if($("#pinInput").value===state.pin)$("#lock").classList.add("hidden");else $("#lockText").textContent="PIN errato. Riprova."};
 }
 refresh();lockInit();
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.26").catch(()=>{}));
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.27").catch(()=>{}));
