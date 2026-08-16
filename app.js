@@ -50,6 +50,9 @@ function getPlayer(id){
   return allPlayers.find(p=>String(p.id)===String(id));
 }
 function idArg(id){return JSON.stringify(String(id));}
+function esc(value){
+  return String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch]));
+}
 const DEFAULT_BUDGET = 2500;
 const STRATEGIES = {
   A:{
@@ -102,12 +105,30 @@ const state = {
   filter:"Tutti",
   query:"",
   strategy: localStorage.getItem("am_strategy") || "A",
-  poolMode: localStorage.getItem("am_pool_mode") || "strategic"
+  poolMode: localStorage.getItem("am_pool_mode") || "strategic",
+  league: JSON.parse(localStorage.getItem("am_league")||"null")
 };
 function save(){localStorage.setItem("am_purchases",JSON.stringify(state.purchases))}
 function saveSold(){localStorage.setItem("am_sold",JSON.stringify(state.sold))}
+function saveLeague(){
+  if(state.league) localStorage.setItem("am_league",JSON.stringify(state.league));
+  else localStorage.removeItem("am_league");
+}
 function soldPlayers(){return allPlayers.filter(p=>state.sold[p.id])}
 function isSold(id){return !!state.sold[id]}
+function leagueTeamById(id){return state.league?.teams?.find(t=>t.id===id)||null}
+function opponentTeams(){return state.league?.teams?.filter(t=>!t.isMine)||[]}
+function soldTeamName(sale){
+  if(!sale?.teamId) return "Non assegnato";
+  const t=leagueTeamById(sale.teamId);
+  return t?.name||"Squadra non disponibile";
+}
+function soldMeta(id){
+  const sale=state.sold[id]; if(!sale)return "";
+  const parts=[soldTeamName(sale)];
+  if(Number(sale.price)>0) parts.push(`${fmt(sale.price)} cr`);
+  return parts.join(" · ");
+}
 function roleTokens(role){return String(role||"").split("/").map(x=>x.trim()).filter(Boolean)}
 function activeStrategy(){return STRATEGIES[state.strategy] || STRATEGIES.A}
 function slotCompatible(p,slot){
@@ -593,12 +614,11 @@ function playerRow(p){
     </div>
     <div>
       <div class="price">${sold?"VENDUTO":b?fmt(b.price):"MAX "+fmt(p.maxPrice)}</div>
-      <div class="meta">${sold?"altra squadra":b?sig.t:strategic?"strategico":"da FVM"}</div>
+      <div class="meta">${sold?soldMeta(p.id):b?sig.t:strategic?"strategico":"da FVM"}</div>
     </div>
   </div>`;
 }
-function renderPlayers(){
-  let roles=["Tutti",...roleOrder,"Venduti"];
+function playerViewData(){
   const visiblePool=state.filter==="Venduti"
     ? allPlayers
     : state.poolMode==="all" ? allPlayers : strategicPlayers;
@@ -651,6 +671,29 @@ function renderPlayers(){
     content=`<div>${list.map(playerRow).join("")}</div>`;
   }
 
+  return {list,content};
+}
+
+function playerResultsInfo(list){
+  return `${list.length} giocatori
+    ${state.poolMode==="strategic"&&["W","A","Pc"].includes(state.filter)?" · ruolo offensivo principale":""}
+    ${state.filter==="T"?" · principali + compatibili":""}
+    ${state.filter==="Venduti"?" · assegnati ad altre squadre":""}`;
+}
+
+function updatePlayerSearchResults(){
+  const data=playerViewData();
+  const count=$("#playerResultsCount");
+  const results=$("#playerResults");
+  if(count) count.textContent=playerResultsInfo(data.list);
+  if(results) results.innerHTML=data.content;
+  bindPlayers();
+}
+
+function renderPlayers(){
+  let roles=["Tutti",...roleOrder,"Venduti"];
+  const data=playerViewData();
+
   const modePool=state.poolMode==="all"?allPlayers:strategicPlayers;
   const availableModePool=modePool.filter(p=>!isSold(p.id));
   const offensiveDist={
@@ -670,7 +713,12 @@ function renderPlayers(){
       </button>
     </div>
 
-    <input class="search" id="searchInput" placeholder="Cerca giocatore, club o ruolo…" value="${state.query.replaceAll('"','&quot;')}">
+    <input class="search" id="searchInput"
+      placeholder="Cerca giocatore, club o ruolo…"
+      autocomplete="off"
+      autocapitalize="off"
+      spellcheck="false"
+      value="${state.query.replaceAll('"','&quot;')}">
 
     <div class="market-universe-strip">
       <span>${state.poolMode==="all"?"Universo mercato":"Shortlist strategica"}</span>
@@ -698,35 +746,39 @@ function renderPlayers(){
       }).join("")}
     </div>
 
-    <div class="muted" style="margin:8px 2px">
-      ${list.length} giocatori
-      ${state.poolMode==="strategic"&&["W","A","Pc"].includes(state.filter)?" · ruolo offensivo principale":""}
-      ${state.filter==="T"?" · principali + compatibili":""}
-      ${state.filter==="Venduti"?" · assegnati ad altre squadre":""}
-    </div>
-    ${content}`;
+    <div id="playerResultsCount" class="muted" style="margin:8px 2px">${playerResultsInfo(data.list)}</div>
+    <div id="playerResults">${data.content}</div>`;
 
   $("#poolStrategic").onclick=()=>{
     state.poolMode="strategic";
     localStorage.setItem("am_pool_mode","strategic");
     if(state.filter==="Venduti") state.filter="Tutti";
-    renderPlayers();bindPlayers();
+    renderPlayers();
   };
+
   $("#poolAll").onclick=()=>{
     state.poolMode="all";
     localStorage.setItem("am_pool_mode","all");
     if(state.filter==="Venduti") state.filter="Tutti";
-    renderPlayers();bindPlayers();
+    renderPlayers();
   };
 
+  /*
+   * IMPORTANTE iPhone/Safari:
+   * durante la digitazione NON ricreiamo #playersView e NON sostituiamo
+   * #searchInput. Aggiorniamo soltanto contatore e risultati.
+   * In questo modo il campo conserva il focus e la tastiera resta aperta.
+   */
   $("#searchInput").addEventListener("input",e=>{
     state.query=e.target.value;
-    renderPlayers();bindPlayers();
+    updatePlayerSearchResults();
   });
+
   $$(".chip").forEach(b=>b.onclick=()=>{
     state.filter=b.dataset.role;
-    renderPlayers();bindPlayers();
+    renderPlayers();
   });
+
   bindPlayers();
 }
 function bindPlayers(){
@@ -754,13 +806,15 @@ function openPlayer(id){
       ${strategic?`<div class="line"><span>Modificatore</span><b>${p.modifier||"—"}</b></div>`:""}
       <div class="line"><span>Fit ${state.strategy} · ${activeStrategy().module}</span><b>${strategyPlayerFit(p).length?strategyPlayerFit(p).join(" · "):"ruolo condiviso / non chiave"}</b></div>
       <div class="line"><span>Stato mercato</span><b>${b?"MIO":sold?"VENDUTO":"DISPONIBILE"}</b></div>
+      ${sold?`<div class="line"><span>Assegnato a</span><b>${esc(soldTeamName(state.sold[p.id]))}</b></div>`:""}
+      ${sold?`<div class="line"><span>Prezzo vendita</span><b>${Number(state.sold[p.id]?.price)>0?fmt(state.sold[p.id].price)+" cr":"—"}</b></div>`:""}
       ${p.notes?`<div class="line"><span>Note</span><b>${p.notes}</b></div>`:""}
     </div>
     <div class="dialog-actions">
       ${b
         ? `<button class="ghost" onclick='editPurchase(${idArg(p.id)})'>✏️ Modifica acquisto</button><button class="dangerbtn" onclick='removePurchase(${idArg(p.id)})'>Annulla acquisto</button>`
         : sold
-          ? `<button class="ghost" onclick='restoreSold(${idArg(p.id)})'>↩️ Ripristina sul mercato</button>`
+          ? `<button class="ghost" onclick='editSold(${idArg(p.id)})'>✏️ Modifica vendita</button><button class="ghost" onclick='restoreSold(${idArg(p.id)})'>↩️ Ripristina mercato</button>`
           : `<button class="primary" onclick='startPurchase(${idArg(p.id)})'>Acquista</button><button class="soldbtn" onclick='markSold(${idArg(p.id)})'>🔒 Venduto</button>`
       }
     </div>
@@ -770,15 +824,33 @@ function openPlayer(id){
 let purchaseId=null;
 let purchaseMode="new";
 
-window.markSold=id=>{
+let soldPlayerId=null;
+function openSoldDialog(id){
   const p=getPlayer(id); if(!p || state.purchases[p.id]) return;
-  id=p.id;
-  state.sold[id]={at:Date.now()};
-  saveSold();
-  const d=$("#playerDialog");
-  if(d.open) d.close();
-  refresh();
-};
+  soldPlayerId=p.id;
+  const previous=state.sold[p.id]||{};
+  $("#playerDialog").close();
+  $("#soldTitle").textContent=(previous.price?"Modifica vendita · ":"Venduto · ")+p.name;
+
+  const teams=opponentTeams();
+  if(teams.length){
+    $("#soldTeamSelect").innerHTML=teams.map(t=>`<option value="${t.id}">${t.name}</option>`).join("");
+    const preferred=teams.some(t=>t.id===previous.teamId)?previous.teamId:teams[0].id;
+    $("#soldTeamSelect").value=preferred;
+    $("#soldTeamSelect").disabled=false;
+    $("#soldLeagueNote").textContent=`${state.league.name} · scegli la squadra che ha acquistato il giocatore.`;
+  }else{
+    $("#soldTeamSelect").innerHTML='<option value="">Non assegnato</option>';
+    $("#soldTeamSelect").disabled=true;
+    $("#soldLeagueNote").textContent="Nessuna lega creata: il giocatore sarà registrato come venduto non assegnato. Puoi creare la lega dal menu Leghe e modificarlo dopo.";
+  }
+  $("#soldPriceInput").value=previous.price||"";
+  $("#soldDialog").showModal();
+  $("#soldPriceInput").focus();
+  $("#soldPriceInput").select();
+}
+window.markSold=id=>openSoldDialog(id);
+window.editSold=id=>openSoldDialog(id);
 window.restoreSold=id=>{
   const p=getPlayer(id); id=p?p.id:id;
   delete state.sold[id];
@@ -787,6 +859,32 @@ window.restoreSold=id=>{
   if(d.open) d.close();
   refresh();
 };
+
+$("#cancelSold").addEventListener("click",()=>{
+  if(document.activeElement) document.activeElement.blur();
+  if($("#soldDialog").open) $("#soldDialog").close();
+  soldPlayerId=null;
+  $("#soldPriceInput").value="";
+});
+
+$("#soldForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const p=getPlayer(soldPlayerId); if(!p)return;
+  const price=Number($("#soldPriceInput").value);
+  if(!Number.isInteger(price)||price<1)return;
+  const previous=state.sold[p.id]||{};
+  const teamId=opponentTeams().length?$("#soldTeamSelect").value:"";
+  state.sold[p.id]={
+    at:previous.at||Date.now(),
+    price,
+    teamId,
+    leagueId:state.league?.id||""
+  };
+  saveSold();
+  $("#soldDialog").close();
+  soldPlayerId=null;
+  refresh();
+});
 
 function startPurchase(id){
   const p=getPlayer(id);
@@ -973,6 +1071,133 @@ function renderPlan(){
       I giocatori marcati Venduto riducono il valore della strategia che dipende maggiormente dai loro ruoli. Il bottone A/B resta sempre manuale.
     </p>`;
 }
+function createLeague(){
+  $("#leagueNameInput").value="";
+  $("#leagueSizeInput").value="8";
+  $("#leagueDialog").showModal();
+  $("#leagueNameInput").focus();
+}
+window.createLeague=createLeague;
+
+$("#cancelLeagueCreate").addEventListener("click",()=>{
+  if($("#leagueDialog").open) $("#leagueDialog").close();
+});
+
+$("#leagueForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const name=$("#leagueNameInput").value.trim();
+  const size=Number($("#leagueSizeInput").value);
+  if(!name || !Number.isInteger(size) || size<4 || size>20)return;
+  const teams=[{id:"mine",name:"La mia squadra",isMine:true}];
+  for(let i=2;i<=size;i++) teams.push({id:`team${i}`,name:`Squadra ${i}`,isMine:false});
+  state.league={id:`league_${Date.now()}`,name,size,teams,createdAt:Date.now()};
+  saveLeague();
+  $("#leagueDialog").close();
+  refresh();
+  switchView("leagueView");
+});
+
+function rosterForLeagueTeam(team){
+  if(team.isMine){
+    return purchasedPlayers().map(p=>({p,price:Number(state.purchases[p.id]?.price||0)}));
+  }
+  return soldPlayers()
+    .filter(p=>{
+      const s=state.sold[p.id];
+      return s?.teamId===team.id && (!s.leagueId || s.leagueId===state.league?.id);
+    })
+    .map(p=>({p,price:Number(state.sold[p.id]?.price||0)}));
+}
+function leagueRosterRows(items){
+  if(!items.length)return '<div class="league-empty">Nessun giocatore assegnato.</div>';
+  const groups=["POR","DIF","CEN","ATT"];
+  return groups.map(rep=>{
+    const rows=items.filter(x=>x.p.reparto===rep);
+    if(!rows.length)return "";
+    return `<div class="league-role-block"><b>${rep}</b>${rows.map(x=>`<div class="league-player-row"><span>${x.p.name}<small>${x.p.role}</small></span><strong>${x.price?fmt(x.price)+" cr":"—"}</strong></div>`).join("")}</div>`;
+  }).join("");
+}
+function renderLeagues(){
+  if(!state.league){
+    $("#leagueView").innerHTML=`
+      <div class="section-title"><h2>Leghe</h2></div>
+      <div class="card league-empty-state">
+        <div class="league-empty-icon">🏆</div>
+        <h3>Nessuna lega creata</h3>
+        <p class="muted">Crea la lega per assegnare i giocatori venduti agli avversari e vedere la composizione delle rose.</p>
+        <button id="createLeagueBtn" class="primary">＋ Crea lega</button>
+      </div>`;
+    $("#createLeagueBtn").onclick=createLeague;
+    return;
+  }
+
+  const league=state.league;
+  const unassigned=soldPlayers().filter(p=>!state.sold[p.id]?.teamId || (state.sold[p.id]?.leagueId && state.sold[p.id].leagueId!==league.id));
+
+  $("#leagueView").innerHTML=`
+    <div class="section-title league-title-row">
+      <div><div class="eyebrow">Lega attiva</div><h2>${esc(league.name)}</h2></div>
+      <span class="muted">${league.size} squadre</span>
+    </div>
+
+    <div class="league-summary-grid">
+      <div class="card metric"><span>Partecipanti</span><strong>${league.size}</strong></div>
+      <div class="card metric"><span>Giocatori assegnati</span><strong>${soldPlayers().length-unassigned.length}</strong></div>
+      <div class="card metric"><span>Non assegnati</span><strong>${unassigned.length}</strong></div>
+      <div class="card metric"><span>Spesa avversari</span><strong>${fmt(Object.values(state.sold).reduce((a,s)=>a+Number(s.price||0),0))}</strong></div>
+    </div>
+
+    <details class="league-edit-details">
+      <summary><span>⚙️ Rinomina lega e squadre</span><small>${league.size} partecipanti</small></summary>
+      <div class="card league-edit-card">
+        <label>Nome lega<input id="editLeagueName" type="text" maxlength="40" value="${esc(league.name)}"></label>
+        <div class="league-team-inputs">
+          ${league.teams.map((t,i)=>`<label><span>${t.isMine?"⭐ Mia squadra":`Squadra ${i+1}`}</span><input class="team-name-input" data-team-id="${t.id}" maxlength="32" value="${esc(t.name)}"></label>`).join("")}
+        </div>
+        <div class="dialog-actions league-edit-actions">
+          <button id="deleteLeagueBtn" class="dangerbtn">Elimina lega</button>
+          <button id="saveLeagueNamesBtn" class="primary">Salva nomi</button>
+        </div>
+      </div>
+    </details>
+
+    <div class="section-title"><h2>Rose della lega</h2><span class="muted">tocca per aprire</span></div>
+    <div class="league-rosters">
+      ${league.teams.map((team,i)=>{
+        const items=rosterForLeagueTeam(team);
+        const spend=items.reduce((a,x)=>a+x.price,0);
+        return `<details class="league-team-card" ${team.isMine?"open":""}>
+          <summary>
+            <div><b>${esc(team.name)}</b>${team.isMine?'<span class="mine-badge">MIA</span>':''}</div>
+            <span>${items.length} gioc. · ${fmt(spend)} cr</span>
+          </summary>
+          <div class="league-roster-body">${leagueRosterRows(items)}</div>
+        </details>`;
+      }).join("")}
+    </div>
+
+    ${unassigned.length?`<div class="section-title"><h2>Venduti non assegnati</h2><span class="muted">${unassigned.length}</span></div>
+      <div class="card">${unassigned.map(p=>`<button class="unassigned-sale" data-id="${p.id}"><span>${p.name}<small>${p.club} · ${p.role}</small></span><b>${state.sold[p.id]?.price?fmt(state.sold[p.id].price)+" cr":"—"}</b></button>`).join("")}</div>`:""}
+  `;
+
+  $("#saveLeagueNamesBtn").onclick=()=>{
+    const leagueName=$("#editLeagueName").value.trim();
+    if(leagueName) state.league.name=leagueName;
+    $$(".team-name-input").forEach(inp=>{
+      const t=leagueTeamById(inp.dataset.teamId);
+      const name=inp.value.trim();
+      if(t&&name)t.name=name;
+    });
+    saveLeague();refresh();
+  };
+  $("#deleteLeagueBtn").onclick=()=>{
+    if(!confirm(`Eliminare la lega “${state.league.name}”? I giocatori resteranno Venduti ma senza squadra assegnata.`))return;
+    Object.values(state.sold).forEach(s=>{s.teamId="";s.leagueId=""});
+    saveSold();state.league=null;saveLeague();refresh();
+  };
+  $$(".unassigned-sale").forEach(btn=>btn.onclick=()=>editSold(btn.dataset.id));
+}
+
 function renderSettings(){
   $("#settingsView").innerHTML=`<div class="section-title"><h2>Impostazioni</h2></div>
     <div class="card">
@@ -987,20 +1212,20 @@ function renderSettings(){
   $("#setPin").onclick=()=>{let p=prompt("Scegli un PIN numerico (4-8 cifre):");if(/^\d{4,8}$/.test(p||"")){localStorage.setItem("am_pin",p);state.pin=p;alert("PIN salvato.")}};
   if($("#removePin"))$("#removePin").onclick=()=>{localStorage.removeItem("am_pin");state.pin="";renderSettings()};
   $("#resetBtn").onclick=()=>{if(confirm("Vuoi davvero cancellare acquisti e giocatori venduti?")){state.purchases={};state.sold={};save();saveSold();refresh()}};
-  $("#exportBtn").onclick=()=>{let blob=new Blob([JSON.stringify({version:4,purchases:state.purchases,sold:state.sold,strategy:state.strategy,poolMode:state.poolMode},null,2)],{type:"application/json"});let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="AstaMantra-backup.json";a.click();URL.revokeObjectURL(a.href)};
-  $("#importFile").onchange=e=>{let f=e.target.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let o=JSON.parse(rd.result);state.purchases=o.purchases||{};state.sold=o.sold||{};if(STRATEGIES[o.strategy]){state.strategy=o.strategy;localStorage.setItem("am_strategy",o.strategy)}if(["strategic","all"].includes(o.poolMode)){state.poolMode=o.poolMode;localStorage.setItem("am_pool_mode",o.poolMode)}save();saveSold();refresh();alert("Backup importato.")}catch{alert("File non valido.")}};rd.readAsText(f)};
+  $("#exportBtn").onclick=()=>{let blob=new Blob([JSON.stringify({version:5,purchases:state.purchases,sold:state.sold,strategy:state.strategy,poolMode:state.poolMode,league:state.league},null,2)],{type:"application/json"});let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="AstaMantra-backup.json";a.click();URL.revokeObjectURL(a.href)};
+  $("#importFile").onchange=e=>{let f=e.target.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let o=JSON.parse(rd.result);state.purchases=o.purchases||{};state.sold=o.sold||{};state.league=o.league||state.league||null;if(STRATEGIES[o.strategy]){state.strategy=o.strategy;localStorage.setItem("am_strategy",o.strategy)}if(["strategic","all"].includes(o.poolMode)){state.poolMode=o.poolMode;localStorage.setItem("am_pool_mode",o.poolMode)}save();saveSold();saveLeague();refresh();alert("Backup importato.")}catch{alert("File non valido.")}};rd.readAsText(f)};
 }
 function switchView(id){
   state.view=id;$$(".view").forEach(v=>v.classList.toggle("active",v.id===id));$$(".tab").forEach(t=>t.classList.toggle("active",t.dataset.view===id));
-  if(id==="dashboardView")renderDashboard();if(id==="playersView")renderPlayers();if(id==="squadView")renderSquad();if(id==="planView")renderPlan();if(id==="settingsView")renderSettings();
+  if(id==="dashboardView")renderDashboard();if(id==="playersView")renderPlayers();if(id==="squadView")renderSquad();if(id==="planView")renderPlan();if(id==="leagueView")renderLeagues();if(id==="settingsView")renderSettings();
 }
 $$(".tab").forEach(t=>t.onclick=()=>switchView(t.dataset.view));
 $("#settingsBtn").onclick=()=>switchView("settingsView");
-function refresh(){renderDashboard();renderPlayers();renderSquad();renderPlan();if(state.view==="settingsView")renderSettings()}
+function refresh(){renderDashboard();renderPlayers();renderSquad();renderPlan();renderLeagues();if(state.view==="settingsView")renderSettings()}
 function lockInit(){
   if(!state.pin)return;
   $("#lock").classList.remove("hidden");$("#disablePinBtn").style.display="none";
   $("#unlockBtn").onclick=()=>{if($("#pinInput").value===state.pin)$("#lock").classList.add("hidden");else $("#lockText").textContent="PIN errato. Riprova."};
 }
 refresh();lockInit();
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.20").catch(()=>{}));
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.22").catch(()=>{}));

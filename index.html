@@ -10,7 +10,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css?v=1.20">
+  <link rel="stylesheet" href="styles.css?v=1.21">
   <title>Asta Mantra</title>
 </head>
 <body>
@@ -37,6 +37,7 @@
     <section id="playersView" class="view"></section>
     <section id="squadView" class="view"></section>
     <section id="planView" class="view"></section>
+    <section id="leagueView" class="view"></section>
     <section id="settingsView" class="view"></section>
   </main>
 
@@ -45,6 +46,7 @@
     <button data-view="playersView" class="tab"><span>🔎</span><small>Giocatori</small></button>
     <button data-view="squadView" class="tab"><span>👥</span><small>Rosa</small></button>
     <button data-view="planView" class="tab"><span>🎯</span><small>Piano</small></button>
+    <button data-view="leagueView" class="tab"><span>🏆</span><small>Leghe</small></button>
   </nav>
 
   <dialog id="playerDialog">
@@ -52,7 +54,45 @@
   </dialog>
 
 
-  <dialog id="formationDialog">\n    <div id="formationDialogContent"></div>
+  <dialog id="formationDialog">
+    <div id="formationDialogContent"></div>
+  </dialog>
+
+
+  <dialog id="leagueDialog">
+    <form id="leagueForm">
+      <h2>Crea lega</h2>
+      <label>Nome lega
+        <input id="leagueNameInput" type="text" maxlength="40" placeholder="Es. Fanta Amici 26/27" required>
+      </label>
+      <label>Numero partecipanti
+        <select id="leagueSizeInput" required>
+          <option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8" selected>8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+        </select>
+      </label>
+      <p class="muted dialog-note">La prima squadra sarà la tua rosa. Potrai rinominare tutte le squadre dopo la creazione.</p>
+      <div class="dialog-actions">
+        <button type="button" id="cancelLeagueCreate" class="ghost">Annulla</button>
+        <button type="submit" class="primary">Crea lega</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="soldDialog">
+    <form id="soldForm">
+      <h2 id="soldTitle">Giocatore venduto</h2>
+      <label>Squadra
+        <select id="soldTeamSelect"></select>
+      </label>
+      <label>Prezzo pagato
+        <input id="soldPriceInput" type="number" min="1" step="1" inputmode="numeric" required>
+      </label>
+      <p id="soldLeagueNote" class="muted dialog-note"></p>
+      <div class="dialog-actions">
+        <button type="button" id="cancelSold" class="ghost">Annulla</button>
+        <button type="submit" class="soldbtn">Conferma venduto</button>
+      </div>
+    </form>
   </dialog>
 
   <dialog id="purchaseDialog">
@@ -70,9 +110,9 @@
     </form>
   </dialog>
 
-  <script src="players.js?v=1.20"></script>
-  <script src="formations.js?v=1.20"></script>
-  <script src="market.js?v=1.20"></script>
-  <script src="app.js?v=1.20"></script>
+  <script src="players.js?v=1.21"></script>
+  <script src="formations.js?v=1.21"></script>
+  <script src="market.js?v=1.21"></script>
+  <script src="app.js?v=1.22"></script>
 </body>
 </html>
