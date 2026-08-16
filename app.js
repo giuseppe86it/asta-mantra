@@ -159,7 +159,7 @@ function formationCarouselHTML(){
 
   const pages=[];
   for(let i=0;i<formations.length;i+=4){
-    pages.push(formations.slice(i,i+5));
+    pages.push(formations.slice(i,i+4));
   }
 
   return `<section class="formation-box" aria-label="Probabili Formazioni">
@@ -190,7 +190,7 @@ function formationCarouselHTML(){
 }
 
 function formationCardHTML(f,index){
-  const pitchLines=f.lines.slice().reverse().map(line=>
+  const pitchLines=(f.lines||[]).slice().reverse().map(line=>
     `<div class="formation-line">${
       line.map(p=>`<div class="formation-player" title="${p.name} · ${p.role}">
         <b>${p.name}</b><span>${p.role}</span>
@@ -198,18 +198,23 @@ function formationCardHTML(f,index){
     }</div>`
   ).join("");
 
-  return `<button class="formation-card formation-card-mini" onclick="openFormation(${index})" aria-label="${f.team}, ${f.module}">
+  return `<div class="formation-card formation-card-mini"
+      role="button"
+      tabindex="0"
+      onclick="openFormation(${index})"
+      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFormation(${index})}"
+      aria-label="${f.team}, ${f.module}">
     <div class="formation-card-head">
       <b>${f.club || f.team.slice(0,3).toUpperCase()}</b>
       <span>${f.module}</span>
     </div>
     <div class="mini-pitch">
-      <i class="pitch-half"></i>
-      <i class="pitch-circle"></i>
+      <span class="pitch-half" aria-hidden="true"></span>
+      <span class="pitch-circle" aria-hidden="true"></span>
       <div class="formation-lines">${pitchLines}</div>
     </div>
     <div class="formation-team-name">${f.team}</div>
-  </button>`;
+  </div>`;
 }
 
 window.openFormation=index=>{
