@@ -346,8 +346,15 @@ $("#purchasePrice").addEventListener("input",e=>{
   const p=players.find(x=>x.id===purchaseId),s=signal(p,e.target.value);
   $("#purchaseSignal").className="signal "+s.c; $("#purchaseSignal").textContent=s.t;
 });
+$("#cancelPurchase").addEventListener("click",()=>{
+  $("#purchaseDialog").close();
+  $("#purchasePrice").value="";
+  $("#purchaseSignal").textContent="";
+  purchaseId=null;
+  purchaseMode="new";
+});
+
 $("#purchaseForm").addEventListener("submit",e=>{
-  if(e.submitter?.value==="cancel")return;
   e.preventDefault();
   const price=Number($("#purchasePrice").value);
   if(!Number.isInteger(price) || price < 1) return;
@@ -358,6 +365,8 @@ $("#purchaseForm").addEventListener("submit",e=>{
   };
   save();
   $("#purchaseDialog").close();
+  purchaseId=null;
+  purchaseMode="new";
   refresh();
 });
 window.removePurchase=id=>{
