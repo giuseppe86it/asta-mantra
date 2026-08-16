@@ -50,3 +50,248 @@ label{display:block;color:var(--muted);font-size:13px;margin:12px 0}label input{
 .club-full .club-counter-head strong,.club-stop .club-counter-head strong{color:var(--danger)}
 .club-warning .progress i{background:var(--warn)}
 .club-full .progress i,.club-stop .progress i{background:var(--danger)}
+
+
+/* v1.6 — Dashboard cockpit compatta */
+#dashboardView{padding:10px 12px 18px}
+
+.dashboard-cockpit{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-height:calc(100dvh - 158px - env(safe-area-inset-top) - var(--safe));
+}
+
+.dash-metrics{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:6px;
+}
+
+.dash-metric{
+  min-width:0;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:8px 6px 7px;
+  text-align:center;
+}
+
+.dash-metric span{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+}
+
+.dash-metric strong{
+  display:block;
+  margin:2px 0 1px;
+  font-size:18px;
+  line-height:1;
+}
+
+.dash-metric small{
+  display:block;
+  color:var(--muted);
+  font-size:8.5px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.dash-metric.metric-warn strong{color:var(--warn)}
+.dash-metric.metric-ok strong{color:var(--accent)}
+
+.dash-budget-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:6px;
+}
+
+.dash-budget{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:6px;
+  min-width:0;
+}
+
+.dash-budget-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:3px;
+  font-size:9px;
+}
+
+.dash-budget-top b{font-size:10px}
+.dash-budget-top span{
+  color:var(--muted);
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.dash-budget small{
+  display:block;
+  color:var(--muted);
+  font-size:8px;
+  margin-top:3px;
+  white-space:nowrap;
+}
+
+.mini-progress{
+  height:4px;
+  background:#25314a;
+  border-radius:8px;
+  overflow:hidden;
+  margin-top:5px;
+}
+
+.mini-progress i{
+  display:block;
+  height:100%;
+  background:var(--accent);
+}
+
+.dash-critical{
+  background:#3b1722;
+  border:1px solid #7f263f;
+  color:#fecdd3;
+  border-radius:9px;
+  padding:5px 8px;
+  font-size:9px;
+  font-weight:700;
+}
+
+.dash-club-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  padding:1px 2px 0;
+}
+
+.dash-club-title b{
+  font-size:10px;
+  letter-spacing:.07em;
+  color:var(--text);
+}
+
+.dash-club-title span{
+  font-size:9px;
+  color:var(--muted);
+}
+
+.club-grid{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:5px;
+}
+
+.club-tile{
+  min-width:0;
+  min-height:39px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:3px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:6px 7px;
+}
+
+.club-tile b{
+  font-size:10px;
+  line-height:1;
+  color:var(--text);
+}
+
+.club-tile strong{
+  font-size:11px;
+  line-height:1;
+  color:var(--muted);
+}
+
+.club-tile.club-warning{
+  border-color:#8a5b10;
+  background:#2c2414;
+}
+.club-tile.club-warning b,
+.club-tile.club-warning strong{
+  color:var(--warn);
+}
+
+.club-tile.club-full{
+  border-color:#8b2d43;
+  background:#351923;
+}
+.club-tile.club-full b,
+.club-tile.club-full strong{
+  color:var(--danger);
+}
+
+.recent-section{
+  padding-top:12px;
+  margin-top:8px;
+  border-top:1px solid var(--line);
+}
+
+.recent-heading{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:7px;
+}
+
+.recent-heading h2{
+  margin:2px 0 0;
+  font-size:18px;
+}
+
+.recent-toolbar{margin-bottom:7px}
+.recent-toolbar .ghost{
+  padding:7px 10px;
+  font-size:11px;
+}
+
+#dashboardView .recent-section .player{
+  margin:6px 0;
+  padding:10px;
+}
+
+#dashboardView .recent-section .player h3{
+  font-size:14px;
+  margin-bottom:3px;
+}
+
+#dashboardView .recent-section .price{
+  font-size:16px;
+}
+
+#dashboardView .recent-section .badge{
+  font-size:9px;
+  padding:2px 5px;
+  margin-top:3px;
+}
+
+@media(max-width:360px){
+  #dashboardView{padding-left:8px;padding-right:8px}
+  .dash-metrics,.dash-budget-grid{gap:4px}
+  .club-grid{gap:4px}
+  .club-tile{padding:5px;min-height:36px}
+  .club-tile b{font-size:9px}
+  .club-tile strong{font-size:10px}
+  .dash-metric{padding-left:3px;padding-right:3px}
+  .dash-metric strong{font-size:16px}
+}
+
+@media(min-width:700px){
+  #dashboardView{max-width:900px;margin:auto}
+  .club-grid{grid-template-columns:repeat(10,minmax(0,1fr))}
+}

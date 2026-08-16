@@ -4,6 +4,12 @@ const $$ = s => [...document.querySelectorAll(s)];
 const players = window.PLAYERS || [];
 const DEFAULT_BUDGET = 2500;
 const BUDGETS = {POR:250,DIF:500,CEN:625,ATT:1125};
+const SERIES_A_CLUBS = [
+  ["ATA","Atalanta"],["BOL","Bologna"],["CAG","Cagliari"],["COM","Como"],["FIO","Fiorentina"],
+  ["FRO","Frosinone"],["GEN","Genoa"],["INT","Inter"],["JUV","Juventus"],["LAZ","Lazio"],
+  ["LEC","Lecce"],["MIL","Milan"],["MON","Monza"],["NAP","Napoli"],["PAR","Parma"],
+  ["ROM","Roma"],["SAS","Sassuolo"],["TOR","Torino"],["UDI","Udinese"],["VEN","Venezia"]
+];
 const roleOrder = ["Por","Ds","Dc","Dd","M","C","W","A","Pc"];
 const state = {
   purchases: JSON.parse(localStorage.getItem("am_purchases")||"{}"),
@@ -30,78 +36,112 @@ function renderDashboard(){
   const bought=purchasedPlayers(), s=spent(), rem=DEFAULT_BUDGET-s;
   const byRep={POR:0,DIF:0,CEN:0,ATT:0};
   bought.forEach(p=>byRep[p.reparto]+=Number(state.purchases[p.id].price||0));
-  const u23=bought.filter(p=>p.u23).length,u21=bought.filter(p=>p.u21).length;
-  const clubAlerts=[...new Set(bought.map(p=>p.club))].filter(c=>countClub(c)>5);
-  let alerts=[];
-  if(u23<2) alerts.push(`Mancano ${2-u23} U23`);
-  if(u21<1) alerts.push("Manca 1 U21");
-  if(bought.length>25) alerts.push("Hai superato i 25 giocatori");
-  if(clubAlerts.length) alerts.push("Troppi giocatori: "+clubAlerts.join(", "));
-  $("#dashboardView").innerHTML=`
-    <div class="grid">
-      <div class="card metric"><span>Budget residuo</span><strong>${fmt(rem)}</strong><span>su 2500</span></div>
-      <div class="card metric"><span>Giocatori</span><strong>${bought.length}/25</strong><span>3 POR + 22 movimento</span></div>
-      <div class="card metric"><span>U23</span><strong>${u23}</strong><span>minimo 2</span></div>
-      <div class="card metric"><span>U21</span><strong>${u21}</strong><span>minimo 1</span></div>
-    </div>
-    ${alerts.length?`<div class="alert"><b>⚠️ Controlli</b><br>${alerts.join("<br>")}</div>`:`<div class="alert ok"><b>✅ Vincoli principali sotto controllo</b></div>`}
-    <div class="section-title"><h2>Budget per reparto</h2></div>
-    ${Object.entries(BUDGETS).map(([rep,b])=>{let x=byRep[rep];return `<div class="card" style="margin-bottom:10px">
-      <div class="line"><b>${rep}</b><span>${fmt(x)} / ${fmt(b)}</span></div>
-      <div class="progress"><i style="width:${Math.min(100,x/b*100)}%"></i></div>
-      <div class="muted" style="margin-top:7px">Residuo guida: ${fmt(b-x)}</div>
-    </div>`}).join("")}
-    <div class="section-title"><h2>Giocatori per club</h2><span class="muted">massimo 5</span></div>
-    ${clubCounterHTML(bought)}
 
-    <div class="section-title"><h2>Acquisti recenti</h2><span class="muted">${fmt(s)} spesi</span></div>
-    ${bought.length?`<div class="toolbar" style="margin-bottom:10px"><button id="undoLastPurchaseBtn" class="ghost">↩️ Annulla ultimo acquisto</button></div>`:""}
-    ${bought.length?bought.slice().sort((a,b)=>(state.purchases[b.id]?.at||0)-(state.purchases[a.id]?.at||0)).slice(0,8).map(playerRow).join(""):`<div class="card muted">Nessun acquisto ancora.</div>`}
+  const u23=bought.filter(p=>p.u23).length;
+  const u21=bought.filter(p=>p.u21).length;
+  const porCount=bought.filter(p=>p.reparto==="POR").length;
+  const movCount=bought.length-porCount;
+
+  const clubAlerts=SERIES_A_CLUBS
+    .map(([code])=>[code,countClub(code)])
+    .filter(([,count])=>count>5);
+
+  let alerts=[];
+  if(bought.length>25) alerts.push(`Rosa oltre limite: ${bought.length}/25`);
+  if(porCount>3) alerts.push(`Portieri oltre limite: ${porCount}/3`);
+  if(movCount>22) alerts.push(`Movimento oltre limite: ${movCount}/22`);
+  if(clubAlerts.length) alerts.push("Club oltre 5: "+clubAlerts.map(([c,n])=>`${c} ${n}/5`).join(", "));
+
+  const recent=bought.slice()
+    .sort((a,b)=>(state.purchases[b.id]?.at||0)-(state.purchases[a.id]?.at||0))
+    .slice(0,5);
+
+  $("#dashboardView").innerHTML=`
+    <div class="dashboard-cockpit">
+
+      <div class="dash-metrics">
+        <div class="dash-metric">
+          <span>Budget</span>
+          <strong>${fmt(rem)}</strong>
+          <small>residuo</small>
+        </div>
+        <div class="dash-metric">
+          <span>Rosa</span>
+          <strong>${bought.length}/25</strong>
+          <small>${porCount} POR · ${movCount} mov.</small>
+        </div>
+        <div class="dash-metric ${u23>=2?"metric-ok":"metric-warn"}">
+          <span>U23</span>
+          <strong>${u23}/2</strong>
+          <small>minimo</small>
+        </div>
+        <div class="dash-metric ${u21>=1?"metric-ok":"metric-warn"}">
+          <span>U21</span>
+          <strong>${u21}/1</strong>
+          <small>minimo</small>
+        </div>
+      </div>
+
+      <div class="dash-budget-grid">
+        ${Object.entries(BUDGETS).map(([rep,b])=>{
+          const x=byRep[rep], left=b-x, pct=Math.min(100,Math.max(0,x/b*100));
+          return `<div class="dash-budget">
+            <div class="dash-budget-top"><b>${rep}</b><span>${fmt(x)}/${fmt(b)}</span></div>
+            <div class="mini-progress"><i style="width:${pct}%"></i></div>
+            <small>${left>=0?`${fmt(left)} rim.`:`${fmt(Math.abs(left))} oltre`}</small>
+          </div>`;
+        }).join("")}
+      </div>
+
+      ${alerts.length?`<div class="dash-critical">⛔ ${alerts.join(" · ")}</div>`:""}
+
+      <div class="dash-club-title">
+        <b>20 CLUB SERIE A</b>
+        <span>max 5 giocatori</span>
+      </div>
+      ${clubCounterHTML(bought)}
+    </div>
+
+    <div class="recent-section">
+      <div class="recent-heading">
+        <div>
+          <div class="eyebrow">Cronologia</div>
+          <h2>Ultimi 5 acquisti</h2>
+        </div>
+        <span class="muted">${fmt(s)} spesi</span>
+      </div>
+
+      ${recent.length?`<div class="toolbar recent-toolbar"><button id="undoLastPurchaseBtn" class="ghost">↩️ Annulla ultimo</button></div>`:""}
+      ${recent.length?recent.map(playerRow).join(""):`<div class="card muted">Nessun acquisto ancora.</div>`}
+    </div>
   `;
+
   const undoBtn=$("#undoLastPurchaseBtn");
   if(undoBtn) undoBtn.onclick=undoLastPurchase;
 }
 
 function clubCounterHTML(bought){
-  if(!bought.length){
-    return `<div class="card muted">Nessun club ancora presente in rosa.</div>`;
-  }
-
   const counts={};
+  SERIES_A_CLUBS.forEach(([code])=>counts[code]=0);
   bought.forEach(p=>{
-    counts[p.club]=(counts[p.club]||0)+1;
+    if(Object.prototype.hasOwnProperty.call(counts,p.club)){
+      counts[p.club]+=1;
+    }
   });
 
-  const rows=Object.entries(counts)
-    .sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0]))
-    .map(([club,count])=>{
-      let cls="";
-      let label="";
-      if(count>5){
-        cls="club-stop";
-        label=" ⛔ STOP";
-      }else if(count===5){
-        cls="club-full";
-        label=" 🔴 PIENO";
-      }else if(count===4){
-        cls="club-warning";
-        label=" 🟠 ATTENZIONE";
-      }else{
-        cls="club-safe";
-      }
+  return `<div class="club-grid">
+    ${SERIES_A_CLUBS.map(([club,fullName])=>{
+      const count=counts[club]||0;
+      let cls="club-safe";
+      if(count>=5) cls="club-full";
+      else if(count===4) cls="club-warning";
 
-      const pct=Math.min(100,(count/5)*100);
-
-      return `<div class="club-counter ${cls}">
-        <div class="club-counter-head">
-          <b>${club}</b>
-          <span><strong>${count}/5</strong>${label}</span>
-        </div>
-        <div class="progress"><i style="width:${pct}%"></i></div>
+      return `<div class="club-tile ${cls}" title="${fullName}">
+        <b>${club}</b>
+        <strong>${count}/5</strong>
       </div>`;
-    }).join("");
-
-  return `<div class="card club-counter-card">${rows}</div>`;
+    }).join("")}
+  </div>`;
 }
 
 function playerRow(p){
