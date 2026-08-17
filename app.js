@@ -298,6 +298,7 @@ const state = {
   view:"dashboardView",
   filter:"Tutti",
   query:"",
+  clubFilter: safeJsonParse(localStorage.getItem("am_club_filter"),[])||[],
   strategy: localStorage.getItem("am_strategy") || "A",
   poolMode: localStorage.getItem("am_pool_mode") || "strategic",
   league: JSON.parse(localStorage.getItem("am_league")||"null"),
@@ -1574,6 +1575,74 @@ function playerRow(p){
     </div>
   </div>`;
 }
+function currentClubOptions(){
+  const names=Object.fromEntries(SERIES_A_CLUBS);
+  const codes=[...new Set(allPlayers.filter(p=>isMarketEligiblePlayer(p)&&p.club).map(p=>String(p.club)))];
+  return codes.map(code=>[code,names[code]||code]).sort((a,b)=>String(a[1]).localeCompare(String(b[1]),"it",{sensitivity:"base"}));
+}
+function selectedClubSet(){
+  return new Set(Array.isArray(state.clubFilter)?state.clubFilter.map(String):[]);
+}
+function playerMatchesClubFilter(p){
+  const selected=selectedClubSet();
+  return selected.size===0 || selected.has(String(p?.club||""));
+}
+function saveClubFilter(){
+  localStorage.setItem("am_club_filter",JSON.stringify(Array.isArray(state.clubFilter)?state.clubFilter:[]));
+}
+function clubFilterButtonLabel(){
+  const selected=Array.isArray(state.clubFilter)?state.clubFilter:[];
+  if(!selected.length) return `<span>Squadre</span><small>Tutte</small>`;
+  if(selected.length===1) return `<span>Squadre</span><small>${esc(selected[0])}</small>`;
+  return `<span>Squadre</span><small>${selected.length} scelte</small>`;
+}
+let clubFilterDraft=[];
+function renderClubFilterDialog(){
+  const dialog=$("#clubFilterDialog");
+  const body=$("#clubFilterDialogContent");
+  if(!dialog||!body)return;
+  const selected=new Set(clubFilterDraft.map(String));
+  const clubs=currentClubOptions();
+  body.innerHTML=`<div class="club-filter-dialog-body">
+    <div class="club-filter-dialog-head">
+      <div><div class="eyebrow">FILTRO GIOCATORI</div><h2>Squadre</h2><p>Seleziona una o più squadre. Il filtro si combina con ruolo, Tutti, Preferiti, Venduti e ricerca.</p></div>
+      <button type="button" class="ghost club-filter-close" id="closeClubFilter" aria-label="Chiudi">Chiudi</button>
+    </div>
+    <button type="button" class="club-filter-all ${selected.size===0?"active":""}" id="allClubsChoice">
+      <span>Tutte le squadre</span><small>${clubs.length} club</small>
+    </button>
+    <div class="club-filter-grid">
+      ${clubs.map(([code,name])=>`<button type="button" class="club-choice ${selected.has(code)?"active":""}" data-club="${escAttr(code)}">${kitHTML(code,"sm",name)}<span><b>${esc(name)}</b><small>${esc(code)}</small></span><i>${selected.has(code)?"✓":""}</i></button>`).join("")}
+    </div>
+    <div class="club-filter-dialog-actions">
+      <button type="button" class="ghost" id="clearClubFilter">Azzera filtro</button>
+      <button type="button" class="primary" id="applyClubFilter">Applica${selected.size?` · ${selected.size}`:""}</button>
+    </div>
+  </div>`;
+  $("#closeClubFilter").onclick=()=>dialog.close();
+  $("#allClubsChoice").onclick=()=>{clubFilterDraft=[];renderClubFilterDialog();};
+  $("#clearClubFilter").onclick=()=>{clubFilterDraft=[];renderClubFilterDialog();};
+  [...body.querySelectorAll(".club-choice")].forEach(btn=>btn.onclick=()=>{
+    const code=String(btn.dataset.club);
+    const set=new Set(clubFilterDraft.map(String));
+    if(set.has(code))set.delete(code);else set.add(code);
+    clubFilterDraft=[...set];
+    renderClubFilterDialog();
+  });
+  $("#applyClubFilter").onclick=()=>{
+    state.clubFilter=[...clubFilterDraft];
+    saveClubFilter();
+    dialog.close();
+    renderPlayers();
+  };
+}
+function openClubFilter(){
+  clubFilterDraft=Array.isArray(state.clubFilter)?[...state.clubFilter]:[];
+  renderClubFilterDialog();
+  $("#clubFilterDialog").showModal();
+}
+window.openClubFilter=openClubFilter;
+
 function playerViewData(){
   const visiblePool=state.filter==="Venduti"
     ? allPlayers
@@ -1589,7 +1658,8 @@ function playerViewData(){
       const visibleMarket=!p.outOfListone || !!state.purchases[p.id];
       okr=visibleMarket && playerMatchesRoleFilter(p,state.filter,state.poolMode) && !isSold(p.id);
     }
-    return okq&&okr;
+    const okc=playerMatchesClubFilter(p);
+    return okq&&okr&&okc;
   });
 
   const sorter=(a,b)=>{
@@ -1636,7 +1706,8 @@ function playerResultsInfo(list){
   return `${list.length} giocatori
     ${ROLE_DETAIL_FILTERS.has(state.filter)?" · principali + compatibili":""}
     ${state.filter==="Venduti"?" · assegnati ad altre squadre":""}
-    ${state.filter==="Preferiti"?" · watchlist personale":""}`;
+    ${state.filter==="Preferiti"?" · watchlist personale":""}
+    ${state.clubFilter?.length?` · ${state.clubFilter.length===1?state.clubFilter[0]:state.clubFilter.length+" squadre"}`:""}`;
 }
 
 function updatePlayerSearchResults(){
@@ -1653,12 +1724,13 @@ function renderPlayers(){
   const data=playerViewData();
 
   const modePool=state.poolMode==="all"?allPlayers:currentStrategicPlayers();
-  const availableModePool=modePool.filter(p=>isMarketEligiblePlayer(p)&&!isSold(p.id)&&!state.purchases[p.id]);
+  const clubModePool=modePool.filter(playerMatchesClubFilter);
+  const availableModePool=clubModePool.filter(p=>isMarketEligiblePlayer(p)&&!isSold(p.id)&&!state.purchases[p.id]);
   const offensiveDist={
-    W:modePool.filter(p=>primaryOffensiveRole(p)==="W").length,
-    T:modePool.filter(p=>primaryOffensiveRole(p)==="T").length,
-    A:modePool.filter(p=>primaryOffensiveRole(p)==="A").length,
-    Pc:modePool.filter(p=>primaryOffensiveRole(p)==="Pc").length
+    W:clubModePool.filter(p=>primaryOffensiveRole(p)==="W").length,
+    T:clubModePool.filter(p=>primaryOffensiveRole(p)==="T").length,
+    A:clubModePool.filter(p=>primaryOffensiveRole(p)==="A").length,
+    Pc:clubModePool.filter(p=>primaryOffensiveRole(p)==="Pc").length
   };
 
   $("#playersView").innerHTML=`
@@ -1682,7 +1754,7 @@ function renderPlayers(){
     <div class="market-universe-strip">
       <span>${state.poolMode==="all"?"Universo mercato":"Shortlist strategica"}</span>
       <b>${availableModePool.length} disponibili</b>
-      <b>${soldPlayers().length} venduti</b>
+      <b>${soldPlayers().filter(playerMatchesClubFilter).length} venduti</b>
     </div>
 
     ${state.poolMode==="strategic"?`
@@ -1691,15 +1763,20 @@ function renderPlayers(){
         <b>W ${offensiveDist.W}</b><b>T ${offensiveDist.T}</b><b>A ${offensiveDist.A}</b><b>Pc ${offensiveDist.Pc}</b>
       </div>`:""}
 
+    <div class="player-club-filter-row">
+      <button type="button" id="clubFilterBtn" class="club-filter-launch ${state.clubFilter?.length?"active":""}">${clubFilterButtonLabel()}</button>
+      ${state.clubFilter?.length?`<button type="button" id="quickClearClubFilter" class="club-filter-clear">Rimuovi filtro</button>`:""}
+    </div>
+
     <div class="chips">
       ${roles.map(r=>{
-        const poolForCount=r==="Venduti"?allPlayers:modePool;
+        const poolForCount=(r==="Venduti"?allPlayers:modePool).filter(playerMatchesClubFilter);
         const count=r==="Tutti"
           ? poolForCount.filter(p=>!isSold(p.id)).length
           : r==="Preferiti"
             ? poolForCount.filter(p=>!isSold(p.id)&&isWatchlisted(p.id)).length
           : r==="Venduti"
-            ? soldPlayers().length
+            ? poolForCount.filter(p=>isSold(p.id)).length
             : poolForCount.filter(p=>!isSold(p.id)&&playerMatchesRoleFilter(p,r,state.poolMode)).length;
         return `<button class="chip ${state.filter===r?"active":""}" data-role="${r}">
           ${r}<small>${count}</small>
@@ -1718,6 +1795,10 @@ function renderPlayers(){
     if(state.filter==="Venduti") state.filter="Tutti";
     renderPlayers();
   };
+
+  $("#clubFilterBtn").onclick=openClubFilter;
+  const quickClearClubFilter=$("#quickClearClubFilter");
+  if(quickClearClubFilter)quickClearClubFilter.onclick=()=>{state.clubFilter=[];saveClubFilter();renderPlayers();};
 
   $("#poolAll").onclick=()=>{
     state.poolMode="all";

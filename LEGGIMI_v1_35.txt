@@ -1,0 +1,29 @@
+Asta Mantra v1.35 — Filtro Squadre
+
+COSA CAMBIA
+- Nuovo bottone "Squadre" nel menu Giocatori.
+- Popup con selezione multipla dei club presenti nel listone attivo.
+- Il filtro Squadre funziona insieme a:
+  * Tutti
+  * Preferiti
+  * Venduti
+  * tutti i ruoli Mantra
+  * ricerca testuale
+  * Principali / Compatibili / Totale opzioni
+- I contatori dei filtri si aggiornano in base alle squadre selezionate.
+- Il filtro viene ricordato sul dispositivo.
+- "Rimuovi filtro" consente di tornare rapidamente a tutte le squadre.
+
+INSTALLAZIONE
+Sostituisci su GitHub SOLO:
+- index.html
+- app.js
+- styles.css
+- sw.js
+
+NON sostituire:
+- listone-current.json
+- scripts/update-listone.mjs
+- .github/workflows/update-listone.yml
+
+In questo modo il Listone Sync ufficiale già funzionante resta intatto.
