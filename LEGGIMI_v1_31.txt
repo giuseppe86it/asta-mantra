@@ -1,0 +1,26 @@
+ASTA MANTRA v1.31 — FINANCE READABILITY UI
+
+Aggiornamento grafico Opzione C approvata.
+
+COSA CAMBIA
+- Dashboard ridisegnata nello stile finance approvato.
+- Font e numeri principali aumentati per lettura rapida durante l'asta.
+- Contrasto tra sfondo e box aumentato.
+- Verde = positivo, ambra = attenzione, rosso = critico.
+- Rimossi gli emoji dall'interfaccia testuale; restano le icone SVG del menu.
+- Dashboard: Budget/Rosa/U23/U21, Budget per reparto, Crediti liberi, Leader crediti, Inflazione, Strategia, Pressione mercato, Modulo target, Panoramica lega, Giocatori per club, Ultimi 5 acquisti, Asta Live.
+- Aumentata la leggibilità anche in Giocatori, Rosa, Leghe, Formazioni e Asta Live.
+- Tutte le funzioni Safety & Control v1.30 restano disponibili nel pannello “Sistema & Controllo”.
+
+FILE DA SOSTITUIRE SU GITHUB
+1. index.html
+2. app.js
+3. styles.css
+4. sw.js
+
+Non sostituire players.js, market.js, formations.js, listone-current.json, scripts o .github.
+
+DOPO IL COMMIT
+Attendi 1-2 minuti. Apri il sito in Safari, aggiorna la pagina e poi riapri la PWA dalla schermata Home. Se vedi ancora la grafica precedente, chiudi completamente la PWA e riaprila.
+
+I dati locali di asta/lega/acquisti non vengono cancellati dalla patch.

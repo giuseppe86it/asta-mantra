@@ -179,10 +179,10 @@ const STRATEGIES = {
 };
 
 const AUCTION_PHASES = [
-  {id:"POR",label:"Portieri",icon:"🧤"},
-  {id:"DIF",label:"Difensori",icon:"🛡️"},
-  {id:"CEN",label:"Centrocampisti",icon:"⚙️"},
-  {id:"ATT",label:"Attaccanti",icon:"⚡"}
+  {id:"POR",label:"Portieri",icon:""},
+  {id:"DIF",label:"Difensori",icon:""},
+  {id:"CEN",label:"Centrocampisti",icon:""},
+  {id:"ATT",label:"Attaccanti",icon:""}
 ];
 const PHASE_ROLE_INDEX = {Por:0,Dd:1,Ds:1,Dc:1,B:1,E:2,M:2,C:2,W:3,T:3,A:3,Pc:3};
 const INTEL_FAMILIES = [
@@ -270,10 +270,10 @@ function setPieceHTML(club){
   if(!s)return "";
   const names=list=>list.map((name,i)=>`<span class="set-piece-name ${i===0?"first":""}">${i===0?"1. ":""}${esc(name)}</span>`).join("");
   return `<div class="set-piece-box">
-    <div class="set-piece-title"><span>✦</span><b>BONUS DA FERMO</b><small>gerarchie indicative</small></div>
-    <div class="set-piece-row penalties"><b>🎯 Rigori</b><div>${names(s.pens)}</div></div>
-    <div class="set-piece-row"><b>⚽ Punizioni</b><div>${names(s.free)}</div></div>
-    <div class="set-piece-row"><b>🚩 Corner</b><div>${names(s.corners)}</div></div>
+    <div class="set-piece-title"><span>SP</span><b>BONUS DA FERMO</b><small>gerarchie indicative</small></div>
+    <div class="set-piece-row penalties"><b>Rigori</b><div>${names(s.pens)}</div></div>
+    <div class="set-piece-row"><b>Punizioni</b><div>${names(s.free)}</div></div>
+    <div class="set-piece-row"><b>Corner</b><div>${names(s.corners)}</div></div>
     ${s.note?`<div class="set-piece-note">${esc(s.note)}</div>`:""}
   </div>`;
 }
@@ -381,11 +381,11 @@ function protectedPermission(action){
     if(p!==state.pin){if(p!==null)alert("PIN errato. Operazione annullata.");return false;}
     return true;
   }
-  return confirm(`⚠️ Modalità ASTA PROTETTA attiva.\n\nVuoi davvero ${action}?`);
+  return confirm(`Modalità ASTA PROTETTA attiva.\n\nVuoi davvero ${action}?`);
 }
 function blockedByProtection(action){
   if(!state.protectedMode)return false;
-  alert(`🔒 ASTA PROTETTA\n\n${action} è bloccato per evitare tocchi accidentali. Disattiva prima la protezione dalle Impostazioni.`);
+  alert(`ASTA PROTETTA\n\n${action} è bloccato per evitare tocchi accidentali. Disattiva prima la protezione dalle Impostazioni.`);
   return true;
 }
 function toggleProtectedMode(){
@@ -441,10 +441,10 @@ function openSafetyCenter(){
   $("#safetyDialogContent").innerHTML=`<div class="dialog-body safety-dialog-body">
     <div class="safety-modal-head"><div><div class="eyebrow">Safety & Control</div><h2>Registro e ripristino</h2></div><button class="ghost" onclick="closeSafetyDialog()">✕</button></div>
     <div class="safety-tabs-summary"><span>Registro <b>${state.operationLog.length}</b></span><span>Undo <b>${state.undoStack.length}/10</b></span><span>Snapshot <b>${state.snapshots.length}/8</b></span></div>
-    <div class="safety-action-row"><button class="primary" onclick="createSafetySnapshot('Snapshot manuale');closeSafetyDialog();refresh()">💾 Salva snapshot</button><button class="ghost" onclick="openFinalReport()">🏁 Report asta</button></div>
-    <section class="safety-section"><h3>↩️ Undo multiplo</h3>${undo.length?undo.map(x=>`<button class="undo-entry" onclick="undoOperation('${x.id}')"><span><b>${esc(x.label)}</b><small>${formatLogTime(x.at)}</small></span><strong>Ripristina</strong></button>`).join(""):`<div class="safety-empty">Nessuna operazione da annullare.</div>`}</section>
-    <section class="safety-section"><h3>💾 Snapshot</h3>${snaps.length?snaps.map(x=>`<button class="snapshot-entry" onclick="restoreSafetySnapshot('${x.id}')"><span><b>${esc(x.reason)}</b><small>${formatLogTime(x.at)}</small></span><strong>Apri</strong></button>`).join(""):`<div class="safety-empty">Nessuno snapshot.</div>`}</section>
-    <section class="safety-section"><h3>📜 Registro operazioni</h3>${logs.length?logs.map(x=>`<div class="log-entry"><span class="log-type">${esc(x.type)}</span><div><b>${esc(x.label)}</b><small>${formatLogTime(x.at)}</small></div></div>`).join(""):`<div class="safety-empty">Registro vuoto.</div>`}</section>
+    <div class="safety-action-row"><button class="primary" onclick="createSafetySnapshot('Snapshot manuale');closeSafetyDialog();refresh()">Salva snapshot</button><button class="ghost" onclick="openFinalReport()">Report asta</button></div>
+    <section class="safety-section"><h3>Undo multiplo</h3>${undo.length?undo.map(x=>`<button class="undo-entry" onclick="undoOperation('${x.id}')"><span><b>${esc(x.label)}</b><small>${formatLogTime(x.at)}</small></span><strong>Ripristina</strong></button>`).join(""):`<div class="safety-empty">Nessuna operazione da annullare.</div>`}</section>
+    <section class="safety-section"><h3>Snapshot</h3>${snaps.length?snaps.map(x=>`<button class="snapshot-entry" onclick="restoreSafetySnapshot('${x.id}')"><span><b>${esc(x.reason)}</b><small>${formatLogTime(x.at)}</small></span><strong>Apri</strong></button>`).join(""):`<div class="safety-empty">Nessuno snapshot.</div>`}</section>
+    <section class="safety-section"><h3>Registro operazioni</h3>${logs.length?logs.map(x=>`<div class="log-entry"><span class="log-type">${esc(x.type)}</span><div><b>${esc(x.label)}</b><small>${formatLogTime(x.at)}</small></div></div>`).join(""):`<div class="safety-empty">Registro vuoto.</div>`}</section>
   </div>`;
   $("#safetyDialog").showModal();
 }
@@ -455,11 +455,11 @@ function parseFormationUpdated(raw){
   return new Date(Number(m[3]),Number(m[2])-1,Number(m[1]),Number(m[4]||12),Number(m[5]||0));
 }
 function freshnessStatus(date,missingText="non disponibile"){
-  if(!date||Number.isNaN(date.getTime()))return {cls:"stale",icon:"⚠️",text:missingText};
+  if(!date||Number.isNaN(date.getTime()))return {cls:"stale",icon:"ATT",text:missingText};
   const h=Math.max(0,(Date.now()-date.getTime())/36e5);
-  if(h<=24)return {cls:"fresh",icon:"✅",text:h<1?"adesso":`${Math.round(h)} h fa`};
-  if(h<=72)return {cls:"aging",icon:"🟠",text:`${Math.round(h)} h fa`};
-  return {cls:"stale",icon:"🔴",text:`${Math.round(h/24)} gg fa`};
+  if(h<=24)return {cls:"fresh",icon:"OK",text:h<1?"adesso":`${Math.round(h)} h fa`};
+  if(h<=72)return {cls:"aging",icon:"MID",text:`${Math.round(h)} h fa`};
+  return {cls:"stale",icon:"OLD",text:`${Math.round(h/24)} gg fa`};
 }
 function dataFreshnessHTML(){
   const listDate=appliedListoneSync?.sourceKind==="official-fantacalcio"?new Date(appliedListoneSync.generatedAt):null;
@@ -476,13 +476,13 @@ function dataFreshnessHTML(){
 function watchlistDashboardHTML(){
   const list=allPlayers.filter(p=>isWatchlisted(p.id)&&isMarketEligiblePlayer(p)&&!state.purchases[p.id]&&!state.sold[p.id]);
   const top=list.slice().sort((a,b)=>liveMaxForPlayer(b).live-liveMaxForPlayer(a).live).slice(0,5);
-  return `<section class="watch-dashboard-card"><div class="watch-dashboard-head"><div><span>⭐ WATCHLIST</span><b>${list.length} target ancora disponibili</b></div><button class="ghost" onclick="switchView('playersView');state.filter='Preferiti';renderPlayers()">Apri</button></div>
-    ${top.length?`<div class="watch-dashboard-list">${top.map(p=>`<button onclick='openPlayer(${idArg(p.id)})'>${kitHTML(p.club,'xs',p.club)}<span><b>${esc(p.name)}</b><small>${p.club} · ${p.role}</small></span><strong>${fmt(liveMaxForPlayer(p).live)}<small>MAX live</small></strong></button>`).join("")}</div>`:`<div class="safety-empty">Tocca ☆ accanto a un giocatore per aggiungerlo.</div>`}
+  return `<section class="watch-dashboard-card"><div class="watch-dashboard-head"><div><span>WATCHLIST</span><b>${list.length} target ancora disponibili</b></div><button class="ghost" onclick="switchView('playersView');state.filter='Preferiti';renderPlayers()">Apri</button></div>
+    ${top.length?`<div class="watch-dashboard-list">${top.map(p=>`<button onclick='openPlayer(${idArg(p.id)})'>${kitHTML(p.club,'xs',p.club)}<span><b>${esc(p.name)}</b><small>${p.club} · ${p.role}</small></span><strong>${fmt(liveMaxForPlayer(p).live)}<small>MAX live</small></strong></button>`).join("")}</div>`:`<div class="safety-empty">Usa SEGUI accanto a un giocatore per aggiungerlo.</div>`}
   </section>`;
 }
 function safetyDashboardHTML(){
   const last=state.operationLog?.[state.operationLog.length-1];
-  return `<section class="safety-dashboard-card ${state.protectedMode?"protected":""}"><div class="safety-dashboard-status"><span>${state.protectedMode?"🔒":"🔓"}</span><div><b>${state.protectedMode?"ASTA PROTETTA":"Protezione disattivata"}</b><small>${last?`Ultima: ${esc(last.label)}`:"Registro pronto"}</small></div></div><div class="safety-dashboard-actions"><button class="${state.protectedMode?"protected-btn":"primary"}" onclick="toggleProtectedMode()">${state.protectedMode?"Sblocca":"Proteggi asta"}</button><button class="ghost" onclick="openSafetyCenter()">📜 Registro</button></div></section>`;
+  return `<section class="safety-dashboard-card ${state.protectedMode?"protected":""}"><div class="safety-dashboard-status"><span>${state.protectedMode?"LOCK":"OPEN"}</span><div><b>${state.protectedMode?"ASTA PROTETTA":"Protezione disattivata"}</b><small>${last?`Ultima: ${esc(last.label)}`:"Registro pronto"}</small></div></div><div class="safety-dashboard-actions"><button class="${state.protectedMode?"protected-btn":"primary"}" onclick="toggleProtectedMode()">${state.protectedMode?"Sblocca":"Proteggi asta"}</button><button class="ghost" onclick="openSafetyCenter()">Registro</button></div></section>`;
 }
 function finalReportData(){
   const owned=purchasedPlayers();
@@ -498,13 +498,13 @@ function openFinalReport(){
   const r=finalReportData();
   const topSpend=r.owned.slice().sort((a,b)=>Number(state.purchases[b.id]?.price||0)-Number(state.purchases[a.id]?.price||0)).slice(0,3);
   $("#safetyDialogContent").innerHTML=`<div class="dialog-body final-report-body"><div class="safety-modal-head"><div><div class="eyebrow">Report asta</div><h2>${r.owned.length===25?"Rosa completata":"Report parziale"}</h2></div><button class="ghost" onclick="closeSafetyDialog()">✕</button></div>
-    <div class="report-status ${r.valid?"ok":"warn"}">${r.valid?"✅ Rosa formalmente completa":"⏳ Rosa ancora in costruzione"} · ${r.owned.length}/25</div>
+    <div class="report-status ${r.valid?"ok":"warn"}">${r.valid?"Rosa formalmente completa":"Rosa ancora in costruzione"} · ${r.owned.length}/25</div>
     <div class="report-kpis"><div><span>Speso</span><b>${fmt(r.total)}</b></div><div><span>Residuo</span><b>${fmt(r.remaining)}</b></div><div><span>Media</span><b>${fmt(r.avg)}</b></div><div><span>Modulo</span><b>${activeStrategy().module}</b></div></div>
     <div class="report-reps">${["POR","DIF","CEN","ATT"].map(rep=>`<div><span>${rep}</span><b>${fmt(r.byRep[rep])}</b></div>`).join("")}</div>
-    <section class="report-section"><h3>💚 Migliori affari vs MAX</h3>${r.deals.slice(0,3).map(x=>`<div><span>${esc(x.p.name)}<small>${x.p.club} · MAX ${fmt(x.p.maxPrice)}</small></span><b>${fmt(x.price)} cr</b></div>`).join("")||'<div class="safety-empty">Nessun acquisto.</div>'}</section>
-    <section class="report-section"><h3>🔥 Investimenti principali</h3>${topSpend.map(p=>`<div><span>${esc(p.name)}<small>${p.club} · ${p.role}</small></span><b>${fmt(state.purchases[p.id]?.price)} cr</b></div>`).join("")||'<div class="safety-empty">Nessun acquisto.</div>'}</section>
-    <section class="report-section"><h3>⚠️ Sopra MAX</h3>${r.overs.slice(0,3).map(x=>`<div><span>${esc(x.p.name)}<small>MAX ${fmt(x.p.maxPrice)}</small></span><b>+${Math.round((x.ratio-1)*100)}%</b></div>`).join("")||'<div class="safety-empty">Nessun acquisto sopra MAX.</div>'}</section>
-    ${state.league?(()=>{const rows=state.league.teams.map(t=>({t,e:teamEconomy(t)})).sort((a,b)=>b.e.spent-a.e.spent);const myRank=rows.findIndex(x=>x.t.isMine)+1;return `<section class="report-section"><h3>🏆 Confronto lega</h3><div><span>Posizione per spesa<small>${state.league.size} squadre</small></span><b>${myRank}°</b></div><div><span>Leader spesa<small>${esc(rows[0]?.t.name||"—")}</small></span><b>${fmt(rows[0]?.e.spent||0)} cr</b></div><div><span>Leader crediti residui<small>${esc(rows.slice().sort((a,b)=>b.e.remaining-a.e.remaining)[0]?.t.name||"—")}</small></span><b>${fmt(rows.slice().sort((a,b)=>b.e.remaining-a.e.remaining)[0]?.e.remaining||0)} cr</b></div></section>`})():""}
+    <section class="report-section"><h3>Migliori affari vs MAX</h3>${r.deals.slice(0,3).map(x=>`<div><span>${esc(x.p.name)}<small>${x.p.club} · MAX ${fmt(x.p.maxPrice)}</small></span><b>${fmt(x.price)} cr</b></div>`).join("")||'<div class="safety-empty">Nessun acquisto.</div>'}</section>
+    <section class="report-section"><h3>Investimenti principali</h3>${topSpend.map(p=>`<div><span>${esc(p.name)}<small>${p.club} · ${p.role}</small></span><b>${fmt(state.purchases[p.id]?.price)} cr</b></div>`).join("")||'<div class="safety-empty">Nessun acquisto.</div>'}</section>
+    <section class="report-section"><h3>Sopra MAX</h3>${r.overs.slice(0,3).map(x=>`<div><span>${esc(x.p.name)}<small>MAX ${fmt(x.p.maxPrice)}</small></span><b>+${Math.round((x.ratio-1)*100)}%</b></div>`).join("")||'<div class="safety-empty">Nessun acquisto sopra MAX.</div>'}</section>
+    ${state.league?(()=>{const rows=state.league.teams.map(t=>({t,e:teamEconomy(t)})).sort((a,b)=>b.e.spent-a.e.spent);const myRank=rows.findIndex(x=>x.t.isMine)+1;return `<section class="report-section"><h3>Confronto lega</h3><div><span>Posizione per spesa<small>${state.league.size} squadre</small></span><b>${myRank}°</b></div><div><span>Leader spesa<small>${esc(rows[0]?.t.name||"—")}</small></span><b>${fmt(rows[0]?.e.spent||0)} cr</b></div><div><span>Leader crediti residui<small>${esc(rows.slice().sort((a,b)=>b.e.remaining-a.e.remaining)[0]?.t.name||"—")}</small></span><b>${fmt(rows.slice().sort((a,b)=>b.e.remaining-a.e.remaining)[0]?.e.remaining||0)} cr</b></div></section>`})():""}
     <button class="primary full-btn" onclick="closeSafetyDialog()">Chiudi report</button>
   </div>`;
   if(!$("#safetyDialog").open)$("#safetyDialog").showModal();
@@ -942,7 +942,7 @@ function getAuctionIntel(){return auctionIntelCache||(auctionIntelCache=buildAuc
 function invalidateAuctionIntel(){auctionIntelCache=null}
 
 function riskClass(risk){return risk>=70?"risk-red":risk>=50?"risk-orange":risk>=30?"risk-yellow":"risk-green"}
-function riskIcon(risk){return risk>=70?"🔴":risk>=50?"🟠":risk>=30?"🟡":"🟢"}
+function riskIcon(risk){return risk>=70?"ALTO":risk>=50?"MED":risk>=30?"BASSO":"OK"}
 function familyRiskForPlayer(p,intel=getAuctionIntel()){
   const ids=INTEL_FAMILIES.filter(f=>playerMatchesFamily(p,f)).map(f=>f.id);
   if(!ids.length)return {risk:0,ids:[]};
@@ -989,10 +989,10 @@ function updateSoldEconomicNote(){
 function signal(p, price){
   price=Number(price||0); let m=Number(p.maxPrice||0);
   if(!price) return {t:"Inserisci il prezzo",c:""};
-  if(price<=m*.75) return {t:"🟢 AFFARE",c:"green"};
-  if(price<=m*.92) return {t:"🟢 OK",c:"green"};
-  if(price<=m) return {t:"🟠 LIMITE",c:"orange"};
-  return {t:"⛔ STOP",c:"red"};
+  if(price<=m*.75) return {t:"AFFARE",c:"green"};
+  if(price<=m*.92) return {t:"OK",c:"green"};
+  if(price<=m) return {t:"LIMITE",c:"orange"};
+  return {t:"STOP",c:"red"};
 }
 function pctLabel(v,count=1){
   if(!count)return "—";
@@ -1015,10 +1015,12 @@ function renderDashboard(){
   const currentPhase=AUCTION_PHASES[phaseIndex()];
   const nextPhase=AUCTION_PHASES[phaseIndex()+1]||null;
   const leader=intel.economy[0];
-
-  const clubAlerts=SERIES_A_CLUBS
-    .map(([code])=>[code,countClub(code)])
-    .filter(([,count])=>count>5);
+  const clubAlerts=SERIES_A_CLUBS.map(([code])=>[code,countClub(code)]).filter(([,count])=>count>5);
+  const recent=bought.slice().sort((a,b)=>(state.purchases[b.id]?.at||0)-(state.purchases[a.id]?.at||0)).slice(0,5);
+  const scarcityOrder=["Dd","Ds","Dc","MC","T","WA","APc","Pc"];
+  const pressure=scarcityOrder.map(id=>({id,x:intel.scarcity[id],f:familyById(id)})).sort((a,b)=>(b.x?.risk||0)-(a.x?.risk||0))[0];
+  const opponents=intel.economy.filter(e=>!e.team.isMine).slice(0,5);
+  const watchCount=allPlayers.filter(p=>isWatchlisted(p.id)&&isMarketEligiblePlayer(p)&&!state.purchases[p.id]&&!state.sold[p.id]).length;
 
   let alerts=[];
   if(bought.length>25) alerts.push(`Rosa oltre limite: ${bought.length}/25`);
@@ -1027,163 +1029,91 @@ function renderDashboard(){
   if(clubAlerts.length) alerts.push("Club oltre 5: "+clubAlerts.map(([c,n])=>`${c} ${n}/5`).join(", "));
   if(mineEcon.remaining<mineEcon.minimumToFinish) alerts.push(`Crediti insufficienti per chiudere ${mineEcon.missing} slot a 1`);
 
-  const recent=bought.slice()
-    .sort((a,b)=>(state.purchases[b.id]?.at||0)-(state.purchases[a.id]?.at||0))
-    .slice(0,5);
+  const repLabel={POR:"Portieri",DIF:"Difensori",CEN:"Centrocampisti",ATT:"Attaccanti"};
+  const repCards=["POR","DIF","CEN","ATT"].map(rep=>{
+    const guide=Math.max(1,Number(budgets[rep]||0));
+    const pct=Math.min(100,Math.max(0,byRep[rep]/guide*100));
+    return `<div class="finance-rep"><span>${repLabel[rep]}</span><strong>${fmt(byRep[rep])}</strong><small>su ${fmt(guide)} crediti</small><i><em style="width:${pct}%"></em></i><b>${Math.round(pct)}%</b></div>`;
+  }).join("");
 
-  const scarcityOrder=["Dd","Ds","Dc","MC","T","WA","APc","Pc"];
-  const opponentPredictions=state.league
-    ? opponentTeams().map(t=>intel.predictions[t.id]).filter(Boolean)
-    : [];
+  const recentRows=recent.length?recent.map(p=>{
+    const tr=state.purchases[p.id]||{};
+    const time=tr.at?new Date(tr.at).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"}):"—";
+    return `<button class="finance-recent-row" onclick='openPlayer(${idArg(p.id)})'><time>${time}</time>${kitHTML(p.club,'xs',p.club)}<span><b>${esc(p.name)}</b><small>${p.club} · ${p.role}</small></span><strong>${fmt(tr.price)}<small>cr</small></strong></button>`;
+  }).join(""):`<div class="finance-empty">Nessun acquisto ancora.</div>`;
 
   $("#dashboardView").innerHTML=`
-    <div class="dashboard-cockpit auction-intel-dashboard">
-
-      <section class="auction-phase-card">
-        <div class="auction-phase-top">
-          <div><span class="strategy-kicker">FASE ASTA</span><strong>${currentPhase.icon} ${currentPhase.label}</strong></div>
-          <button id="openLiveBtn" class="live-launch">⚡ ASTA LIVE</button>
-        </div>
-        <div class="auction-phase-track">
-          ${AUCTION_PHASES.map((ph,i)=>`<button class="phase-step ${ph.id===state.auctionPhase?"active":""} ${i<phaseIndex()?"done":""}" onclick="setAuctionPhase('${ph.id}')"><span>${ph.icon}</span><b>${ph.id}</b></button>`).join("")}
-        </div>
-        ${nextPhase?`<button id="nextPhaseBtn" class="phase-next">Termina ${currentPhase.id} → passa a ${nextPhase.id}</button>`:`<div class="phase-complete">Ultimo reparto · fase ATT</div>`}
+    <div class="finance-dashboard">
+      <section class="finance-kpis">
+        <div class="finance-kpi finance-kpi-primary"><span>BUDGET RESIDUO</span><strong>${fmt(rem)}</strong><small>CREDITI</small></div>
+        <div class="finance-kpi"><span>ROSA</span><strong>${bought.length}<em>/25</em></strong><small>${porCount} POR · ${movCount} MOV.</small></div>
+        <div class="finance-kpi ${u23>=2?"ok":"warn"}"><span>U23</span><strong>${u23}<em>/2</em></strong><small>REQUISITO</small></div>
+        <div class="finance-kpi ${u21>=1?"ok":"warn"}"><span>U21</span><strong>${u21}<em>/1</em></strong><small>REQUISITO</small></div>
       </section>
 
-      ${safetyDashboardHTML()}
-      ${dataFreshnessHTML()}
-      ${listoneDashboardBadgeHTML()}
-
-      <div class="dash-metrics">
-        <div class="dash-metric">
-          <span>Budget</span><strong>${fmt(rem)}</strong><small>residuo</small>
-        </div>
-        <div class="dash-metric">
-          <span>Rosa</span><strong>${bought.length}/25</strong><small>${porCount} POR · ${movCount} mov.</small>
-        </div>
-        <div class="dash-metric ${u23>=2?"metric-ok":"metric-warn"}">
-          <span>U23</span><strong>${u23}/2</strong><small>minimo</small>
-        </div>
-        <div class="dash-metric ${u21>=1?"metric-ok":"metric-warn"}">
-          <span>U21</span><strong>${u21}/1</strong><small>minimo</small>
-        </div>
-      </div>
-
-      <section class="completion-card">
-        <div class="intel-section-head"><div><span>CONTROLLO ROSA</span><b>Quanto possiamo realmente spendere</b></div><strong>${fmt(mineEcon.maxNext)} MAX</strong></div>
-        <div class="completion-grid">
-          <div><span>Posti mancanti</span><b>${mineEcon.missing}</b></div>
-          <div><span>Minimo per finire</span><b>${fmt(mineEcon.minimumToFinish)}</b></div>
-          <div><span>Crediti liberi</span><b>${fmt(mineEcon.free)}</b></div>
-          <div><span>MAX prossimo</span><b>${fmt(mineEcon.maxNext)}</b></div>
-        </div>
-        <div class="completion-status"><span>A XI <b>${rec.A.full.filled}/11</b></span><span>B XI <b>${rec.B.full.filled}/11</b></span><span>U23 <b>${u23}/2</b></span><span>U21 <b>${u21}/1</b></span><span>Club <b>${clubAlerts.length?"⚠️":"✅"}</b></span></div>
-        <small>Il MAX conserva 1 credito per ognuno degli altri ${Math.max(0,mineEcon.missing-1)} slot da completare.</small>
+      <section class="finance-panel finance-budget-panel">
+        <div class="finance-panel-title"><b>BUDGET PER REPARTO</b><span>spesa / guida ${state.strategy}</span></div>
+        <div class="finance-rep-grid">${repCards}</div>
       </section>
 
-      <div class="strategy-engine ${rec.recommended===state.strategy?"strategy-hold":"strategy-switch"}">
-        <div class="strategy-engine-top">
-          <div>
-            <span class="strategy-kicker">STRATEGIA & MODULO</span>
-            <strong>${rec.headline}</strong>
-          </div>
-          <div class="strategy-scores">
-            <span class="${rec.recommended==="A"?"recommended":""}">A ${rec.A.score}</span>
-            <span class="${rec.recommended==="B"?"recommended":""}">B ${rec.B.score}</span>
-          </div>
-        </div>
-        <div class="strategy-buttons">
-          <button class="strategy-btn ${state.strategy==="A"?"active":""}" onclick="setStrategy('A')"><b>A</b><span>4-3-1-2</span></button>
-          <button class="strategy-btn ${state.strategy==="B"?"active":""}" onclick="setStrategy('B')"><b>B</b><span>4-3-3</span></button>
-        </div>
-        <div class="strategy-reason">${rec.reason}</div>
-        <div class="strategy-market-status">
-          <span>Venduti <b>${soldPlayers().length}</b></span>
-          <span>A mercato <b>${Math.round(rec.A.market.value*100)}%</b></span>
-          <span>B mercato <b>${Math.round(rec.B.market.value*100)}%</b></span>
-        </div>
-        <div class="full-market-mini">
-          <span>Listone algoritmo</span><b>${allPlayers.length} giocatori</b>
-          <small>${allPlayers.filter(p=>!state.sold[p.id]&&!state.purchases[p.id]).length} ancora disponibili</small>
-        </div>
-      </div>
+      <section class="finance-intel-grid">
+        <div class="finance-stat"><span>CREDITI LIBERI REALI</span><strong>${fmt(mineEcon.free)}</strong><small>MAX prossimo ${fmt(mineEcon.maxNext)}</small></div>
+        <div class="finance-stat"><span>LEADER CREDITI</span><b>${leader?esc(leader.team.name):"—"}</b><strong>${leader?fmt(leader.remaining):"—"}</strong><small>crediti residui</small></div>
+        <div class="finance-stat finance-stat-warn"><span>INFLAZIONE ASTA</span><strong>${pctLabel(intel.overallInflation.pct,intel.overallInflation.count)}</strong><small>vs FVM ×2,5</small></div>
+      </section>
 
-      <section class="intel-card inflation-card hybrid-intelligence-card">
-        <div class="hybrid-card-title"><span class="hybrid-section-icon">◉</span><b>AUCTION INTELLIGENCE</b><span class="hybrid-phase-pill">${currentPhase.icon} FASE ${currentPhase.id}</span></div>
-        <div class="hybrid-intel-main">
-          <div><span>Inflazione reale</span><b class="${intel.overallInflation.pct>10?"inflation-up":intel.overallInflation.pct<-10?"inflation-down":""}">${pctLabel(intel.overallInflation.pct,intel.overallInflation.count)}</b><small>vs FVM ×2,5</small></div>
-          <div><span>Leader crediti</span><b>${leader?esc(leader.team.name):"—"}</b><small>${leader?fmt(leader.remaining)+" cr":"—"}</small></div>
-          <div><span>Crediti liberi reali</span><b>${fmt(mineEcon.free)}</b><small>su ${fmt(mineEcon.remaining)}</small></div>
-          <div><span>MAX prossimo</span><b>${fmt(mineEcon.maxNext)}</b><small>${mineEcon.missing} posti</small></div>
+      <section class="finance-strategy-grid">
+        <div class="finance-strategy-card"><span>STRATEGIA CONSIGLIATA</span><strong>${rec.recommended==="A"?"4-3-1-2":"4-3-3"}</strong><small>${rec.recommended===state.strategy?"strategia attiva coerente":"valuta il cambio strategia"}</small></div>
+        <div class="finance-strategy-card ${pressure?.x?.risk>=60?"warn":""}"><span>PRESSIONE MERCATO</span><strong>${pressure?.f?.label||currentPhase.label}</strong><div class="finance-pressure"><i style="width:${Math.min(100,pressure?.x?.risk||0)}%"></i></div><small>${pressure?.x?.risk||0}/100 · ${pressure?.x?.remaining||0} disponibili</small></div>
+        <div class="finance-strategy-card"><span>MODULO TARGET</span><strong>${st.module}</strong><small>${state.strategy==="A"?"Strategia A":"Strategia B"}</small></div>
+      </section>
+
+      <section class="finance-market-grid">
+        <div class="finance-panel finance-league-overview">
+          <div class="finance-panel-title"><b>PANORAMICA LEGA</b><span>${state.league?state.league.size+" squadre":"lega non creata"}</span></div>
+          ${leader?`<div class="finance-leader"><span>PIÙ CREDITI RESIDUI</span><b>${esc(leader.team.name)}</b><strong>${fmt(leader.remaining)}</strong></div>`:`<div class="finance-empty">Crea una lega per il confronto avversari.</div>`}
+          ${opponents.length?`<div class="finance-opponents"><span>CREDITI RESIDUI AVVERSARI</span>${opponents.map((e,i)=>`<div><b>${i+1}</b><span>${esc(e.team.name)}</span><strong>${fmt(e.remaining)}</strong></div>`).join("")}</div>`:""}
         </div>
-        <div class="hybrid-rep-title">Spesa nostra per reparto</div>
-        <div class="hybrid-rep-bars">
-          ${["POR","DIF","CEN","ATT"].map(rep=>{const total=Math.max(1,s);const pct=byRep[rep]/total*100;return `<div><span>${rep}</span><b>${fmt(byRep[rep])}</b><i><em style="width:${pct}%"></em></i></div>`}).join("")}
+        <div class="finance-panel finance-club-panel">
+          <div class="finance-panel-title"><b>GIOCATORI PER CLUB</b><span>quota massima 5</span></div>
+          ${clubCounterHTML(bought)}
         </div>
       </section>
 
-      <section class="intel-card scarcity-card">
-        <div class="intel-section-head"><div><span>SCARSITÀ + DOMANDA</span><b>Mercato residuo e pressione avversari</b></div><strong>${state.league?`${opponentTeams().length} rivali`:"—"}</strong></div>
-        <div class="scarcity-grid">
-          ${scarcityOrder.map(id=>{const f=familyById(id),x=intel.scarcity[id];return `<div class="scarcity-tile ${riskClass(x.risk)}"><span>${riskIcon(x.risk)} ${f.label}</span><b>${x.risk}</b><small>${x.remaining}/${x.total} · infl ${pctLabel(x.inflation.pct,x.inflation.count)}</small><small>${x.likelyTeams} squadre · domanda ${Math.round(x.demandNorm*100)}%</small></div>`}).join("")}
+      <section class="finance-bottom-grid">
+        <div class="finance-panel finance-recent-panel">
+          <div class="finance-panel-title"><b>ULTIMI 5 ACQUISTI</b><span>${fmt(s)} crediti spesi</span></div>
+          <div class="finance-recent-list">${recentRows}</div>
+          ${recent.length?`<button id="undoLastPurchaseBtn" class="finance-text-btn">Annulla ultimo acquisto</button>`:""}
         </div>
-        ${!state.league?'<small class="intel-note">Crea la lega per attivare la domanda prevista degli avversari.</small>':''}
-      </section>
-
-      <section class="intel-card economy-card">
-        <div class="intel-section-head">
-          <div><span>POTENZA ECONOMICA</span><b>Classifica crediti residui</b></div>
-          <strong>${leader?`${esc(leader.team.name)} · ${fmt(leader.remaining)}`:"—"}</strong>
-        </div>
-        <div class="economy-ranking">
-          ${intel.economy.map((e,i)=>`<div class="economy-row ${i===0?"credit-leader":""} ${e.team.isMine?"mine-row":""}">
-            <span class="rank">${i===0?"💰":i+1}</span>
-            <div><b>${esc(e.team.name)}</b><small>${e.items.length}/25 · ${e.missing} posti</small></div>
-            <div class="economy-values"><b>${fmt(e.remaining)} cr</b><small>MAX ${fmt(e.maxNext)}</small></div>
-          </div>`).join("")}
+        <div class="finance-panel finance-live-panel">
+          <div class="finance-panel-title"><b>ASTA LIVE</b><span>accesso rapido</span></div>
+          <div class="finance-live-main"><span>FASE ATTIVA</span><strong>${currentPhase.id}</strong><small>${currentPhase.label} · ${mineEcon.missing} posti mancanti</small></div>
+          <div class="finance-live-sub"><span>MAX PROSSIMO</span><b>${fmt(mineEcon.maxNext)}</b></div>
+          <div class="finance-live-sub"><span>WATCHLIST</span><b>${watchCount}</b></div>
+          <button id="openLiveBtn" class="primary finance-live-btn">ENTRA IN ASTA</button>
+          <div class="finance-phase-track">${AUCTION_PHASES.map((ph,i)=>`<button class="${ph.id===state.auctionPhase?"active":""} ${i<phaseIndex()?"done":""}" onclick="setAuctionPhase('${ph.id}')">${ph.id}</button>`).join("")}</div>
+          ${nextPhase?`<button id="nextPhaseBtn" class="finance-text-btn">Termina ${currentPhase.id} · passa a ${nextPhase.id}</button>`:""}
         </div>
       </section>
 
-      <section class="intel-card league-spend-card">
-        <div class="intel-section-head"><div><span>SPESA LEGA PER REPARTO</span><b>Totale registrato</b></div><strong>${fmt(Object.values(intel.leagueSpend).reduce((a,b)=>a+b,0))}</strong></div>
-        <div class="rep-spend-bars">
-          ${["POR","DIF","CEN","ATT"].map(rep=>{const total=Math.max(1,Object.values(intel.leagueSpend).reduce((a,b)=>a+b,0));const pct=intel.leagueSpend[rep]/total*100;return `<div><span>${rep}<b>${fmt(intel.leagueSpend[rep])}</b></span><i><em style="width:${pct}%"></em></i></div>`}).join("")}
+      ${alerts.length?`<div class="dash-critical">${alerts.join(" · ")}</div>`:""}
+
+      <details class="finance-system-details">
+        <summary><span>SISTEMA & CONTROLLO</span><small>protezione, dati, watchlist, report</small></summary>
+        <div class="finance-system-content">
+          ${safetyDashboardHTML()}
+          ${dataFreshnessHTML()}
+          ${listoneDashboardBadgeHTML()}
+          ${watchlistDashboardHTML()}
+          <button class="final-report-launch" onclick="openFinalReport()"><span>REPORT ASTA</span><b>${bought.length===25?"Rosa completata · apri report":"Report parziale · "+bought.length+"/25"}</b><strong>›</strong></button>
         </div>
-      </section>
+      </details>
 
-      ${opponentPredictions.length?`<section class="intel-card module-forecast-card">
-        <div class="intel-section-head"><div><span>MODULI AVVERSARI</span><b>Previsione progressiva per fase</b></div><strong>${currentPhase.id}</strong></div>
-        <div class="module-forecast-list">
-          ${opponentPredictions.map(pred=>`<div><span><b>${esc(pred.team.name)}</b><small>${Math.round(pred.confidence*100)}% conf.</small></span><strong>${pred.top?.module.name||"—"}<small>${Math.round((pred.top?.prob||0)*100)}%</small></strong></div>`).join("")}
-        </div>
-      </section>`:""}
-
-      ${watchlistDashboardHTML()}
-      <button class="final-report-launch" onclick="openFinalReport()"><span>🏁 REPORT ASTA</span><b>${bought.length===25?"Rosa completata · apri report":"Report parziale · "+bought.length+"/25"}</b><strong>›</strong></button>
-
-      <div class="dash-budget-label"><b>Budget guida ${state.strategy} · ${st.module}</b><span>${fmt(DEFAULT_BUDGET)} crediti</span></div>
-      <div class="dash-budget-grid">
-        ${Object.entries(budgets).map(([rep,b])=>{
-          const x=byRep[rep], left=b-x, pct=Math.min(100,Math.max(0,x/b*100));
-          return `<div class="dash-budget"><div class="dash-budget-top"><b>${rep}</b><span>${fmt(x)}/${fmt(b)}</span></div><div class="mini-progress"><i style="width:${pct}%"></i></div><small>${left>=0?`${fmt(left)} rim.`:`${fmt(Math.abs(left))} oltre`}</small></div>`;
-        }).join("")}
-      </div>
-
-      ${alerts.length?`<div class="dash-critical">⛔ ${alerts.join(" · ")}</div>`:""}
-
-      <div class="dash-club-title"><b>20 CLUB SERIE A</b><span>max 5 giocatori</span></div>
-      ${clubCounterHTML(bought)}
-
-      <details class="dashboard-plan-details">
-        <summary><span>🎯 Piano strategico completo</span><small>apri / chiudi</small></summary>
+      <details class="dashboard-plan-details finance-plan-details">
+        <summary><span>PIANO STRATEGICO COMPLETO</span><small>apri / chiudi</small></summary>
         <div id="dashboardPlanContent"></div>
       </details>
-    </div>
-
-    <div class="recent-section">
-      <div class="recent-heading"><div><div class="eyebrow">Cronologia</div><h2>Ultimi 5 acquisti</h2></div><span class="muted">${fmt(s)} spesi</span></div>
-      ${recent.length?`<div class="toolbar recent-toolbar"><button id="undoLastPurchaseBtn" class="ghost">↩️ Annulla ultimo</button></div>`:""}
-      ${recent.length?recent.map(playerRow).join(""):`<div class="card muted">Nessun acquisto ancora.</div>`}
     </div>`;
 
   const undoBtn=$("#undoLastPurchaseBtn");if(undoBtn)undoBtn.onclick=undoLastPurchase;
@@ -1192,7 +1122,6 @@ function renderDashboard(){
   const listoneBtn=$("#dashboardListoneBtn");if(listoneBtn)listoneBtn.onclick=()=>switchView("playersView");
   renderPlan("#dashboardPlanContent");
 }
-
 function clubCounterHTML(bought){
   const counts={};
   SERIES_A_CLUBS.forEach(([code])=>counts[code]=0);
@@ -1324,7 +1253,7 @@ function renderFormationsView(){
       <div><div class="eyebrow">Serie A 26/27</div><h2>Probabili Formazioni</h2></div>
       <span class="muted">${formations.length} squadre</span>
     </div>
-    <div class="card formations-page-note">⚽ Le formazioni sono state spostate qui per lasciare la Dashboard dedicata al controllo live dell'asta. Tocca una squadra per aprire il campo completo.</div>
+    <div class="card formations-page-note">Le formazioni sono state spostate qui per lasciare la Dashboard dedicata al controllo live dell'asta. Tocca una squadra per aprire il campo completo.</div>
     ${formations.length?`<div class="formations-dedicated-grid">${sortedFormations().map(f=>formationListCardHTML(f,formations.indexOf(f))).join("")}</div>`:`<div class="card muted">Formazioni non disponibili.</div>`}`;
 }
 
@@ -1401,7 +1330,7 @@ function liveCandidateList(query=""){
 }
 function liveResultHTML(p){
   const live=liveMaxForPlayer(p);
-  return `<button class="live-result" data-id="${p.id}"><span class="live-result-main">${kitHTML(p.club,'sm',p.club)}<span><b>${isWatchlisted(p.id)?"★ ":""}${esc(p.name)}</b><small>${p.club} · ${p.role} · FVM ${p.fvm||0}</small></span></span><strong>${riskIcon(live.risk)} ${fmt(live.live)}<small>MAX live</small></strong></button>`;
+  return `<button class="live-result" data-id="${p.id}"><span class="live-result-main">${kitHTML(p.club,'sm',p.club)}<span><b>${esc(p.name)}</b><small>${p.club} · ${p.role} · FVM ${p.fvm||0}</small></span></span><strong>${riskIcon(live.risk)} ${fmt(live.live)}<small>MAX live</small></strong></button>`;
 }
 function updateLiveResults(query=""){
   const list=liveCandidateList(query);
@@ -1416,7 +1345,7 @@ function selectLivePlayer(id){
   const comp=live.competition.slice(0,5);
   const target=$("#liveSelected");if(!target)return;
   target.innerHTML=`<div class="live-player-card">
-    <div class="live-player-head"><div class="live-player-identity">${kitHTML(p.club,'live',p.club)}<div><span>${p.club} · ${p.role}</span><b>${esc(p.name)}</b><button type="button" class="live-watch ${isWatchlisted(p.id)?"active":""}" onclick='toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"★ WATCHLIST":"☆ WATCHLIST"}</button></div></div><strong>${riskIcon(live.risk)} ${live.risk}</strong></div>
+    <div class="live-player-head"><div class="live-player-identity">${kitHTML(p.club,'live',p.club)}<div><span>${p.club} · ${p.role}</span><b>${esc(p.name)}</b><button type="button" class="live-watch ${isWatchlisted(p.id)?"active":""}" onclick='toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"SEGUITO":"SEGUI"}</button></div></div><strong>${riskIcon(live.risk)} ${live.risk}</strong></div>
     <div class="live-price-grid">
       <div><span>FVM</span><b>${p.fvm||0}</b></div>
       <div><span>MAX iniziale</span><b>${fmt(live.base)}</b></div>
@@ -1484,16 +1413,16 @@ function listoneSyncCardHTML(){
   return `<section class="listone-sync-card ${official?"synced":"bootstrap"}">
     <div class="listone-sync-copy">
       <span class="listone-sync-kicker">LISTONE FANTACALCIO</span>
-      <b>${official?"✅ Sincronizzato":"⏳ In attesa del primo sync GitHub"}</b>
+      <b>${official?"Sincronizzato":"In attesa del primo sync GitHub"}</b>
       <small>${active} attivi · ${official?`ultimo controllo ${listoneSyncAgeLabel()}`:"la base locale resta utilizzabile"}</small>
     </div>
-    <button id="updateListoneBtn" class="listone-sync-btn">🔄 Aggiorna</button>
+    <button id="updateListoneBtn" class="listone-sync-btn">Aggiorna</button>
   </section>`;
 }
 function listoneDashboardBadgeHTML(){
   const official=listoneSyncIsOfficial();
   return `<button class="listone-dashboard-status ${official?"ok":""}" id="dashboardListoneBtn">
-    <span>${official?"✅":"⏳"} LISTONE</span>
+    <span>${official?"SYNC":"WAIT"} LISTONE</span>
     <b>${official?listoneSyncAgeLabel():"sync da attivare"}</b>
   </button>`;
 }
@@ -1555,7 +1484,7 @@ async function checkListoneUpdate(){
     pendingListoneSnapshot=snapshot;
     if(!diff.changes.length){
       openListoneSyncDialog(`<div class="dialog-body listone-sync-dialog">
-        <div class="listone-sync-modal-head"><div><span class="eyebrow">LISTONE UFFICIALE</span><h2>Sei già aggiornato ✅</h2></div><button class="ghost" onclick="closeListoneSyncDialog()">✕</button></div>
+        <div class="listone-sync-modal-head"><div><span class="eyebrow">LISTONE UFFICIALE</span><h2>Sei già aggiornato</h2></div><button class="ghost" onclick="closeListoneSyncDialog()">✕</button></div>
         <div class="listone-sync-success-box"><b>${snapshot.activePlayers} giocatori attivi</b><span>Snapshot ${listoneSyncDateLabel(snapshot.generatedAt)}</span></div>
         <p class="muted">Non risultano differenze rispetto ai dati applicati nell'app.</p><button class="primary full-btn" onclick="closeListoneSyncDialog()">Continua</button>
       </div>`);return;
@@ -1571,14 +1500,14 @@ async function checkListoneUpdate(){
         ${preview.map(x=>`<div class="sync-change-row"><span class="sync-change-tag ${x.type}">${syncChangeTag(x.type)}</span><div><b>${esc(x.name)}</b><small>${esc(x.text)}</small></div></div>`).join("")}
         ${diff.changes.length>preview.length?`<div class="muted sync-more">+ altre ${diff.changes.length-preview.length} modifiche</div>`:""}
       </div>
-      <div class="sync-preserve-note">🔒 Restano intatti acquisti, Venduti, prezzi pagati, squadre, lega e MAX strategici personalizzati.</div>
+      <div class="sync-preserve-note">Restano intatti acquisti, Venduti, prezzi pagati, squadre, lega e MAX strategici personalizzati.</div>
       <div class="sync-dialog-actions"><button class="ghost" onclick="closeListoneSyncDialog()">Annulla</button><button class="primary" id="applyListoneSyncBtn">Aggiorna listone</button></div>
     </div>`);
     $("#applyListoneSyncBtn").onclick=applyPendingListoneUpdate;
   }catch(err){
     openListoneSyncDialog(`<div class="dialog-body listone-sync-dialog">
       <div class="listone-sync-modal-head"><div><span class="eyebrow">NESSUNA MODIFICA APPLICATA</span><h2>Controllo non riuscito</h2></div><button class="ghost" onclick="closeListoneSyncDialog()">✕</button></div>
-      <div class="listone-sync-warning">⚠️ ${esc(err?.message||"Errore di rete")}</div>
+      <div class="listone-sync-warning">${esc(err?.message||"Errore di rete")}</div>
       <p class="muted">Per sicurezza l'app mantiene l'ultimo listone valido. L'asta e le rose non vengono modificate.</p>
       <button class="primary full-btn" onclick="closeListoneSyncDialog()">Chiudi</button>
     </div>`);
@@ -1591,7 +1520,7 @@ function applyPendingListoneUpdate(){
   allPlayers=buildAllPlayers();pendingListoneSnapshot=null;invalidateAuctionIntel();refresh();
   openListoneSyncDialog(`<div class="dialog-body listone-sync-dialog">
     <div class="listone-sync-modal-head"><div></div><button class="ghost" onclick="closeListoneSyncDialog()">✕</button></div>
-    <div class="listone-sync-finished"><span>✅</span><h2>Listone aggiornato</h2><p>${snapshot.activePlayers} giocatori attivi · ${listoneSyncDateLabel(snapshot.generatedAt)}</p></div>
+    <div class="listone-sync-finished"><span>OK</span><h2>Listone aggiornato</h2><p>${snapshot.activePlayers} giocatori attivi · ${listoneSyncDateLabel(snapshot.generatedAt)}</p></div>
     <div class="listone-sync-success-box"><b>Dati asta preservati</b><span>Ricalcolati scarsità, mercato, inflazione e Auction Intelligence.</span></div>
     <button class="primary full-btn" onclick="closeListoneSyncDialog()">Continua</button>
   </div>`);
@@ -1605,7 +1534,7 @@ function playerRow(p){
     <div class="player-main">
       ${kitHTML(p.club,'row',p.club)}
       <div class="player-copy">
-        <h3>${p.name}<button type="button" class="watch-btn ${isWatchlisted(p.id)?"active":""}" aria-label="Watchlist" onclick='event.stopPropagation();toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"★":"☆"}</button>
+        <h3>${p.name}<button type="button" class="watch-btn ${isWatchlisted(p.id)?"active":""}" aria-label="Watchlist" onclick='event.stopPropagation();toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"SEG":"+"}</button>
           ${p.notes&&p.notes.includes("TARGET")?'<span class="badge target">TARGET</span>':""}
           ${strategic?'<span class="badge strategic-badge">200</span>':'<span class="badge listone-badge">LISTONE</span>'}
           ${p.outOfListone?'<span class="badge out-listone-badge">FUORI LISTONE</span>':""}
@@ -1803,7 +1732,7 @@ function openPlayer(id){
   $("#playerDialogContent").innerHTML=`<div class="dialog-body">
     <div class="section-title">
       <div class="player-dialog-title">${kitHTML(p.club,'dialog',p.club)}<div><div class="eyebrow">${p.club} · ${p.role} · ${strategic?"STRATEGICO":"LISTONE"}</div><h2>${p.name}</h2></div></div>
-      <div class="player-title-actions"><button type="button" class="watch-detail ${isWatchlisted(p.id)?"active":""}" onclick='toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"★ Seguito":"☆ Segui"}</button><button class="ghost" onclick="playerDialog.close()">✕</button></div>
+      <div class="player-title-actions"><button type="button" class="watch-detail ${isWatchlisted(p.id)?"active":""}" onclick='toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"Seguito":"Segui"}</button><button class="ghost" onclick="playerDialog.close()">✕</button></div>
     </div>
     <div class="grid">
       <div class="card metric"><span>FVM</span><strong>${p.fvm||0}</strong></div>
@@ -1829,12 +1758,12 @@ function openPlayer(id){
     </div>
     <div class="dialog-actions">
       ${b
-        ? `<button class="ghost" onclick='editPurchase(${idArg(p.id)})'>✏️ Modifica acquisto</button><button class="dangerbtn" onclick='removePurchase(${idArg(p.id)})'>Annulla acquisto</button>`
+        ? `<button class="ghost" onclick='editPurchase(${idArg(p.id)})'>Modifica acquisto</button><button class="dangerbtn" onclick='removePurchase(${idArg(p.id)})'>Annulla acquisto</button>`
         : sold
-          ? `<button class="ghost" onclick='editSold(${idArg(p.id)})'>✏️ Modifica vendita</button><button class="ghost" onclick='restoreSold(${idArg(p.id)})'>↩️ Ripristina mercato</button>`
+          ? `<button class="ghost" onclick='editSold(${idArg(p.id)})'>Modifica vendita</button><button class="ghost" onclick='restoreSold(${idArg(p.id)})'>Ripristina mercato</button>`
           : p.outOfListone
             ? `<button class="ghost" onclick="playerDialog.close()">Chiudi</button>`
-            : `<button class="primary" onclick='startPurchase(${idArg(p.id)})'>Acquista</button><button class="soldbtn" onclick='markSold(${idArg(p.id)})'>🔒 Venduto</button>`
+            : `<button class="primary" onclick='startPurchase(${idArg(p.id)})'>Acquista</button><button class="soldbtn" onclick='markSold(${idArg(p.id)})'>Venduto</button>`
       }
     </div>
   </div>`;
@@ -2203,7 +2132,7 @@ function renderLeagues(){
     $("#leagueView").innerHTML=`
       <div class="section-title"><h2>Leghe</h2></div>
       <div class="card league-empty-state">
-        <div class="league-empty-icon">🏆</div>
+        <div class="league-empty-icon">L</div>
         <h3>Nessuna lega creata</h3>
         <p class="muted">Crea la lega per assegnare i giocatori venduti, calcolare crediti residui, spesa per reparto e prevedere i moduli degli avversari.</p>
         <button id="createLeagueBtn" class="primary">＋ Crea lega</button>
@@ -2231,11 +2160,11 @@ function renderLeagues(){
     </div>
 
     <details class="league-edit-details">
-      <summary><span>⚙️ Rinomina lega e squadre</span><small>${league.size} partecipanti</small></summary>
+      <summary><span>Rinomina lega e squadre</span><small>${league.size} partecipanti</small></summary>
       <div class="card league-edit-card">
         <label>Nome lega<input id="editLeagueName" type="text" maxlength="40" value="${esc(league.name)}"></label>
         <div class="league-team-inputs">
-          ${league.teams.map((t,i)=>`<label><span>${t.isMine?"⭐ Mia squadra":`Squadra ${i+1}`}</span><input class="team-name-input" data-team-id="${t.id}" maxlength="32" value="${esc(t.name)}"></label>`).join("")}
+          ${league.teams.map((t,i)=>`<label><span>${t.isMine?"Mia squadra":`Squadra ${i+1}`}</span><input class="team-name-input" data-team-id="${t.id}" maxlength="32" value="${esc(t.name)}"></label>`).join("")}
         </div>
         <div class="dialog-actions league-edit-actions"><button id="deleteLeagueBtn" class="dangerbtn">Elimina lega</button><button id="saveLeagueNamesBtn" class="primary">Salva nomi</button></div>
       </div>
@@ -2253,7 +2182,7 @@ function renderLeagues(){
         }).filter(Boolean).sort((a,b)=>b.row.pressure-a.row.pressure).slice(0,4);
         return `<details class="league-team-card intelligence-team-card ${isLeader?"credit-leader-card":""}" ${team.isMine?"open":""}>
           <summary>
-            <div><b>${isLeader?"💰 ":""}${esc(team.name)}</b>${team.isMine?'<span class="mine-badge">MIA</span>':''}${isLeader?'<span class="leader-badge">LEADER CREDITI</span>':''}</div>
+            <div><b>${isLeader?"TOP ":""}${esc(team.name)}</b>${team.isMine?'<span class="mine-badge">MIA</span>':''}${isLeader?'<span class="leader-badge">LEADER CREDITI</span>':''}</div>
             <span>${econ.items.length}/25 · ${fmt(econ.remaining)} cr · MAX ${fmt(econ.maxNext)}</span>
           </summary>
           <div class="league-roster-body">
@@ -2297,20 +2226,20 @@ function renderLeagues(){
 function renderSettings(){
   $("#settingsView").innerHTML=`<div class="section-title"><h2>Impostazioni</h2></div>
     <div class="card safety-settings-card ${state.protectedMode?"protected":""}">
-      <div class="safety-settings-head"><span>${state.protectedMode?"🔒":"🔓"}</span><div><h3>Modalità Asta protetta</h3><p>${state.protectedMode?"Reset, import backup ed eliminazione lega sono bloccati.":"Attivala prima dell'asta per evitare operazioni distruttive accidentali."}</p></div></div>
+      <div class="safety-settings-head"><span>${state.protectedMode?"LOCK":"OPEN"}</span><div><h3>Modalità Asta protetta</h3><p>${state.protectedMode?"Reset, import backup ed eliminazione lega sono bloccati.":"Attivala prima dell'asta per evitare operazioni distruttive accidentali."}</p></div></div>
       <button id="toggleProtectionBtn" class="${state.protectedMode?"dangerbtn":"primary"}">${state.protectedMode?"Disattiva protezione":"Attiva protezione"}</button>
-      <div class="toolbar safety-settings-toolbar"><button id="openSafetyCenterBtn" class="ghost">📜 Registro / Undo</button><button id="manualSnapshotBtn" class="ghost">💾 Snapshot ora</button></div>
+      <div class="toolbar safety-settings-toolbar"><button id="openSafetyCenterBtn" class="ghost">Registro / Undo</button><button id="manualSnapshotBtn" class="ghost">Snapshot ora</button></div>
     </div>
-    <div class="card" style="margin-top:10px"><h3>⭐ Watchlist</h3><p class="muted">${Object.keys(state.watchlist||{}).length} giocatori seguiti. Usa ☆ nelle liste o in Asta Live.</p><button id="openWatchlistBtn" class="ghost">Apri watchlist</button></div>
+    <div class="card" style="margin-top:10px"><h3>Watchlist</h3><p class="muted">${Object.keys(state.watchlist||{}).length} giocatori seguiti. Usa SEGUI nelle liste o in Asta Live.</p><button id="openWatchlistBtn" class="ghost">Apri watchlist</button></div>
     <div class="card" style="margin-top:10px"><h3>Privacy</h3><p class="muted">Tutti i dati dell'asta restano nel browser del dispositivo. Nessun account e nessun tracciamento.</p>
       <div class="toolbar"><button id="setPin" class="ghost">${state.pin?"Cambia PIN":"Imposta PIN"}</button>${state.pin?'<button id="removePin" class="ghost">Rimuovi PIN</button>':""}</div>
     </div>
     <div class="card" style="margin-top:10px"><h3>Backup</h3>
       <div class="toolbar"><button id="exportBtn" class="primary">Esporta backup</button><label class="ghost ${state.protectedMode?"disabled-control":""}" style="margin:0">Importa backup<input id="importFile" type="file" accept=".json" hidden ${state.protectedMode?"disabled":""}></label></div>
-      ${state.protectedMode?'<p class="muted safety-lock-note">🔒 Import bloccato durante Asta protetta.</p>':""}
+      ${state.protectedMode?'<p class="muted safety-lock-note">Import bloccato durante Asta protetta.</p>':""}
     </div>
-    <div class="card" style="margin-top:10px"><h3>Report</h3><button id="finalReportBtn" class="ghost">🏁 Apri report asta</button></div>
-    <div class="card" style="margin-top:10px"><h3>Reset</h3><button id="resetBtn" class="dangerbtn" ${state.protectedMode?"disabled":""}>${state.protectedMode?"🔒 Reset bloccato":"Azzera tutta l'asta"}</button></div>
+    <div class="card" style="margin-top:10px"><h3>Report</h3><button id="finalReportBtn" class="ghost">Apri report asta</button></div>
+    <div class="card" style="margin-top:10px"><h3>Reset</h3><button id="resetBtn" class="dangerbtn" ${state.protectedMode?"disabled":""}>${state.protectedMode?"Reset bloccato":"Azzera tutta l'asta"}</button></div>
     <div class="card install-note" style="margin-top:10px"><b>Installazione su iPhone</b><br>Apri il sito in Safari → Condividi → Aggiungi alla schermata Home → attiva “Apri come app” se disponibile.</div>`;
   $("#toggleProtectionBtn").onclick=toggleProtectedMode;
   $("#openSafetyCenterBtn").onclick=openSafetyCenter;
