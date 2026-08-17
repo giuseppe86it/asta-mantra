@@ -1580,6 +1580,10 @@ function currentClubOptions(){
   const codes=[...new Set(allPlayers.filter(p=>isMarketEligiblePlayer(p)&&p.club).map(p=>String(p.club)))];
   return codes.map(code=>[code,names[code]||code]).sort((a,b)=>String(a[1]).localeCompare(String(b[1]),"it",{sensitivity:"base"}));
 }
+function clubDisplayAbbr(code,name){
+  const clean=String(name||code||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^A-Za-z]/g,"");
+  return (clean.slice(0,3)||String(code||"").slice(0,3)).toUpperCase();
+}
 function selectedClubSet(){
   return new Set(Array.isArray(state.clubFilter)?state.clubFilter.map(String):[]);
 }
@@ -1763,12 +1767,18 @@ function renderPlayers(){
         <b>W ${offensiveDist.W}</b><b>T ${offensiveDist.T}</b><b>A ${offensiveDist.A}</b><b>Pc ${offensiveDist.Pc}</b>
       </div>`:""}
 
-    <div class="player-club-filter-row">
-      <button type="button" id="clubFilterBtn" class="club-filter-launch ${state.clubFilter?.length?"active":""}">${clubFilterButtonLabel()}</button>
-      ${state.clubFilter?.length?`<button type="button" id="quickClearClubFilter" class="club-filter-clear">Rimuovi filtro</button>`:""}
+    <div class="inline-club-filter">
+      <div class="inline-club-filter-head">
+        <span>Squadre</span>
+        <small>selezione multipla</small>
+      </div>
+      <div class="club-chips" aria-label="Filtro squadre Serie A">
+        <button type="button" class="club-chip club-chip-all ${!state.clubFilter?.length?"active":""}" data-club="__ALL__"><span>TUT</span></button>
+        ${currentClubOptions().map(([code,name])=>`<button type="button" class="club-chip ${selectedClubSet().has(code)?"active":""}" data-club="${escAttr(code)}" title="${escAttr(name)}">${kitHTML(code,"xs",name)}<span>${clubDisplayAbbr(code,name)}</span></button>`).join("")}
+      </div>
     </div>
 
-    <div class="chips">
+    <div class="chips role-filter-chips">
       ${roles.map(r=>{
         const poolForCount=(r==="Venduti"?allPlayers:modePool).filter(playerMatchesClubFilter);
         const count=r==="Tutti"
@@ -1796,9 +1806,18 @@ function renderPlayers(){
     renderPlayers();
   };
 
-  $("#clubFilterBtn").onclick=openClubFilter;
-  const quickClearClubFilter=$("#quickClearClubFilter");
-  if(quickClearClubFilter)quickClearClubFilter.onclick=()=>{state.clubFilter=[];saveClubFilter();renderPlayers();};
+  $$(".club-chip").forEach(btn=>btn.onclick=()=>{
+    const code=String(btn.dataset.club||"");
+    if(code==="__ALL__"){
+      state.clubFilter=[];
+    }else{
+      const selected=selectedClubSet();
+      if(selected.has(code)) selected.delete(code); else selected.add(code);
+      state.clubFilter=[...selected];
+    }
+    saveClubFilter();
+    renderPlayers();
+  });
 
   $("#poolAll").onclick=()=>{
     state.poolMode="all";

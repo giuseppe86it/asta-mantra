@@ -1,0 +1,17 @@
+Asta Mantra v1.36 — Filtro Squadre Inline
+
+Sostituire su GitHub solo:
+- index.html
+- app.js
+- styles.css
+- sw.js
+
+Novità:
+- filtro squadre sempre visibile sopra i filtri ruolo
+- mini maglia + abbreviazione prime 3 lettere
+- selezione multipla
+- TUT azzera solo il filtro squadre
+- filtro cumulativo con Tutti, Preferiti, Venduti, ruoli e ricerca
+- riga scorrevole orizzontalmente su iPhone
+
+NON sostituire listone-current.json, scripts/ o .github/.
