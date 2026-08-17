@@ -1,0 +1,14 @@
+Asta Mantra v1.37 — Colori club
+
+Sostituire su GitHub SOLO:
+- index.html
+- app.js
+- styles.css
+- sw.js
+
+NON sostituire:
+- listone-current.json
+- scripts/update-listone.mjs
+- .github/workflows/update-listone.yml
+
+Le mini-maglie restano grafiche fantasy: usano palette ispirate ai colori sociali ufficiali, senza loghi, sponsor o repliche esatte delle divise.

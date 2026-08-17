@@ -232,10 +232,12 @@ const SERIES_A_CLUBS = [
 ];
 const roleOrder = ["Por","Ds","Dc","Dd","B","E","M","C","W","T","A","Pc"];
 const CLUB_KITS = {
-  ATA:"stripes-blue-black",BOL:"halves-red-blue",CAG:"halves-red-blue",COM:"solid-blue",FIO:"solid-purple",
-  FRO:"solid-yellow",GEN:"halves-red-blue",INT:"stripes-blue-black",JUV:"stripes-black-white",LAZ:"solid-sky",
-  LEC:"stripes-yellow-red",MIL:"stripes-red-black",MON:"halves-red-white",NAP:"solid-sky",PAR:"stripes-white-black",
-  ROM:"solid-maroon",SAS:"stripes-green-black",TOR:"solid-maroon",UDI:"stripes-white-black",VEN:"stripes-black-green-gold"
+  // Palette digitali ispirate ai colori sociali dichiarati dai club ufficiali.
+  // Le maglie restano volutamente fantasy: nessun logo, sponsor o replica esatta del kit gara.
+  ATA:"club-ata", BOL:"club-bol", CAG:"club-cag", COM:"club-com", FIO:"club-fio",
+  FRO:"club-fro", GEN:"club-gen", INT:"club-int", JUV:"club-juv", LAZ:"club-laz",
+  LEC:"club-lec", MIL:"club-mil", MON:"club-mon", NAP:"club-nap", PAR:"club-par",
+  ROM:"club-rom", SAS:"club-sas", TOR:"club-tor", UDI:"club-udi", VEN:"club-ven"
 };
 function escAttr(s){return String(s??"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");}
 function clubKitClass(club){return 'kit-'+String(CLUB_KITS[club]||'solid-neutral').replace(/[^a-z0-9-]/gi,'').toLowerCase();}

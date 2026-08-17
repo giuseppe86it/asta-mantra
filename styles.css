@@ -2610,3 +2610,31 @@ html,body{background:radial-gradient(circle at 50% -10%,#0b1b30 0,#06101d 42%,#0
   .club-chip>span{font-size:13px}
   .inline-club-filter-head>small{display:none}
 }
+
+
+/* v1.37 — Official club colour refresh
+   Palette digitali fedeli ai colori sociali indicati dai siti ufficiali.
+   Le forme sono fantasy/minimali: niente stemmi, sponsor o copie esatte dei kit. */
+.kit-club-ata{background:repeating-linear-gradient(90deg,#101419 0 6px,#1772b8 6px 12px)}
+.kit-club-bol{background:repeating-linear-gradient(90deg,#a91e35 0 7px,#1c2d55 7px 14px)}
+.kit-club-cag{background:linear-gradient(90deg,#b61e3a 0 50%,#243966 50% 100%)}
+.kit-club-com{background:linear-gradient(180deg,#2366b1 0%,#174c91 100%)}
+.kit-club-fio{background:linear-gradient(180deg,#5b2583 0%,#431b68 100%)}
+.kit-club-fro{background:linear-gradient(90deg,#f2ca16 0 58%,#1f5da8 58% 100%)}
+.kit-club-gen{background:linear-gradient(90deg,#a91f36 0 50%,#1c2c4f 50% 100%)}
+.kit-club-int{background:repeating-linear-gradient(90deg,#0b1018 0 6px,#0068b7 6px 12px)}
+.kit-club-juv{background:repeating-linear-gradient(90deg,#f6f7f8 0 7px,#111318 7px 14px)}
+.kit-club-laz{background:linear-gradient(180deg,#7fc9e8 0%,#65b6d9 100%)}
+.kit-club-lec{background:repeating-linear-gradient(90deg,#f1ce19 0 7px,#c92336 7px 14px)}
+.kit-club-mil{background:repeating-linear-gradient(90deg,#111318 0 7px,#c91f32 7px 14px)}
+.kit-club-mon{background:linear-gradient(90deg,#cf2034 0 38%,#f5f6f7 38% 50%,#cf2034 50% 100%)}
+.kit-club-nap{background:linear-gradient(180deg,#55a8d8 0%,#3c8fc3 100%)}
+.kit-club-par{background:repeating-linear-gradient(90deg,#f0cc18 0 7px,#214b88 7px 14px)}
+.kit-club-rom{background:linear-gradient(90deg,#8b1e34 0 76%,#f0a51b 76% 100%)}
+.kit-club-sas{background:repeating-linear-gradient(90deg,#0f1514 0 7px,#0c9b52 7px 14px)}
+.kit-club-tor{background:linear-gradient(180deg,#7b2134 0%,#5f1928 100%)}
+.kit-club-udi{background:repeating-linear-gradient(90deg,#f4f5f5 0 7px,#15181c 7px 14px)}
+.kit-club-ven{background:linear-gradient(90deg,#111416 0 48%,#ef7123 48% 59%,#168c5a 59% 70%,#111416 70% 100%)}
+
+/* Piccolo bordo interno per migliorare il contrasto delle maglie molto chiare. */
+.kit-club-juv,.kit-club-udi,.kit-club-mon{box-shadow:inset 0 0 0 1px rgba(8,16,28,.22),0 6px 12px rgba(0,0,0,.16)}
