@@ -1,0 +1,22 @@
+ASTA MANTRA v1.29 — FORMAZIONI + BONUS DA FERMO
+
+Sostituisci su GitHub questi 4 file:
+- index.html
+- app.js
+- styles.css
+- sw.js
+
+Novità:
+- Formazioni ordinate alfabeticamente: Atalanta → Venezia.
+- Blocco Bonus da fermo per tutte le 20 squadre: Rigori, Punizioni, Corner.
+- Gerarchie indicative, non ufficiali, aggiornate ad agosto 2026.
+- Bonus da fermo visibili anche nel dettaglio della formazione.
+- Maglie fantasy v1.28 mantenute.
+
+Fonti di confronto usate per la sintesi:
+- GOAL, rigoristi Serie A 2026/27, aggiornamento 16/08/2026
+- SOS Fanta, rigoristi 2026/27, aggiornamento 15/08/2026
+- SOS Fanta, punizioni e corner 2026/27, 06/08/2026
+- FantaCalcioPedia, rigoristi e tiratori 2026/27, aggiornamento 11/08/2026
+
+Dopo il commit attendi 1–2 minuti, aggiorna Safari e riapri la PWA.

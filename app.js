@@ -243,6 +243,44 @@ function kitHTML(club,size='sm',label=''){
   const aria=label?` aria-label="${escAttr(label)}" title="${escAttr(label)}"`:'';
   return `<span class="club-kit ${clubKitClass(club)} kit-${size}"${aria}></span>`;
 }
+const SET_PIECES_2627 = {
+  ATA:{pens:["Scamacca","De Ketelaere","Samardzic"],free:["Samardzic","Gaetano","De Ketelaere","Raspadori"],corners:["Samardzic","Gaetano","Bernasconi","Bellanova"]},
+  BOL:{pens:["Orsolini","Dovbyk","Bernardeschi"],free:["Orsolini","Bernardeschi","Ferguson"],corners:["Orsolini","Bernardeschi","Miranda","Ferguson"]},
+  CAG:{pens:["Fazzini","Mina","Deiola"],free:["Maldini","Fazzini","Winks","Obert"],corners:["Fazzini","Obert","Romano","Maldini","Winks"]},
+  COM:{pens:["Da Cunha","Nico Paz","Douvikas"],free:["Nico Paz","Baturina","Da Cunha","Perrone"],corners:["Baturina","Nico Paz","Da Cunha","Perrone"]},
+  FIO:{pens:["Gudmundsson","Mandragora","Kean"],free:["Gudmundsson","Mastantuono","Mandragora","Fagioli"],corners:["Gudmundsson","Mastantuono","Mandragora","Fagioli"]},
+  FRO:{pens:["Calò","Raimondo"],free:["Calò","Ghedjemis","Kvernadze"],corners:["Calò","Ghedjemis","Kvernadze"]},
+  GEN:{pens:["Colombo","Messias","Vitinha"],free:["Baldanzi","Messias","Mitaj","Frendrup"],corners:["Mitaj","Baldanzi","Messias","Frendrup"]},
+  INT:{pens:["Calhanoglu","Lautaro Martinez","Zielinski"],free:["Calhanoglu","Dimarco","Zielinski","Sucic"],corners:["Calhanoglu","Dimarco","Zielinski","Barella"]},
+  JUV:{pens:["Yildiz","Locatelli","Kolo Muani"],free:["Yildiz","Locatelli","Koopmeiners","Cambiaso"],corners:["Yildiz","Cambiaso","Locatelli","Koopmeiners"]},
+  LAZ:{pens:["Zaccagni","Cataldi","Kenneth Taylor"],free:["Zaccagni","Cataldi","Taylor","Rovella"],corners:["Zaccagni","Taylor","Rovella","Cataldi"]},
+  LEC:{pens:["Geubbels","Stulic","Pierotti"],free:["Gallo","Pierotti","Berisha"],corners:["Gallo","Pierotti","Berisha"]},
+  MIL:{pens:["Gonçalo Ramos","Pulisic","Nkunku"],free:["Modric","Pulisic","Nkunku","Ricci"],corners:["Modric","Pulisic","Bartesaghi","Jashari"]},
+  MON:{pens:["Pessina","Cutrone","Petagna"],free:["Colpani","Pessina","Ciurria"],corners:["Pessina","Colpani","Ciurria"]},
+  NAP:{pens:["De Bruyne","Højlund","Lukaku*"],free:["De Bruyne","Politano","Neres","Lobotka"],corners:["De Bruyne","Politano","Neres","Lobotka"],note:"* Lukaku resta candidato se rimane in rosa"},
+  PAR:{pens:["El Bilal Touré","Bernabé"],free:["Bernabé","Nicolussi Caviglia","Valeri","Ordonez"],corners:["Bernabé","Nicolussi Caviglia","Valeri","Ordonez"]},
+  ROM:{pens:["Malen","Dybala","Soulé"],free:["Dybala","Soulé","Pellegrini"],corners:["Dybala","Soulé","Pellegrini","Wesley"]},
+  SAS:{pens:["Berardi","Pinamonti"],free:["Berardi","Laurienté","Volpato"],corners:["Berardi","Laurienté","Volpato","Doig"]},
+  TOR:{pens:["Vlasic","Zapata","Simeone"],free:["Vlasic","Oristanio","Ilic","Coco"],corners:["Vlasic","Oristanio","Ilic"]},
+  UDI:{pens:["Davis","Solet","Zaniolo"],free:["Zaniolo","Ekkelenkamp","Vojvoda","Miller"],corners:["Zaniolo","Vojvoda","Ekkelenkamp","Miller"]},
+  VEN:{pens:["Akor Adams","Rrahmani"],free:["Busio","Basic","Kike Pérez","Helgason"],corners:["Busio","Kike Pérez","Basic","Helgason"]}
+};
+function setPieceHTML(club){
+  const s=SET_PIECES_2627[club];
+  if(!s)return "";
+  const names=list=>list.map((name,i)=>`<span class="set-piece-name ${i===0?"first":""}">${i===0?"1. ":""}${esc(name)}</span>`).join("");
+  return `<div class="set-piece-box">
+    <div class="set-piece-title"><span>✦</span><b>BONUS DA FERMO</b><small>gerarchie indicative</small></div>
+    <div class="set-piece-row penalties"><b>🎯 Rigori</b><div>${names(s.pens)}</div></div>
+    <div class="set-piece-row"><b>⚽ Punizioni</b><div>${names(s.free)}</div></div>
+    <div class="set-piece-row"><b>🚩 Corner</b><div>${names(s.corners)}</div></div>
+    ${s.note?`<div class="set-piece-note">${esc(s.note)}</div>`:""}
+  </div>`;
+}
+function sortedFormations(){
+  return formations.slice().sort((a,b)=>String(a.team||"").localeCompare(String(b.team||""),"it",{sensitivity:"base"}));
+}
+
 const state = {
   purchases: JSON.parse(localStorage.getItem("am_purchases")||"{}"),
   sold: JSON.parse(localStorage.getItem("am_sold")||"{}"),
@@ -966,7 +1004,7 @@ function formationBroadGroup(role){
   return "CEN";
 }
 
-function formationListCardHTML(f,index){
+function formationListCardHTML(f,index,showSetPieces=true){
   const groups={POR:[],DIF:[],CEN:[],ATT:[]};
 
   (f.lines||[]).flat().forEach(p=>{
@@ -989,6 +1027,8 @@ function formationListCardHTML(f,index){
       </div>
       <strong>${f.module}</strong>
     </div>
+
+    ${showSetPieces?setPieceHTML(f.club):""}
 
     <div class="formation-role-list">
       ${["POR","DIF","CEN","ATT"].map(group=>`
@@ -1023,9 +1063,10 @@ function formationCarouselHTML(){
     </div>`;
   }
 
+  const ordered=sortedFormations();
   const pages=[];
-  for(let i=0;i<formations.length;i+=2){
-    pages.push(formations.slice(i,i+2));
+  for(let i=0;i<ordered.length;i+=2){
+    pages.push(ordered.slice(i,i+2));
   }
 
   return `<section class="formation-box formation-list-box" aria-label="Probabili Formazioni">
@@ -1042,7 +1083,7 @@ function formationCarouselHTML(){
         <div class="formation-list-page formation-list-page-2col" data-page="${pageIndex+1}">
           ${page.map(f=>{
             const index=formations.indexOf(f);
-            return formationListCardHTML(f,index);
+            return formationListCardHTML(f,index,false);
           }).join("")}
         </div>
       `).join("")}
@@ -1063,7 +1104,7 @@ function renderFormationsView(){
       <span class="muted">${formations.length} squadre</span>
     </div>
     <div class="card formations-page-note">⚽ Le formazioni sono state spostate qui per lasciare la Dashboard dedicata al controllo live dell'asta. Tocca una squadra per aprire il campo completo.</div>
-    ${formations.length?`<div class="formations-dedicated-grid">${formations.map((f,i)=>formationListCardHTML(f,i)).join("")}</div>`:`<div class="card muted">Formazioni non disponibili.</div>`}`;
+    ${formations.length?`<div class="formations-dedicated-grid">${sortedFormations().map(f=>formationListCardHTML(f,formations.indexOf(f))).join("")}</div>`:`<div class="card muted">Formazioni non disponibili.</div>`}`;
 }
 
 window.openFormation=index=>{
@@ -1072,7 +1113,8 @@ window.openFormation=index=>{
   $("#formationDialogContent").innerHTML=`<div class="dialog-body formation-dialog-body">
     <div class="formation-modal-head"><div><div class="eyebrow">Probabile formazione</div><h2>${f.team} · ${f.module}</h2><p>Ruoli Mantra · aggiornamento ${f.updated}</p></div><button class="ghost" onclick="formationDialog.close()">✕</button></div>
     <div class="large-pitch"><i class="pitch-half"></i><i class="pitch-circle"></i><div class="formation-lines">${pitchLines}</div></div>
-    <p class="formation-source">Formazione tipo: Fantacalcio.it · Ruoli: Listone/guida Mantra 2026/27.</p>
+    ${setPieceHTML(f.club)}
+    <p class="formation-source">Formazione tipo: Fantacalcio.it · Ruoli: Listone/guida Mantra 2026/27 · Bonus da fermo: sintesi fonti fantacalcio, gerarchie indicative.</p>
   </div>`;
   $("#formationDialog").showModal();
 };
@@ -2052,4 +2094,4 @@ function lockInit(){
   $("#unlockBtn").onclick=()=>{if($("#pinInput").value===state.pin)$("#lock").classList.add("hidden");else $("#lockText").textContent="PIN errato. Riprova."};
 }
 refresh();lockInit();
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.27").catch(()=>{}));
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.29").catch(()=>{}));
