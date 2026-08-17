@@ -1,0 +1,19 @@
+ASTA MANTRA v1.30 — SAFETY & CONTROL
+
+Sostituisci su GitHub questi 4 file:
+- index.html
+- app.js
+- styles.css
+- sw.js
+
+Novità principali:
+- Modalità Asta protetta
+- Registro operazioni
+- Undo multiplo (ultime 10 azioni)
+- Snapshot iniziale/manuale/automatico ogni 10 operazioni
+- Watchlist personale
+- Freschezza dati
+- Report asta parziale/finale
+- Backup JSON versione 8
+
+Dopo il commit attendi 1–2 minuti, aggiorna la pagina in Safari e riapri la PWA dalla Home.

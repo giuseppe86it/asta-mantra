@@ -281,6 +281,16 @@ function sortedFormations(){
   return formations.slice().sort((a,b)=>String(a.team||"").localeCompare(String(b.team||""),"it",{sensitivity:"base"}));
 }
 
+const SET_PIECES_UPDATED_AT="2026-08-16T16:00:00+02:00";
+const SAFETY_KEYS={
+  protected:"am_protected_mode",
+  watchlist:"am_watchlist",
+  operationLog:"am_operation_log",
+  undoStack:"am_undo_stack",
+  snapshots:"am_snapshots",
+  operationCount:"am_operation_count"
+};
+
 const state = {
   purchases: JSON.parse(localStorage.getItem("am_purchases")||"{}"),
   sold: JSON.parse(localStorage.getItem("am_sold")||"{}"),
@@ -291,7 +301,12 @@ const state = {
   strategy: localStorage.getItem("am_strategy") || "A",
   poolMode: localStorage.getItem("am_pool_mode") || "strategic",
   league: JSON.parse(localStorage.getItem("am_league")||"null"),
-  auctionPhase: localStorage.getItem("am_auction_phase") || "POR"
+  auctionPhase: localStorage.getItem("am_auction_phase") || "POR",
+  protectedMode: localStorage.getItem(SAFETY_KEYS.protected)==="1",
+  watchlist: safeJsonParse(localStorage.getItem(SAFETY_KEYS.watchlist),{})||{},
+  operationLog: safeJsonParse(localStorage.getItem(SAFETY_KEYS.operationLog),[])||[],
+  undoStack: safeJsonParse(localStorage.getItem(SAFETY_KEYS.undoStack),[])||[],
+  snapshots: safeJsonParse(localStorage.getItem(SAFETY_KEYS.snapshots),[])||[]
 };
 function save(){localStorage.setItem("am_purchases",JSON.stringify(state.purchases))}
 function saveSold(){localStorage.setItem("am_sold",JSON.stringify(state.sold))}
@@ -300,6 +315,201 @@ function saveLeague(){
   else localStorage.removeItem("am_league");
 }
 function saveAuctionPhase(){localStorage.setItem("am_auction_phase",state.auctionPhase)}
+function cloneAuctionData(v){return JSON.parse(JSON.stringify(v??null))}
+function saveSafetyState(){
+  localStorage.setItem(SAFETY_KEYS.protected,state.protectedMode?"1":"0");
+  localStorage.setItem(SAFETY_KEYS.watchlist,JSON.stringify(state.watchlist||{}));
+  localStorage.setItem(SAFETY_KEYS.operationLog,JSON.stringify((state.operationLog||[]).slice(-100)));
+  localStorage.setItem(SAFETY_KEYS.undoStack,JSON.stringify((state.undoStack||[]).slice(-10)));
+  localStorage.setItem(SAFETY_KEYS.snapshots,JSON.stringify((state.snapshots||[]).slice(-8)));
+}
+function captureAuctionCore(){
+  return {
+    purchases:cloneAuctionData(state.purchases)||{},
+    sold:cloneAuctionData(state.sold)||{},
+    strategy:state.strategy,
+    league:cloneAuctionData(state.league),
+    auctionPhase:state.auctionPhase,
+    watchlist:cloneAuctionData(state.watchlist)||{}
+  };
+}
+function applyAuctionCore(core){
+  if(!core)return;
+  state.purchases=cloneAuctionData(core.purchases)||{};
+  state.sold=cloneAuctionData(core.sold)||{};
+  if(STRATEGIES[core.strategy])state.strategy=core.strategy;
+  state.league=cloneAuctionData(core.league);
+  if(AUCTION_PHASES.some(x=>x.id===core.auctionPhase))state.auctionPhase=core.auctionPhase;
+  state.watchlist=cloneAuctionData(core.watchlist)||{};
+  save();saveSold();saveLeague();saveAuctionPhase();
+  localStorage.setItem("am_strategy",state.strategy);
+  saveSafetyState();
+  invalidateAuctionIntel();
+}
+function auditOnly(type,label){
+  state.operationLog=[...(state.operationLog||[]),{id:`op_${Date.now()}_${Math.random().toString(36).slice(2,7)}`,at:Date.now(),type,label}].slice(-100);
+  saveSafetyState();
+}
+function createSafetySnapshot(reason="Snapshot manuale",silent=false){
+  const snap={id:`snap_${Date.now()}_${Math.random().toString(36).slice(2,6)}`,at:Date.now(),reason,state:captureAuctionCore()};
+  state.snapshots=[...(state.snapshots||[]),snap].slice(-8);
+  saveSafetyState();
+  if(!silent)alert("Snapshot salvato.");
+  return snap;
+}
+function ensureInitialSnapshot(){
+  if(!(state.snapshots||[]).length)createSafetySnapshot("Ingresso v1.30 · punto iniziale",true);
+}
+function recordOperation(type,label,before,{undoable=true,count=true}={}){
+  const id=`op_${Date.now()}_${Math.random().toString(36).slice(2,7)}`;
+  const at=Date.now();
+  state.operationLog=[...(state.operationLog||[]),{id,at,type,label}].slice(-100);
+  if(undoable&&before){
+    state.undoStack=[...(state.undoStack||[]),{id,at,type,label,before}].slice(-10);
+  }
+  if(count){
+    const n=Number(localStorage.getItem(SAFETY_KEYS.operationCount)||0)+1;
+    localStorage.setItem(SAFETY_KEYS.operationCount,String(n));
+    if(n%10===0)createSafetySnapshot(`Automatico · ${n} operazioni`,true);
+  }
+  saveSafetyState();
+}
+function protectedPermission(action){
+  if(!state.protectedMode)return true;
+  if(state.pin){
+    const p=prompt(`Modalità ASTA PROTETTA attiva.\nInserisci il PIN per ${action}:`);
+    if(p!==state.pin){if(p!==null)alert("PIN errato. Operazione annullata.");return false;}
+    return true;
+  }
+  return confirm(`⚠️ Modalità ASTA PROTETTA attiva.\n\nVuoi davvero ${action}?`);
+}
+function blockedByProtection(action){
+  if(!state.protectedMode)return false;
+  alert(`🔒 ASTA PROTETTA\n\n${action} è bloccato per evitare tocchi accidentali. Disattiva prima la protezione dalle Impostazioni.`);
+  return true;
+}
+function toggleProtectedMode(){
+  if(!state.protectedMode){
+    createSafetySnapshot("Attivazione Asta protetta",true);
+    state.protectedMode=true;saveSafetyState();auditOnly("PROTEZIONE","Modalità Asta protetta attivata");refresh();return;
+  }
+  if(!protectedPermission("disattivare la protezione"))return;
+  state.protectedMode=false;saveSafetyState();auditOnly("PROTEZIONE","Modalità Asta protetta disattivata");refresh();
+}
+window.toggleProtectedMode=toggleProtectedMode;
+function isWatchlisted(id){return !!state.watchlist?.[String(id)]}
+function toggleWatchlist(id){
+  const p=getPlayer(id);if(!p)return;
+  const before=captureAuctionCore();
+  const key=String(p.id);
+  if(state.watchlist[key])delete state.watchlist[key];else state.watchlist[key]=true;
+  saveSafetyState();
+  recordOperation("WATCHLIST",`${state.watchlist[key]?"Aggiunto":"Rimosso"} ${p.name} ${state.watchlist[key]?"alla":"dalla"} watchlist`,before,{undoable:true,count:false});
+  refresh();
+  if($("#playerDialog")?.open)openPlayer(p.id);
+}
+window.toggleWatchlist=toggleWatchlist;
+function formatLogTime(ts){
+  return new Intl.DateTimeFormat("it-IT",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit"}).format(new Date(ts));
+}
+function undoOperation(id){
+  const stack=state.undoStack||[];
+  const idx=stack.findIndex(x=>x.id===id);if(idx<0)return;
+  const item=stack[idx];
+  if(!confirm(`Ripristinare lo stato precedente a:\n\n${item.label}?`))return;
+  applyAuctionCore(item.before);
+  state.undoStack=stack.slice(0,idx);
+  auditOnly("UNDO",`Ripristino: ${item.label}`);
+  closeSafetyDialog();refresh();
+}
+window.undoOperation=undoOperation;
+function restoreSafetySnapshot(id){
+  const snap=(state.snapshots||[]).find(x=>x.id===id);if(!snap)return;
+  if(!protectedPermission(`ripristinare lo snapshot “${snap.reason}”`))return;
+  const before=captureAuctionCore();
+  applyAuctionCore(snap.state);
+  recordOperation("SNAPSHOT",`Ripristinato snapshot: ${snap.reason}`,before,{undoable:true,count:false});
+  closeSafetyDialog();refresh();
+}
+window.restoreSafetySnapshot=restoreSafetySnapshot;
+function closeSafetyDialog(){const d=$("#safetyDialog");if(d?.open)d.close()}
+window.closeSafetyDialog=closeSafetyDialog;
+function openSafetyCenter(){
+  const logs=(state.operationLog||[]).slice().reverse().slice(0,30);
+  const undo=(state.undoStack||[]).slice().reverse();
+  const snaps=(state.snapshots||[]).slice().reverse();
+  $("#safetyDialogContent").innerHTML=`<div class="dialog-body safety-dialog-body">
+    <div class="safety-modal-head"><div><div class="eyebrow">Safety & Control</div><h2>Registro e ripristino</h2></div><button class="ghost" onclick="closeSafetyDialog()">✕</button></div>
+    <div class="safety-tabs-summary"><span>Registro <b>${state.operationLog.length}</b></span><span>Undo <b>${state.undoStack.length}/10</b></span><span>Snapshot <b>${state.snapshots.length}/8</b></span></div>
+    <div class="safety-action-row"><button class="primary" onclick="createSafetySnapshot('Snapshot manuale');closeSafetyDialog();refresh()">💾 Salva snapshot</button><button class="ghost" onclick="openFinalReport()">🏁 Report asta</button></div>
+    <section class="safety-section"><h3>↩️ Undo multiplo</h3>${undo.length?undo.map(x=>`<button class="undo-entry" onclick="undoOperation('${x.id}')"><span><b>${esc(x.label)}</b><small>${formatLogTime(x.at)}</small></span><strong>Ripristina</strong></button>`).join(""):`<div class="safety-empty">Nessuna operazione da annullare.</div>`}</section>
+    <section class="safety-section"><h3>💾 Snapshot</h3>${snaps.length?snaps.map(x=>`<button class="snapshot-entry" onclick="restoreSafetySnapshot('${x.id}')"><span><b>${esc(x.reason)}</b><small>${formatLogTime(x.at)}</small></span><strong>Apri</strong></button>`).join(""):`<div class="safety-empty">Nessuno snapshot.</div>`}</section>
+    <section class="safety-section"><h3>📜 Registro operazioni</h3>${logs.length?logs.map(x=>`<div class="log-entry"><span class="log-type">${esc(x.type)}</span><div><b>${esc(x.label)}</b><small>${formatLogTime(x.at)}</small></div></div>`).join(""):`<div class="safety-empty">Registro vuoto.</div>`}</section>
+  </div>`;
+  $("#safetyDialog").showModal();
+}
+window.openSafetyCenter=openSafetyCenter;
+function parseFormationUpdated(raw){
+  const m=String(raw||"").match(/(\d{1,2})\/(\d{1,2})\/(\d{4})(?:\s+(\d{1,2}):(\d{2}))?/);
+  if(!m)return null;
+  return new Date(Number(m[3]),Number(m[2])-1,Number(m[1]),Number(m[4]||12),Number(m[5]||0));
+}
+function freshnessStatus(date,missingText="non disponibile"){
+  if(!date||Number.isNaN(date.getTime()))return {cls:"stale",icon:"⚠️",text:missingText};
+  const h=Math.max(0,(Date.now()-date.getTime())/36e5);
+  if(h<=24)return {cls:"fresh",icon:"✅",text:h<1?"adesso":`${Math.round(h)} h fa`};
+  if(h<=72)return {cls:"aging",icon:"🟠",text:`${Math.round(h)} h fa`};
+  return {cls:"stale",icon:"🔴",text:`${Math.round(h/24)} gg fa`};
+}
+function dataFreshnessHTML(){
+  const listDate=appliedListoneSync?.sourceKind==="official-fantacalcio"?new Date(appliedListoneSync.generatedAt):null;
+  const formationDates=formations.map(f=>parseFormationUpdated(f.updated)).filter(Boolean);
+  const formationDate=formationDates.sort((a,b)=>b-a)[0]||null;
+  const piecesDate=new Date(SET_PIECES_UPDATED_AT);
+  const l=freshnessStatus(listDate,"base locale"),f=freshnessStatus(formationDate),s=freshnessStatus(piecesDate);
+  return `<section class="freshness-card"><div class="freshness-title"><b>FRESCHEZZA DATI</b><span>controllo rapido</span></div><div class="freshness-grid">
+    <div class="${l.cls}"><span>${l.icon} Listone</span><b>${l.text}</b></div>
+    <div class="${f.cls}"><span>${f.icon} Formazioni</span><b>${f.text}</b></div>
+    <div class="${s.cls}"><span>${s.icon} Rigori/Piazzati</span><b>${s.text}</b></div>
+  </div></section>`;
+}
+function watchlistDashboardHTML(){
+  const list=allPlayers.filter(p=>isWatchlisted(p.id)&&isMarketEligiblePlayer(p)&&!state.purchases[p.id]&&!state.sold[p.id]);
+  const top=list.slice().sort((a,b)=>liveMaxForPlayer(b).live-liveMaxForPlayer(a).live).slice(0,5);
+  return `<section class="watch-dashboard-card"><div class="watch-dashboard-head"><div><span>⭐ WATCHLIST</span><b>${list.length} target ancora disponibili</b></div><button class="ghost" onclick="switchView('playersView');state.filter='Preferiti';renderPlayers()">Apri</button></div>
+    ${top.length?`<div class="watch-dashboard-list">${top.map(p=>`<button onclick='openPlayer(${idArg(p.id)})'>${kitHTML(p.club,'xs',p.club)}<span><b>${esc(p.name)}</b><small>${p.club} · ${p.role}</small></span><strong>${fmt(liveMaxForPlayer(p).live)}<small>MAX live</small></strong></button>`).join("")}</div>`:`<div class="safety-empty">Tocca ☆ accanto a un giocatore per aggiungerlo.</div>`}
+  </section>`;
+}
+function safetyDashboardHTML(){
+  const last=state.operationLog?.[state.operationLog.length-1];
+  return `<section class="safety-dashboard-card ${state.protectedMode?"protected":""}"><div class="safety-dashboard-status"><span>${state.protectedMode?"🔒":"🔓"}</span><div><b>${state.protectedMode?"ASTA PROTETTA":"Protezione disattivata"}</b><small>${last?`Ultima: ${esc(last.label)}`:"Registro pronto"}</small></div></div><div class="safety-dashboard-actions"><button class="${state.protectedMode?"protected-btn":"primary"}" onclick="toggleProtectedMode()">${state.protectedMode?"Sblocca":"Proteggi asta"}</button><button class="ghost" onclick="openSafetyCenter()">📜 Registro</button></div></section>`;
+}
+function finalReportData(){
+  const owned=purchasedPlayers();
+  const total=spent(),remaining=DEFAULT_BUDGET-total;
+  const byRep={POR:0,DIF:0,CEN:0,ATT:0};owned.forEach(p=>byRep[p.reparto]+=Number(state.purchases[p.id]?.price||0));
+  const deals=owned.map(p=>({p,price:Number(state.purchases[p.id]?.price||0),ratio:Number(state.purchases[p.id]?.price||0)/Math.max(1,Number(p.maxPrice||1))})).sort((a,b)=>a.ratio-b.ratio);
+  const overs=deals.filter(x=>x.ratio>1).sort((a,b)=>b.ratio-a.ratio);
+  const u23=owned.filter(p=>p.u23).length,u21=owned.filter(p=>p.u21).length;
+  const valid=owned.length===25&&owned.filter(p=>p.reparto==="POR").length===3&&u23>=2&&u21>=1&&SERIES_A_CLUBS.every(([c])=>owned.filter(p=>p.club===c).length<=5);
+  return {owned,total,remaining,byRep,deals,overs,u23,u21,valid,avg:owned.length?Math.round(total/owned.length):0};
+}
+function openFinalReport(){
+  const r=finalReportData();
+  const topSpend=r.owned.slice().sort((a,b)=>Number(state.purchases[b.id]?.price||0)-Number(state.purchases[a.id]?.price||0)).slice(0,3);
+  $("#safetyDialogContent").innerHTML=`<div class="dialog-body final-report-body"><div class="safety-modal-head"><div><div class="eyebrow">Report asta</div><h2>${r.owned.length===25?"Rosa completata":"Report parziale"}</h2></div><button class="ghost" onclick="closeSafetyDialog()">✕</button></div>
+    <div class="report-status ${r.valid?"ok":"warn"}">${r.valid?"✅ Rosa formalmente completa":"⏳ Rosa ancora in costruzione"} · ${r.owned.length}/25</div>
+    <div class="report-kpis"><div><span>Speso</span><b>${fmt(r.total)}</b></div><div><span>Residuo</span><b>${fmt(r.remaining)}</b></div><div><span>Media</span><b>${fmt(r.avg)}</b></div><div><span>Modulo</span><b>${activeStrategy().module}</b></div></div>
+    <div class="report-reps">${["POR","DIF","CEN","ATT"].map(rep=>`<div><span>${rep}</span><b>${fmt(r.byRep[rep])}</b></div>`).join("")}</div>
+    <section class="report-section"><h3>💚 Migliori affari vs MAX</h3>${r.deals.slice(0,3).map(x=>`<div><span>${esc(x.p.name)}<small>${x.p.club} · MAX ${fmt(x.p.maxPrice)}</small></span><b>${fmt(x.price)} cr</b></div>`).join("")||'<div class="safety-empty">Nessun acquisto.</div>'}</section>
+    <section class="report-section"><h3>🔥 Investimenti principali</h3>${topSpend.map(p=>`<div><span>${esc(p.name)}<small>${p.club} · ${p.role}</small></span><b>${fmt(state.purchases[p.id]?.price)} cr</b></div>`).join("")||'<div class="safety-empty">Nessun acquisto.</div>'}</section>
+    <section class="report-section"><h3>⚠️ Sopra MAX</h3>${r.overs.slice(0,3).map(x=>`<div><span>${esc(x.p.name)}<small>MAX ${fmt(x.p.maxPrice)}</small></span><b>+${Math.round((x.ratio-1)*100)}%</b></div>`).join("")||'<div class="safety-empty">Nessun acquisto sopra MAX.</div>'}</section>
+    ${state.league?(()=>{const rows=state.league.teams.map(t=>({t,e:teamEconomy(t)})).sort((a,b)=>b.e.spent-a.e.spent);const myRank=rows.findIndex(x=>x.t.isMine)+1;return `<section class="report-section"><h3>🏆 Confronto lega</h3><div><span>Posizione per spesa<small>${state.league.size} squadre</small></span><b>${myRank}°</b></div><div><span>Leader spesa<small>${esc(rows[0]?.t.name||"—")}</small></span><b>${fmt(rows[0]?.e.spent||0)} cr</b></div><div><span>Leader crediti residui<small>${esc(rows.slice().sort((a,b)=>b.e.remaining-a.e.remaining)[0]?.t.name||"—")}</small></span><b>${fmt(rows.slice().sort((a,b)=>b.e.remaining-a.e.remaining)[0]?.e.remaining||0)} cr</b></div></section>`})():""}
+    <button class="primary full-btn" onclick="closeSafetyDialog()">Chiudi report</button>
+  </div>`;
+  if(!$("#safetyDialog").open)$("#safetyDialog").showModal();
+}
+window.openFinalReport=openFinalReport;
 function soldPlayers(){return allPlayers.filter(p=>state.sold[p.id])}
 function isSold(id){return !!state.sold[id]}
 function leagueTeamById(id){return state.league?.teams?.find(t=>t.id===id)||null}
@@ -488,9 +698,11 @@ function strategyRecommendation(bought=purchasedPlayers(),intel=null){
   return {A,B,recommended,status,headline,reason};
 }
 function setStrategy(id){
-  if(!STRATEGIES[id]) return;
+  if(!STRATEGIES[id]||state.strategy===id) return;
+  const before=captureAuctionCore(),oldId=state.strategy;
   state.strategy=id;
   localStorage.setItem("am_strategy",id);
+  recordOperation("STRATEGIA",`Strategia ${oldId} → ${id} · ${STRATEGIES[id].module}`,before,{undoable:true,count:false});
   refresh();
 }
 window.setStrategy=setStrategy;
@@ -511,6 +723,7 @@ function roleFilterCount(role){
 }
 function playerMatchesRoleFilter(p,role,mode=state.poolMode){
   if(role==="Tutti") return true;
+  if(role==="Preferiti") return isWatchlisted(p.id);
   if(mode==="all"){
     return roleTokens(p.role).includes(role);
   }
@@ -538,8 +751,11 @@ function playerAuctionPhase(p){
 }
 function phaseForRep(rep){return ({POR:"POR",DIF:"DIF",CEN:"CEN",ATT:"ATT"})[rep]||"ATT"}
 function setAuctionPhase(id){
-  if(!AUCTION_PHASES.some(x=>x.id===id))return;
-  state.auctionPhase=id;saveAuctionPhase();refresh();
+  if(!AUCTION_PHASES.some(x=>x.id===id)||state.auctionPhase===id)return;
+  const before=captureAuctionCore(),old=state.auctionPhase;
+  state.auctionPhase=id;saveAuctionPhase();
+  recordOperation("FASE",`Fase asta ${old} → ${id}`,before,{undoable:true,count:false});
+  refresh();
 }
 window.setAuctionPhase=setAuctionPhase;
 function nextAuctionPhase(){
@@ -834,6 +1050,8 @@ function renderDashboard(){
         ${nextPhase?`<button id="nextPhaseBtn" class="phase-next">Termina ${currentPhase.id} → passa a ${nextPhase.id}</button>`:`<div class="phase-complete">Ultimo reparto · fase ATT</div>`}
       </section>
 
+      ${safetyDashboardHTML()}
+      ${dataFreshnessHTML()}
       ${listoneDashboardBadgeHTML()}
 
       <div class="dash-metrics">
@@ -939,6 +1157,9 @@ function renderDashboard(){
           ${opponentPredictions.map(pred=>`<div><span><b>${esc(pred.team.name)}</b><small>${Math.round(pred.confidence*100)}% conf.</small></span><strong>${pred.top?.module.name||"—"}<small>${Math.round((pred.top?.prob||0)*100)}%</small></strong></div>`).join("")}
         </div>
       </section>`:""}
+
+      ${watchlistDashboardHTML()}
+      <button class="final-report-launch" onclick="openFinalReport()"><span>🏁 REPORT ASTA</span><b>${bought.length===25?"Rosa completata · apri report":"Report parziale · "+bought.length+"/25"}</b><strong>›</strong></button>
 
       <div class="dash-budget-label"><b>Budget guida ${state.strategy} · ${st.module}</b><span>${fmt(DEFAULT_BUDGET)} crediti</span></div>
       <div class="dash-budget-grid">
@@ -1180,7 +1401,7 @@ function liveCandidateList(query=""){
 }
 function liveResultHTML(p){
   const live=liveMaxForPlayer(p);
-  return `<button class="live-result" data-id="${p.id}"><span class="live-result-main">${kitHTML(p.club,'sm',p.club)}<span><b>${esc(p.name)}</b><small>${p.club} · ${p.role} · FVM ${p.fvm||0}</small></span></span><strong>${riskIcon(live.risk)} ${fmt(live.live)}<small>MAX live</small></strong></button>`;
+  return `<button class="live-result" data-id="${p.id}"><span class="live-result-main">${kitHTML(p.club,'sm',p.club)}<span><b>${isWatchlisted(p.id)?"★ ":""}${esc(p.name)}</b><small>${p.club} · ${p.role} · FVM ${p.fvm||0}</small></span></span><strong>${riskIcon(live.risk)} ${fmt(live.live)}<small>MAX live</small></strong></button>`;
 }
 function updateLiveResults(query=""){
   const list=liveCandidateList(query);
@@ -1195,7 +1416,7 @@ function selectLivePlayer(id){
   const comp=live.competition.slice(0,5);
   const target=$("#liveSelected");if(!target)return;
   target.innerHTML=`<div class="live-player-card">
-    <div class="live-player-head"><div class="live-player-identity">${kitHTML(p.club,'live',p.club)}<div><span>${p.club} · ${p.role}</span><b>${esc(p.name)}</b></div></div><strong>${riskIcon(live.risk)} ${live.risk}</strong></div>
+    <div class="live-player-head"><div class="live-player-identity">${kitHTML(p.club,'live',p.club)}<div><span>${p.club} · ${p.role}</span><b>${esc(p.name)}</b><button type="button" class="live-watch ${isWatchlisted(p.id)?"active":""}" onclick='toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"★ WATCHLIST":"☆ WATCHLIST"}</button></div></div><strong>${riskIcon(live.risk)} ${live.risk}</strong></div>
     <div class="live-price-grid">
       <div><span>FVM</span><b>${p.fvm||0}</b></div>
       <div><span>MAX iniziale</span><b>${fmt(live.base)}</b></div>
@@ -1384,7 +1605,7 @@ function playerRow(p){
     <div class="player-main">
       ${kitHTML(p.club,'row',p.club)}
       <div class="player-copy">
-        <h3>${p.name}
+        <h3>${p.name}<button type="button" class="watch-btn ${isWatchlisted(p.id)?"active":""}" aria-label="Watchlist" onclick='event.stopPropagation();toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"★":"☆"}</button>
           ${p.notes&&p.notes.includes("TARGET")?'<span class="badge target">TARGET</span>':""}
           ${strategic?'<span class="badge strategic-badge">200</span>':'<span class="badge listone-badge">LISTONE</span>'}
           ${p.outOfListone?'<span class="badge out-listone-badge">FUORI LISTONE</span>':""}
@@ -1463,7 +1684,8 @@ function playerResultsInfo(list){
   return `${list.length} giocatori
     ${state.poolMode==="strategic"&&["W","A","Pc"].includes(state.filter)?" · ruolo offensivo principale":""}
     ${state.filter==="T"?" · principali + compatibili":""}
-    ${state.filter==="Venduti"?" · assegnati ad altre squadre":""}`;
+    ${state.filter==="Venduti"?" · assegnati ad altre squadre":""}
+    ${state.filter==="Preferiti"?" · watchlist personale":""}`;
 }
 
 function updatePlayerSearchResults(){
@@ -1476,7 +1698,7 @@ function updatePlayerSearchResults(){
 }
 
 function renderPlayers(){
-  let roles=["Tutti",...roleOrder,"Venduti"];
+  let roles=["Tutti","Preferiti",...roleOrder,"Venduti"];
   const data=playerViewData();
 
   const modePool=state.poolMode==="all"?allPlayers:currentStrategicPlayers();
@@ -1523,6 +1745,8 @@ function renderPlayers(){
         const poolForCount=r==="Venduti"?allPlayers:modePool;
         const count=r==="Tutti"
           ? poolForCount.filter(p=>!isSold(p.id)).length
+          : r==="Preferiti"
+            ? poolForCount.filter(p=>!isSold(p.id)&&isWatchlisted(p.id)).length
           : r==="Venduti"
             ? soldPlayers().length
             : poolForCount.filter(p=>!isSold(p.id)&&playerMatchesRoleFilter(p,r,state.poolMode)).length;
@@ -1579,7 +1803,7 @@ function openPlayer(id){
   $("#playerDialogContent").innerHTML=`<div class="dialog-body">
     <div class="section-title">
       <div class="player-dialog-title">${kitHTML(p.club,'dialog',p.club)}<div><div class="eyebrow">${p.club} · ${p.role} · ${strategic?"STRATEGICO":"LISTONE"}</div><h2>${p.name}</h2></div></div>
-      <button class="ghost" onclick="playerDialog.close()">✕</button>
+      <div class="player-title-actions"><button type="button" class="watch-detail ${isWatchlisted(p.id)?"active":""}" onclick='toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"★ Seguito":"☆ Segui"}</button><button class="ghost" onclick="playerDialog.close()">✕</button></div>
     </div>
     <div class="grid">
       <div class="card metric"><span>FVM</span><strong>${p.fvm||0}</strong></div>
@@ -1650,8 +1874,10 @@ window.markSold=id=>openSoldDialog(id);
 window.editSold=id=>openSoldDialog(id);
 window.restoreSold=id=>{
   const p=getPlayer(id); id=p?p.id:id;
-  delete state.sold[id];
-  saveSold();
+  const previous=state.sold[id];if(!previous)return;
+  const before=captureAuctionCore();
+  delete state.sold[id];saveSold();
+  recordOperation("RIPRISTINA_MERCATO",`${p?.name||"Giocatore"} ripristinato al mercato`,before);
   const d=$("#playerDialog");
   if(d.open) d.close();
   refresh();
@@ -1676,6 +1902,7 @@ $("#soldForm").addEventListener("submit",e=>{
   const price=Number($("#soldPriceInput").value);
   if(!Number.isInteger(price)||price<1)return;
   const previous=state.sold[p.id]||{};
+  const before=captureAuctionCore(),wasEdit=!!previous.price;
   const teamId=opponentTeams().length?$("#soldTeamSelect").value:"";
   const team=leagueTeamById(teamId);
   if(team){
@@ -1689,6 +1916,7 @@ $("#soldForm").addEventListener("submit",e=>{
     leagueId:state.league?.id||""
   };
   saveSold();
+  recordOperation(wasEdit?"MODIFICA_VENDITA":"VENDUTO",wasEdit?`${p.name}: vendita aggiornata a ${price} cr · ${soldTeamName(state.sold[p.id])}`:`${p.name} → ${soldTeamName(state.sold[p.id])} · ${price} cr`,before);
   $("#soldDialog").close();
   soldPlayerId=null;
   actionReturnContext=null;
@@ -1758,12 +1986,14 @@ $("#purchaseForm").addEventListener("submit",e=>{
   if(!Number.isInteger(price) || price < 1) return;
   const econ=teamEconomy(mineTeam(),purchaseMode==="edit"?purchaseId:null);
   if(price>econ.maxNext){alert(`Puoi spendere al massimo ${econ.maxNext} crediti sul prossimo giocatore, conservando 1 credito per ogni slot successivo.`);return;}
-  const previous=state.purchases[purchaseId];
+  const p=getPlayer(purchaseId),previous=state.purchases[purchaseId];
+  const before=captureAuctionCore(),wasEdit=purchaseMode==="edit";
   state.purchases[purchaseId]={
     price,
-    at: purchaseMode==="edit" && previous?.at ? previous.at : Date.now()
+    at: wasEdit && previous?.at ? previous.at : Date.now()
   };
   save();
+  recordOperation(wasEdit?"MODIFICA_ACQUISTO":"ACQUISTO",wasEdit?`${p?.name||"Giocatore"}: ${previous?.price||"—"} → ${price} cr`:`${p?.name||"Giocatore"} acquistato a ${price} cr`,before);
   $("#purchaseDialog").close();
   purchaseId=null;
   purchaseMode="new";
@@ -1771,10 +2001,11 @@ $("#purchaseForm").addEventListener("submit",e=>{
   refresh();
 });
 window.removePurchase=id=>{
-  delete state.purchases[id];
-  save();
-  $("#playerDialog").close();
-  refresh();
+  const p=getPlayer(id),previous=state.purchases[id];if(!previous)return;
+  const before=captureAuctionCore();
+  delete state.purchases[id];save();
+  recordOperation("ANNULLA_ACQUISTO",`${p?.name||"Giocatore"}: acquisto ${previous.price} cr annullato`,before);
+  $("#playerDialog").close();refresh();
 }
 
 function undoLastPurchase(){
@@ -1784,8 +2015,9 @@ function undoLastPurchase(){
   const p=getPlayer(lastId);
   if(!p) return;
   if(confirm(`Annullare l'ultimo acquisto?\n\n${p.name} — ${lastData.price} crediti`)){
-    delete state.purchases[lastId];
-    save();
+    const before=captureAuctionCore();
+    delete state.purchases[lastId];save();
+    recordOperation("UNDO_ACQUISTO",`${p.name}: ultimo acquisto ${lastData.price} cr annullato`,before);
     refresh();
   }
 }
@@ -1934,10 +2166,13 @@ $("#leagueForm").addEventListener("submit",e=>{
   const name=$("#leagueNameInput").value.trim();
   const size=Number($("#leagueSizeInput").value);
   if(!name || !Number.isInteger(size) || size<4 || size>20)return;
+  if(state.league&&blockedByProtection("Creare o sostituire la struttura della lega"))return;
+  const before=captureAuctionCore();
   const teams=[{id:"mine",name:"La mia squadra",isMine:true}];
   for(let i=2;i<=size;i++) teams.push({id:`team${i}`,name:`Squadra ${i}`,isMine:false});
   state.league={id:`league_${Date.now()}`,name,size,teams,createdAt:Date.now()};
   saveLeague();
+  recordOperation("LEGA",`Creata lega “${name}” · ${size} squadre`,before);
   $("#leagueDialog").close();
   refresh();
   switchView("leagueView");
@@ -2044,33 +2279,71 @@ function renderLeagues(){
   `;
 
   $("#saveLeagueNamesBtn").onclick=()=>{
+    const before=captureAuctionCore(),oldName=state.league.name;
     const leagueName=$("#editLeagueName").value.trim();if(leagueName)state.league.name=leagueName;
     $$(".team-name-input").forEach(inp=>{const t=leagueTeamById(inp.dataset.teamId),name=inp.value.trim();if(t&&name)t.name=name});
-    saveLeague();refresh();
+    saveLeague();recordOperation("LEGA",`Nomi lega/squadre aggiornati${oldName!==state.league.name?` · ${oldName} → ${state.league.name}`:""}`,before,{undoable:true,count:false});refresh();
   };
   $("#deleteLeagueBtn").onclick=()=>{
+    if(blockedByProtection("Eliminare la lega"))return;
     if(!confirm(`Eliminare la lega “${state.league.name}”? I giocatori resteranno Venduti ma senza squadra assegnata.`))return;
-    Object.values(state.sold).forEach(s=>{s.teamId="";s.leagueId=""});saveSold();state.league=null;saveLeague();refresh();
+    const before=captureAuctionCore(),leagueName=state.league.name;
+    Object.values(state.sold).forEach(s=>{s.teamId="";s.leagueId=""});saveSold();state.league=null;saveLeague();
+    recordOperation("ELIMINA_LEGA",`Eliminata lega “${leagueName}”`,before);refresh();
   };
   $$(".unassigned-sale").forEach(btn=>btn.onclick=()=>editSold(btn.dataset.id));
 }
 
 function renderSettings(){
   $("#settingsView").innerHTML=`<div class="section-title"><h2>Impostazioni</h2></div>
-    <div class="card">
-      <h3>Privacy</h3><p class="muted">Tutti i dati dell'asta restano nel browser del dispositivo. Nessun account e nessun tracciamento.</p>
+    <div class="card safety-settings-card ${state.protectedMode?"protected":""}">
+      <div class="safety-settings-head"><span>${state.protectedMode?"🔒":"🔓"}</span><div><h3>Modalità Asta protetta</h3><p>${state.protectedMode?"Reset, import backup ed eliminazione lega sono bloccati.":"Attivala prima dell'asta per evitare operazioni distruttive accidentali."}</p></div></div>
+      <button id="toggleProtectionBtn" class="${state.protectedMode?"dangerbtn":"primary"}">${state.protectedMode?"Disattiva protezione":"Attiva protezione"}</button>
+      <div class="toolbar safety-settings-toolbar"><button id="openSafetyCenterBtn" class="ghost">📜 Registro / Undo</button><button id="manualSnapshotBtn" class="ghost">💾 Snapshot ora</button></div>
+    </div>
+    <div class="card" style="margin-top:10px"><h3>⭐ Watchlist</h3><p class="muted">${Object.keys(state.watchlist||{}).length} giocatori seguiti. Usa ☆ nelle liste o in Asta Live.</p><button id="openWatchlistBtn" class="ghost">Apri watchlist</button></div>
+    <div class="card" style="margin-top:10px"><h3>Privacy</h3><p class="muted">Tutti i dati dell'asta restano nel browser del dispositivo. Nessun account e nessun tracciamento.</p>
       <div class="toolbar"><button id="setPin" class="ghost">${state.pin?"Cambia PIN":"Imposta PIN"}</button>${state.pin?'<button id="removePin" class="ghost">Rimuovi PIN</button>':""}</div>
     </div>
     <div class="card" style="margin-top:10px"><h3>Backup</h3>
-      <div class="toolbar"><button id="exportBtn" class="primary">Esporta backup</button><label class="ghost" style="margin:0">Importa backup<input id="importFile" type="file" accept=".json" hidden></label></div>
+      <div class="toolbar"><button id="exportBtn" class="primary">Esporta backup</button><label class="ghost ${state.protectedMode?"disabled-control":""}" style="margin:0">Importa backup<input id="importFile" type="file" accept=".json" hidden ${state.protectedMode?"disabled":""}></label></div>
+      ${state.protectedMode?'<p class="muted safety-lock-note">🔒 Import bloccato durante Asta protetta.</p>':""}
     </div>
-    <div class="card" style="margin-top:10px"><h3>Reset</h3><button id="resetBtn" class="dangerbtn">Azzera tutta l'asta</button></div>
+    <div class="card" style="margin-top:10px"><h3>Report</h3><button id="finalReportBtn" class="ghost">🏁 Apri report asta</button></div>
+    <div class="card" style="margin-top:10px"><h3>Reset</h3><button id="resetBtn" class="dangerbtn" ${state.protectedMode?"disabled":""}>${state.protectedMode?"🔒 Reset bloccato":"Azzera tutta l'asta"}</button></div>
     <div class="card install-note" style="margin-top:10px"><b>Installazione su iPhone</b><br>Apri il sito in Safari → Condividi → Aggiungi alla schermata Home → attiva “Apri come app” se disponibile.</div>`;
-  $("#setPin").onclick=()=>{let p=prompt("Scegli un PIN numerico (4-8 cifre):");if(/^\d{4,8}$/.test(p||"")){localStorage.setItem("am_pin",p);state.pin=p;alert("PIN salvato.")}};
-  if($("#removePin"))$("#removePin").onclick=()=>{localStorage.removeItem("am_pin");state.pin="";renderSettings()};
-  $("#resetBtn").onclick=()=>{if(confirm("Vuoi davvero cancellare acquisti e giocatori venduti e riportare la fase asta ai POR?")){state.purchases={};state.sold={};state.auctionPhase="POR";save();saveSold();saveAuctionPhase();refresh()}};
-  $("#exportBtn").onclick=()=>{let blob=new Blob([JSON.stringify({version:7,purchases:state.purchases,sold:state.sold,strategy:state.strategy,poolMode:state.poolMode,league:state.league,auctionPhase:state.auctionPhase,listoneSync:appliedListoneSync},null,2)],{type:"application/json"});let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="AstaMantra-backup.json";a.click();URL.revokeObjectURL(a.href)};
-  $("#importFile").onchange=e=>{let f=e.target.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let o=JSON.parse(rd.result);state.purchases=o.purchases||{};state.sold=o.sold||{};state.league=o.league||state.league||null;if(STRATEGIES[o.strategy]){state.strategy=o.strategy;localStorage.setItem("am_strategy",o.strategy)}if(["strategic","all"].includes(o.poolMode)){state.poolMode=o.poolMode;localStorage.setItem("am_pool_mode",o.poolMode)}if(AUCTION_PHASES.some(x=>x.id===o.auctionPhase)){state.auctionPhase=o.auctionPhase;saveAuctionPhase()}if(o.listoneSync?.schema===LISTONE_SYNC_SCHEMA&&Array.isArray(o.listoneSync.players)){appliedListoneSync=o.listoneSync;localStorage.setItem(LISTONE_SYNC_STORAGE,JSON.stringify(appliedListoneSync));allPlayers=buildAllPlayers()}save();saveSold();saveLeague();invalidateAuctionIntel();refresh();alert("Backup importato.")}catch{alert("File non valido.")}};rd.readAsText(f)};
+  $("#toggleProtectionBtn").onclick=toggleProtectedMode;
+  $("#openSafetyCenterBtn").onclick=openSafetyCenter;
+  $("#manualSnapshotBtn").onclick=()=>{createSafetySnapshot("Snapshot manuale");renderSettings()};
+  $("#openWatchlistBtn").onclick=()=>{state.filter="Preferiti";switchView("playersView")};
+  $("#finalReportBtn").onclick=openFinalReport;
+  $("#setPin").onclick=()=>{let p=prompt("Scegli un PIN numerico (4-8 cifre):");if(/^\d{4,8}$/.test(p||"")){localStorage.setItem("am_pin",p);state.pin=p;alert("PIN salvato.");renderSettings()}};
+  if($("#removePin"))$("#removePin").onclick=()=>{if(state.protectedMode&&!protectedPermission("rimuovere il PIN"))return;localStorage.removeItem("am_pin");state.pin="";renderSettings()};
+  $("#resetBtn").onclick=()=>{
+    if(blockedByProtection("Azzera tutta l'asta"))return;
+    if(confirm("Vuoi davvero cancellare acquisti e giocatori venduti e riportare la fase asta ai POR?")){
+      const before=captureAuctionCore();state.purchases={};state.sold={};state.auctionPhase="POR";save();saveSold();saveAuctionPhase();recordOperation("RESET","Asta azzerata",before);refresh();
+    }
+  };
+  $("#exportBtn").onclick=()=>{
+    let blob=new Blob([JSON.stringify({version:8,purchases:state.purchases,sold:state.sold,strategy:state.strategy,poolMode:state.poolMode,league:state.league,auctionPhase:state.auctionPhase,listoneSync:appliedListoneSync,watchlist:state.watchlist,protectedMode:state.protectedMode,operationLog:state.operationLog,snapshots:state.snapshots},null,2)],{type:"application/json"});
+    let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="AstaMantra-backup-v8.json";a.click();URL.revokeObjectURL(a.href)
+  };
+  $("#importFile").onchange=e=>{
+    if(blockedByProtection("Importare un backup")){e.target.value="";return;}
+    let f=e.target.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{
+      let o=JSON.parse(rd.result),before=captureAuctionCore();
+      state.purchases=o.purchases||{};state.sold=o.sold||{};state.league=o.league||state.league||null;
+      if(STRATEGIES[o.strategy]){state.strategy=o.strategy;localStorage.setItem("am_strategy",o.strategy)}
+      if(["strategic","all"].includes(o.poolMode)){state.poolMode=o.poolMode;localStorage.setItem("am_pool_mode",o.poolMode)}
+      if(AUCTION_PHASES.some(x=>x.id===o.auctionPhase)){state.auctionPhase=o.auctionPhase;saveAuctionPhase()}
+      if(o.listoneSync?.schema===LISTONE_SYNC_SCHEMA&&Array.isArray(o.listoneSync.players)){appliedListoneSync=o.listoneSync;localStorage.setItem(LISTONE_SYNC_STORAGE,JSON.stringify(appliedListoneSync));allPlayers=buildAllPlayers()}
+      state.watchlist=o.watchlist||{};
+      if(Array.isArray(o.operationLog))state.operationLog=o.operationLog.slice(-100);
+      if(Array.isArray(o.snapshots))state.snapshots=o.snapshots.slice(-8);
+      save();saveSold();saveLeague();saveSafetyState();invalidateAuctionIntel();recordOperation("IMPORT","Backup importato",before,{undoable:true,count:false});refresh();alert("Backup importato.")
+    }catch{alert("File non valido.")}};rd.readAsText(f)
+  };
 }
 function switchView(id){
   state.view=id;$$('.view').forEach(v=>v.classList.toggle("active",v.id===id));$$('.tab').forEach(t=>t.classList.toggle("active",t.dataset.view===id));
@@ -2093,5 +2366,5 @@ function lockInit(){
   $("#lock").classList.remove("hidden");$("#disablePinBtn").style.display="none";
   $("#unlockBtn").onclick=()=>{if($("#pinInput").value===state.pin)$("#lock").classList.add("hidden");else $("#lockText").textContent="PIN errato. Riprova."};
 }
-refresh();lockInit();
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.29").catch(()=>{}));
+ensureInitialSnapshot();refresh();lockInit();
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.30").catch(()=>{}));
