@@ -2612,7 +2612,7 @@ html,body{background:radial-gradient(circle at 50% -10%,#0b1b30 0,#06101d 42%,#0
 }
 
 
-/* v1.37 — Official club colour refresh
+/* v1.38 — Official club colour refresh
    Palette digitali fedeli ai colori sociali indicati dai siti ufficiali.
    Le forme sono fantasy/minimali: niente stemmi, sponsor o copie esatte dei kit. */
 .kit-club-ata{background:repeating-linear-gradient(90deg,#101419 0 6px,#1772b8 6px 12px)}
@@ -2638,3 +2638,16 @@ html,body{background:radial-gradient(circle at 50% -10%,#0b1b30 0,#06101d 42%,#0
 
 /* Piccolo bordo interno per migliorare il contrasto delle maglie molto chiare. */
 .kit-club-juv,.kit-club-udi,.kit-club-mon{box-shadow:inset 0 0 0 1px rgba(8,16,28,.22),0 6px 12px rgba(0,0,0,.16)}
+
+
+/* v1.38 — QA Fix */
+#safetyDialog{padding:0;overflow:hidden}
+#safetyDialogContent{max-height:92dvh;overflow:auto;-webkit-overflow-scrolling:touch}
+@media (max-width:430px){
+  #safetyDialog{width:94vw;max-width:94vw}
+  .safety-modal-head h2{font-size:22px}
+  .safety-section h3{font-size:15px}
+  .undo-entry b,.snapshot-entry b,.log-entry b{font-size:13px}
+  .undo-entry small,.snapshot-entry small,.log-entry small{font-size:11px}
+  .safety-empty{font-size:13px}
+}

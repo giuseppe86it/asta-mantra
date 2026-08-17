@@ -1,0 +1,27 @@
+ASTA MANTRA v1.38 — QA FIX
+
+Correzioni:
+1) Blocco reale del 6° giocatore dello stesso club.
+   - Vale per la tua rosa.
+   - Vale anche quando registri un Venduto a una squadra avversaria.
+   - La modifica del prezzo di un acquisto già esistente resta consentita.
+
+2) Ripristino definitivo del centro Safety & Control.
+   - Registro operazioni
+   - Undo multiplo
+   - Snapshot
+   - Report asta
+
+INSTALLAZIONE
+Su GitHub sostituisci SOLO:
+- index.html
+- app.js
+- styles.css
+- sw.js
+
+NON sostituire:
+- listone-current.json
+- scripts/update-listone.mjs
+- .github/workflows/update-listone.yml
+
+In questo modo il Listone ufficiale sincronizzato e il workflow automatico restano intatti.

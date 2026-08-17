@@ -789,6 +789,13 @@ function teamEconomy(team,excludePlayerId=null){
   items.forEach(x=>{const rep=playerAuctionPhase(x.p);if(byRep[rep]!=null)byRep[rep]+=Number(x.price||0)});
   return {items,spent:spentValue,remaining,missing,minimumToFinish,free,maxNext,byRep};
 }
+function teamClubCount(team,club,excludePlayerId=null){
+  return teamItems(team,excludePlayerId).filter(x=>x.p?.club===club).length;
+}
+function clubLimitMessage(team,p){
+  const name=team?.isMine?"La tua rosa":(team?.name||"Questa squadra");
+  return `${name} ha già 5 giocatori del ${p.club}. Il regolamento non consente un sesto giocatore dello stesso club.`;
+}
 function mineTeam(){return state.league?.teams?.find(t=>t.isMine)||{id:"mine",name:"La mia squadra",isMine:true}}
 
 function neutralPrice(p){return Math.max(1,Math.round(Number(p?.fvm||0)*2.5))}
@@ -1959,6 +1966,9 @@ $("#soldForm").addEventListener("submit",e=>{
   const teamId=opponentTeams().length?$("#soldTeamSelect").value:"";
   const team=leagueTeamById(teamId);
   if(team){
+    const isExistingAssignment=!!previous.price;
+    const clubCount=teamClubCount(team,p.club,isExistingAssignment?p.id:null);
+    if(clubCount>=5){alert(clubLimitMessage(team,p));return;}
     const econ=teamEconomy(team,p.id);
     if(price>econ.maxNext){alert(`${team.name} può spendere al massimo ${econ.maxNext} crediti sul prossimo giocatore, altrimenti non potrebbe completare la rosa a 1 credito.`);return;}
   }
@@ -1979,6 +1989,10 @@ $("#soldForm").addEventListener("submit",e=>{
 function startPurchase(id,returnContext=undefined){
   const p=getPlayer(id);
   if(!p || isSold(p.id)) return;
+  if(teamClubCount(mineTeam(),p.club)>=5){
+    alert(clubLimitMessage(mineTeam(),p));
+    return;
+  }
   actionReturnContext=returnContext===undefined?captureActionReturnContext(p.id):returnContext;
   purchaseId=p.id;
   purchaseMode="new";
@@ -2037,9 +2051,14 @@ $("#purchaseForm").addEventListener("submit",e=>{
   e.preventDefault();
   const price=Number($("#purchasePrice").value);
   if(!Number.isInteger(price) || price < 1) return;
+  const p=getPlayer(purchaseId);
+  if(purchaseMode==="new" && p && teamClubCount(mineTeam(),p.club)>=5){
+    alert(clubLimitMessage(mineTeam(),p));
+    return;
+  }
   const econ=teamEconomy(mineTeam(),purchaseMode==="edit"?purchaseId:null);
   if(price>econ.maxNext){alert(`Puoi spendere al massimo ${econ.maxNext} crediti sul prossimo giocatore, conservando 1 credito per ogni slot successivo.`);return;}
-  const p=getPlayer(purchaseId),previous=state.purchases[purchaseId];
+  const previous=state.purchases[purchaseId];
   const before=captureAuctionCore(),wasEdit=purchaseMode==="edit";
   state.purchases[purchaseId]={
     price,
