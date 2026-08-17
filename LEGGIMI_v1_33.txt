@@ -1,0 +1,18 @@
+ASTA MANTRA v1.33 — READABILITY TUNING
+
+Modifica mirata al menu Giocatori:
+- "Shortlist strategica" portata a 18 px
+- "Offensivi principali" portata a 18 px
+- contatori/pill portati a 15 px
+- box più alti e con più spazio interno
+- sotto 360 px: disposizione a capo ordinata, senza ridurre troppo il testo
+
+IMPORTANTE:
+Carica su GitHub SOLO questi 4 file:
+- index.html
+- app.js
+- styles.css
+- sw.js
+
+NON sostituire scripts/update-listone.mjs, listone-current.json o la cartella .github.
+Il sincronizzatore ufficiale del Listone resta così com'è e non viene toccato da questa patch.

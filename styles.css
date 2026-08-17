@@ -2383,3 +2383,155 @@ html,body{background:radial-gradient(circle at 50% -10%,#0b1b30 0,#06101d 42%,#0
 .formations-page-title h2{font-size:31px!important}.formations-page-note{font-size:14px!important;line-height:1.5!important}.formations-dedicated-grid .formation-list-head b{font-size:22px!important}.formations-dedicated-grid .formation-list-head span{font-size:13px!important}.formations-dedicated-grid .formation-list-head strong{font-size:19px!important}.formations-dedicated-grid .formation-role-label{font-size:12px!important}.formations-dedicated-grid .formation-name-chip b{font-size:17px!important;line-height:1.18!important}.formations-dedicated-grid .formation-name-chip em{font-size:11px!important}.set-piece-title b{font-size:12px!important}.set-piece-title small{font-size:9px!important}.set-piece-row>b{font-size:11px!important}.set-piece-name{font-size:12px!important}.set-piece-note{font-size:10px!important}
 .hybrid-squad-title h2,.league-page-title h2,#settingsView h2{font-size:30px!important}.hybrid-squad-kpis b{font-size:22px!important}.hybrid-squad-kpis span,.hybrid-squad-reps span{font-size:11px!important}.hybrid-squad-group h3{font-size:18px!important}.hybrid-squad-row b{font-size:16px!important}.hybrid-squad-row small{font-size:11px!important}.league-card b,.league-team-card b{font-size:16px!important}.league-card small,.league-team-card small{font-size:11px!important}.team-economy-grid span,.team-rep-spend span{font-size:10px!important}.team-economy-grid b,.team-rep-spend b{font-size:14px!important}
 @media(max-width:360px){.topbar h1{font-size:32px!important}.finance-kpi{min-height:103px;padding:9px 4px}.finance-kpi span{font-size:9.8px}.finance-kpi strong{font-size:26px}.finance-kpi small{font-size:9.2px}.finance-rep span{font-size:10px}.finance-rep strong{font-size:21px}.finance-rep small{font-size:8.5px}.finance-stat strong{font-size:25px}.finance-stat>b{font-size:14px}.finance-strategy-card strong{font-size:18px}.finance-market-grid{grid-template-columns:1fr}.finance-bottom-grid{grid-template-columns:1fr}.finance-club-panel .club-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}.hybrid-tabbar .tab small,.tabbar .tab small{font-size:10px!important}.formations-dedicated-grid .formation-name-chip b{font-size:15.5px!important}}
+
+/* =========================================================
+   v1.32 — Graphic Refinement approvato da screenshot
+   ========================================================= */
+/* Dashboard: Asta Live prioritario, subito sotto l'header */
+.finance-live-panel-top{
+  display:grid!important;
+  grid-template-columns:1fr .72fr 1.38fr;
+  grid-template-areas:
+    "title title title"
+    "main metrics actions";
+  gap:10px 12px;
+  align-items:stretch;
+  padding:14px!important;
+  border-color:#315a78!important;
+  background:linear-gradient(145deg,#0e2339 0%,#091827 100%)!important;
+}
+.finance-live-panel-top>.finance-panel-title{grid-area:title;margin-bottom:0}
+.finance-live-panel-top>.finance-live-main{grid-area:main;margin:0!important;display:flex;flex-direction:column;justify-content:center;min-width:0;padding:13px!important}
+.finance-live-panel-top>.finance-live-metrics{grid-area:metrics;display:flex;flex-direction:column;justify-content:center;gap:10px;min-width:0}
+.finance-live-panel-top>.finance-live-actions{grid-area:actions;display:flex;flex-direction:column;justify-content:center;min-width:0}
+.finance-live-panel-top .finance-live-main span,.finance-live-panel-top .finance-live-sub span{font-size:11px!important}
+.finance-live-panel-top .finance-live-main strong{font-size:34px!important;margin:7px 0!important}
+.finance-live-panel-top .finance-live-main small{font-size:11px!important;line-height:1.35}
+.finance-live-panel-top .finance-live-sub{display:block;padding:0!important}
+.finance-live-panel-top .finance-live-sub b{display:block;font-size:20px!important;line-height:1.15;margin-top:2px}
+.finance-live-panel-top .finance-live-btn{min-height:54px!important;font-size:15px!important;margin:0!important;border-radius:14px!important}
+.finance-live-panel-top .finance-phase-track{margin-top:9px!important;gap:6px!important}
+.finance-live-panel-top .finance-phase-track button{min-height:39px;font-size:11px!important;border-radius:10px!important}
+.finance-live-panel-top .finance-text-btn{min-height:42px;font-size:11px!important;margin-top:8px!important}
+.finance-bottom-grid-single{grid-template-columns:1fr!important}
+
+/* Dashboard: box club leggibile e senza testo fuori dai bordi */
+.finance-market-grid{grid-template-columns:.72fr 1.78fr!important}
+.finance-club-panel{min-width:0;overflow:hidden}
+.finance-club-panel .club-grid{gap:7px!important}
+.finance-club-panel .club-tile{
+  min-width:0!important;min-height:50px!important;
+  display:grid!important;grid-template-columns:16px minmax(0,1fr)!important;
+  align-items:center!important;justify-content:initial!important;gap:5px!important;
+  padding:6px 5px!important;overflow:hidden!important;
+}
+.finance-club-panel .club-kit.kit-tile{width:16px!important;height:16px!important}
+.finance-club-panel .club-tile-copy{display:flex;min-width:0;flex-direction:column;align-items:flex-start;justify-content:center;line-height:1.05}
+.finance-club-panel .club-tile-copy b{font-size:10px!important;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:clip}
+.finance-club-panel .club-tile-copy strong{font-size:11px!important;margin-top:3px;white-space:nowrap}
+
+/* Giocatori: righe riepilogo più leggibili */
+#playersView .market-universe-strip,#playersView .role-redistribution{min-height:58px;padding:12px 14px!important;gap:10px!important}
+#playersView .market-universe-strip span,#playersView .role-redistribution span{font-size:15px!important;line-height:1.25;font-weight:650;color:#e7edf6}
+#playersView .market-universe-strip b,#playersView .role-redistribution b{font-size:13px!important;line-height:1.2;padding:6px 9px!important}
+
+/* Leghe: stato vuoto senza iniziale decorativa */
+.league-empty-state{padding-top:34px!important;padding-bottom:34px!important}
+.league-empty-state h3{font-size:21px!important;margin:0 0 8px!important}
+.league-empty-state p{font-size:15px!important;line-height:1.48!important}
+
+/* Formazioni: data ultimo aggiornamento al posto del testo descrittivo */
+.formations-update-card{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  margin-bottom:13px;padding:15px 16px;border-radius:18px;
+  background:linear-gradient(145deg,#0f2137,#0a192b);border:1px solid #31516f;
+  box-shadow:0 9px 24px rgba(0,0,0,.18);
+}
+.formations-update-card span{display:block;font-size:11px;letter-spacing:.065em;color:#a9bad0;font-weight:800}
+.formations-update-card b{display:block;margin-top:4px;font-size:18px;line-height:1.15;color:#f5f8fc}
+.formations-update-card small{font-size:12px;color:#9eafc4;white-space:nowrap}
+.formations-dedicated-grid .formation-role-row{grid-template-columns:64px minmax(0,1fr)!important;padding:13px 0!important}
+.formations-dedicated-grid .formation-role-label{font-size:13px!important;padding:9px 5px!important}
+.formations-dedicated-grid .formation-role-players{gap:9px!important}
+.formations-dedicated-grid .formation-name-chip{padding:9px 11px!important;border-radius:12px!important}
+.formations-dedicated-grid .formation-name-chip b{font-size:19px!important;line-height:1.2!important}
+.formations-dedicated-grid .formation-name-chip em{font-size:13px!important;margin-left:5px!important}
+.formations-dedicated-grid .set-piece-box{padding:13px 14px!important;margin:10px 13px 14px!important}
+.set-piece-title{padding-bottom:9px!important;margin-bottom:5px!important}
+.set-piece-title>span{font-size:15px!important}
+.set-piece-title b{font-size:14px!important}
+.set-piece-title small{font-size:10px!important}
+.set-piece-row{grid-template-columns:82px minmax(0,1fr)!important;gap:9px!important;padding:9px 0!important}
+.set-piece-row>b{font-size:14px!important;line-height:1.35!important}
+.set-piece-name{font-size:14.5px!important;line-height:1.35!important}
+.set-piece-note{font-size:11px!important}
+
+@media(max-width:360px){
+  .finance-live-panel-top{grid-template-columns:1fr 1fr;grid-template-areas:"title title" "main metrics" "actions actions";gap:9px}
+  .finance-live-panel-top .finance-live-main strong{font-size:31px!important}
+  .finance-market-grid{grid-template-columns:1fr!important}
+  .finance-club-panel .club-tile{grid-template-columns:15px minmax(0,1fr)!important;padding:6px 4px!important}
+  #playersView .market-universe-strip span,#playersView .role-redistribution span{font-size:14px!important}
+  #playersView .market-universe-strip b,#playersView .role-redistribution b{font-size:12px!important}
+  .formations-dedicated-grid .formation-name-chip b{font-size:17px!important}
+  .formations-dedicated-grid .formation-name-chip em{font-size:12px!important}
+  .set-piece-row{grid-template-columns:74px minmax(0,1fr)!important}
+  .set-piece-row>b{font-size:13px!important}.set-piece-name{font-size:13.5px!important}
+}
+
+/* v1.32 QA refinements */
+.finance-market-grid>.finance-panel{min-width:0}
+.finance-rep span{font-size:clamp(9.2px,2.5vw,11.5px)!important;letter-spacing:-.01em;white-space:nowrap}
+@media(max-width:360px){
+  .finance-rep span{font-size:9.5px!important;white-space:normal!important;line-height:1.08;min-height:22px;display:flex;align-items:center;justify-content:center}
+}
+@media(max-width:360px){
+  .finance-rep span[data-short]{font-size:0!important;white-space:nowrap!important;min-height:22px}
+  .finance-rep span[data-short]::after{content:attr(data-short);font-size:11px;line-height:22px;letter-spacing:.04em}
+}
+
+/* v1.33 — Giocatori: leggibilità riepiloghi strategici */
+#playersView .market-universe-strip,
+#playersView .role-redistribution{
+  min-height:68px;
+  padding:14px 16px!important;
+  gap:11px!important;
+  border-radius:15px!important;
+}
+#playersView .market-universe-strip span,
+#playersView .role-redistribution span{
+  font-size:18px!important;
+  line-height:1.25!important;
+  font-weight:700!important;
+  letter-spacing:-.01em!important;
+  color:#f1f5fb!important;
+}
+#playersView .market-universe-strip b,
+#playersView .role-redistribution b{
+  font-size:15px!important;
+  line-height:1.15!important;
+  padding:8px 11px!important;
+  border-radius:10px!important;
+  font-weight:750!important;
+}
+
+@media(max-width:360px){
+  #playersView .market-universe-strip,
+  #playersView .role-redistribution{
+    min-height:auto;
+    flex-wrap:wrap;
+    overflow:visible;
+    padding:13px 14px!important;
+  }
+  #playersView .market-universe-strip span,
+  #playersView .role-redistribution span{
+    flex:1 0 100%;
+    margin-right:0!important;
+    font-size:17px!important;
+  }
+  #playersView .market-universe-strip b,
+  #playersView .role-redistribution b{
+    font-size:14px!important;
+    padding:7px 10px!important;
+  }
+}

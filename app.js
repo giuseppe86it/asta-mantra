@@ -1033,7 +1033,7 @@ function renderDashboard(){
   const repCards=["POR","DIF","CEN","ATT"].map(rep=>{
     const guide=Math.max(1,Number(budgets[rep]||0));
     const pct=Math.min(100,Math.max(0,byRep[rep]/guide*100));
-    return `<div class="finance-rep"><span>${repLabel[rep]}</span><strong>${fmt(byRep[rep])}</strong><small>su ${fmt(guide)} crediti</small><i><em style="width:${pct}%"></em></i><b>${Math.round(pct)}%</b></div>`;
+    return `<div class="finance-rep"><span data-short="${rep}">${repLabel[rep]}</span><strong>${fmt(byRep[rep])}</strong><small>su ${fmt(guide)} crediti</small><i><em style="width:${pct}%"></em></i><b>${Math.round(pct)}%</b></div>`;
   }).join("");
 
   const recentRows=recent.length?recent.map(p=>{
@@ -1044,6 +1044,20 @@ function renderDashboard(){
 
   $("#dashboardView").innerHTML=`
     <div class="finance-dashboard">
+      <section class="finance-panel finance-live-panel finance-live-panel-top">
+        <div class="finance-panel-title"><b>ASTA LIVE</b><span>accesso rapido</span></div>
+        <div class="finance-live-main"><span>FASE ATTIVA</span><strong>${currentPhase.id}</strong><small>${currentPhase.label} · ${mineEcon.missing} posti mancanti</small></div>
+        <div class="finance-live-metrics">
+          <div class="finance-live-sub"><span>MAX PROSSIMO</span><b>${fmt(mineEcon.maxNext)}</b></div>
+          <div class="finance-live-sub"><span>WATCHLIST</span><b>${watchCount}</b></div>
+        </div>
+        <div class="finance-live-actions">
+          <button id="openLiveBtn" class="primary finance-live-btn">ENTRA IN ASTA</button>
+          <div class="finance-phase-track">${AUCTION_PHASES.map((ph,i)=>`<button class="${ph.id===state.auctionPhase?"active":""} ${i<phaseIndex()?"done":""}" onclick="setAuctionPhase('${ph.id}')">${ph.id}</button>`).join("")}</div>
+          ${nextPhase?`<button id="nextPhaseBtn" class="finance-text-btn">Termina ${currentPhase.id} · passa a ${nextPhase.id}</button>`:""}
+        </div>
+      </section>
+
       <section class="finance-kpis">
         <div class="finance-kpi finance-kpi-primary"><span>BUDGET RESIDUO</span><strong>${fmt(rem)}</strong><small>CREDITI</small></div>
         <div class="finance-kpi"><span>ROSA</span><strong>${bought.length}<em>/25</em></strong><small>${porCount} POR · ${movCount} MOV.</small></div>
@@ -1080,20 +1094,11 @@ function renderDashboard(){
         </div>
       </section>
 
-      <section class="finance-bottom-grid">
+      <section class="finance-bottom-grid finance-bottom-grid-single">
         <div class="finance-panel finance-recent-panel">
           <div class="finance-panel-title"><b>ULTIMI 5 ACQUISTI</b><span>${fmt(s)} crediti spesi</span></div>
           <div class="finance-recent-list">${recentRows}</div>
           ${recent.length?`<button id="undoLastPurchaseBtn" class="finance-text-btn">Annulla ultimo acquisto</button>`:""}
-        </div>
-        <div class="finance-panel finance-live-panel">
-          <div class="finance-panel-title"><b>ASTA LIVE</b><span>accesso rapido</span></div>
-          <div class="finance-live-main"><span>FASE ATTIVA</span><strong>${currentPhase.id}</strong><small>${currentPhase.label} · ${mineEcon.missing} posti mancanti</small></div>
-          <div class="finance-live-sub"><span>MAX PROSSIMO</span><b>${fmt(mineEcon.maxNext)}</b></div>
-          <div class="finance-live-sub"><span>WATCHLIST</span><b>${watchCount}</b></div>
-          <button id="openLiveBtn" class="primary finance-live-btn">ENTRA IN ASTA</button>
-          <div class="finance-phase-track">${AUCTION_PHASES.map((ph,i)=>`<button class="${ph.id===state.auctionPhase?"active":""} ${i<phaseIndex()?"done":""}" onclick="setAuctionPhase('${ph.id}')">${ph.id}</button>`).join("")}</div>
-          ${nextPhase?`<button id="nextPhaseBtn" class="finance-text-btn">Termina ${currentPhase.id} · passa a ${nextPhase.id}</button>`:""}
         </div>
       </section>
 
@@ -1139,8 +1144,8 @@ function clubCounterHTML(bought){
       else if(count===4) cls="club-warning";
 
       return `<div class="club-tile ${cls}" title="${fullName}">
-        <div class="club-tile-main">${kitHTML(club,'tile',fullName)}<b>${club}</b></div>
-        <strong>${count}/5</strong>
+        ${kitHTML(club,'tile',fullName)}
+        <span class="club-tile-copy"><b>${club}</b><strong>${count}/5</strong></span>
       </div>`;
     }).join("")}
   </div>`;
@@ -1247,13 +1252,25 @@ function formationCarouselHTML(){
 }
 
 
+function formationUpdateTimestamp(value){
+  const m=String(value||"").match(/^(\d{2})\/(\d{2})\/(\d{4})\s+(\d{2}):(\d{2})$/);
+  if(!m)return 0;
+  return new Date(Number(m[3]),Number(m[2])-1,Number(m[1]),Number(m[4]),Number(m[5])).getTime();
+}
+function latestFormationUpdate(){
+  return formations.slice().sort((a,b)=>formationUpdateTimestamp(b.updated)-formationUpdateTimestamp(a.updated))[0]?.updated||"—";
+}
+
 function renderFormationsView(){
   $("#formationsView").innerHTML=`
     <div class="section-title formations-page-title">
       <div><div class="eyebrow">Serie A 26/27</div><h2>Probabili Formazioni</h2></div>
       <span class="muted">${formations.length} squadre</span>
     </div>
-    <div class="card formations-page-note">Le formazioni sono state spostate qui per lasciare la Dashboard dedicata al controllo live dell'asta. Tocca una squadra per aprire il campo completo.</div>
+    <div class="formations-update-card">
+      <div><span>ULTIMO AGGIORNAMENTO FORMAZIONI</span><b>${latestFormationUpdate()}</b></div>
+      <small>${formations.length} squadre</small>
+    </div>
     ${formations.length?`<div class="formations-dedicated-grid">${sortedFormations().map(f=>formationListCardHTML(f,formations.indexOf(f))).join("")}</div>`:`<div class="card muted">Formazioni non disponibili.</div>`}`;
 }
 
@@ -2132,7 +2149,6 @@ function renderLeagues(){
     $("#leagueView").innerHTML=`
       <div class="section-title"><h2>Leghe</h2></div>
       <div class="card league-empty-state">
-        <div class="league-empty-icon">L</div>
         <h3>Nessuna lega creata</h3>
         <p class="muted">Crea la lega per assegnare i giocatori venduti, calcolare crediti residui, spesa per reparto e prevedere i moduli degli avversari.</p>
         <button id="createLeagueBtn" class="primary">＋ Crea lega</button>
@@ -2296,4 +2312,4 @@ function lockInit(){
   $("#unlockBtn").onclick=()=>{if($("#pinInput").value===state.pin)$("#lock").classList.add("hidden");else $("#lockText").textContent="PIN errato. Riprova."};
 }
 ensureInitialSnapshot();refresh();lockInit();
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.30").catch(()=>{}));
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.33").catch(()=>{}));
