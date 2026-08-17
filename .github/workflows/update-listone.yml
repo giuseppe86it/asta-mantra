@@ -1,0 +1,50 @@
+name: Aggiorna Listone Fantacalcio
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "7,37 * * * *"
+  push:
+    paths:
+      - "scripts/update-listone.mjs"
+      - ".github/workflows/update-listone.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-listone
+  cancel-in-progress: true
+
+jobs:
+  aggiorna-listone:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Scarica il repository
+        uses: actions/checkout@v4
+
+      - name: Prepara Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Installa il parser HTML
+        run: npm install --no-save --no-package-lock cheerio@1.0.0
+
+      - name: Leggi e valida il listone ufficiale
+        run: node scripts/update-listone.mjs
+
+      - name: Salva il nuovo snapshot se è cambiato
+        shell: bash
+        run: |
+          if git diff --quiet -- listone-current.json; then
+            echo "Nessuna modifica nel listone: niente da salvare."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add listone-current.json
+          git commit -m "Aggiorna listone Fantacalcio"
+          git push
