@@ -1,5 +1,5 @@
-const CACHE="asta-mantra-v1.33";
-const ASSETS=["./","./index.html","./styles.css?v=1.33","./app.js?v=1.33","./players.js?v=1.33","./formations.js?v=1.33","./market.js?v=1.33","./listone-current.json","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png","./favicon-32.png"];
+const CACHE="asta-mantra-v1.34";
+const ASSETS=["./","./index.html","./styles.css?v=1.34","./app.js?v=1.34","./players.js?v=1.34","./formations.js?v=1.34","./market.js?v=1.34","./listone-current.json","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png","./favicon-32.png"];
 
 self.addEventListener("install",event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()));

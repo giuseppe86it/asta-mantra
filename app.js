@@ -712,24 +712,29 @@ function primaryOffensiveRole(p){
   if(p.reparto!=="ATT") return null;
   return roleTokens(p.role).find(r=>["W","T","A","Pc"].includes(r)) || null;
 }
+const ROLE_DETAIL_FILTERS=new Set(["Por","Ds","Dc","Dd","B","E","M","C","W","T","A","Pc"]);
 function roleFilterCount(role){
-  if(role==="T"){
-    return currentStrategicPlayers().filter(p=>roleTokens(p.role).includes("T")).length;
-  }
-  if(["W","A","Pc"].includes(role)){
-    return currentStrategicPlayers().filter(p=>primaryOffensiveRole(p)===role).length;
-  }
+  if(!ROLE_DETAIL_FILTERS.has(role)) return 0;
   return currentStrategicPlayers().filter(p=>roleTokens(p.role).includes(role)).length;
 }
 function playerMatchesRoleFilter(p,role,mode=state.poolMode){
   if(role==="Tutti") return true;
   if(role==="Preferiti") return isWatchlisted(p.id);
-  if(mode==="all"){
-    return roleTokens(p.role).includes(role);
+  if(ROLE_DETAIL_FILTERS.has(role)) return roleTokens(p.role).includes(role);
+  return false;
+}
+function isPrimaryForRole(p,role){
+  const tokens=roleTokens(p?.role);
+  if(!tokens.includes(role)) return false;
+  if(["W","T","A","Pc"].includes(role)){
+    const offensivePrimary=primaryOffensiveRole(p);
+    if(offensivePrimary) return offensivePrimary===role;
   }
-  if(role==="T") return roleTokens(p.role).includes("T");
-  if(["W","A","Pc"].includes(role)) return primaryOffensiveRole(p)===role;
-  return roleTokens(p.role).includes(role);
+  return tokens[0]===role;
+}
+function roleCompatibilityLabel(role){
+  if(["W","T","A","Pc"].includes(role)) return `${role} presente tra i ruoli offensivi compatibili`;
+  return `${role} presente tra i ruoli secondari`;
 }
 function fmt(n){return Number(n||0).toLocaleString("it-IT")}
 function purchasedPlayers(){return allPlayers.filter(p=>state.purchases[p.id])}
@@ -1596,28 +1601,29 @@ function playerViewData(){
   const list=baseFiltered.slice().sort(sorter);
 
   let content="";
-  if(state.filter==="T"){
-    const main=list.filter(p=>primaryOffensiveRole(p)==="T" || (state.poolMode==="all"&&roleTokens(p.role)[0]==="T"));
-    const compatible=list.filter(p=>!main.includes(p));
+  if(ROLE_DETAIL_FILTERS.has(state.filter)){
+    const role=state.filter;
+    const main=list.filter(p=>isPrimaryForRole(p,role));
+    const compatible=list.filter(p=>!isPrimaryForRole(p,role));
     content=`
       <div class="role-sheet-summary">
-        <div><span>T principali</span><strong>${main.length}</strong></div>
-        <div><span>T compatibili</span><strong>${compatible.length}</strong></div>
+        <div><span>${role} principali</span><strong>${main.length}</strong></div>
+        <div><span>${role} compatibili</span><strong>${compatible.length}</strong></div>
         <div><span>Totale opzioni</span><strong>${list.length}</strong></div>
       </div>
       <div class="role-sheet-section">
         <div class="role-sheet-head">
-          <div><b>T principali</b><span>ruolo T prioritario</span></div>
+          <div><b>${role} principali</b><span>ruolo ${role} prioritario</span></div>
           <strong>${main.length}</strong>
         </div>
-        ${main.length?main.map(playerRow).join(""):`<div class="card muted">Nessun T principale.</div>`}
+        ${main.length?main.map(playerRow).join(""):`<div class="card muted">Nessun ${role} principale.</div>`}
       </div>
       <div class="role-sheet-section">
         <div class="role-sheet-head">
-          <div><b>T compatibili</b><span>C/T · W/T · T/A</span></div>
+          <div><b>${role} compatibili</b><span>${roleCompatibilityLabel(role)}</span></div>
           <strong>${compatible.length}</strong>
         </div>
-        ${compatible.length?compatible.map(playerRow).join(""):`<div class="card muted">Nessun T compatibile.</div>`}
+        ${compatible.length?compatible.map(playerRow).join(""):`<div class="card muted">Nessun ${role} compatibile.</div>`}
       </div>`;
   }else{
     content=`<div>${list.map(playerRow).join("")}</div>`;
@@ -1628,8 +1634,7 @@ function playerViewData(){
 
 function playerResultsInfo(list){
   return `${list.length} giocatori
-    ${state.poolMode==="strategic"&&["W","A","Pc"].includes(state.filter)?" · ruolo offensivo principale":""}
-    ${state.filter==="T"?" · principali + compatibili":""}
+    ${ROLE_DETAIL_FILTERS.has(state.filter)?" · principali + compatibili":""}
     ${state.filter==="Venduti"?" · assegnati ad altre squadre":""}
     ${state.filter==="Preferiti"?" · watchlist personale":""}`;
 }

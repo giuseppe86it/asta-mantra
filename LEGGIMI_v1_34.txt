@@ -1,0 +1,23 @@
+ASTA MANTRA v1.34 — PROFONDITÀ RUOLI
+
+Novità nel menu Giocatori:
+- Ogni filtro ruolo (Por, Ds, Dc, Dd, B, E, M, C, W, T, A, Pc) mostra:
+  1. Principali
+  2. Compatibili
+  3. Totale opzioni
+- Sotto al riepilogo i giocatori vengono separati in due sezioni: principali e compatibili.
+- La riga "Offensivi principali" resta invariata e continua a mostrare W/T/A/Pc prioritari.
+- I contatori dei chip ruolo mostrano ora il TOTALE delle opzioni compatibili per quel ruolo.
+
+
+Nota: i conteggi vengono calcolati in tempo reale sul Listone sincronizzato presente nel tuo iPhone, quindi possono cambiare dopo un aggiornamento ufficiale.
+
+INSTALLAZIONE
+Sostituire su GitHub SOLO:
+- index.html
+- app.js
+- styles.css
+- sw.js
+
+NON sostituire scripts/update-listone.mjs, listone-current.json o .github/workflows:
+il sincronizzatore ufficiale già configurato resta intatto.

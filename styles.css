@@ -2535,3 +2535,22 @@ html,body{background:radial-gradient(circle at 50% -10%,#0b1b30 0,#06101d 42%,#0
     padding:7px 10px!important;
   }
 }
+
+
+/* v1.34 — Profondità ruoli: principali / compatibili / totale per ogni ruolo */
+#playersView .role-sheet-summary{gap:10px;margin:12px 0 16px}
+#playersView .role-sheet-summary>div{padding:13px 9px;border-radius:15px;background:linear-gradient(180deg,#10233a,#0b1b2e);border-color:#2b4b68}
+#playersView .role-sheet-summary span{font-size:13px!important;line-height:1.2;color:#aebdd0}
+#playersView .role-sheet-summary strong{font-size:28px!important;line-height:1.05;margin-top:6px;color:#f5f8fc}
+#playersView .role-sheet-head{align-items:center;margin:0 3px 10px}
+#playersView .role-sheet-head b{font-size:20px!important;line-height:1.15}
+#playersView .role-sheet-head span{font-size:13px!important;line-height:1.3;margin-top:3px}
+#playersView .role-sheet-head>strong{font-size:25px!important}
+@media(max-width:360px){
+  #playersView .role-sheet-summary{gap:7px}
+  #playersView .role-sheet-summary>div{padding:11px 5px}
+  #playersView .role-sheet-summary span{font-size:11.5px!important}
+  #playersView .role-sheet-summary strong{font-size:24px!important}
+  #playersView .role-sheet-head b{font-size:18px!important}
+  #playersView .role-sheet-head span{font-size:12px!important}
+}
