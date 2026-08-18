@@ -2839,3 +2839,37 @@ html,body{background:radial-gradient(circle at 50% -10%,#0b1b30 0,#06101d 42%,#0
   .finance-club-panel .club-tile-copy{gap:2px!important}
   .finance-club-panel .club-tile-copy b,.finance-club-panel .club-tile-copy strong{font-size:8.7px!important}
 }
+
+
+/* =========================================================
+   v1.41 - Fuori listone / asta di riparazione
+   ========================================================= */
+.out-name-marker{
+  color:#fbbf24;
+  display:inline-block;
+  margin-left:.12em;
+  font-weight:900;
+}
+.hybrid-roster-player.out-of-listone,
+.league-player-row.out-of-listone{
+  border-color:rgba(251,191,36,.42);
+}
+.out-listone-roster-legend{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin:12px 0;
+  padding:11px 13px;
+  border:1px solid rgba(251,191,36,.36);
+  border-radius:14px;
+  background:rgba(251,191,36,.08);
+  color:#dbe7f7;
+}
+.out-listone-roster-legend b{color:#fbbf24;white-space:nowrap}
+.out-listone-roster-legend span{color:#9db0c9;text-align:right;font-size:13px}
+.league-out-legend{margin-top:0}
+@media(max-width:430px){
+  .out-listone-roster-legend{align-items:flex-start;flex-direction:column;gap:3px}
+  .out-listone-roster-legend span{text-align:left}
+}

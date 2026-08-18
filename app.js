@@ -137,6 +137,20 @@ function isMarketEligiblePlayer(p){
 }
 function getPlayer(id){return allPlayers.find(p=>String(p.id)===String(id))}
 function idArg(id){return JSON.stringify(String(id))}
+function playerIsRosterAssigned(p){
+  if(!p)return false;
+  if(state?.purchases?.[p.id])return true;
+  const sale=state?.sold?.[p.id];
+  return !!sale?.teamId;
+}
+function playerNameText(p){
+  if(!p)return "";
+  return `${p.name}${p.outOfListone&&playerIsRosterAssigned(p)?" *":""}`;
+}
+function playerNameHTML(p){
+  if(!p)return "";
+  return `${esc(p.name)}${p.outOfListone&&playerIsRosterAssigned(p)?'<span class="out-name-marker" title="Fuori listone">*</span>':""}`;
+}
 function esc(value){
   return String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch]));
 }
@@ -504,9 +518,9 @@ function openFinalReport(){
     <div class="report-status ${r.valid?"ok":"warn"}">${r.valid?"Rosa formalmente completa":"Rosa ancora in costruzione"} · ${r.owned.length}/25</div>
     <div class="report-kpis"><div><span>Speso</span><b>${fmt(r.total)}</b></div><div><span>Residuo</span><b>${fmt(r.remaining)}</b></div><div><span>Media</span><b>${fmt(r.avg)}</b></div><div><span>Modulo</span><b>${activeStrategy().module}</b></div></div>
     <div class="report-reps">${["POR","DIF","CEN","ATT"].map(rep=>`<div><span>${rep}</span><b>${fmt(r.byRep[rep])}</b></div>`).join("")}</div>
-    <section class="report-section"><h3>Migliori affari vs MAX</h3>${r.deals.slice(0,3).map(x=>`<div><span>${esc(x.p.name)}<small>${x.p.club} · MAX ${fmt(x.p.maxPrice)}</small></span><b>${fmt(x.price)} cr</b></div>`).join("")||'<div class="safety-empty">Nessun acquisto.</div>'}</section>
-    <section class="report-section"><h3>Investimenti principali</h3>${topSpend.map(p=>`<div><span>${esc(p.name)}<small>${p.club} · ${p.role}</small></span><b>${fmt(state.purchases[p.id]?.price)} cr</b></div>`).join("")||'<div class="safety-empty">Nessun acquisto.</div>'}</section>
-    <section class="report-section"><h3>Sopra MAX</h3>${r.overs.slice(0,3).map(x=>`<div><span>${esc(x.p.name)}<small>MAX ${fmt(x.p.maxPrice)}</small></span><b>+${Math.round((x.ratio-1)*100)}%</b></div>`).join("")||'<div class="safety-empty">Nessun acquisto sopra MAX.</div>'}</section>
+    <section class="report-section"><h3>Migliori affari vs MAX</h3>${r.deals.slice(0,3).map(x=>`<div><span>${playerNameHTML(x.p)}<small>${x.p.club} · MAX ${fmt(x.p.maxPrice)}</small></span><b>${fmt(x.price)} cr</b></div>`).join("")||'<div class="safety-empty">Nessun acquisto.</div>'}</section>
+    <section class="report-section"><h3>Investimenti principali</h3>${topSpend.map(p=>`<div><span>${playerNameHTML(p)}<small>${p.club} · ${p.role}</small></span><b>${fmt(state.purchases[p.id]?.price)} cr</b></div>`).join("")||'<div class="safety-empty">Nessun acquisto.</div>'}</section>
+    <section class="report-section"><h3>Sopra MAX</h3>${r.overs.slice(0,3).map(x=>`<div><span>${playerNameHTML(x.p)}<small>MAX ${fmt(x.p.maxPrice)}</small></span><b>+${Math.round((x.ratio-1)*100)}%</b></div>`).join("")||'<div class="safety-empty">Nessun acquisto sopra MAX.</div>'}</section>
     ${state.league?(()=>{const rows=state.league.teams.map(t=>({t,e:teamEconomy(t)})).sort((a,b)=>b.e.spent-a.e.spent);const myRank=rows.findIndex(x=>x.t.isMine)+1;return `<section class="report-section"><h3>Confronto lega</h3><div><span>Posizione per spesa<small>${state.league.size} squadre</small></span><b>${myRank}°</b></div><div><span>Leader spesa<small>${esc(rows[0]?.t.name||"—")}</small></span><b>${fmt(rows[0]?.e.spent||0)} cr</b></div><div><span>Leader crediti residui<small>${esc(rows.slice().sort((a,b)=>b.e.remaining-a.e.remaining)[0]?.t.name||"—")}</small></span><b>${fmt(rows.slice().sort((a,b)=>b.e.remaining-a.e.remaining)[0]?.e.remaining||0)} cr</b></div></section>`})():""}
     <button class="primary full-btn" onclick="closeSafetyDialog()">Chiudi report</button>
   </div>`;
@@ -1056,7 +1070,7 @@ function renderDashboard(){
   const recentRows=recent.length?recent.map(p=>{
     const tr=state.purchases[p.id]||{};
     const time=tr.at?new Date(tr.at).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"}):"—";
-    return `<button class="finance-recent-row" onclick='openPlayer(${idArg(p.id)})'><time>${time}</time>${kitHTML(p.club,'xs',p.club)}<span><b>${esc(p.name)}</b><small>${p.club} · ${p.role}</small></span><strong>${fmt(tr.price)}<small>cr</small></strong></button>`;
+    return `<button class="finance-recent-row" onclick='openPlayer(${idArg(p.id)})'><time>${time}</time>${kitHTML(p.club,'xs',p.club)}<span><b>${playerNameHTML(p)}</b><small>${p.club} · ${p.role}</small></span><strong>${fmt(tr.price)}<small>cr</small></strong></button>`;
   }).join(""):`<div class="finance-empty">Nessun acquisto ancora.</div>`;
 
   $("#dashboardView").innerHTML=`
@@ -1587,7 +1601,7 @@ function playerRow(p){
     <div class="player-main">
       ${kitHTML(p.club,'row',p.club)}
       <div class="player-copy">
-        <h3>${p.name}<button type="button" class="watch-btn ${isWatchlisted(p.id)?"active":""}" aria-label="Watchlist" onclick='event.stopPropagation();toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"SEG":"+"}</button>
+        <h3>${playerNameHTML(p)}<button type="button" class="watch-btn ${isWatchlisted(p.id)?"active":""}" aria-label="Watchlist" onclick='event.stopPropagation();toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"SEG":"+"}</button>
           ${p.notes&&p.notes.includes("TARGET")?'<span class="badge target">TARGET</span>':""}
           ${strategic?'<span class="badge strategic-badge">200</span>':'<span class="badge listone-badge">LISTONE</span>'}
           ${p.outOfListone?'<span class="badge out-listone-badge">FUORI LISTONE</span>':""}
@@ -1883,7 +1897,7 @@ function openPlayer(id){
   const live=liveMaxForPlayer(p);
   $("#playerDialogContent").innerHTML=`<div class="dialog-body">
     <div class="section-title">
-      <div class="player-dialog-title">${kitHTML(p.club,'dialog',p.club)}<div><div class="eyebrow">${p.club} · ${p.role} · ${strategic?"STRATEGICO":"LISTONE"}</div><h2>${p.name}</h2></div></div>
+      <div class="player-dialog-title">${kitHTML(p.club,'dialog',p.club)}<div><div class="eyebrow">${p.club} · ${p.role} · ${strategic?"STRATEGICO":"LISTONE"}</div><h2>${playerNameHTML(p)}</h2></div></div>
       <div class="player-title-actions"><button type="button" class="watch-detail ${isWatchlisted(p.id)?"active":""}" onclick='toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"Seguito":"Segui"}</button><button class="ghost" onclick="playerDialog.close()">✕</button></div>
     </div>
     <div class="grid">
@@ -1931,7 +1945,7 @@ function openSoldDialog(id,returnContext=undefined){
   soldPlayerId=p.id;
   const previous=state.sold[p.id]||{};
   $("#playerDialog").close();
-  $("#soldTitle").textContent=(previous.price?"Modifica vendita · ":"Venduto · ")+p.name;
+  $("#soldTitle").textContent=(previous.price?"Modifica vendita · ":"Venduto · ")+playerNameText(p);
 
   const teams=opponentTeams();
   if(teams.length){
@@ -2017,7 +2031,7 @@ function startPurchase(id,returnContext=undefined){
   purchaseId=p.id;
   purchaseMode="new";
   $("#playerDialog").close();
-  $("#purchaseTitle").textContent="Acquista "+p.name;
+  $("#purchaseTitle").textContent="Acquista "+playerNameText(p);
   $("#confirmPurchase").textContent="Conferma";
   $("#purchasePrice").value="";
   $("#purchaseSignal").textContent="";
@@ -2034,7 +2048,7 @@ window.editPurchase=id=>{
   purchaseMode="edit";
   const current=state.purchases[p.id];
   $("#playerDialog").close();
-  $("#purchaseTitle").textContent="Modifica "+p.name;
+  $("#purchaseTitle").textContent="Modifica "+playerNameText(p);
   $("#confirmPurchase").textContent="Salva";
   $("#purchasePrice").value=current?.price ?? "";
   const s=signal(p,current?.price ?? "");
@@ -2122,9 +2136,10 @@ function renderSquad(){
   const groupRows=rep=>{
     const rows=b.filter(p=>p.reparto===rep);
     if(!rows.length)return `<div class="hybrid-empty-roster"><span>＋</span><small>${rep==='ATT'?'Attaccanti ancora da acquistare':'Nessun giocatore acquistato'}</small></div>`;
-    return rows.map(p=>`<button class="hybrid-roster-player" onclick='openPlayer(${idArg(p.id)})'><span><b>${esc(p.name)}</b><small>${p.club} · ${p.role}</small></span><strong>${fmt(state.purchases[p.id]?.price||0)} cr</strong></button>`).join("");
+    return rows.map(p=>`<button class="hybrid-roster-player ${p.outOfListone?"out-of-listone":""}" onclick='openPlayer(${idArg(p.id)})'><span><b>${playerNameHTML(p)}</b><small>${p.club} · ${p.role}${p.outOfListone?" · FUORI LISTONE":""}</small></span><strong>${fmt(state.purchases[p.id]?.price||0)} cr</strong></button>`).join("");
   };
   const counts={POR:0,DIF:0,CEN:0,ATT:0};b.forEach(p=>counts[p.reparto]++);
+  const outOfListoneOwned=b.filter(p=>p.outOfListone).length;
   $("#squadView").innerHTML=`
     <div class="hybrid-page-head"><div><div class="eyebrow">La tua rosa</div><h2>Rosa Mantra</h2></div><span>25 posti</span></div>
     <div class="hybrid-squad-kpis">
@@ -2135,6 +2150,7 @@ function renderSquad(){
       <button class="${state.strategy==='A'?'active':''}" onclick="setStrategy('A')"><i>A</i><span>Strategia nostra · A<b>4-3-1-2</b></span></button>
       <button class="${state.strategy==='B'?'active':''}" onclick="setStrategy('B')"><i>B</i><span>Alternativa · B<b>4-3-3</b></span></button>
     </div>
+    ${outOfListoneOwned?`<div class="out-listone-roster-legend"><b>* Fuori listone</b><span>${outOfListoneOwned} ${outOfListoneOwned===1?"giocatore da gestire":"giocatori da gestire"} nell'asta di riparazione</span></div>`:""}
     <div class="hybrid-roster-groups">
       ${["POR","DIF","CEN","ATT"].map(rep=>`<section class="hybrid-roster-group"><div class="hybrid-roster-head"><b>${rep}</b><span>${counts[rep]}/${quota[rep]}</span></div>${groupRows(rep)}</section>`).join("")}
     </div>`;
@@ -2286,7 +2302,7 @@ function leagueRosterRows(items){
   return groups.map(rep=>{
     const rows=items.filter(x=>x.p.reparto===rep);
     if(!rows.length)return "";
-    return `<div class="league-role-block"><b>${rep}</b>${rows.map(x=>`<div class="league-player-row"><span>${x.p.name}<small>${x.p.role}</small></span><strong>${x.price?fmt(x.price)+" cr":"—"}</strong></div>`).join("")}</div>`;
+    return `<div class="league-role-block"><b>${rep}</b>${rows.map(x=>`<div class="league-player-row ${x.p.outOfListone?"out-of-listone":""}"><span>${playerNameHTML(x.p)}<small>${x.p.role}${x.p.outOfListone?" · FUORI LISTONE":""}</small></span><strong>${x.price?fmt(x.price)+" cr":"—"}</strong></div>`).join("")}</div>`;
   }).join("");
 }
 function renderLeagues(){
@@ -2305,7 +2321,8 @@ function renderLeagues(){
   const league=state.league;
   const intel=getAuctionIntel();
   const leader=intel.economy[0];
-  const unassigned=soldPlayers().filter(p=>!state.sold[p.id]?.teamId || (state.sold[p.id]?.leagueId && state.sold[p.id].leagueId!==league.id));
+  const unassigned=soldPlayers().filter(p=>!state.sold[p.id]?.teamId || (state.sold[p.id]?.leagueId && state.sold[p.id]?.leagueId!==league.id));
+  const assignedOutCount=league.teams.reduce((sum,team)=>sum+rosterForLeagueTeam(team).filter(x=>x.p.outOfListone).length,0);
 
   $("#leagueView").innerHTML=`
     <div class="section-title league-title-row">
@@ -2332,6 +2349,7 @@ function renderLeagues(){
     </details>
 
     <div class="section-title"><h2>Rose + Auction Intelligence</h2><span class="muted">tocca per aprire</span></div>
+    ${assignedOutCount?`<div class="out-listone-roster-legend league-out-legend"><b>* Fuori listone</b><span>${assignedOutCount} ${assignedOutCount===1?"giocatore assegnato":"giocatori assegnati"} da gestire nelle riparazioni</span></div>`:""}
     <div class="league-rosters intelligence-rosters">
       ${league.teams.map(team=>{
         const econ=teamEconomy(team);
@@ -2365,7 +2383,7 @@ function renderLeagues(){
       }).join("")}
     </div>
 
-    ${unassigned.length?`<div class="section-title"><h2>Venduti non assegnati</h2><span class="muted">${unassigned.length}</span></div><div class="card">${unassigned.map(p=>`<button class="unassigned-sale" data-id="${p.id}"><span>${p.name}<small>${p.club} · ${p.role}</small></span><b>${state.sold[p.id]?.price?fmt(state.sold[p.id].price)+" cr":"—"}</b></button>`).join("")}</div>`:""}
+    ${unassigned.length?`<div class="section-title"><h2>Venduti non assegnati</h2><span class="muted">${unassigned.length}</span></div><div class="card">${unassigned.map(p=>`<button class="unassigned-sale" data-id="${p.id}"><span>${playerNameHTML(p)}<small>${p.club} · ${p.role}</small></span><b>${state.sold[p.id]?.price?fmt(state.sold[p.id].price)+" cr":"—"}</b></button>`).join("")}</div>`:""}
   `;
 
   $("#saveLeagueNamesBtn").onclick=()=>{
@@ -2457,4 +2475,4 @@ function lockInit(){
   $("#unlockBtn").onclick=()=>{if($("#pinInput").value===state.pin)$("#lock").classList.add("hidden");else $("#lockText").textContent="PIN errato. Riprova."};
 }
 ensureInitialSnapshot();refresh();lockInit();
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.40").catch(()=>{}));
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.41").catch(()=>{}));
