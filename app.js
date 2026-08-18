@@ -4,7 +4,15 @@ const strategicPlayers = window.PLAYERS || [];
 const marketSeed = window.MARKET_PLAYERS || [];
 const marketMeta = window.MARKET_META || {};
 const players = strategicPlayers; // compatibilità con il codice storico
-const formations = window.FORMATIONS || [];
+const baseFormations = window.FORMATIONS || [];
+let formations = baseFormations.slice();
+const FORMATIONS_LIVE_STORAGE="am_formations_live_v1";
+const FORMATIONS_LIVE_SCHEMA=1;
+const FORMATIONS_LIVE_CHECKED_STORAGE="am_formations_live_checked_at";
+let formationsLiveCheckedAt=Number(localStorage.getItem(FORMATIONS_LIVE_CHECKED_STORAGE)||0)||0;
+let formationsLiveFeed=safeJsonParse(localStorage.getItem(FORMATIONS_LIVE_STORAGE),null);
+let formationsLiveLoading=false;
+let formationsLiveError="";
 
 const LISTONE_SYNC_STORAGE="am_listone_sync";
 const LISTONE_SYNC_SCHEMA=1;
@@ -615,7 +623,7 @@ function bestLineupMatch(strategy,bought,slotsOverride=null){
         if(mask&(1<<i)) continue;
         if(!slotCompatible(p,slots[i])) continue;
         const nmask=mask|(1<<i);
-        const nvalue=data.value+10000+playerQuality(p);
+        const nvalue=data.value+10000+playerQuality(p)+Math.round(starterProbability(p).prob*1.5);
         const prev=next.get(nmask);
         if(!prev || nvalue>prev.value){
           const assign=data.assign.slice();
@@ -667,7 +675,7 @@ function marketRoleHealth(roles,needed){
   const remaining=all.filter(p=>!state.purchases[p.id]&&!state.sold[p.id]);
   if(!all.length) return {value:0,remaining:0,total:0};
 
-  const weight=p=>1+Math.min(5,playerQuality(p)/120);
+  const weight=p=>1+Math.min(5,playerQuality(p)/120)+2.2*(starterProbability(p).prob/100);
   const totalWeight=all.reduce((a,p)=>a+weight(p),0);
   const remainingWeight=remaining.reduce((a,p)=>a+weight(p),0);
 
@@ -711,6 +719,11 @@ function strategyScore(strategyId,bought=purchasedPlayers(),intel=null){
   const key=bestLineupMatch(st,bought,st.keySlots);
   const depth=strategyDepth(strategyId,bought);
   const market=strategyMarket(strategyId,bought);
+  const starterMarket=strategyStarterMarket(strategyId,bought);
+  const ownedStarterFull=lineupStarterValue(full.assign);
+  const ownedStarterKey=lineupStarterValue(key.assign);
+  const starterValue=ownedStarterFull===null?starterMarket.value:(.45*ownedStarterFull+.35*(ownedStarterKey??ownedStarterFull)+.20*starterMarket.value);
+  const starterAdjustment=Math.round((starterValue-.5)*12);
   const keyPlayers=key.assign.filter(Boolean);
   const qsum=keyPlayers.reduce((a,p)=>a+playerQuality(p),0);
   const quality=Math.min(1,qsum/900);
@@ -730,16 +743,19 @@ function strategyScore(strategyId,bought=purchasedPlayers(),intel=null){
     +12*market.value
     +prior
     +auctionAdjustment
+    +starterAdjustment
   );
 
-  return {score:Math.min(100,Math.max(0,score)),full,key,depth,quality,market,auctionAdjustment,strategicRisk};
+  return {score:Math.min(100,Math.max(0,score)),full,key,depth,quality,market,starterMarket,starterValue,starterAdjustment,auctionAdjustment,strategicRisk};
 }
 function strategyRecommendation(bought=purchasedPlayers(),intel=null){
   const A=strategyScore("A",bought,intel),B=strategyScore("B",bought,intel);
   const delta=A.score-B.score;
   let recommended="A",status="BASE";
   if(bought.length<3){
-    recommended="A"; status="BASE";
+    if(delta>=3){recommended="A";status="A"}
+    else if(delta<=-3){recommended="B";status="B"}
+    else {recommended="A";status="BASE"}
   }else if(delta>=4){
     recommended="A"; status="A";
   }else if(delta<=-4){
@@ -755,11 +771,11 @@ function strategyRecommendation(bought=purchasedPlayers(),intel=null){
 
   let reason="";
   if(bought.length<3){
-    reason=`Partenza base su A · ${A.market.text} · ${B.market.text}.`;
+    reason=`Confronto iniziale anche sulla titolarità: A ${Math.round(A.starterValue*100)}% · B ${Math.round(B.starterValue*100)}% · ${recommended==="A"?A.starterMarket.text:B.starterMarket.text}.`;
   }else if(recommended==="A"){
-    reason=`A è più coperta: ${A.depth.text} · ${A.market.text}.`;
+    reason=`A è più coperta: ${A.depth.text} · titolarità ${Math.round(A.starterValue*100)}% · ${A.market.text}.`;
   }else{
-    reason=`B è più coperta: ${B.depth.text} · ${B.market.text}.`;
+    reason=`B è più coperta: ${B.depth.text} · titolarità ${Math.round(B.starterValue*100)}% · ${B.market.text}.`;
   }
   return {A,B,recommended,status,headline,reason};
 }
@@ -806,6 +822,147 @@ function fmt(n){return Number(n||0).toLocaleString("it-IT")}
 function purchasedPlayers(){return allPlayers.filter(p=>state.purchases[p.id])}
 function spent(){return Object.values(state.purchases).reduce((a,x)=>a+Number(x.price||0),0)}
 function countClub(club){return purchasedPlayers().filter(p=>p.club===club).length}
+
+function formationFeedValid(feed){
+  return !!feed && feed.schema===FORMATIONS_LIVE_SCHEMA && Array.isArray(feed.teams) && feed.teams.length>0;
+}
+function formationDisplayDate(value){
+  const d=new Date(value||0);if(Number.isNaN(d.getTime()))return "—";
+  return new Intl.DateTimeFormat("it-IT",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"}).format(d).replace(",","");
+}
+function formationFeedAgeMinutes(){
+  if(!formationFeedValid(formationsLiveFeed))return Infinity;
+  const ts=formationsLiveCheckedAt||new Date(formationsLiveFeed.generatedAt||0).getTime();
+  if(!Number.isFinite(ts)||!ts)return Infinity;
+  return Math.max(0,(Date.now()-ts)/6e4);
+}
+function formationPlayerCandidate(name,club){
+  const key=normalizePlayerName(name),candidates=allPlayers.filter(p=>p.club===club);
+  let hit=candidates.find(p=>normalizePlayerName(p.name)===key);if(hit)return hit;
+  const close=candidates.filter(p=>{
+    const k=normalizePlayerName(p.name);
+    return key.length>=5&&k.length>=5&&(key.startsWith(k)||k.startsWith(key)||key.includes(k)||k.includes(key));
+  });
+  return close.length===1?close[0]:null;
+}
+function formationRoleFor(name,club){return formationPlayerCandidate(name,club)?.role||"?"}
+function moduleLineCounts(module){
+  const nums=String(module||"").split("-").map(Number).filter(Number.isFinite);
+  return nums.length&&nums.reduce((a,b)=>a+b,0)===10?[1,...nums]:null;
+}
+function buildLiveFormationLines(team,base){
+  const starters=(team.starters||[]).slice(0,11).map(x=>({name:x.name,role:formationRoleFor(x.name,team.club),probability:Number(x.probability||0)}));
+  const counts=moduleLineCounts(team.module);
+  if(starters.length===11&&counts){
+    const lines=[];let pos=0;
+    counts.forEach(n=>{lines.push(starters.slice(pos,pos+n));pos+=n});
+    return lines;
+  }
+  return (base?.lines||[]).map(line=>line.map(p=>{
+    const live=[...(team.starters||[]),...(team.bench||[])].find(x=>normalizePlayerName(x.name)===normalizePlayerName(p.name));
+    return {...p,probability:Number(live?.probability||0)};
+  }));
+}
+function mergedLiveFormations(feed){
+  if(!formationFeedValid(feed))return baseFormations.slice();
+  const byClub=new Map((feed.teams||[]).map(t=>[t.club,t]));
+  return baseFormations.map(base=>{
+    const team=byClub.get(base.club);if(!team)return base;
+    return {...base,team:team.team||base.team,module:team.module||base.module,updated:formationDisplayDate(feed.generatedAt),lines:buildLiveFormationLines(team,base),bench:(team.bench||[]).map(x=>({...x,role:formationRoleFor(x.name,team.club)})),liveSource:true,sourceUrl:feed.sourceUrl||"https://www.fantacalcio.it/probabili-formazioni-serie-a"};
+  });
+}
+function applyFormationLiveFeed(feed,{persist=true}={}){
+  if(!formationFeedValid(feed))return false;
+  formationsLiveFeed=feed;formations=mergedLiveFormations(feed);formationsLiveError="";
+  if(persist)localStorage.setItem(FORMATIONS_LIVE_STORAGE,JSON.stringify(feed));
+  return true;
+}
+function starterProbability(p){
+  if(!p)return {prob:45,source:"unknown"};
+  if(formationFeedValid(formationsLiveFeed)){
+    const team=formationsLiveFeed.teams.find(t=>t.club===p.club);
+    if(team){
+      const pools=[...(team.starters||[]).map(x=>({...x,kind:"starter"})),...(team.bench||[]).map(x=>({...x,kind:"bench"}))];
+      const key=normalizePlayerName(p.name);
+      let hit=pools.find(x=>normalizePlayerName(x.name)===key);
+      if(!hit){
+        const close=pools.filter(x=>{const k=normalizePlayerName(x.name);return key.length>=5&&k.length>=5&&(key.startsWith(k)||k.startsWith(key)||key.includes(k)||k.includes(key))});
+        if(close.length===1)hit=close[0];
+      }
+      if(hit)return {prob:clamp(Number(hit.probability||0),0,100),source:"live",kind:hit.kind};
+      return {prob:12,source:"live",kind:"absent"};
+    }
+  }
+  const base=baseFormations.find(f=>f.club===p.club);
+  if(base){
+    const inXI=(base.lines||[]).flat().some(x=>normalizePlayerName(x.name)===normalizePlayerName(p.name));
+    return {prob:inXI?72:32,source:"base",kind:inXI?"starter":"bench"};
+  }
+  const txt=String(p.starter||"").toLowerCase();
+  if(txt.includes("titol"))return {prob:74,source:"profile"};
+  if(txt.includes("ballott"))return {prob:55,source:"profile"};
+  if(txt.includes("rotaz"))return {prob:42,source:"profile"};
+  return {prob:45,source:"unknown"};
+}
+function starterPriorityBonus(p){
+  const pr=starterProbability(p).prob;
+  if(pr>=85)return 16;if(pr>=70)return 12;if(pr>=55)return 7;if(pr>=40)return 2;if(pr>=25)return -4;return -9;
+}
+function starterStatus(pr){
+  if(pr>=85)return {label:"TITOLARE",cls:"sure"};
+  if(pr>=70)return {label:"PROBABILE",cls:"probable"};
+  if(pr>=50)return {label:"BALLOTTAGGIO",cls:"battle"};
+  if(pr>=30)return {label:"RISERVA ATTIVA",cls:"rotation"};
+  return {label:"RISERVA",cls:"reserve"};
+}
+function marketStarterHealth(roles,needed){
+  if(needed<=0)return {value:1,avg:100,count:0};
+  const candidates=marketRemainingPlayers(roles).map(p=>({p,prob:starterProbability(p).prob})).sort((a,b)=>b.prob-a.prob||playerQuality(b.p)-playerQuality(a.p));
+  if(!candidates.length)return {value:0,avg:0,count:0};
+  const take=candidates.slice(0,Math.max(needed*2,3));
+  const avg=take.reduce((a,x)=>a+x.prob,0)/take.length;
+  const usable=candidates.filter(x=>x.prob>=55).length;
+  const quantity=Math.min(1,usable/Math.max(1,needed*2));
+  return {value:clamp(.72*(avg/100)+.28*quantity),avg, count:usable};
+}
+function strategyStarterMarket(strategyId,bought=purchasedPlayers()){
+  const countOwned=roles=>bought.filter(p=>roles.some(r=>roleTokens(p.role).includes(r))).length;
+  if(strategyId==="A"){
+    const t=marketStarterHealth(["T"],Math.max(0,2-countOwned(["T"]))),apc=marketStarterHealth(["A","Pc"],Math.max(0,4-countOwned(["A","Pc"])));
+    const value=.58*t.value+.42*apc.value;
+    return {value,text:`titolarità T ${Math.round(t.avg)}% · A/Pc ${Math.round(apc.avg)}%`};
+  }
+  const wa=marketStarterHealth(["W","A"],Math.max(0,4-countOwned(["W","A"]))),apc=marketStarterHealth(["A","Pc"],Math.max(0,3-countOwned(["A","Pc"])));
+  const value=.62*wa.value+.38*apc.value;
+  return {value,text:`titolarità W/A ${Math.round(wa.avg)}% · A/Pc ${Math.round(apc.avg)}%`};
+}
+function lineupStarterValue(assign){
+  const rows=assign.filter(Boolean);if(!rows.length)return null;
+  return rows.reduce((a,p)=>a+starterProbability(p).prob,0)/(rows.length*100);
+}
+async function refreshFormationsLive({manual=false}={}){
+  if(formationsLiveLoading)return false;
+  formationsLiveLoading=true;formationsLiveError="";
+  if(manual&&state.view==="formationsView")renderFormationsView();
+  try{
+    const res=await fetch(`./formations-current.json?ts=${Date.now()}`,{cache:"no-store"});
+    if(!res.ok)throw new Error(`HTTP ${res.status}`);
+    const feed=await res.json();if(!applyFormationLiveFeed(feed))throw new Error("Feed non valido");
+    formationsLiveCheckedAt=Date.now();localStorage.setItem(FORMATIONS_LIVE_CHECKED_STORAGE,String(formationsLiveCheckedAt));
+    formationsLiveLoading=false;
+    renderDashboard();renderFormationsView();
+    if($("#liveDialog")?.open){renderAuctionLive();updateLiveResults($("#liveSearchInput")?.value||"")}
+    return true;
+  }catch(err){
+    formationsLiveLoading=false;formationsLiveError=String(err?.message||err||"Aggiornamento non disponibile");
+    if(manual&&state.view==="formationsView")renderFormationsView();
+    return false;
+  }
+}
+window.refreshFormationsLive=()=>refreshFormationsLive({manual:true});
+function maybeRefreshFormationsLive(){if(formationFeedAgeMinutes()>10)refreshFormationsLive({manual:false})}
+
+if(formationFeedValid(formationsLiveFeed))applyFormationLiveFeed(formationsLiveFeed,{persist:false});
 
 function clamp(v,min=0,max=1){return Math.min(max,Math.max(min,v))}
 function phaseIndex(id=state.auctionPhase){
@@ -1106,6 +1263,7 @@ function dynamicAlternativeScore(candidate,lost,intel=getAuctionIntel(),ctx=null
 
   if(candidate.strategic)score+=12;
   if(isStaticTarget(candidate))score+=8;
+  score+=starterPriorityBonus(candidate);
 
   const mine=ctx?.mine||teamEconomy(mineTeam());
   const guide=ctx?.guide??phaseBudgetRemaining(playerAuctionPhase(candidate));
@@ -1364,50 +1522,23 @@ function formationBroadGroup(role){
 
 function formationListCardHTML(f,index,showSetPieces=true){
   const groups={POR:[],DIF:[],CEN:[],ATT:[]};
-
-  (f.lines||[]).flat().forEach(p=>{
-    const g=formationBroadGroup(p.role);
-    groups[g].push(p);
-  });
-
+  (f.lines||[]).flat().forEach(p=>{const g=formationBroadGroup(p.role);groups[g].push(p)});
   const labels={POR:"POR",DIF:"DIF",CEN:"CEN",ATT:"ATT"};
-
-  return `<article class="formation-list-card"
-      role="button"
-      tabindex="0"
-      onclick="openFormation(${index})"
+  const bench=(f.bench||[]).filter(x=>Number(x.probability)>=30).sort((a,b)=>Number(b.probability)-Number(a.probability)).slice(0,7);
+  return `<article class="formation-list-card ${f.liveSource?"formation-live-card":""}"
+      role="button" tabindex="0" onclick="openFormation(${index})"
       onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFormation(${index})}"
       aria-label="${f.team}, ${f.module}">
-    <div class="formation-list-head">
-      <div>
-        <b>${f.team}</b>
-        <span>${f.club}</span>
-      </div>
-      <strong>${f.module}</strong>
-    </div>
-
+    <div class="formation-list-head"><div><b>${f.team}</b><span>${f.club}${f.liveSource?' · LIVE':''}</span></div><strong>${f.module}</strong></div>
     ${showSetPieces?setPieceHTML(f.club):""}
-
     <div class="formation-role-list">
-      ${["POR","DIF","CEN","ATT"].map(group=>`
-        <div class="formation-role-row formation-role-${group.toLowerCase()}">
-          <div class="formation-role-label">${labels[group]}</div>
-          <div class="formation-role-players">
-            ${groups[group].map(p=>`
-              <span class="formation-name-chip">
-                ${kitHTML(f.club,'xs',f.team)}
-                <span class="formation-chip-text"><b>${p.name}</b><em>${p.role}</em></span>
-              </span>
-            `).join("") || `<span class="formation-empty">—</span>`}
-          </div>
-        </div>
-      `).join("")}
+      ${["POR","DIF","CEN","ATT"].map(group=>`<div class="formation-role-row formation-role-${group.toLowerCase()}">
+        <div class="formation-role-label">${labels[group]}</div><div class="formation-role-players">
+          ${groups[group].map(p=>{const pr=Number(p.probability||starterProbability(formationPlayerCandidate(p.name,f.club)).prob);const st=starterStatus(pr);return `<span class="formation-name-chip"><span class="formation-chip-text"><b>${esc(p.name)}</b><em>${esc(p.role)}</em></span><small class="starter-prob ${st.cls}">${Math.round(pr)}%</small></span>`}).join("")||`<span class="formation-empty">—</span>`}
+        </div></div>`).join("")}
     </div>
-
-    <div class="formation-list-foot">
-      <span>Agg. ${f.updated}</span>
-      <span>tocca per dettaglio ›</span>
-    </div>
+    ${bench.length?`<div class="formation-ballottaggi"><b>Alternative / ballottaggi</b><div>${bench.map(x=>`<span>${esc(x.name)} <strong>${Math.round(Number(x.probability||0))}%</strong></span>`).join("")}</div></div>`:""}
+    <div class="formation-list-foot"><span>Agg. ${f.updated}</span><span>${f.liveSource?'dati live · ':''}tocca per dettaglio ›</span></div>
   </article>`;
 }
 
@@ -1465,26 +1596,31 @@ function latestFormationUpdate(){
 }
 
 function renderFormationsView(){
+  const live=formationFeedValid(formationsLiveFeed),age=formationFeedAgeMinutes();
+  const syncText=formationsLiveLoading?"Aggiornamento…":live?(age<=20?"LIVE":"CACHE"):"BASE LOCALE";
   $("#formationsView").innerHTML=`
     <div class="section-title formations-page-title">
       <div><div class="eyebrow">Serie A 26/27</div><h2>Probabili Formazioni</h2></div>
       <span class="muted">${formations.length} squadre</span>
     </div>
-    <div class="formations-update-card">
-      <div><span>ULTIMO AGGIORNAMENTO FORMAZIONI</span><b>${latestFormationUpdate()}</b></div>
-      <small>${formations.length} squadre</small>
+    <div class="formations-update-card ${live?"live":"base"}">
+      <div><span>ULTIMO AGGIORNAMENTO FORMAZIONI</span><b>${latestFormationUpdate()}</b><small>${live?`Fantacalcio.it · sincronizzato ${Math.round(age)} min fa`:"Fallback formations.js"}${formationsLiveError?` · ${esc(formationsLiveError)}`:""}</small></div>
+      <button class="formation-refresh-btn" onclick="refreshFormationsLive()" ${formationsLiveLoading?"disabled":""}>${syncText}</button>
     </div>
+    <div class="formation-algo-note"><b>Titolarità collegata all'algoritmo</b><span>Le percentuali influenzano Strategia A/B, TARGET dinamici, ALT 1-3 e ranking Asta Live.</span></div>
     ${formations.length?`<div class="formations-dedicated-grid">${sortedFormations().map(f=>formationListCardHTML(f,formations.indexOf(f))).join("")}</div>`:`<div class="card muted">Formazioni non disponibili.</div>`}`;
 }
 
 window.openFormation=index=>{
   const f=formations[index]; if(!f)return;
-  const pitchLines=f.lines.slice().reverse().map(line=>`<div class="formation-line large">${line.map(p=>`<div class="formation-player large"><b>${p.name}</b><span>${p.role}</span></div>`).join("")}</div>`).join("");
+  const pitchLines=f.lines.slice().reverse().map(line=>`<div class="formation-line large">${line.map(p=>{const pr=Number(p.probability||starterProbability(formationPlayerCandidate(p.name,f.club)).prob);return `<div class="formation-player large"><b>${esc(p.name)}</b><span>${esc(p.role)} · ${Math.round(pr)}%</span></div>`}).join("")}</div>`).join("");
+  const bench=(f.bench||[]).filter(x=>Number(x.probability)>=20).sort((a,b)=>Number(b.probability)-Number(a.probability)).slice(0,12);
   $("#formationDialogContent").innerHTML=`<div class="dialog-body formation-dialog-body">
-    <div class="formation-modal-head"><div><div class="eyebrow">Probabile formazione</div><h2>${f.team} · ${f.module}</h2><p>Ruoli Mantra · aggiornamento ${f.updated}</p></div><button class="ghost" onclick="formationDialog.close()">✕</button></div>
+    <div class="formation-modal-head"><div><div class="eyebrow">Probabile formazione ${f.liveSource?'· LIVE':''}</div><h2>${f.team} · ${f.module}</h2><p>Ruoli Mantra · aggiornamento ${f.updated}</p></div><button class="ghost" onclick="formationDialog.close()">✕</button></div>
     <div class="large-pitch"><i class="pitch-half"></i><i class="pitch-circle"></i><div class="formation-lines">${pitchLines}</div></div>
+    ${bench.length?`<div class="formation-dialog-bench"><b>Possibili titolari / ballottaggi</b><div>${bench.map(x=>`<span>${esc(x.name)} <strong>${Math.round(Number(x.probability||0))}%</strong><small>${esc(x.role||formationRoleFor(x.name,f.club))}</small></span>`).join("")}</div></div>`:""}
     ${setPieceHTML(f.club)}
-    <p class="formation-source">Formazione tipo: Fantacalcio.it · Ruoli: Listone/guida Mantra 2026/27 · Bonus da fermo: sintesi fonti fantacalcio, gerarchie indicative.</p>
+    <p class="formation-source">${f.liveSource?'Probabilità: feed aggiornato da Fantacalcio.it · ':''}Ruoli: Listone/guida Mantra 2026/27 · le percentuali di titolarità entrano nel motore strategico.</p>
   </div>`;
   $("#formationDialog").showModal();
 };
@@ -1560,6 +1696,7 @@ function liveGeneralOpportunityScore(p,intel=getAuctionIntel(),ctx=null){
   if(missingFits.some(x=>activeStrategy().keySlots.some(k=>k.label===x.slot.label)))score+=8;
   const quality=playerQuality(p);
   score+=Math.min(20,Math.round(Math.sqrt(Math.max(0,quality))*1.05));
+  score+=starterPriorityBonus(p);
   const risk=familyRiskForPlayer(p,intel).risk;
   score+=Math.min(10,Math.round(risk*.10));
   if(quality<=mine.maxNext)score+=6;
@@ -1642,7 +1779,8 @@ function liveResultHTML(p,intel=getAuctionIntel(),recommendations=null,meta=null
   const live=liveMaxForPlayer(p,intel),dynamic=dynamicAlternativeForPlayer(p,intel,recommendations);
   const staticTarget=isStaticTarget(p);
   const altBadge=!staticTarget&&!dynamic&&meta?.altRank&&meta.altRank<=3?`<em class="live-result-badge alternative">ALT ${meta.altRank}</em>`:"";
-  const badges=[staticTarget?'<em class="live-result-badge target">TARGET</em>':"",dynamic?'<em class="live-result-badge dynamic">DA PRENDERE</em>':"",altBadge].join("");
+  const starter=starterProbability(p),starterBadge=`<em class="live-result-badge starter ${starterStatus(starter.prob).cls}">${Math.round(starter.prob)}%</em>`;
+  const badges=[staticTarget?'<em class="live-result-badge target">TARGET</em>':"",dynamic?'<em class="live-result-badge dynamic">DA PRENDERE</em>':"",altBadge,starterBadge].join("");
   const rankedClass=dynamic?"dynamic-target":(!staticTarget&&meta?.altRank&&meta.altRank<=3?"ranked-alternative":"");
   return `<button class="live-result ${rankedClass}" data-id="${p.id}"><span class="live-result-main">${kitHTML(p.club,'sm',p.club)}<span><b>${esc(p.name)} ${badges}</b><small>${p.club} · ${p.role} · FVM ${p.fvm||0}</small></span></span><strong>${riskIcon(live.risk)} ${fmt(live.live)}<small>MAX live</small></strong></button>`;
 }
@@ -1669,7 +1807,7 @@ function selectLivePlayer(id){
   const target=$("#liveSelected");if(!target)return;
   target.innerHTML=`<div class="live-player-card ${dynamic?"recommended":""}">
     ${targetSignal}
-    <div class="live-player-head"><div class="live-player-identity">${kitHTML(p.club,'live',p.club)}<div><span>${p.club} · ${p.role}</span><b>${esc(p.name)}${staticTarget?' <em class="live-inline-target">TARGET</em>':""}${dynamic?' <em class="live-inline-dynamic">DA PRENDERE</em>':""}</b><button type="button" class="live-watch ${isWatchlisted(p.id)?"active":""}" onclick='toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"SEGUITO":"SEGUI"}</button></div></div><strong>${riskIcon(live.risk)} ${live.risk}</strong></div>
+    <div class="live-player-head"><div class="live-player-identity">${kitHTML(p.club,'live',p.club)}<div><span>${p.club} · ${p.role} · Titolarità ${Math.round(starterProbability(p).prob)}%</span><b>${esc(p.name)}${staticTarget?' <em class="live-inline-target">TARGET</em>':""}${dynamic?' <em class="live-inline-dynamic">DA PRENDERE</em>':""}</b><button type="button" class="live-watch ${isWatchlisted(p.id)?"active":""}" onclick='toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"SEGUITO":"SEGUI"}</button></div></div><strong>${riskIcon(live.risk)} ${live.risk}</strong></div>
     <div class="live-price-grid">
       <div><span>FVM</span><b>${p.fvm||0}</b></div>
       <div><span>MAX iniziale</span><b>${fmt(live.base)}</b></div>
@@ -2768,5 +2906,7 @@ function lockInit(){
   $("#lock").classList.remove("hidden");$("#disablePinBtn").style.display="none";
   $("#unlockBtn").onclick=()=>{if($("#pinInput").value===state.pin)$("#lock").classList.add("hidden");else $("#lockText").textContent="PIN errato. Riprova."};
 }
-ensureInitialSnapshot();refresh();lockInit();
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.44").catch(()=>{}));
+ensureInitialSnapshot();refresh();lockInit();maybeRefreshFormationsLive();
+setInterval(()=>{if(document.visibilityState==="visible")maybeRefreshFormationsLive()},5*60*1000);
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")maybeRefreshFormationsLive()},{passive:true});
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.45").catch(()=>{}));

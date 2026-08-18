@@ -1,5 +1,5 @@
-const CACHE="asta-mantra-v1.44";
-const ASSETS=["./","./index.html","./styles.css?v=1.44","./app.js?v=1.44","./players.js?v=1.44","./formations.js?v=1.44","./market.js?v=1.44","./listone-current.json","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png","./favicon-32.png"];
+const CACHE="asta-mantra-v1.45";
+const ASSETS=["./","./index.html","./styles.css?v=1.45","./app.js?v=1.45","./players.js?v=1.45","./formations.js?v=1.45","./market.js?v=1.45","./listone-current.json","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png","./favicon-32.png"];
 
 self.addEventListener("install",event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()));
@@ -9,11 +9,12 @@ self.addEventListener("activate",event=>{
 });
 self.addEventListener("fetch",event=>{
   const url=new URL(event.request.url);
-  if(url.pathname.endsWith("/listone-current.json")){
+  if(url.pathname.endsWith("/listone-current.json")||url.pathname.endsWith("/formations-current.json")){
+    const key=url.pathname.endsWith("/formations-current.json")?"./formations-current.json":"./listone-current.json";
     event.respondWith(fetch(event.request,{cache:"no-store"}).then(response=>{
-      if(response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put("./listone-current.json",copy))}
+      if(response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(key,copy))}
       return response;
-    }).catch(()=>caches.match("./listone-current.json")));
+    }).catch(()=>caches.match(key)));
     return;
   }
   if(event.request.mode==="navigate"){

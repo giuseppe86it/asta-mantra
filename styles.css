@@ -2958,3 +2958,27 @@ body{
 .live-result-badge.alternative{background:#172f4d;color:#8dc7ff;border:1px solid #315c88}
 .live-result.ranked-alternative{border-color:#315c88;background:linear-gradient(145deg,#10243a,#102033)}
 .live-results-label small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* v1.45 — Titolarità live collegata al motore strategico */
+.formations-update-card>div{min-width:0;flex:1}
+.formations-update-card>div small{display:block;margin-top:5px;font-size:10px;white-space:normal;color:#91a7bf}
+.formations-update-card.live{border-color:#2c8d68;background:linear-gradient(145deg,#0e2b25,#0a192b)}
+.formation-refresh-btn{flex:0 0 auto;border:1px solid #3f6385;background:#122b43;color:#e9f4ff;border-radius:12px;padding:10px 12px;font-size:11px;font-weight:950;letter-spacing:.045em;min-width:86px}
+.formations-update-card.live .formation-refresh-btn{border-color:#35b985;background:#123d31;color:#9cf3ce}
+.formation-refresh-btn:disabled{opacity:.65;cursor:default}
+.formation-algo-note{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:-3px 0 13px;padding:11px 13px;border:1px solid #304c68;border-radius:14px;background:#0c1c30}
+.formation-algo-note b{font-size:11px;white-space:nowrap;color:#72e0ae}.formation-algo-note span{font-size:10px;line-height:1.35;color:#a7b8cc;text-align:right}
+.formation-live-card{border-color:#315c55!important;box-shadow:inset 0 0 0 1px rgba(72,220,114,.035)}
+.formation-name-chip{display:inline-flex!important;align-items:center!important;gap:6px!important}
+.starter-prob{flex:0 0 auto;border-radius:999px;padding:3px 6px;font-size:9px!important;font-weight:950!important;font-style:normal!important;line-height:1!important;border:1px solid #46627d;background:#14263a;color:#d7e7f7}
+.starter-prob.sure,.live-result-badge.starter.sure{background:#123e2e;border-color:#2e9169;color:#78e7b4}
+.starter-prob.probable,.live-result-badge.starter.probable{background:#193b31;border-color:#39785f;color:#a5e9cb}
+.starter-prob.battle,.live-result-badge.starter.battle{background:#3b3016;border-color:#806729;color:#ffd27a}
+.starter-prob.rotation,.live-result-badge.starter.rotation{background:#372b20;border-color:#725237;color:#e9b88d}
+.starter-prob.reserve,.live-result-badge.starter.reserve{background:#3a2029;border-color:#7a3b4d;color:#f2a4b8}
+.formation-ballottaggi{padding:9px 12px 10px;border-top:1px solid rgba(92,117,151,.18);background:#0d192a}
+.formation-ballottaggi>b{display:block;margin-bottom:6px;color:#9fb0c4;font-size:9px;text-transform:uppercase;letter-spacing:.055em}
+.formation-ballottaggi>div{display:flex;flex-wrap:wrap;gap:5px}.formation-ballottaggi span{padding:4px 7px;border-radius:8px;background:#17283d;color:#c9d5e3;font-size:9px}.formation-ballottaggi strong{color:#ffd27a}
+.formation-dialog-bench{margin:12px 0;padding:12px;border:1px solid #2d4966;border-radius:14px;background:#0d1b2f}.formation-dialog-bench>b{display:block;margin-bottom:8px;font-size:11px;color:#c9d7e7}.formation-dialog-bench>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.formation-dialog-bench span{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 7px;padding:7px 8px;border-radius:9px;background:#14263b;font-size:10px}.formation-dialog-bench strong{color:#ffd27a}.formation-dialog-bench small{grid-column:1/-1;color:#8fa5bd;font-size:8px}
+.live-result-badge.starter{background:#15283d;color:#cfe0f0;border:1px solid #385572}
+@media(max-width:390px){.formation-algo-note{align-items:flex-start;flex-direction:column;gap:4px}.formation-algo-note span{text-align:left}.formations-update-card{align-items:flex-start}.formation-refresh-btn{min-width:78px;padding:9px 8px}.formation-dialog-bench>div{grid-template-columns:1fr}.starter-prob{font-size:8px!important;padding:3px 5px}}
