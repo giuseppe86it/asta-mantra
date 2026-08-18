@@ -1,0 +1,2201 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-08-18T18:35:39Z",
+  "sourceName": "Fantacalcio.it",
+  "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
+  "teams": [
+    {
+      "club": "ATA",
+      "team": "Atalanta",
+      "sourceTeam": "Atalanta",
+      "module": "4-3-3",
+      "starters": [
+        {
+          "name": "Carnesecchi",
+          "probability": 90
+        },
+        {
+          "name": "Zappacosta",
+          "probability": 80
+        },
+        {
+          "name": "Kristensen T.",
+          "probability": 60
+        },
+        {
+          "name": "Scalvini",
+          "probability": 90
+        },
+        {
+          "name": "Bernasconi",
+          "probability": 80
+        },
+        {
+          "name": "Samardzic",
+          "probability": 90
+        },
+        {
+          "name": "Gaetano",
+          "probability": 80
+        },
+        {
+          "name": "Ederson D.S.",
+          "probability": 90
+        },
+        {
+          "name": "Zalewski",
+          "probability": 80
+        },
+        {
+          "name": "Scamacca",
+          "probability": 60
+        },
+        {
+          "name": "Raspadori",
+          "probability": 90
+        }
+      ],
+      "bench": [
+        {
+          "name": "Sportiello",
+          "probability": 5
+        },
+        {
+          "name": "Vismara",
+          "probability": 1
+        },
+        {
+          "name": "Kolasinac",
+          "probability": 35
+        },
+        {
+          "name": "Bellanova",
+          "probability": 55
+        },
+        {
+          "name": "Kossounou",
+          "probability": 50
+        },
+        {
+          "name": "Pasalic",
+          "probability": 60
+        },
+        {
+          "name": "De Roon",
+          "probability": 55
+        },
+        {
+          "name": "Sulemana I.",
+          "probability": 25
+        },
+        {
+          "name": "Krstovic",
+          "probability": 60
+        }
+      ]
+    },
+    {
+      "club": "BOL",
+      "team": "Bologna",
+      "sourceTeam": "Bologna",
+      "module": "4-2-3-1",
+      "starters": [
+        {
+          "name": "Skorupski",
+          "probability": 90
+        },
+        {
+          "name": "Zortea",
+          "probability": 85
+        },
+        {
+          "name": "Vitik",
+          "probability": 60
+        },
+        {
+          "name": "Heggem",
+          "probability": 90
+        },
+        {
+          "name": "Miranda J.",
+          "probability": 90
+        },
+        {
+          "name": "Amondarain",
+          "probability": 60
+        },
+        {
+          "name": "Ferguson",
+          "probability": 85
+        },
+        {
+          "name": "Orsolini",
+          "probability": 90
+        },
+        {
+          "name": "Bernardeschi",
+          "probability": 60
+        },
+        {
+          "name": "Rowe",
+          "probability": 90
+        },
+        {
+          "name": "Dovbyk",
+          "probability": 90
+        }
+      ],
+      "bench": [
+        {
+          "name": "Pessina Mas.",
+          "probability": 5
+        },
+        {
+          "name": "Happonen",
+          "probability": 1
+        },
+        {
+          "name": "Holm",
+          "probability": 40
+        },
+        {
+          "name": "De Silvestri",
+          "probability": 20
+        },
+        {
+          "name": "Helland",
+          "probability": 35
+        },
+        {
+          "name": "Casale",
+          "probability": 20
+        },
+        {
+          "name": "Alhassane",
+          "probability": 15
+        },
+        {
+          "name": "Moro N.",
+          "probability": 60
+        },
+        {
+          "name": "El Azzouzi O.",
+          "probability": 25
+        },
+        {
+          "name": "Pobega",
+          "probability": 60
+        },
+        {
+          "name": "Odgaard",
+          "probability": 55
+        },
+        {
+          "name": "Cambiaghi",
+          "probability": 60
+        },
+        {
+          "name": "Piccoli",
+          "probability": 55
+        }
+      ]
+    },
+    {
+      "club": "CAG",
+      "team": "Cagliari",
+      "sourceTeam": "Cagliari",
+      "module": "4-3-1-2",
+      "starters": [
+        {
+          "name": "Caprile",
+          "probability": 90
+        },
+        {
+          "name": "Zè Pedro",
+          "probability": 90
+        },
+        {
+          "name": "Mina",
+          "probability": 80
+        },
+        {
+          "name": "Rodriguez Ju.",
+          "probability": 90
+        },
+        {
+          "name": "Obert",
+          "probability": 90
+        },
+        {
+          "name": "Adopo",
+          "probability": 90
+        },
+        {
+          "name": "Winks",
+          "probability": 90
+        },
+        {
+          "name": "Romano",
+          "probability": 80
+        },
+        {
+          "name": "Fazzini",
+          "probability": 85
+        },
+        {
+          "name": "Maldini",
+          "probability": 90
+        },
+        {
+          "name": "Kevin Carlos",
+          "probability": 60
+        }
+      ],
+      "bench": [
+        {
+          "name": "Sherri",
+          "probability": 5
+        },
+        {
+          "name": "Radunovic",
+          "probability": 1
+        },
+        {
+          "name": "Zappa",
+          "probability": 55
+        },
+        {
+          "name": "Kofler",
+          "probability": 35
+        },
+        {
+          "name": "Aurelio",
+          "probability": 30
+        },
+        {
+          "name": "Liteta",
+          "probability": 25
+        },
+        {
+          "name": "Prati",
+          "probability": 40
+        },
+        {
+          "name": "Deiola",
+          "probability": 55
+        },
+        {
+          "name": "Felici",
+          "probability": 60
+        },
+        {
+          "name": "Albarracin",
+          "probability": 20
+        },
+        {
+          "name": "Esposito Se.",
+          "probability": 10
+        },
+        {
+          "name": "Mutandwa",
+          "probability": 60
+        },
+        {
+          "name": "Borrelli",
+          "probability": 40
+        },
+        {
+          "name": "Mendy P.",
+          "probability": 55
+        },
+        {
+          "name": "Almqvist",
+          "probability": 60
+        },
+        {
+          "name": "Frigan",
+          "probability": 40
+        },
+        {
+          "name": "Romero D.",
+          "probability": 60
+        },
+        {
+          "name": "Lontani",
+          "probability": 40
+        }
+      ]
+    },
+    {
+      "club": "COM",
+      "team": "Como",
+      "sourceTeam": "Como",
+      "module": "4-2-3-1",
+      "starters": [
+        {
+          "name": "Butez",
+          "probability": 90
+        },
+        {
+          "name": "Smolcic I.",
+          "probability": 55
+        },
+        {
+          "name": "Chalobah T.",
+          "probability": 80
+        },
+        {
+          "name": "Ramon",
+          "probability": 80
+        },
+        {
+          "name": "Kaiki",
+          "probability": 60
+        },
+        {
+          "name": "Perrone",
+          "probability": 90
+        },
+        {
+          "name": "Da Cunha",
+          "probability": 90
+        },
+        {
+          "name": "Diao",
+          "probability": 80
+        },
+        {
+          "name": "Paz N.",
+          "probability": 90
+        },
+        {
+          "name": "Baturina",
+          "probability": 60
+        },
+        {
+          "name": "Douvikas",
+          "probability": 80
+        }
+      ],
+      "bench": [
+        {
+          "name": "Tornqvist",
+          "probability": 5
+        },
+        {
+          "name": "Vigorito",
+          "probability": 1
+        },
+        {
+          "name": "Couto",
+          "probability": 55
+        },
+        {
+          "name": "Kempf",
+          "probability": 40
+        },
+        {
+          "name": "Goldaniga",
+          "probability": 25
+        },
+        {
+          "name": "Van Der Brempt",
+          "probability": 20
+        },
+        {
+          "name": "Valle",
+          "probability": 55
+        },
+        {
+          "name": "Caqueret",
+          "probability": 60
+        },
+        {
+          "name": "Milla",
+          "probability": 40
+        },
+        {
+          "name": "Lahdo",
+          "probability": 15
+        },
+        {
+          "name": "Fadera",
+          "probability": 20
+        },
+        {
+          "name": "Liberali",
+          "probability": 55
+        },
+        {
+          "name": "Rodriguez Je.",
+          "probability": 60
+        },
+        {
+          "name": "Kuhn",
+          "probability": 35
+        },
+        {
+          "name": "Morata",
+          "probability": 30
+        },
+        {
+          "name": "Piotrowski",
+          "probability": 60
+        },
+        {
+          "name": "Miller L.",
+          "probability": 40
+        }
+      ]
+    },
+    {
+      "club": "FIO",
+      "team": "Fiorentina",
+      "sourceTeam": "Fiorentina",
+      "module": "4-3-3",
+      "starters": [
+        {
+          "name": "De Gea",
+          "probability": 90
+        },
+        {
+          "name": "Joao Mario",
+          "probability": 60
+        },
+        {
+          "name": "Dragusin",
+          "probability": 90
+        },
+        {
+          "name": "Viery",
+          "probability": 80
+        },
+        {
+          "name": "Valdepenas",
+          "probability": 90
+        },
+        {
+          "name": "Ndour",
+          "probability": 80
+        },
+        {
+          "name": "Oulai",
+          "probability": 60
+        },
+        {
+          "name": "Atta",
+          "probability": 85
+        },
+        {
+          "name": "Mastantuono",
+          "probability": 80
+        },
+        {
+          "name": "Kean",
+          "probability": 90
+        },
+        {
+          "name": "Gudmundsson A.",
+          "probability": 85
+        }
+      ],
+      "bench": [
+        {
+          "name": "Christensen O.",
+          "probability": 5
+        },
+        {
+          "name": "Lezzerini",
+          "probability": 1
+        },
+        {
+          "name": "Pongracic",
+          "probability": 35
+        },
+        {
+          "name": "Dodò",
+          "probability": 25
+        },
+        {
+          "name": "Ranieri L.",
+          "probability": 35
+        },
+        {
+          "name": "Jimenez A.",
+          "probability": 60
+        },
+        {
+          "name": "Fagioli",
+          "probability": 60
+        },
+        {
+          "name": "Mandragora",
+          "probability": 55
+        },
+        {
+          "name": "Brescianini",
+          "probability": 50
+        },
+        {
+          "name": "Fabbian",
+          "probability": 25
+        },
+        {
+          "name": "Pellegrino M.",
+          "probability": 60
+        },
+        {
+          "name": "Soulè",
+          "probability": 60
+        },
+        {
+          "name": "Pisilli",
+          "probability": 40
+        }
+      ]
+    },
+    {
+      "club": "FRO",
+      "team": "Frosinone",
+      "sourceTeam": "Frosinone",
+      "module": "4-3-3",
+      "starters": [
+        {
+          "name": "Palmisani",
+          "probability": 90
+        },
+        {
+          "name": "Oyono A.",
+          "probability": 90
+        },
+        {
+          "name": "Calvani",
+          "probability": 80
+        },
+        {
+          "name": "Monterisi",
+          "probability": 90
+        },
+        {
+          "name": "Terzic",
+          "probability": 55
+        },
+        {
+          "name": "Cichella",
+          "probability": 60
+        },
+        {
+          "name": "Calò",
+          "probability": 80
+        },
+        {
+          "name": "Schmid",
+          "probability": 90
+        },
+        {
+          "name": "Ghedjemis",
+          "probability": 55
+        },
+        {
+          "name": "Raimondo",
+          "probability": 90
+        },
+        {
+          "name": "Kvernadze",
+          "probability": 80
+        }
+      ],
+      "bench": [
+        {
+          "name": "Desplanches",
+          "probability": 5
+        },
+        {
+          "name": "Pisseri",
+          "probability": 1
+        },
+        {
+          "name": "Akpoguma",
+          "probability": 55
+        },
+        {
+          "name": "Cittadini",
+          "probability": 20
+        },
+        {
+          "name": "Oyono J.",
+          "probability": 20
+        },
+        {
+          "name": "Bracaglia",
+          "probability": 40
+        },
+        {
+          "name": "Gelli J.",
+          "probability": 20
+        },
+        {
+          "name": "Masini",
+          "probability": 50
+        },
+        {
+          "name": "Grillitsch",
+          "probability": 55
+        },
+        {
+          "name": "El Azzouzi A.",
+          "probability": 40
+        },
+        {
+          "name": "Kone B.",
+          "probability": 25
+        },
+        {
+          "name": "Koutsoupias",
+          "probability": 60
+        },
+        {
+          "name": "Gelli F.",
+          "probability": 35
+        },
+        {
+          "name": "Hasa",
+          "probability": 25
+        },
+        {
+          "name": "Zerbin",
+          "probability": 60
+        }
+      ]
+    },
+    {
+      "club": "GEN",
+      "team": "Genoa",
+      "sourceTeam": "Genoa",
+      "module": "3-4-2-1",
+      "starters": [
+        {
+          "name": "Bijlow",
+          "probability": 90
+        },
+        {
+          "name": "Marcandalli",
+          "probability": 90
+        },
+        {
+          "name": "Ostigard",
+          "probability": 90
+        },
+        {
+          "name": "Vasquez",
+          "probability": 90
+        },
+        {
+          "name": "Norton-Cuffy",
+          "probability": 90
+        },
+        {
+          "name": "Frendrup",
+          "probability": 85
+        },
+        {
+          "name": "Sow",
+          "probability": 60
+        },
+        {
+          "name": "Ellertsson",
+          "probability": 80
+        },
+        {
+          "name": "Baldanzi",
+          "probability": 90
+        },
+        {
+          "name": "Vitinha O.",
+          "probability": 60
+        },
+        {
+          "name": "Colombo",
+          "probability": 85
+        }
+      ],
+      "bench": [
+        {
+          "name": "Stolz",
+          "probability": 5
+        },
+        {
+          "name": "Sommariva",
+          "probability": 1
+        },
+        {
+          "name": "Otoa",
+          "probability": 30
+        },
+        {
+          "name": "Mitaj",
+          "probability": 60
+        },
+        {
+          "name": "Sabelli",
+          "probability": 30
+        },
+        {
+          "name": "Martin",
+          "probability": 50
+        },
+        {
+          "name": "Puczka",
+          "probability": 35
+        },
+        {
+          "name": "Matturro",
+          "probability": 15
+        },
+        {
+          "name": "Venturino",
+          "probability": 30
+        },
+        {
+          "name": "Amorim",
+          "probability": 60
+        },
+        {
+          "name": "Messias",
+          "probability": 55
+        },
+        {
+          "name": "Havel",
+          "probability": 55
+        }
+      ]
+    },
+    {
+      "club": "INT",
+      "team": "Inter",
+      "sourceTeam": "Inter",
+      "module": "3-5-2",
+      "starters": [
+        {
+          "name": "Martinez Jo.",
+          "probability": 90
+        },
+        {
+          "name": "Akanji",
+          "probability": 90
+        },
+        {
+          "name": "Stones",
+          "probability": 80
+        },
+        {
+          "name": "Bastoni",
+          "probability": 90
+        },
+        {
+          "name": "Diouf",
+          "probability": 90
+        },
+        {
+          "name": "Barella",
+          "probability": 90
+        },
+        {
+          "name": "Calhanoglu",
+          "probability": 90
+        },
+        {
+          "name": "Zielinski",
+          "probability": 60
+        },
+        {
+          "name": "Dimarco",
+          "probability": 90
+        },
+        {
+          "name": "Martinez L.",
+          "probability": 55
+        },
+        {
+          "name": "Esposito F.P.",
+          "probability": 80
+        }
+      ],
+      "bench": [
+        {
+          "name": "Provedel",
+          "probability": 5
+        },
+        {
+          "name": "Di Gennaro",
+          "probability": 1
+        },
+        {
+          "name": "Carlos Augusto",
+          "probability": 55
+        },
+        {
+          "name": "Pavard",
+          "probability": 25
+        },
+        {
+          "name": "Spence",
+          "probability": 30
+        },
+        {
+          "name": "Bisseck",
+          "probability": 40
+        },
+        {
+          "name": "Sucic P.",
+          "probability": 60
+        },
+        {
+          "name": "Luis Henrique",
+          "probability": 50
+        },
+        {
+          "name": "Stankovic A.",
+          "probability": 30
+        },
+        {
+          "name": "Thuram",
+          "probability": 60
+        },
+        {
+          "name": "Bonny",
+          "probability": 55
+        }
+      ]
+    },
+    {
+      "club": "JUV",
+      "team": "Juventus",
+      "sourceTeam": "Juventus",
+      "module": "4-2-3-1",
+      "starters": [
+        {
+          "name": "Vicario",
+          "probability": 90
+        },
+        {
+          "name": "Kalulu",
+          "probability": 90
+        },
+        {
+          "name": "Bremer",
+          "probability": 90
+        },
+        {
+          "name": "Kelly L.",
+          "probability": 55
+        },
+        {
+          "name": "Cambiaso",
+          "probability": 90
+        },
+        {
+          "name": "McKennie",
+          "probability": 80
+        },
+        {
+          "name": "Locatelli",
+          "probability": 90
+        },
+        {
+          "name": "Conceicao",
+          "probability": 90
+        },
+        {
+          "name": "Alajbegovic",
+          "probability": 75
+        },
+        {
+          "name": "Yildiz",
+          "probability": 90
+        },
+        {
+          "name": "Kolo Muani",
+          "probability": 90
+        }
+      ],
+      "bench": [
+        {
+          "name": "Perin",
+          "probability": 5
+        },
+        {
+          "name": "Di Gregorio",
+          "probability": 5
+        },
+        {
+          "name": "Gatti",
+          "probability": 20
+        },
+        {
+          "name": "Lucumì",
+          "probability": 40
+        },
+        {
+          "name": "Rugani",
+          "probability": 20
+        },
+        {
+          "name": "Celik",
+          "probability": 60
+        },
+        {
+          "name": "Cabal",
+          "probability": 30
+        },
+        {
+          "name": "Koopmeiners",
+          "probability": 40
+        },
+        {
+          "name": "Thuram K.",
+          "probability": 55
+        },
+        {
+          "name": "Douglas Luiz",
+          "probability": 60
+        },
+        {
+          "name": "Miretti",
+          "probability": 30
+        },
+        {
+          "name": "Zhegrova",
+          "probability": 40
+        },
+        {
+          "name": "Boga",
+          "probability": 60
+        },
+        {
+          "name": "Milik",
+          "probability": 20
+        },
+        {
+          "name": "David",
+          "probability": 55
+        },
+        {
+          "name": "Terzic",
+          "probability": 55
+        },
+        {
+          "name": "Bracaglia",
+          "probability": 45
+        },
+        {
+          "name": "Cichella",
+          "probability": 60
+        },
+        {
+          "name": "Koutsoupias",
+          "probability": 40
+        },
+        {
+          "name": "Ghedjemis",
+          "probability": 55
+        },
+        {
+          "name": "Zerbin",
+          "probability": 45
+        }
+      ]
+    },
+    {
+      "club": "LAZ",
+      "team": "Lazio",
+      "sourceTeam": "Lazio",
+      "module": "4-3-3",
+      "starters": [
+        {
+          "name": "Mandas",
+          "probability": 90
+        },
+        {
+          "name": "Marusic",
+          "probability": 90
+        },
+        {
+          "name": "Doekhi",
+          "probability": 90
+        },
+        {
+          "name": "Provstgaard",
+          "probability": 80
+        },
+        {
+          "name": "Pedraza",
+          "probability": 55
+        },
+        {
+          "name": "Taylor K.",
+          "probability": 90
+        },
+        {
+          "name": "Rovella",
+          "probability": 90
+        },
+        {
+          "name": "Frattesi",
+          "probability": 60
+        },
+        {
+          "name": "Cancellieri",
+          "probability": 85
+        },
+        {
+          "name": "Dia",
+          "probability": 60
+        },
+        {
+          "name": "Zaccagni",
+          "probability": 90
+        }
+      ],
+      "bench": [
+        {
+          "name": "Motta",
+          "probability": 5
+        },
+        {
+          "name": "Renzetti",
+          "probability": 1
+        },
+        {
+          "name": "Romagnoli",
+          "probability": 30
+        },
+        {
+          "name": "Floriani Mussolini",
+          "probability": 55
+        },
+        {
+          "name": "Tavares N.",
+          "probability": 25
+        },
+        {
+          "name": "Pellegrini Lu.",
+          "probability": 55
+        },
+        {
+          "name": "Lazzari",
+          "probability": 40
+        },
+        {
+          "name": "Belahyane",
+          "probability": 35
+        },
+        {
+          "name": "Dele-Bashiru",
+          "probability": 60
+        },
+        {
+          "name": "Przyborek",
+          "probability": 20
+        },
+        {
+          "name": "Noslin",
+          "probability": 60
+        },
+        {
+          "name": "Ratkov",
+          "probability": 60
+        },
+        {
+          "name": "Vitik",
+          "probability": 60
+        },
+        {
+          "name": "Helland",
+          "probability": 40
+        },
+        {
+          "name": "Amondarain",
+          "probability": 60
+        },
+        {
+          "name": "Moro N.",
+          "probability": 40
+        },
+        {
+          "name": "Bernardeschi",
+          "probability": 60
+        },
+        {
+          "name": "Odgaard",
+          "probability": 40
+        }
+      ]
+    },
+    {
+      "club": "LEC",
+      "team": "Lecce",
+      "sourceTeam": "Lecce",
+      "module": "4-3-3",
+      "starters": [
+        {
+          "name": "Falcone",
+          "probability": 90
+        },
+        {
+          "name": "Veiga D.",
+          "probability": 90
+        },
+        {
+          "name": "Gaspar K.",
+          "probability": 90
+        },
+        {
+          "name": "Tiago Gabriel",
+          "probability": 90
+        },
+        {
+          "name": "Gallo",
+          "probability": 90
+        },
+        {
+          "name": "Coulibaly L.",
+          "probability": 90
+        },
+        {
+          "name": "Ngom",
+          "probability": 80
+        },
+        {
+          "name": "Maleh",
+          "probability": 55
+        },
+        {
+          "name": "Pierotti",
+          "probability": 90
+        },
+        {
+          "name": "Geubbels",
+          "probability": 60
+        },
+        {
+          "name": "N'Dri",
+          "probability": 90
+        }
+      ],
+      "bench": [
+        {
+          "name": "Penev",
+          "probability": 5
+        },
+        {
+          "name": "Ndaba",
+          "probability": 50
+        },
+        {
+          "name": "Jean",
+          "probability": 35
+        },
+        {
+          "name": "Siebert",
+          "probability": 25
+        },
+        {
+          "name": "Gorter",
+          "probability": 30
+        },
+        {
+          "name": "Kaba",
+          "probability": 55
+        },
+        {
+          "name": "Gandelman",
+          "probability": 60
+        },
+        {
+          "name": "Berisha M.",
+          "probability": 40
+        },
+        {
+          "name": "Fofana Sa.",
+          "probability": 55
+        },
+        {
+          "name": "Stulic",
+          "probability": 60
+        },
+        {
+          "name": "Haps",
+          "probability": 60
+        },
+        {
+          "name": "Correia T.",
+          "probability": 40
+        },
+        {
+          "name": "Sohm",
+          "probability": 55
+        },
+        {
+          "name": "Perez K.",
+          "probability": 45
+        }
+      ]
+    },
+    {
+      "club": "MIL",
+      "team": "Milan",
+      "sourceTeam": "Milan",
+      "module": "3-4-2-1",
+      "starters": [
+        {
+          "name": "Maignan",
+          "probability": 90
+        },
+        {
+          "name": "Gila",
+          "probability": 85
+        },
+        {
+          "name": "Gabbia",
+          "probability": 70
+        },
+        {
+          "name": "Pavlovic",
+          "probability": 90
+        },
+        {
+          "name": "Chukwueze",
+          "probability": 80
+        },
+        {
+          "name": "Modric",
+          "probability": 90
+        },
+        {
+          "name": "Rabiot",
+          "probability": 90
+        },
+        {
+          "name": "Bartesaghi",
+          "probability": 80
+        },
+        {
+          "name": "Saelemaekers",
+          "probability": 90
+        },
+        {
+          "name": "Loftus-Cheek",
+          "probability": 90
+        },
+        {
+          "name": "Ramos G.",
+          "probability": 90
+        }
+      ],
+      "bench": [
+        {
+          "name": "Terracciano",
+          "probability": 5
+        },
+        {
+          "name": "Torriani",
+          "probability": 1
+        },
+        {
+          "name": "Diawara S.",
+          "probability": 25
+        },
+        {
+          "name": "De Winter",
+          "probability": 40
+        },
+        {
+          "name": "Estupinan",
+          "probability": 30
+        },
+        {
+          "name": "Ricci S.",
+          "probability": 55
+        },
+        {
+          "name": "Musah",
+          "probability": 60
+        },
+        {
+          "name": "Jashari",
+          "probability": 60
+        },
+        {
+          "name": "Pulisic",
+          "probability": 50
+        },
+        {
+          "name": "Cissè A.",
+          "probability": 30
+        },
+        {
+          "name": "Leao",
+          "probability": 20
+        },
+        {
+          "name": "Camarda",
+          "probability": 60
+        },
+        {
+          "name": "Comuzzo",
+          "probability": 60
+        },
+        {
+          "name": "Ismajli",
+          "probability": 40
+        }
+      ]
+    },
+    {
+      "club": "MON",
+      "team": "Monza",
+      "sourceTeam": "Monza",
+      "module": "3-4-2-1",
+      "starters": [
+        {
+          "name": "Thiam",
+          "probability": 90
+        },
+        {
+          "name": "Kouadio",
+          "probability": 85
+        },
+        {
+          "name": "Delli Carri",
+          "probability": 65
+        },
+        {
+          "name": "Carboni A.",
+          "probability": 80
+        },
+        {
+          "name": "Birindelli",
+          "probability": 85
+        },
+        {
+          "name": "Colombo L.",
+          "probability": 80
+        },
+        {
+          "name": "Akinsanmiro",
+          "probability": 80
+        },
+        {
+          "name": "Mangas",
+          "probability": 85
+        },
+        {
+          "name": "Forson O.",
+          "probability": 55
+        },
+        {
+          "name": "Cutrone",
+          "probability": 90
+        },
+        {
+          "name": "Varela G.",
+          "probability": 85
+        }
+      ],
+      "bench": [
+        {
+          "name": "Pizzignacco",
+          "probability": 5
+        },
+        {
+          "name": "Strajnar",
+          "probability": 1
+        },
+        {
+          "name": "Lucchesi",
+          "probability": 55
+        },
+        {
+          "name": "Antov",
+          "probability": 30
+        },
+        {
+          "name": "Bakoune",
+          "probability": 40
+        },
+        {
+          "name": "Ciurria",
+          "probability": 50
+        },
+        {
+          "name": "Colpani",
+          "probability": 55
+        },
+        {
+          "name": "Mota",
+          "probability": 60
+        },
+        {
+          "name": "Robinson J.",
+          "probability": 55
+        },
+        {
+          "name": "Petagna",
+          "probability": 30
+        },
+        {
+          "name": "Zielinski",
+          "probability": 60
+        },
+        {
+          "name": "Sucic P.",
+          "probability": 40
+        },
+        {
+          "name": "Martinez L.",
+          "probability": 55
+        },
+        {
+          "name": "Bonny",
+          "probability": 45
+        }
+      ]
+    },
+    {
+      "club": "NAP",
+      "team": "Napoli",
+      "sourceTeam": "Napoli",
+      "module": "4-3-3",
+      "starters": [
+        {
+          "name": "Meret",
+          "probability": 80
+        },
+        {
+          "name": "Di Lorenzo",
+          "probability": 90
+        },
+        {
+          "name": "Rrahmani",
+          "probability": 90
+        },
+        {
+          "name": "Marin R.",
+          "probability": 80
+        },
+        {
+          "name": "Spinazzola",
+          "probability": 55
+        },
+        {
+          "name": "Zambo Anguissa",
+          "probability": 55
+        },
+        {
+          "name": "Lobotka",
+          "probability": 90
+        },
+        {
+          "name": "McTominay",
+          "probability": 90
+        },
+        {
+          "name": "Politano",
+          "probability": 90
+        },
+        {
+          "name": "Hojlund",
+          "probability": 90
+        },
+        {
+          "name": "Santos A.",
+          "probability": 85
+        }
+      ],
+      "bench": [
+        {
+          "name": "Milinkovic-Savic V.",
+          "probability": 5
+        },
+        {
+          "name": "Contini",
+          "probability": 1
+        },
+        {
+          "name": "Olivera",
+          "probability": 60
+        },
+        {
+          "name": "Mazzocchi",
+          "probability": 25
+        },
+        {
+          "name": "Gilmour",
+          "probability": 40
+        },
+        {
+          "name": "Folorunsho",
+          "probability": 25
+        },
+        {
+          "name": "Vergara",
+          "probability": 60
+        },
+        {
+          "name": "De Bruyne",
+          "probability": 60
+        },
+        {
+          "name": "Giovane",
+          "probability": 55
+        },
+        {
+          "name": "Lang",
+          "probability": 20
+        },
+        {
+          "name": "Lucca",
+          "probability": 55
+        },
+        {
+          "name": "Sow",
+          "probability": 60
+        },
+        {
+          "name": "Amorim",
+          "probability": 40
+        },
+        {
+          "name": "Vitinha O.",
+          "probability": 60
+        },
+        {
+          "name": "Mitaj",
+          "probability": 40
+        }
+      ]
+    },
+    {
+      "club": "PAR",
+      "team": "Parma",
+      "sourceTeam": "Parma",
+      "module": "4-3-3",
+      "starters": [
+        {
+          "name": "Corvi",
+          "probability": 80
+        },
+        {
+          "name": "Delprato",
+          "probability": 90
+        },
+        {
+          "name": "Troilo",
+          "probability": 80
+        },
+        {
+          "name": "Valenti",
+          "probability": 90
+        },
+        {
+          "name": "Valeri",
+          "probability": 90
+        },
+        {
+          "name": "Sorensen O.",
+          "probability": 80
+        },
+        {
+          "name": "Keita M.",
+          "probability": 90
+        },
+        {
+          "name": "Bernabè",
+          "probability": 90
+        },
+        {
+          "name": "Almqvist",
+          "probability": 60
+        },
+        {
+          "name": "Romero D.",
+          "probability": 60
+        },
+        {
+          "name": "Tourè E.",
+          "probability": 90
+        }
+      ],
+      "bench": [
+        {
+          "name": "Daffara",
+          "probability": 5
+        },
+        {
+          "name": "Suzuki",
+          "probability": 5
+        },
+        {
+          "name": "Ndiaye",
+          "probability": 50
+        },
+        {
+          "name": "Carboni F.",
+          "probability": 30
+        },
+        {
+          "name": "Circati",
+          "probability": 20
+        },
+        {
+          "name": "Ordonez C.",
+          "probability": 60
+        },
+        {
+          "name": "Diallo O.",
+          "probability": 60
+        },
+        {
+          "name": "Frigan",
+          "probability": 60
+        },
+        {
+          "name": "Lontani",
+          "probability": 55
+        },
+        {
+          "name": "Elphege",
+          "probability": 40
+        }
+      ]
+    },
+    {
+      "club": "ROM",
+      "team": "Roma",
+      "sourceTeam": "Roma",
+      "module": "3-4-2-1",
+      "starters": [
+        {
+          "name": "Svilar",
+          "probability": 90
+        },
+        {
+          "name": "Mancini",
+          "probability": 90
+        },
+        {
+          "name": "N'Dicka",
+          "probability": 90
+        },
+        {
+          "name": "Hermoso",
+          "probability": 85
+        },
+        {
+          "name": "Molina N.",
+          "probability": 85
+        },
+        {
+          "name": "Konè M.",
+          "probability": 90
+        },
+        {
+          "name": "Cristante",
+          "probability": 90
+        },
+        {
+          "name": "Wesley",
+          "probability": 85
+        },
+        {
+          "name": "Soulè",
+          "probability": 60
+        },
+        {
+          "name": "Dybala",
+          "probability": 90
+        },
+        {
+          "name": "Malen",
+          "probability": 90
+        }
+      ],
+      "bench": [
+        {
+          "name": "Gollini",
+          "probability": 5
+        },
+        {
+          "name": "De Marzi",
+          "probability": 1
+        },
+        {
+          "name": "Koulierakis",
+          "probability": 50
+        },
+        {
+          "name": "Ghilardi",
+          "probability": 40
+        },
+        {
+          "name": "Rensch",
+          "probability": 60
+        },
+        {
+          "name": "Ziolkowski",
+          "probability": 25
+        },
+        {
+          "name": "El Aynaoui",
+          "probability": 60
+        },
+        {
+          "name": "Pellegrini Lo.",
+          "probability": 10
+        },
+        {
+          "name": "Pisilli",
+          "probability": 55
+        },
+        {
+          "name": "Vaz",
+          "probability": 30
+        },
+        {
+          "name": "Castro S.",
+          "probability": 60
+        }
+      ]
+    },
+    {
+      "club": "SAS",
+      "team": "Sassuolo",
+      "sourceTeam": "Sassuolo",
+      "module": "4-3-3",
+      "starters": [
+        {
+          "name": "Muric",
+          "probability": 90
+        },
+        {
+          "name": "Missori",
+          "probability": 80
+        },
+        {
+          "name": "Odenthal",
+          "probability": 90
+        },
+        {
+          "name": "Idzes",
+          "probability": 80
+        },
+        {
+          "name": "Doig",
+          "probability": 55
+        },
+        {
+          "name": "Adzic",
+          "probability": 85
+        },
+        {
+          "name": "Matic",
+          "probability": 90
+        },
+        {
+          "name": "Bakola",
+          "probability": 60
+        },
+        {
+          "name": "Volpato",
+          "probability": 80
+        },
+        {
+          "name": "Bowie",
+          "probability": 90
+        },
+        {
+          "name": "Laurientè",
+          "probability": 90
+        }
+      ],
+      "bench": [
+        {
+          "name": "Turati",
+          "probability": 5
+        },
+        {
+          "name": "Satalino",
+          "probability": 1
+        },
+        {
+          "name": "Obrador",
+          "probability": 60
+        },
+        {
+          "name": "Iannoni",
+          "probability": 30
+        },
+        {
+          "name": "Thorstvedt",
+          "probability": 50
+        },
+        {
+          "name": "Lipani",
+          "probability": 60
+        },
+        {
+          "name": "Dominguez B.",
+          "probability": 60
+        },
+        {
+          "name": "Pinamonti",
+          "probability": 50
+        },
+        {
+          "name": "Moro L.",
+          "probability": 25
+        },
+        {
+          "name": "Berardi",
+          "probability": 20
+        },
+        {
+          "name": "Kristensen T.",
+          "probability": 60
+        },
+        {
+          "name": "Kossounou",
+          "probability": 40
+        },
+        {
+          "name": "Scamacca",
+          "probability": 60
+        },
+        {
+          "name": "Krstovic",
+          "probability": 40
+        }
+      ]
+    },
+    {
+      "club": "TOR",
+      "team": "Torino",
+      "sourceTeam": "Torino",
+      "module": "3-4-2-1",
+      "starters": [
+        {
+          "name": "Mascardi",
+          "probability": 70
+        },
+        {
+          "name": "Comuzzo",
+          "probability": 60
+        },
+        {
+          "name": "Coco",
+          "probability": 80
+        },
+        {
+          "name": "Comert",
+          "probability": 90
+        },
+        {
+          "name": "Pedersen",
+          "probability": 90
+        },
+        {
+          "name": "Gineitis",
+          "probability": 90
+        },
+        {
+          "name": "Fitz-Jim",
+          "probability": 90
+        },
+        {
+          "name": "Cacciamani",
+          "probability": 80
+        },
+        {
+          "name": "Casadei",
+          "probability": 80
+        },
+        {
+          "name": "Vlasic",
+          "probability": 90
+        },
+        {
+          "name": "Simeone",
+          "probability": 90
+        }
+      ],
+      "bench": [
+        {
+          "name": "Paleari",
+          "probability": 5
+        },
+        {
+          "name": "Siviero",
+          "probability": 1
+        },
+        {
+          "name": "Ismajli",
+          "probability": 55
+        },
+        {
+          "name": "Biraghi",
+          "probability": 50
+        },
+        {
+          "name": "Ilkhan",
+          "probability": 35
+        },
+        {
+          "name": "Anjorin",
+          "probability": 15
+        },
+        {
+          "name": "Ilic",
+          "probability": 15
+        },
+        {
+          "name": "Njie",
+          "probability": 35
+        },
+        {
+          "name": "Aboukhlal",
+          "probability": 55
+        },
+        {
+          "name": "Oristanio",
+          "probability": 60
+        },
+        {
+          "name": "Kulenovic",
+          "probability": 40
+        },
+        {
+          "name": "Adams C.",
+          "probability": 60
+        }
+      ]
+    },
+    {
+      "club": "UDI",
+      "team": "Udinese",
+      "sourceTeam": "Udinese",
+      "module": "3-4-2-1",
+      "starters": [
+        {
+          "name": "Okoye",
+          "probability": 90
+        },
+        {
+          "name": "Bertola",
+          "probability": 85
+        },
+        {
+          "name": "Palma",
+          "probability": 80
+        },
+        {
+          "name": "Solet",
+          "probability": 90
+        },
+        {
+          "name": "Vojvoda",
+          "probability": 90
+        },
+        {
+          "name": "Piotrowski",
+          "probability": 60
+        },
+        {
+          "name": "Karlstrom",
+          "probability": 90
+        },
+        {
+          "name": "Kamara H.",
+          "probability": 90
+        },
+        {
+          "name": "Ekkelenkamp",
+          "probability": 85
+        },
+        {
+          "name": "Zaniolo",
+          "probability": 90
+        },
+        {
+          "name": "Davis K.",
+          "probability": 90
+        }
+      ],
+      "bench": [
+        {
+          "name": "Padelli",
+          "probability": 5
+        },
+        {
+          "name": "Piana",
+          "probability": 1
+        },
+        {
+          "name": "Ebosse",
+          "probability": 50
+        },
+        {
+          "name": "Mlacic",
+          "probability": 25
+        },
+        {
+          "name": "Abankwah",
+          "probability": 15
+        },
+        {
+          "name": "Arizala",
+          "probability": 55
+        },
+        {
+          "name": "Miller L.",
+          "probability": 60
+        },
+        {
+          "name": "Zarraga",
+          "probability": 40
+        },
+        {
+          "name": "Unai Gomez",
+          "probability": 60
+        },
+        {
+          "name": "Camara A.",
+          "probability": 25
+        },
+        {
+          "name": "Bayo V.",
+          "probability": 40
+        },
+        {
+          "name": "Buksa",
+          "probability": 60
+        },
+        {
+          "name": "Gueye",
+          "probability": 35
+        }
+      ]
+    },
+    {
+      "club": "VEN",
+      "team": "Venezia",
+      "sourceTeam": "Venezia",
+      "module": "3-5-2",
+      "starters": [
+        {
+          "name": "Stankovic F.",
+          "probability": 90
+        },
+        {
+          "name": "Schingtienne",
+          "probability": 80
+        },
+        {
+          "name": "Bella-Kotchap",
+          "probability": 90
+        },
+        {
+          "name": "Halhal",
+          "probability": 85
+        },
+        {
+          "name": "Hainaut",
+          "probability": 85
+        },
+        {
+          "name": "Sohm",
+          "probability": 55
+        },
+        {
+          "name": "Busio",
+          "probability": 90
+        },
+        {
+          "name": "Basic",
+          "probability": 80
+        },
+        {
+          "name": "Haps",
+          "probability": 60
+        },
+        {
+          "name": "Yeboah J.",
+          "probability": 90
+        },
+        {
+          "name": "Adams A.",
+          "probability": 90
+        }
+      ],
+      "bench": [
+        {
+          "name": "Grandi",
+          "probability": 5
+        },
+        {
+          "name": "Pozzi",
+          "probability": 1
+        },
+        {
+          "name": "Moreno M.",
+          "probability": 50
+        },
+        {
+          "name": "Gomes",
+          "probability": 20
+        },
+        {
+          "name": "Correia T.",
+          "probability": 60
+        },
+        {
+          "name": "Franjic",
+          "probability": 35
+        },
+        {
+          "name": "Sagrado",
+          "probability": 30
+        },
+        {
+          "name": "Perez K.",
+          "probability": 60
+        },
+        {
+          "name": "Dagasso",
+          "probability": 30
+        },
+        {
+          "name": "Duncan",
+          "probability": 15
+        },
+        {
+          "name": "Helgason",
+          "probability": 55
+        },
+        {
+          "name": "Rrahmani Al.",
+          "probability": 60
+        },
+        {
+          "name": "Lauberbach",
+          "probability": 40
+        },
+        {
+          "name": "Lisman",
+          "probability": 25
+        }
+      ]
+    }
+  ],
+  "missingClubs": []
+}
