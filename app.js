@@ -2487,9 +2487,12 @@ function renderSettings(){
   $("#exportBtn").onclick=()=>{
     const backupActionCount=getBackupActionCount();
     let blob=new Blob([JSON.stringify({version:9,purchases:state.purchases,sold:state.sold,strategy:state.strategy,poolMode:state.poolMode,league:state.league,auctionPhase:state.auctionPhase,listoneSync:appliedListoneSync,watchlist:state.watchlist,protectedMode:state.protectedMode,operationLog:state.operationLog,snapshots:state.snapshots,backupActionCount},null,2)],{type:"application/json"});
-    let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="AstaMantra-backup-v9.json";a.click();URL.revokeObjectURL(a.href);
+    const backupUrl=URL.createObjectURL(blob);
+    let a=document.createElement("a");a.href=backupUrl;a.download="AstaMantra-backup-v9.json";document.body.appendChild(a);a.click();a.remove();
+    if(document.activeElement instanceof HTMLElement)document.activeElement.blur();
     markExternalBackupDone();
-    renderSettings();
+    settleBottomTabbar();
+    setTimeout(()=>URL.revokeObjectURL(backupUrl),1500);
   };
   $("#importFile").onchange=e=>{
     if(blockedByProtection("Importare un backup")){e.target.value="";return;}
@@ -2518,6 +2521,7 @@ function switchView(id){
   if(id==="leagueView")renderLeagues();
   if(id==="formationsView")renderFormationsView();
   if(id==="settingsView")renderSettings();
+  settleBottomTabbar();
 }
 $$('.tab').forEach(t=>t.onclick=()=>switchView(t.dataset.view));
 $("#settingsBtn").onclick=()=>switchView("settingsView");
@@ -2528,10 +2532,57 @@ function refresh(){
   updateBackupAlert();
 }
 
+
+/* v1.42.1 — barra menu stabile su iOS / iPadOS.
+   iOS può ridurre temporaneamente la visual viewport dopo tastiera, download o sheet.
+   Compensiamo solo grandi riduzioni verticali, mantenendo la tabbar sul fondo reale. */
+let bottomTabbarStableHeight=Math.max(
+  window.innerHeight||0,
+  window.visualViewport ? window.visualViewport.height+window.visualViewport.offsetTop : 0
+);
+let bottomTabbarStableWidth=window.innerWidth||0;
+function syncBottomTabbar(){
+  const vv=window.visualViewport;
+  const root=document.documentElement;
+  if(!vv){root.style.setProperty("--tabbar-vv-compensation","0px");return;}
+  const currentBottom=vv.height+vv.offsetTop;
+  const measured=Math.max(window.innerHeight||0,currentBottom);
+  if(measured>bottomTabbarStableHeight)bottomTabbarStableHeight=measured;
+  const gap=Math.max(0,bottomTabbarStableHeight-currentBottom);
+  const compensation=gap>=80 ? Math.min(gap,560) : 0;
+  root.style.setProperty("--tabbar-vv-compensation",`${Math.round(compensation)}px`);
+}
+function settleBottomTabbar(){
+  syncBottomTabbar();
+  [40,140,320,650].forEach(ms=>setTimeout(syncBottomTabbar,ms));
+}
+function resetBottomTabbarBaseline(){
+  const vv=window.visualViewport;
+  bottomTabbarStableWidth=window.innerWidth||0;
+  bottomTabbarStableHeight=Math.max(window.innerHeight||0,vv ? vv.height+vv.offsetTop : 0);
+  settleBottomTabbar();
+}
+if(window.visualViewport){
+  window.visualViewport.addEventListener("resize",syncBottomTabbar,{passive:true});
+  window.visualViewport.addEventListener("scroll",syncBottomTabbar,{passive:true});
+}
+window.addEventListener("resize",()=>{
+  const widthNow=window.innerWidth||0;
+  if(Math.abs(widthNow-bottomTabbarStableWidth)>40){
+    setTimeout(resetBottomTabbarBaseline,180);
+  }else{
+    syncBottomTabbar();
+  }
+},{passive:true});
+window.addEventListener("orientationchange",()=>setTimeout(resetBottomTabbarBaseline,300),{passive:true});
+window.addEventListener("pageshow",settleBottomTabbar,{passive:true});
+document.addEventListener("focusin",syncBottomTabbar,{passive:true});
+document.addEventListener("focusout",settleBottomTabbar,{passive:true});
+
 function lockInit(){
   if(!state.pin)return;
   $("#lock").classList.remove("hidden");$("#disablePinBtn").style.display="none";
   $("#unlockBtn").onclick=()=>{if($("#pinInput").value===state.pin)$("#lock").classList.add("hidden");else $("#lockText").textContent="PIN errato. Riprova."};
 }
 ensureInitialSnapshot();refresh();lockInit();
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.42").catch(()=>{}));
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.42.1").catch(()=>{}));

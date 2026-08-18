@@ -2889,3 +2889,21 @@ html,body{background:radial-gradient(circle at 50% -10%,#0b1b30 0,#06101d 42%,#0
 .backup-settings-card{scroll-margin-top:105px}
 @media(max-width:360px){.topbar-actions{gap:6px}.backup-alert-btn{font-size:10px;min-height:34px;padding:6px 7px}.hybrid-settings{width:46px!important;height:46px!important}}
 @media(prefers-reduced-motion:reduce){.backup-alert-btn{animation:none}}
+
+
+/* v1.42.1 — tabbar fissata al fondo reale su iOS/iPadOS */
+:root{--tabbar-vv-compensation:0px}
+.tabbar,.hybrid-tabbar{
+  position:fixed!important;
+  left:0!important;
+  right:0!important;
+  top:auto!important;
+  bottom:0!important;
+  margin:0!important;
+  transform:translate3d(0,var(--tabbar-vv-compensation),0)!important;
+  -webkit-transform:translate3d(0,var(--tabbar-vv-compensation),0)!important;
+  will-change:transform;
+  z-index:50!important;
+}
+html{min-height:100%;overflow-x:hidden}
+body{min-height:100%;overflow-x:hidden}
