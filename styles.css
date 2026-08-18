@@ -2942,3 +2942,19 @@ body{
 }
 /* Gli header di ruolo ora sono sticky rispetto al solo pannello scorrevole. */
 .role-group h3{top:0!important}
+
+
+/* v1.43 — Target dinamici in Asta Live */
+.live-target-alert{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;margin:0 0 12px;padding:12px 13px;border-radius:14px;background:linear-gradient(135deg,#351f0d,#19213a);border:1px solid #9c6c20;box-shadow:0 10px 28px rgba(0,0,0,.18)}
+.live-target-alert.urgent{border-color:#ffad2f;box-shadow:0 0 0 1px rgba(255,173,47,.08),0 10px 28px rgba(0,0,0,.18)}
+.live-target-alert.future{opacity:.82}
+.live-target-alert>div{min-width:0}.live-target-alert span{display:block;color:#ffbd4a;font-size:10px;font-weight:900;letter-spacing:.09em}.live-target-alert b{display:flex;align-items:center;gap:7px;margin-top:3px;color:#fff;font-size:17px}.live-target-alert small{display:block;margin-top:3px;color:#b8c4d6;font-size:10px;line-height:1.35}.live-target-alert button{border:1px solid #ffb43e;background:#ffad2f;color:#15100a;border-radius:11px;padding:10px 11px;font-size:11px;font-weight:950;letter-spacing:.04em}
+.live-strategy-signal{display:flex;align-items:center;gap:10px;margin:-2px -2px 12px;padding:10px;border-radius:12px}.live-strategy-signal.static{background:#133a2c;border:1px solid #2ac785}.live-strategy-signal.dynamic{background:#3b2710;border:1px solid #f2a52e}.live-strategy-signal>div{min-width:0}.live-strategy-signal b{display:block;font-size:12px;letter-spacing:.04em}.live-strategy-signal small{display:block;margin-top:2px;color:#c4cfdd;font-size:10px;line-height:1.35}.live-target-symbol{flex:0 0 auto;padding:7px 8px;border-radius:9px;font-size:9px!important;font-weight:950!important;letter-spacing:.06em}.live-strategy-signal.static .live-target-symbol{background:#30d690;color:#062319}.live-strategy-signal.dynamic .live-target-symbol{background:#ffae32;color:#241500}
+.live-inline-target,.live-inline-dynamic,.live-result-badge{display:inline-flex;align-items:center;border-radius:6px;font-style:normal;font-weight:950;vertical-align:middle;white-space:nowrap}.live-inline-target,.live-result-badge.target{background:#174c38;color:#52e6a8;border:1px solid #287b5b}.live-inline-dynamic,.live-result-badge.dynamic{background:#4a3111;color:#ffbd4a;border:1px solid #8a6020}.live-inline-target,.live-inline-dynamic{font-size:8px;padding:3px 5px;margin-left:4px;transform:translateY(-1px)}.live-result-badge{font-size:7.5px;padding:2px 4px;margin-left:4px}.live-result.dynamic-target{border-color:#9b6a20;background:linear-gradient(145deg,#15253a,#2b2312)}.live-player-card.recommended{border-color:#d08b27;background:linear-gradient(145deg,#2a2415,#10233a)}
+@media(max-width:390px){.live-target-alert{padding:10px;gap:7px}.live-target-alert b{font-size:15px}.live-target-alert button{padding:9px 8px;font-size:10px}.live-strategy-signal{padding:9px;gap:8px}.live-strategy-signal small{font-size:9.5px}}
+
+
+/* v1.44 — Ranking strategico nell'elenco Asta Live */
+.live-result-badge.alternative{background:#172f4d;color:#8dc7ff;border:1px solid #315c88}
+.live-result.ranked-alternative{border-color:#315c88;background:linear-gradient(145deg,#10243a,#102033)}
+.live-results-label small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

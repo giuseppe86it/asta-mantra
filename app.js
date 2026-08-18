@@ -1054,6 +1054,124 @@ function liveMaxForPlayer(p,intel=getAuctionIntel()){
   return {base,live:Math.min(live,mine.maxNext||live),rawLive:live,inflation:inf,risk,activeComp,competition:comp};
 }
 
+/* v1.43 — Target dinamici Asta Live.
+   I TARGET originali restano immutati; quando uno viene perso il motore
+   promuove automaticamente la migliore alternativa ancora disponibile. */
+function isStaticTarget(p){return !!p && p.strategic && String(p.notes||"").toUpperCase().includes("TARGET")}
+function staticTargets(){return allPlayers.filter(isStaticTarget)}
+function lostStaticTargets(){
+  return staticTargets().filter(p=>!state.purchases[p.id] && (state.sold[p.id] || p.outOfListone));
+}
+function availableStaticTargets(){
+  return staticTargets().filter(p=>isMarketEligiblePlayer(p)&&!state.purchases[p.id]&&!state.sold[p.id]);
+}
+function currentMissingStrategySlots(){
+  const st=activeStrategy(),match=bestLineupMatch(st,purchasedPlayers());
+  return st.slots.map((slot,i)=>({slot,i,filled:!!match.assign[i]})).filter(x=>!x.filled);
+}
+function phaseBudgetRemaining(phase){
+  const guide=Number(activeStrategy().budgets?.[phase]||0);
+  const used=purchasedPlayers().filter(p=>playerAuctionPhase(p)===phase).reduce((a,p)=>a+Number(state.purchases[p.id]?.price||0),0);
+  return Math.max(0,guide-used);
+}
+function roleAffinityScore(candidate,lost){
+  const ct=roleTokens(candidate.role),lt=roleTokens(lost.role);
+  const overlap=ct.filter(x=>lt.includes(x)).length;
+  let score=overlap?24+Math.min(10,(overlap-1)*5):0;
+  const cp=primaryOffensiveRole(candidate),lp=primaryOffensiveRole(lost);
+  if(cp&&lp&&cp===lp)score+=16;
+  const sharedFamilies=INTEL_FAMILIES.filter(f=>playerMatchesFamily(candidate,f)&&playerMatchesFamily(lost,f)).length;
+  score+=Math.min(14,sharedFamilies*7);
+  const cf=strategyPlayerFit(candidate),lf=strategyPlayerFit(lost);
+  if(cf.some(x=>lf.includes(x)))score+=12;
+  return Math.min(58,score);
+}
+function dynamicAlternativeScore(candidate,lost,intel=getAuctionIntel(),ctx=null){
+  if(!candidate||!lost||String(candidate.id)===String(lost.id))return -Infinity;
+  if(!isMarketEligiblePlayer(candidate)||state.purchases[candidate.id]||state.sold[candidate.id])return -Infinity;
+  if(playerAuctionPhase(candidate)!==playerAuctionPhase(lost))return -Infinity;
+  if(countClub(candidate.club)>=5)return -Infinity;
+
+  let score=roleAffinityScore(candidate,lost);
+  if(score<18)return -Infinity; // evita alternative solo nominalmente nello stesso reparto
+
+  const missing=ctx?.missing||currentMissingStrategySlots();
+  const missingFits=missing.filter(x=>slotCompatible(candidate,x.slot));
+  score+=Math.min(18,missingFits.length*6);
+  if(missingFits.some(x=>activeStrategy().keySlots.some(k=>k.label===x.slot.label)))score+=8;
+
+  const quality=Math.max(1,playerQuality(candidate));
+  const lostQuality=Math.max(1,playerQuality(lost));
+  score+=Math.min(15,15*clamp(quality/lostQuality,0,1.2));
+
+  if(candidate.strategic)score+=12;
+  if(isStaticTarget(candidate))score+=8;
+
+  const mine=ctx?.mine||teamEconomy(mineTeam());
+  const guide=ctx?.guide??phaseBudgetRemaining(playerAuctionPhase(candidate));
+  if(quality<=mine.maxNext)score+=5;
+  if(guide>0 && quality<=guide)score+=4;
+  else if(guide>0 && quality>guide*1.35)score-=5;
+
+  const u23Owned=ctx?.u23Owned??purchasedPlayers().filter(p=>p.u23).length;
+  const u21Owned=ctx?.u21Owned??purchasedPlayers().filter(p=>p.u21).length;
+  if(u23Owned<2 && candidate.u23)score+=4;
+  if(u21Owned<1 && candidate.u21)score+=5;
+
+  const risk=familyRiskForPlayer(candidate,intel).risk;
+  score+=Math.min(8,risk*.08); // se il ruolo si sta esaurendo, priorità maggiore
+  return Math.round(score);
+}
+function bestAlternativeForTarget(lost,intel=getAuctionIntel()){
+  if(!lost)return null;
+  const owned=purchasedPlayers();
+  const ctx={
+    missing:currentMissingStrategySlots(),
+    mine:teamEconomy(mineTeam()),
+    guide:phaseBudgetRemaining(playerAuctionPhase(lost)),
+    u23Owned:owned.filter(p=>p.u23).length,
+    u21Owned:owned.filter(p=>p.u21).length
+  };
+  const rank=pool=>pool
+    .map(p=>({p,score:dynamicAlternativeScore(p,lost,intel,ctx)}))
+    .filter(x=>Number.isFinite(x.score))
+    .sort((a,b)=>b.score-a.score||playerQuality(b.p)-playerQuality(a.p));
+  // Prima lavora sulla shortlist strategica da 200; il listone completo è solo fallback.
+  let candidates=rank(allPlayers.filter(p=>p.strategic));
+  if(!candidates.length)candidates=rank(allPlayers);
+  if(!candidates.length)return null;
+  const best=candidates[0];
+  const fit=strategyPlayerFit(best.p);
+  const reason=[
+    roleTokens(best.p.role).some(r=>roleTokens(lost.role).includes(r))?`ruolo ${best.p.role}`:"profilo compatibile",
+    fit.length?`fit ${fit.join("/")}`:`fit ${activeStrategy().module}`,
+    `MAX live ${fmt(liveMaxForPlayer(best.p,intel).live)}`
+  ].join(" · ");
+  return {lost,player:best.p,score:best.score,reason};
+}
+function dynamicTargetRecommendations(intel=getAuctionIntel()){
+  return lostStaticTargets()
+    .map(lost=>bestAlternativeForTarget(lost,intel))
+    .filter(Boolean)
+    .sort((a,b)=>{
+      const pa=playerAuctionPhase(a.lost)===state.auctionPhase?0:1;
+      const pb=playerAuctionPhase(b.lost)===state.auctionPhase?0:1;
+      return pa-pb||b.score-a.score;
+    });
+}
+function dynamicAlternativeForPlayer(p,intel=getAuctionIntel(),recommendations=null){
+  const recs=recommendations||dynamicTargetRecommendations(intel);
+  return recs.find(x=>String(x.player.id)===String(p?.id))||null;
+}
+function liveTargetBannerHTML(intel=getAuctionIntel()){
+  const current=dynamicTargetRecommendations(intel).find(x=>playerAuctionPhase(x.lost)===state.auctionPhase);
+  if(!current)return "";
+  return `<div class="live-target-alert urgent">
+    <div><span>TARGET PERSO · ${esc(current.lost.name)}</span><b>${kitHTML(current.player.club,'xs',current.player.club)} ${esc(current.player.name)}</b><small>${esc(current.reason)}</small></div>
+    <button type="button" onclick='selectLivePlayer(${idArg(current.player.id)})'>PARTECIPA</button>
+  </div>`;
+}
+
 function updateSoldEconomicNote(){
   const team=leagueTeamById($("#soldTeamSelect")?.value);
   if(!team){
@@ -1427,7 +1545,90 @@ function finishAuctionActionNavigation(){
 }
 
 let liveSelectedId=null;
-function liveCandidateList(query=""){
+/* v1.44 — Priorità strategica dell'elenco Asta Live.
+   TARGET → alternativa dinamica → migliori alternative → resto dei profili. */
+function liveGeneralOpportunityScore(p,intel=getAuctionIntel(),ctx=null){
+  if(!p)return -Infinity;
+  const mine=ctx?.mine||teamEconomy(mineTeam());
+  const missing=ctx?.missing||currentMissingStrategySlots();
+  let score=0;
+  if(p.strategic)score+=24;
+  const fits=strategyPlayerFit(p);
+  score+=Math.min(20,fits.length*10);
+  const missingFits=missing.filter(x=>slotCompatible(p,x.slot));
+  score+=Math.min(24,missingFits.length*6);
+  if(missingFits.some(x=>activeStrategy().keySlots.some(k=>k.label===x.slot.label)))score+=8;
+  const quality=playerQuality(p);
+  score+=Math.min(20,Math.round(Math.sqrt(Math.max(0,quality))*1.05));
+  const risk=familyRiskForPlayer(p,intel).risk;
+  score+=Math.min(10,Math.round(risk*.10));
+  if(quality<=mine.maxNext)score+=6;
+  else score-=12;
+  const owned=purchasedPlayers();
+  if(owned.filter(x=>x.u23).length<2&&p.u23)score+=5;
+  if(owned.filter(x=>x.u21).length<1&&p.u21)score+=6;
+  if(countClub(p.club)>=4)score-=6;
+  return score;
+}
+function livePriorityRows(list,intel=getAuctionIntel(),recommendations=null){
+  const recs=recommendations||dynamicTargetRecommendations(intel);
+  const dynamicById=new Map();
+  recs.forEach(rec=>{
+    const key=String(rec.player.id),prev=dynamicById.get(key);
+    if(!prev||rec.score>prev.score)dynamicById.set(key,rec);
+  });
+  const phaseCtx=new Map(),phaseTargets=new Map();
+  const ctxFor=phase=>{
+    if(!phaseCtx.has(phase)){
+      const owned=purchasedPlayers();
+      phaseCtx.set(phase,{
+        missing:currentMissingStrategySlots(),
+        mine:teamEconomy(mineTeam()),
+        guide:phaseBudgetRemaining(phase),
+        u23Owned:owned.filter(p=>p.u23).length,
+        u21Owned:owned.filter(p=>p.u21).length
+      });
+    }
+    return phaseCtx.get(phase);
+  };
+  const targetsFor=phase=>{
+    if(!phaseTargets.has(phase)){
+      phaseTargets.set(phase,staticTargets().filter(t=>playerAuctionPhase(t)===phase&&!state.purchases[t.id]));
+    }
+    return phaseTargets.get(phase);
+  };
+  const rows=list.map(p=>{
+    const phase=playerAuctionPhase(p),dynamic=dynamicById.get(String(p.id))||null;
+    const staticTarget=isStaticTarget(p);
+    const ctx=ctxFor(phase);
+    let altScore=-Infinity;
+    if(!staticTarget){
+      for(const target of targetsFor(phase)){
+        const score=dynamicAlternativeScore(p,target,intel,ctx);
+        if(score>altScore)altScore=score;
+      }
+    }
+    const general=liveGeneralOpportunityScore(p,intel,ctx);
+    const tier=staticTarget?0:dynamic?1:Number.isFinite(altScore)?2:3;
+    const score=staticTarget?1000+general:dynamic?dynamic.score: Number.isFinite(altScore)?altScore:general;
+    return {p,meta:{tier,score,altScore,general,dynamic,altRank:null}};
+  });
+  rows.sort((a,b)=>{
+    const phaseA=playerAuctionPhase(a.p)===state.auctionPhase?0:1;
+    const phaseB=playerAuctionPhase(b.p)===state.auctionPhase?0:1;
+    return phaseA-phaseB||a.meta.tier-b.meta.tier||b.meta.score-a.meta.score||b.meta.general-a.meta.general||playerQuality(b.p)-playerQuality(a.p)||String(a.p.name).localeCompare(String(b.p.name),'it');
+  });
+  const counters={};
+  rows.forEach(row=>{
+    if(isStaticTarget(row.p))return;
+    if(row.meta.tier>2)return;
+    const phase=playerAuctionPhase(row.p);
+    counters[phase]=(counters[phase]||0)+1;
+    row.meta.altRank=counters[phase];
+  });
+  return rows;
+}
+function liveCandidateList(query="",intel=getAuctionIntel(),recommendations=null){
   const q=String(query||"").trim().toLowerCase();
   let list=allPlayers.filter(p=>isMarketEligiblePlayer(p)&&!state.purchases[p.id]&&!state.sold[p.id]);
   if(q){
@@ -1435,23 +1636,20 @@ function liveCandidateList(query=""){
   }else{
     list=list.filter(p=>playerAuctionPhase(p)===state.auctionPhase);
   }
-  list.sort((a,b)=>{
-    const phaseA=playerAuctionPhase(a)===state.auctionPhase?0:1;
-    const phaseB=playerAuctionPhase(b)===state.auctionPhase?0:1;
-    const targetA=(a.notes||"").includes("TARGET")?0:1;
-    const targetB=(b.notes||"").includes("TARGET")?0:1;
-    return phaseA-phaseB||targetA-targetB||Number(b.maxPrice||0)-Number(a.maxPrice||0);
-  });
-  return list.slice(0,18);
+  return livePriorityRows(list,intel,recommendations).slice(0,18);
 }
-function liveResultHTML(p){
-  const live=liveMaxForPlayer(p);
-  return `<button class="live-result" data-id="${p.id}"><span class="live-result-main">${kitHTML(p.club,'sm',p.club)}<span><b>${esc(p.name)}</b><small>${p.club} · ${p.role} · FVM ${p.fvm||0}</small></span></span><strong>${riskIcon(live.risk)} ${fmt(live.live)}<small>MAX live</small></strong></button>`;
+function liveResultHTML(p,intel=getAuctionIntel(),recommendations=null,meta=null){
+  const live=liveMaxForPlayer(p,intel),dynamic=dynamicAlternativeForPlayer(p,intel,recommendations);
+  const staticTarget=isStaticTarget(p);
+  const altBadge=!staticTarget&&!dynamic&&meta?.altRank&&meta.altRank<=3?`<em class="live-result-badge alternative">ALT ${meta.altRank}</em>`:"";
+  const badges=[staticTarget?'<em class="live-result-badge target">TARGET</em>':"",dynamic?'<em class="live-result-badge dynamic">DA PRENDERE</em>':"",altBadge].join("");
+  const rankedClass=dynamic?"dynamic-target":(!staticTarget&&meta?.altRank&&meta.altRank<=3?"ranked-alternative":"");
+  return `<button class="live-result ${rankedClass}" data-id="${p.id}"><span class="live-result-main">${kitHTML(p.club,'sm',p.club)}<span><b>${esc(p.name)} ${badges}</b><small>${p.club} · ${p.role} · FVM ${p.fvm||0}</small></span></span><strong>${riskIcon(live.risk)} ${fmt(live.live)}<small>MAX live</small></strong></button>`;
 }
 function updateLiveResults(query=""){
-  const list=liveCandidateList(query);
+  const intel=getAuctionIntel(),recommendations=dynamicTargetRecommendations(intel),rows=liveCandidateList(query,intel,recommendations);
   const target=$("#liveResults");if(!target)return;
-  target.innerHTML=list.length?list.map(liveResultHTML).join(""):'<div class="live-empty">Nessun giocatore trovato.</div>';
+  target.innerHTML=rows.length?rows.map(({p,meta})=>liveResultHTML(p,intel,recommendations,meta)).join(""):'<div class="live-empty">Nessun giocatore trovato.</div>';
   $$("#liveResults .live-result").forEach(btn=>btn.onclick=()=>selectLivePlayer(btn.dataset.id));
 }
 function selectLivePlayer(id){
@@ -1459,9 +1657,19 @@ function selectLivePlayer(id){
   liveSelectedId=p.id;
   const intel=getAuctionIntel(),live=liveMaxForPlayer(p,intel),mine=teamEconomy(mineTeam());
   const comp=live.competition.slice(0,5);
+  const dynamic=dynamicAlternativeForPlayer(p,intel);
+  const staticTarget=isStaticTarget(p);
+  const targetSignal=staticTarget&&dynamic
+    ? `<div class="live-strategy-signal dynamic"><span class="live-target-symbol">TARGET</span><div><b>PARTECIPA ALL'ASTA</b><small>Obiettivo strategico ancora disponibile e migliore alternativa a ${esc(dynamic.lost.name)} · ${esc(dynamic.reason)}.</small></div></div>`
+    : staticTarget
+      ? `<div class="live-strategy-signal static"><span class="live-target-symbol">TARGET</span><div><b>OBIETTIVO STRATEGICO</b><small>Giocatore già inserito nel piano · partecipa all'asta rispettando il MAX live.</small></div></div>`
+      : dynamic
+        ? `<div class="live-strategy-signal dynamic"><span class="live-target-symbol">DA PRENDERE</span><div><b>PARTECIPA ALL'ASTA</b><small>Alternativa automatica a ${esc(dynamic.lost.name)} · ${esc(dynamic.reason)}.</small></div></div>`
+        : "";
   const target=$("#liveSelected");if(!target)return;
-  target.innerHTML=`<div class="live-player-card">
-    <div class="live-player-head"><div class="live-player-identity">${kitHTML(p.club,'live',p.club)}<div><span>${p.club} · ${p.role}</span><b>${esc(p.name)}</b><button type="button" class="live-watch ${isWatchlisted(p.id)?"active":""}" onclick='toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"SEGUITO":"SEGUI"}</button></div></div><strong>${riskIcon(live.risk)} ${live.risk}</strong></div>
+  target.innerHTML=`<div class="live-player-card ${dynamic?"recommended":""}">
+    ${targetSignal}
+    <div class="live-player-head"><div class="live-player-identity">${kitHTML(p.club,'live',p.club)}<div><span>${p.club} · ${p.role}</span><b>${esc(p.name)}${staticTarget?' <em class="live-inline-target">TARGET</em>':""}${dynamic?' <em class="live-inline-dynamic">DA PRENDERE</em>':""}</b><button type="button" class="live-watch ${isWatchlisted(p.id)?"active":""}" onclick='toggleWatchlist(${idArg(p.id)})'>${isWatchlisted(p.id)?"SEGUITO":"SEGUI"}</button></div></div><strong>${riskIcon(live.risk)} ${live.risk}</strong></div>
     <div class="live-price-grid">
       <div><span>FVM</span><b>${p.fvm||0}</b></div>
       <div><span>MAX iniziale</span><b>${fmt(live.base)}</b></div>
@@ -1474,13 +1682,15 @@ function selectLivePlayer(id){
     <div class="live-actions"><button class="primary" onclick='liveBuy(${idArg(p.id)})'>ACQUISTA</button><button class="soldbtn" onclick='liveSell(${idArg(p.id)})'>VENDUTO</button></div>
   </div>`;
 }
+
 function renderAuctionLive(){
   const phase=AUCTION_PHASES[phaseIndex()];
   $("#liveDialogContent").innerHTML=`<div class="dialog-body live-dialog-body">
     <div class="live-dialog-head"><div><span class="eyebrow">${phase.icon} Fase ${phase.id}</span><h2>Asta Live</h2></div><button id="closeLiveBtn" class="ghost">✕</button></div>
+    ${liveTargetBannerHTML()}
     <input id="liveSearchInput" class="search live-search" placeholder="Cerca giocatore…" autocomplete="off" autocapitalize="off" spellcheck="false">
     <div id="liveSelected"></div>
-    <div class="live-results-label"><span>${phase.label}</span><small>tocca un giocatore</small></div>
+    <div class="live-results-label"><span>${phase.label}</span><small>TARGET → alternative → migliori profili</small></div>
     <div id="liveResults"></div>
   </div>`;
   $("#closeLiveBtn").onclick=()=>$("#liveDialog").close();
@@ -2559,4 +2769,4 @@ function lockInit(){
   $("#unlockBtn").onclick=()=>{if($("#pinInput").value===state.pin)$("#lock").classList.add("hidden");else $("#lockText").textContent="PIN errato. Riprova."};
 }
 ensureInitialSnapshot();refresh();lockInit();
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.42.2").catch(()=>{}));
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.44").catch(()=>{}));
