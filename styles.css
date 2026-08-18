@@ -2873,3 +2873,19 @@ html,body{background:radial-gradient(circle at 50% -10%,#0b1b30 0,#06101d 42%,#0
   .out-listone-roster-legend{align-items:flex-start;flex-direction:column;gap:3px}
   .out-listone-roster-legend span{text-align:left}
 }
+
+
+/* v1.42 — promemoria backup ogni 10 nuove assegnazioni */
+.topbar-actions{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+.backup-alert-btn{
+  appearance:none;border:1px solid rgba(255,54,105,.95);border-radius:10px;
+  min-height:36px;padding:7px 9px;background:rgba(58,4,20,.94);color:#ff3b72;
+  font-size:11px;font-weight:950;letter-spacing:.10em;line-height:1;text-transform:uppercase;
+  box-shadow:0 0 0 1px rgba(255,54,105,.18),0 0 12px rgba(255,40,91,.56),inset 0 0 12px rgba(255,40,91,.12);
+  text-shadow:0 0 8px rgba(255,61,114,.9);animation:backup-neon-pulse 1.7s ease-in-out infinite;
+}
+.backup-alert-btn:active{transform:scale(.97)}
+@keyframes backup-neon-pulse{0%,100%{opacity:1;box-shadow:0 0 0 1px rgba(255,54,105,.18),0 0 10px rgba(255,40,91,.48)}50%{opacity:.84;box-shadow:0 0 0 1px rgba(255,54,105,.28),0 0 18px rgba(255,40,91,.78)}}
+.backup-settings-card{scroll-margin-top:105px}
+@media(max-width:360px){.topbar-actions{gap:6px}.backup-alert-btn{font-size:10px;min-height:34px;padding:6px 7px}.hybrid-settings{width:46px!important;height:46px!important}}
+@media(prefers-reduced-motion:reduce){.backup-alert-btn{animation:none}}

@@ -304,7 +304,9 @@ const SAFETY_KEYS={
   operationLog:"am_operation_log",
   undoStack:"am_undo_stack",
   snapshots:"am_snapshots",
-  operationCount:"am_operation_count"
+  operationCount:"am_operation_count",
+  backupActionCount:"am_backup_action_count",
+  lastBackupActionCount:"am_last_backup_action_count"
 };
 
 const state = {
@@ -390,6 +392,53 @@ function recordOperation(type,label,before,{undoable=true,count=true}={}){
     if(n%10===0)createSafetySnapshot(`Automatico · ${n} operazioni`,true);
   }
   saveSafetyState();
+}
+function currentAssignmentCount(){
+  return Object.keys(state.purchases||{}).length+Object.keys(state.sold||{}).length;
+}
+function getBackupActionCount(){
+  const raw=localStorage.getItem(SAFETY_KEYS.backupActionCount);
+  if(raw===null){
+    const initial=currentAssignmentCount();
+    localStorage.setItem(SAFETY_KEYS.backupActionCount,String(initial));
+    return initial;
+  }
+  return Math.max(0,Number(raw)||0);
+}
+function getLastBackupActionCount(){
+  return Math.max(0,Number(localStorage.getItem(SAFETY_KEYS.lastBackupActionCount)||0)||0);
+}
+function registerBackupRelevantAssignment(){
+  const next=getBackupActionCount()+1;
+  localStorage.setItem(SAFETY_KEYS.backupActionCount,String(next));
+  updateBackupAlert();
+}
+function markExternalBackupDone(){
+  const n=getBackupActionCount();
+  localStorage.setItem(SAFETY_KEYS.lastBackupActionCount,String(n));
+  updateBackupAlert();
+}
+function resetBackupReminderCounters(){
+  localStorage.setItem(SAFETY_KEYS.backupActionCount,"0");
+  localStorage.setItem(SAFETY_KEYS.lastBackupActionCount,"0");
+  updateBackupAlert();
+}
+function updateBackupAlert(){
+  const btn=$("#backupAlertBtn");
+  if(!btn)return;
+  const delta=getBackupActionCount()-getLastBackupActionCount();
+  const due=delta>=10;
+  btn.hidden=!due;
+  btn.textContent="BACKUP";
+  btn.setAttribute("aria-label",due?`Backup consigliato: ${delta} nuove assegnazioni dall'ultimo backup`:"Backup aggiornato");
+  btn.title=due?`${delta} nuove assegnazioni dall'ultimo backup`:"";
+}
+function openBackupReminder(){
+  switchView("settingsView");
+  requestAnimationFrame(()=>{
+    const card=$("#backupCard");
+    if(card)card.scrollIntoView({behavior:"smooth",block:"center"});
+  });
 }
 function protectedPermission(action){
   if(!state.protectedMode)return true;
@@ -2014,6 +2063,7 @@ $("#soldForm").addEventListener("submit",e=>{
     leagueId:state.league?.id||""
   };
   saveSold();
+  if(!wasEdit)registerBackupRelevantAssignment();
   recordOperation(wasEdit?"MODIFICA_VENDITA":"VENDUTO",wasEdit?`${p.name}: vendita aggiornata a ${price} cr · ${soldTeamName(state.sold[p.id])}`:`${p.name} → ${soldTeamName(state.sold[p.id])} · ${price} cr`,before);
   $("#soldDialog").close();
   soldPlayerId=null;
@@ -2099,6 +2149,7 @@ $("#purchaseForm").addEventListener("submit",e=>{
     at: wasEdit && previous?.at ? previous.at : Date.now()
   };
   save();
+  if(!wasEdit)registerBackupRelevantAssignment();
   recordOperation(wasEdit?"MODIFICA_ACQUISTO":"ACQUISTO",wasEdit?`${p?.name||"Giocatore"}: ${previous?.price||"—"} → ${price} cr`:`${p?.name||"Giocatore"} acquistato a ${price} cr`,before);
   $("#purchaseDialog").close();
   purchaseId=null;
@@ -2413,7 +2464,7 @@ function renderSettings(){
     <div class="card" style="margin-top:10px"><h3>Privacy</h3><p class="muted">Tutti i dati dell'asta restano nel browser del dispositivo. Nessun account e nessun tracciamento.</p>
       <div class="toolbar"><button id="setPin" class="ghost">${state.pin?"Cambia PIN":"Imposta PIN"}</button>${state.pin?'<button id="removePin" class="ghost">Rimuovi PIN</button>':""}</div>
     </div>
-    <div class="card" style="margin-top:10px"><h3>Backup</h3>
+    <div id="backupCard" class="card backup-settings-card" style="margin-top:10px"><h3>Backup</h3>
       <div class="toolbar"><button id="exportBtn" class="primary">Esporta backup</button><label class="ghost ${state.protectedMode?"disabled-control":""}" style="margin:0">Importa backup<input id="importFile" type="file" accept=".json" hidden ${state.protectedMode?"disabled":""}></label></div>
       ${state.protectedMode?'<p class="muted safety-lock-note">Import bloccato durante Asta protetta.</p>':""}
     </div>
@@ -2430,12 +2481,15 @@ function renderSettings(){
   $("#resetBtn").onclick=()=>{
     if(blockedByProtection("Azzera tutta l'asta"))return;
     if(confirm("Vuoi davvero cancellare acquisti e giocatori venduti e riportare la fase asta ai POR?")){
-      const before=captureAuctionCore();state.purchases={};state.sold={};state.auctionPhase="POR";save();saveSold();saveAuctionPhase();recordOperation("RESET","Asta azzerata",before);refresh();
+      const before=captureAuctionCore();state.purchases={};state.sold={};state.auctionPhase="POR";save();saveSold();saveAuctionPhase();resetBackupReminderCounters();recordOperation("RESET","Asta azzerata",before);refresh();
     }
   };
   $("#exportBtn").onclick=()=>{
-    let blob=new Blob([JSON.stringify({version:8,purchases:state.purchases,sold:state.sold,strategy:state.strategy,poolMode:state.poolMode,league:state.league,auctionPhase:state.auctionPhase,listoneSync:appliedListoneSync,watchlist:state.watchlist,protectedMode:state.protectedMode,operationLog:state.operationLog,snapshots:state.snapshots},null,2)],{type:"application/json"});
-    let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="AstaMantra-backup-v8.json";a.click();URL.revokeObjectURL(a.href)
+    const backupActionCount=getBackupActionCount();
+    let blob=new Blob([JSON.stringify({version:9,purchases:state.purchases,sold:state.sold,strategy:state.strategy,poolMode:state.poolMode,league:state.league,auctionPhase:state.auctionPhase,listoneSync:appliedListoneSync,watchlist:state.watchlist,protectedMode:state.protectedMode,operationLog:state.operationLog,snapshots:state.snapshots,backupActionCount},null,2)],{type:"application/json"});
+    let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="AstaMantra-backup-v9.json";a.click();URL.revokeObjectURL(a.href);
+    markExternalBackupDone();
+    renderSettings();
   };
   $("#importFile").onchange=e=>{
     if(blockedByProtection("Importare un backup")){e.target.value="";return;}
@@ -2449,6 +2503,9 @@ function renderSettings(){
       state.watchlist=o.watchlist||{};
       if(Array.isArray(o.operationLog))state.operationLog=o.operationLog.slice(-100);
       if(Array.isArray(o.snapshots))state.snapshots=o.snapshots.slice(-8);
+      const importedBackupCount=Math.max(Number(o.backupActionCount)||0,Object.keys(state.purchases||{}).length+Object.keys(state.sold||{}).length);
+      localStorage.setItem(SAFETY_KEYS.backupActionCount,String(importedBackupCount));
+      localStorage.setItem(SAFETY_KEYS.lastBackupActionCount,String(importedBackupCount));
       save();saveSold();saveLeague();saveSafetyState();invalidateAuctionIntel();recordOperation("IMPORT","Backup importato",before,{undoable:true,count:false});refresh();alert("Backup importato.")
     }catch{alert("File non valido.")}};rd.readAsText(f)
   };
@@ -2464,9 +2521,11 @@ function switchView(id){
 }
 $$('.tab').forEach(t=>t.onclick=()=>switchView(t.dataset.view));
 $("#settingsBtn").onclick=()=>switchView("settingsView");
+$("#backupAlertBtn").onclick=openBackupReminder;
 function refresh(){
   renderDashboard();renderPlayers();renderSquad();renderLeagues();renderFormationsView();
   if(state.view==="settingsView")renderSettings();
+  updateBackupAlert();
 }
 
 function lockInit(){
@@ -2475,4 +2534,4 @@ function lockInit(){
   $("#unlockBtn").onclick=()=>{if($("#pinInput").value===state.pin)$("#lock").classList.add("hidden");else $("#lockText").textContent="PIN errato. Riprova."};
 }
 ensureInitialSnapshot();refresh();lockInit();
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.41").catch(()=>{}));
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.42").catch(()=>{}));
