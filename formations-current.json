@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-18T19:45:42Z",
+  "generatedAt": "2026-08-18T21:49:11Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -15,8 +15,8 @@
           "probability": 90
         },
         {
-          "name": "Zappacosta",
-          "probability": 80
+          "name": "Bellanova",
+          "probability": 55
         },
         {
           "name": "Kristensen T.",
@@ -69,7 +69,7 @@
           "probability": 35
         },
         {
-          "name": "Bellanova",
+          "name": "Zappacosta",
           "probability": 55
         },
         {
@@ -121,7 +121,7 @@
           "probability": 90
         },
         {
-          "name": "Amondarain",
+          "name": "Moro N.",
           "probability": 60
         },
         {
@@ -175,7 +175,7 @@
           "probability": 15
         },
         {
-          "name": "Moro N.",
+          "name": "Amondarain",
           "probability": 60
         },
         {
@@ -310,11 +310,11 @@
         },
         {
           "name": "Almqvist",
-          "probability": 60
+          "probability": 55
         },
         {
           "name": "Frigan",
-          "probability": 40
+          "probability": 45
         },
         {
           "name": "Romero D.",
@@ -479,7 +479,7 @@
           "probability": 80
         },
         {
-          "name": "Oulai",
+          "name": "Fagioli",
           "probability": 60
         },
         {
@@ -525,7 +525,7 @@
           "probability": 60
         },
         {
-          "name": "Fagioli",
+          "name": "Oulai",
           "probability": 60
         },
         {
@@ -1115,11 +1115,11 @@
           "probability": 40
         },
         {
-          "name": "Amondarain",
+          "name": "Moro N.",
           "probability": 60
         },
         {
-          "name": "Moro N.",
+          "name": "Amondarain",
           "probability": 40
         },
         {
@@ -1620,7 +1620,7 @@
         },
         {
           "name": "Almqvist",
-          "probability": 60
+          "probability": 55
         },
         {
           "name": "Romero D.",
@@ -1863,6 +1863,14 @@
         {
           "name": "Berardi",
           "probability": 20
+        },
+        {
+          "name": "Bellanova",
+          "probability": 55
+        },
+        {
+          "name": "Zappacosta",
+          "probability": 45
         },
         {
           "name": "Kristensen T.",
