@@ -940,7 +940,7 @@ function lineupStarterValue(assign){
   const rows=assign.filter(Boolean);if(!rows.length)return null;
   return rows.reduce((a,p)=>a+starterProbability(p).prob,0)/(rows.length*100);
 }
-async function refreshFormationsLive({manual=false}={}){
+async function refreshFormationsLiveInternal({manual=false}={}){
   if(formationsLiveLoading)return false;
   formationsLiveLoading=true;formationsLiveError="";
   if(manual&&state.view==="formationsView")renderFormationsView();
@@ -959,8 +959,8 @@ async function refreshFormationsLive({manual=false}={}){
     return false;
   }
 }
-window.refreshFormationsLive=()=>refreshFormationsLive({manual:true});
-function maybeRefreshFormationsLive(){if(formationFeedAgeMinutes()>10)refreshFormationsLive({manual:false})}
+window.refreshFormationsLive=()=>refreshFormationsLiveInternal({manual:true});
+function maybeRefreshFormationsLive(){if(formationFeedAgeMinutes()>10)refreshFormationsLiveInternal({manual:false})}
 
 if(formationFeedValid(formationsLiveFeed))applyFormationLiveFeed(formationsLiveFeed,{persist:false});
 
