@@ -1105,7 +1105,8 @@ function renderDashboard(){
           ${leagueOverview.length?`<div class="finance-league-list">${leagueOverview.map((e,i)=>`
             <div class="finance-league-row ${e.team.isMine?"mine":""} ${i===0?"leader":""}">
               <b class="finance-league-rank">${i+1}</b>
-              <span class="finance-league-team"><strong>${esc(e.team.name)}</strong><small>${e.team.isMine?"Mia squadra · ":""}${e.items.length}/25 giocatori</small></span>
+              <span class="finance-league-team"><strong>${esc(e.team.name)}</strong>${e.team.isMine?'<small class="finance-mine-label">MIA SQUADRA</small>':''}</span>
+              <span class="finance-league-roster"><strong>${e.items.length}<em>/25</em></strong><small>giocatori</small></span>
               <span class="finance-league-credit"><strong>${fmt(e.remaining)}</strong><small>crediti</small></span>
             </div>`).join("")}</div>`:`<div class="finance-empty">Crea una lega per il confronto avversari.</div>`}
         </div>
@@ -2456,4 +2457,4 @@ function lockInit(){
   $("#unlockBtn").onclick=()=>{if($("#pinInput").value===state.pin)$("#lock").classList.add("hidden");else $("#lockText").textContent="PIN errato. Riprova."};
 }
 ensureInitialSnapshot();refresh();lockInit();
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.39").catch(()=>{}));
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.40").catch(()=>{}));

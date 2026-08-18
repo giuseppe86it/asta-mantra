@@ -2651,4 +2651,191 @@ html,body{background:radial-gradient(circle at 50% -10%,#0b1b30 0,#06101d 42%,#0
   .undo-entry small,.snapshot-entry small,.log-entry small{font-size:11px}
   .safety-empty{font-size:13px}
 }
-\n\n/* =========================================================\n   v1.39 — Asta Live continuity + Panoramica Lega full width\n   ========================================================= */\n.finance-market-grid{\n  grid-template-columns:1fr!important;\n  gap:10px!important;\n}\n.finance-league-overview,.finance-club-panel{\n  min-height:0!important;\n  width:100%;\n}\n.finance-league-overview{padding:12px!important}\n.finance-league-list{\n  display:grid;\n  grid-template-columns:1fr;\n  gap:7px;\n}\n.finance-league-row{\n  min-width:0;\n  display:grid;\n  grid-template-columns:30px minmax(0,1fr) auto;\n  align-items:center;\n  gap:10px;\n  min-height:54px;\n  padding:8px 11px;\n  border-radius:12px;\n  border:1px solid #24445f;\n  background:#0b1d30;\n}\n.finance-league-row.mine{\n  border-color:rgba(52,211,153,.65);\n  background:linear-gradient(90deg,rgba(19,81,62,.68),#0b1d30 68%);\n}\n.finance-league-row.leader:not(.mine){border-color:#35617f}\n.finance-league-rank{\n  display:flex;align-items:center;justify-content:center;\n  width:28px;height:28px;border-radius:9px;\n  background:#132942;color:#a9bbcf;font-size:12px;\n}\n.finance-league-row.mine .finance-league-rank{background:#155a45;color:#8df0c5}\n.finance-league-team{min-width:0;display:flex;flex-direction:column;gap:3px}\n.finance-league-team>strong{\n  display:block;\n  font-size:15px;\n  line-height:1.16;\n  color:#f4f8fd;\n  white-space:normal;\n  overflow:visible;\n  text-overflow:clip;\n  overflow-wrap:anywhere;\n}\n.finance-league-team>small{font-size:10.5px;color:#92a7bf;line-height:1.2}\n.finance-league-row.mine .finance-league-team>small{color:#8fd8ba}\n.finance-league-credit{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;min-width:64px}\n.finance-league-credit>strong{font-size:19px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}\n.finance-league-credit>small{font-size:9.5px;color:#91a5bc;margin-top:4px}\n.finance-club-panel{padding:12px!important}\n.finance-club-panel .club-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important}\n.finance-club-panel .club-tile{min-height:54px!important}\n\n@media(max-width:430px){\n  .finance-league-overview{padding:11px!important}\n  .finance-league-row{grid-template-columns:28px minmax(0,1fr) auto;gap:8px;min-height:52px;padding:8px 9px}\n  .finance-league-team>strong{font-size:14px}\n  .finance-league-team>small{font-size:10px}\n  .finance-league-credit{min-width:58px}\n  .finance-league-credit>strong{font-size:18px}\n  .finance-club-panel .club-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:7px!important}\n}\n@media(max-width:360px){\n  .finance-league-row{grid-template-columns:26px minmax(0,1fr) auto;gap:7px;padding:7px 8px}\n  .finance-league-rank{width:25px;height:25px;font-size:11px}\n  .finance-league-team>strong{font-size:13.5px}\n  .finance-league-credit>strong{font-size:17px}\n  .finance-club-panel .club-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}\n}\n
+
+/* =========================================================
+   v1.40 — Panoramica Lega leggibile + club 5x4
+   ========================================================= */
+.finance-market-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  gap:12px!important;
+  width:100%;
+}
+.finance-market-grid>.finance-panel{
+  width:100%;
+  min-width:0;
+}
+.finance-league-overview{
+  padding:13px!important;
+  min-height:0!important;
+}
+.finance-league-list{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:7px!important;
+  width:100%;
+}
+.finance-league-row{
+  min-width:0;
+  display:grid!important;
+  grid-template-columns:28px minmax(0,1fr) 58px 70px!important;
+  align-items:center!important;
+  gap:8px!important;
+  min-height:58px!important;
+  padding:8px 10px!important;
+  border-radius:13px!important;
+  border:1px solid #294965!important;
+  background:linear-gradient(90deg,#0c1f33 0%,#0a1a2b 100%)!important;
+}
+.finance-league-row.mine{
+  border-color:rgba(52,211,153,.74)!important;
+  background:linear-gradient(90deg,rgba(20,89,67,.72) 0%,#0b2031 58%,#0a1a2b 100%)!important;
+  box-shadow:inset 3px 0 0 rgba(52,211,153,.82);
+}
+.finance-league-row.leader:not(.mine){border-color:#3c6280!important}
+.finance-league-rank{
+  width:27px!important;height:27px!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  border-radius:9px!important;background:#142d47!important;
+  color:#b7c6d8!important;font-size:12px!important;font-weight:850!important;
+}
+.finance-league-row.mine .finance-league-rank{background:#176047!important;color:#a2f3d1!important}
+.finance-league-team{
+  min-width:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  gap:3px!important;
+}
+.finance-league-team>strong{
+  display:block!important;
+  min-width:0!important;
+  color:#f7f9fc!important;
+  font-size:15px!important;
+  line-height:1.15!important;
+  font-weight:800!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+}
+.finance-mine-label{
+  display:inline-block!important;
+  width:max-content!important;
+  color:#77e7b9!important;
+  font-size:8.5px!important;
+  line-height:1!important;
+  font-weight:850!important;
+  letter-spacing:.07em!important;
+}
+.finance-league-roster,.finance-league-credit{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-end!important;
+  justify-content:center!important;
+  min-width:0!important;
+}
+.finance-league-roster>strong{
+  color:#eef4fb!important;
+  font-size:15px!important;
+  line-height:1!important;
+  font-variant-numeric:tabular-nums;
+}
+.finance-league-roster>strong em{font-style:normal!important;color:#8fa4bc!important;font-size:10px!important;font-weight:700!important}
+.finance-league-roster>small,.finance-league-credit>small{
+  margin-top:4px!important;color:#849ab3!important;font-size:8.5px!important;line-height:1!important;
+}
+.finance-league-credit>strong{
+  color:var(--accent)!important;
+  font-size:19px!important;
+  line-height:1!important;
+  font-weight:850!important;
+  font-variant-numeric:tabular-nums;
+}
+
+.finance-club-panel{
+  padding:13px!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+.finance-club-panel .club-grid{
+  display:grid!important;
+  grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  gap:7px!important;
+  width:100%!important;
+}
+.finance-club-panel .club-tile{
+  min-width:0!important;
+  min-height:58px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:4px!important;
+  padding:6px 3px!important;
+  border-radius:12px!important;
+  overflow:hidden!important;
+}
+.finance-club-panel .club-kit.kit-tile{
+  width:18px!important;height:18px!important;flex:0 0 18px!important;
+}
+.finance-club-panel .club-tile-copy{
+  display:flex!important;
+  min-width:0!important;
+  width:100%!important;
+  flex-direction:row!important;
+  align-items:baseline!important;
+  justify-content:center!important;
+  gap:3px!important;
+  line-height:1!important;
+}
+.finance-club-panel .club-tile-copy b{
+  min-width:0!important;
+  max-width:35px!important;
+  font-size:10px!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:clip!important;
+}
+.finance-club-panel .club-tile-copy strong{
+  margin:0!important;
+  font-size:10px!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+}
+
+@media(max-width:430px){
+  .finance-league-overview,.finance-club-panel{padding:11px!important}
+  .finance-league-row{
+    grid-template-columns:25px minmax(0,1fr) 53px 64px!important;
+    gap:6px!important;
+    min-height:56px!important;
+    padding:8px!important;
+  }
+  .finance-league-rank{width:25px!important;height:25px!important;font-size:11px!important}
+  .finance-league-team>strong{font-size:14px!important}
+  .finance-league-roster>strong{font-size:14px!important}
+  .finance-league-credit>strong{font-size:18px!important}
+  .finance-club-panel .club-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:6px!important}
+  .finance-club-panel .club-tile{min-height:56px!important;padding:5px 2px!important}
+  .finance-club-panel .club-kit.kit-tile{width:17px!important;height:17px!important;flex-basis:17px!important}
+  .finance-club-panel .club-tile-copy b,.finance-club-panel .club-tile-copy strong{font-size:9.5px!important}
+}
+@media(max-width:360px){
+  .finance-league-row{
+    grid-template-columns:23px minmax(0,1fr) 49px 58px!important;
+    gap:5px!important;
+    padding:7px!important;
+  }
+  .finance-league-team>strong{font-size:13px!important}
+  .finance-league-roster>strong{font-size:13px!important}
+  .finance-league-credit>strong{font-size:16px!important}
+  .finance-league-roster>small,.finance-league-credit>small{font-size:7.8px!important}
+  .finance-club-panel .club-grid{gap:5px!important}
+  .finance-club-panel .club-tile{min-height:53px!important}
+  .finance-club-panel .club-kit.kit-tile{width:16px!important;height:16px!important;flex-basis:16px!important}
+  .finance-club-panel .club-tile-copy{gap:2px!important}
+  .finance-club-panel .club-tile-copy b,.finance-club-panel .club-tile-copy strong{font-size:8.7px!important}
+}
