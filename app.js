@@ -1034,7 +1034,9 @@ function renderDashboard(){
   const recent=bought.slice().sort((a,b)=>(state.purchases[b.id]?.at||0)-(state.purchases[a.id]?.at||0)).slice(0,5);
   const scarcityOrder=["Dd","Ds","Dc","MC","T","WA","APc","Pc"];
   const pressure=scarcityOrder.map(id=>({id,x:intel.scarcity[id],f:familyById(id)})).sort((a,b)=>(b.x?.risk||0)-(a.x?.risk||0))[0];
-  const opponents=intel.economy.filter(e=>!e.team.isMine).slice(0,5);
+  const leagueOverview=(state.league?.teams||[])
+    .map((team,index)=>({team,index,...teamEconomy(team)}))
+    .sort((a,b)=>b.remaining-a.remaining||a.index-b.index);
   const watchCount=allPlayers.filter(p=>isWatchlisted(p.id)&&isMarketEligiblePlayer(p)&&!state.purchases[p.id]&&!state.sold[p.id]).length;
 
   let alerts=[];
@@ -1059,7 +1061,7 @@ function renderDashboard(){
 
   $("#dashboardView").innerHTML=`
     <div class="finance-dashboard">
-      <section class="finance-panel finance-live-panel finance-live-panel-top">
+      <section id="auctionLivePanel" class="finance-panel finance-live-panel finance-live-panel-top">
         <div class="finance-panel-title"><b>ASTA LIVE</b><span>accesso rapido</span></div>
         <div class="finance-live-main"><span>FASE ATTIVA</span><strong>${currentPhase.id}</strong><small>${currentPhase.label} · ${mineEcon.missing} posti mancanti</small></div>
         <div class="finance-live-metrics">
@@ -1100,8 +1102,12 @@ function renderDashboard(){
       <section class="finance-market-grid">
         <div class="finance-panel finance-league-overview">
           <div class="finance-panel-title"><b>PANORAMICA LEGA</b><span>${state.league?state.league.size+" squadre":"lega non creata"}</span></div>
-          ${leader?`<div class="finance-leader"><span>PIÙ CREDITI RESIDUI</span><b>${esc(leader.team.name)}</b><strong>${fmt(leader.remaining)}</strong></div>`:`<div class="finance-empty">Crea una lega per il confronto avversari.</div>`}
-          ${opponents.length?`<div class="finance-opponents"><span>CREDITI RESIDUI AVVERSARI</span>${opponents.map((e,i)=>`<div><b>${i+1}</b><span>${esc(e.team.name)}</span><strong>${fmt(e.remaining)}</strong></div>`).join("")}</div>`:""}
+          ${leagueOverview.length?`<div class="finance-league-list">${leagueOverview.map((e,i)=>`
+            <div class="finance-league-row ${e.team.isMine?"mine":""} ${i===0?"leader":""}">
+              <b class="finance-league-rank">${i+1}</b>
+              <span class="finance-league-team"><strong>${esc(e.team.name)}</strong><small>${e.team.isMine?"Mia squadra · ":""}${e.items.length}/25 giocatori</small></span>
+              <span class="finance-league-credit"><strong>${fmt(e.remaining)}</strong><small>crediti</small></span>
+            </div>`).join("")}</div>`:`<div class="finance-empty">Crea una lega per il confronto avversari.</div>`}
         </div>
         <div class="finance-panel finance-club-panel">
           <div class="finance-panel-title"><b>GIOCATORI PER CLUB</b><span>quota massima 5</span></div>
@@ -1340,6 +1346,20 @@ function restoreActionReturnContext(){
     if(ctx.playerId)selectLivePlayer(ctx.playerId);
     setTimeout(()=>$("#liveSearchInput")?.focus(),30);
   }
+}
+
+function finishAuctionActionNavigation(){
+  const ctx=actionReturnContext;
+  actionReturnContext=null;
+  refresh();
+  if(ctx?.type!=="live")return;
+
+  if(state.view!=="dashboardView")switchView("dashboardView");
+  requestAnimationFrame(()=>{
+    const panel=document.getElementById("auctionLivePanel");
+    if(panel)panel.scrollIntoView({behavior:"auto",block:"start"});
+    openAuctionLive();
+  });
 }
 
 let liveSelectedId=null;
@@ -1982,8 +2002,7 @@ $("#soldForm").addEventListener("submit",e=>{
   recordOperation(wasEdit?"MODIFICA_VENDITA":"VENDUTO",wasEdit?`${p.name}: vendita aggiornata a ${price} cr · ${soldTeamName(state.sold[p.id])}`:`${p.name} → ${soldTeamName(state.sold[p.id])} · ${price} cr`,before);
   $("#soldDialog").close();
   soldPlayerId=null;
-  actionReturnContext=null;
-  refresh();
+  finishAuctionActionNavigation();
 });
 
 function startPurchase(id,returnContext=undefined){
@@ -2069,8 +2088,7 @@ $("#purchaseForm").addEventListener("submit",e=>{
   $("#purchaseDialog").close();
   purchaseId=null;
   purchaseMode="new";
-  actionReturnContext=null;
-  refresh();
+  finishAuctionActionNavigation();
 });
 window.removePurchase=id=>{
   const p=getPlayer(id),previous=state.purchases[id];if(!previous)return;
@@ -2438,4 +2456,4 @@ function lockInit(){
   $("#unlockBtn").onclick=()=>{if($("#pinInput").value===state.pin)$("#lock").classList.add("hidden");else $("#lockText").textContent="PIN errato. Riprova."};
 }
 ensureInitialSnapshot();refresh();lockInit();
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.33").catch(()=>{}));
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.39").catch(()=>{}));

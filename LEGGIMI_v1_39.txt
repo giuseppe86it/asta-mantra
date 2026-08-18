@@ -1,0 +1,32 @@
+Asta Mantra — v1.39 Asta Live + Panoramica Lega
+
+MODIFICHE
+1. Asta Live: dopo la conferma di ACQUISTA o VENDUTO partita da Asta Live,
+   il popup di assegnazione si chiude e Asta Live si riapre automaticamente,
+   pulita e pronta per cercare il giocatore successivo.
+   La Dashboard viene riportata in corrispondenza del pannello Asta Live,
+   così quando si esce dal dialog non ci si ritrova a metà pagina.
+
+2. Dashboard > Panoramica Lega:
+   - box a tutta larghezza;
+   - tutte le squadre della lega, non solo i primi avversari;
+   - nome completo su più righe se necessario;
+   - crediti residui grandi a destra;
+   - numero giocatori in rosa;
+   - Rooster/la propria squadra evidenziata;
+   - ordinamento per crediti residui.
+
+3. Dashboard > Giocatori per club:
+   - spostato sotto Panoramica Lega;
+   - box a tutta larghezza;
+   - griglia maglie mantenuta a 4 colonne su iPhone.
+
+INSTALLAZIONE PATCH
+Caricare su GitHub e sostituire SOLO:
+- index.html
+- app.js
+- styles.css
+- sw.js
+
+NON sostituire listone-current.json, scripts/ o .github/.
+La patch non modifica il sincronizzatore del Listone né i dati salvati in localStorage.
