@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-19T20:58:52Z",
+  "generatedAt": "2026-08-19T21:55:16Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -1266,7 +1266,7 @@
         },
         {
           "name": "Gabbia",
-          "probability": 70
+          "probability": 75
         },
         {
           "name": "Pavlovic",
@@ -1311,12 +1311,12 @@
           "probability": 1
         },
         {
-          "name": "Diawara S.",
-          "probability": 25
-        },
-        {
           "name": "De Winter",
           "probability": 40
+        },
+        {
+          "name": "Diawara S.",
+          "probability": 25
         },
         {
           "name": "Estupinan",
@@ -1324,23 +1324,27 @@
         },
         {
           "name": "Ricci S.",
-          "probability": 55
-        },
-        {
-          "name": "Musah",
-          "probability": 60
+          "probability": 40
         },
         {
           "name": "Jashari",
           "probability": 60
         },
         {
-          "name": "Pulisic",
-          "probability": 50
+          "name": "Musah",
+          "probability": 60
         },
         {
           "name": "Cissè A.",
           "probability": 30
+        },
+        {
+          "name": "Moreira",
+          "probability": 60
+        },
+        {
+          "name": "Pulisic",
+          "probability": 50
         },
         {
           "name": "Leao",
