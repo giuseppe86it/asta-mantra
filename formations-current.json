@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-19T19:56:58Z",
+  "generatedAt": "2026-08-19T20:58:52Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -1191,6 +1191,10 @@
         {
           "name": "Penev",
           "probability": 5
+        },
+        {
+          "name": "Bleve",
+          "probability": 1
         },
         {
           "name": "Ndaba",
