@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-19T08:04:07Z",
+  "generatedAt": "2026-08-19T11:54:56Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -1528,7 +1528,11 @@
         },
         {
           "name": "Mazzocchi",
-          "probability": 20
+          "probability": 15
+        },
+        {
+          "name": "Favasuli",
+          "probability": 25
         },
         {
           "name": "Beukema",
@@ -1740,7 +1744,7 @@
         },
         {
           "name": "Koulierakis",
-          "probability": 50
+          "probability": 40
         },
         {
           "name": "Ghilardi",
@@ -1761,6 +1765,10 @@
         {
           "name": "Pellegrini Lo.",
           "probability": 10
+        },
+        {
+          "name": "Mora",
+          "probability": 50
         },
         {
           "name": "Pisilli",
@@ -2155,11 +2163,11 @@
       ],
       "bench": [
         {
-          "name": "Grandi",
+          "name": "Montipò",
           "probability": 5
         },
         {
-          "name": "Pozzi",
+          "name": "Grandi",
           "probability": 1
         },
         {
