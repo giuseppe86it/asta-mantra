@@ -2,7 +2,7 @@
   "schema": 1,
   "sourceName": "Fantacalcio.it · profili calciatori",
   "sourceUrl": "https://www.fantacalcio.it/quotazioni-fantacalcio",
-  "generatedAt": "2026-08-19T06:04:23.410Z",
+  "generatedAt": "2026-08-19T09:54:32.555Z",
   "u23MinBirthYear": 2003,
   "u21MinBirthYear": 2005,
   "players": [
@@ -1183,6 +1183,13 @@
       "checkedAt": "2026-08-19T03:15:53.282Z"
     },
     {
+      "key": "favasuli",
+      "name": "Favasuli",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/favasuli/7563",
+      "birthDate": "2004-04-26",
+      "checkedAt": "2026-08-19T09:54:31.854Z"
+    },
+    {
       "key": "fazzini",
       "name": "Fazzini",
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/fazzini/6010",
@@ -2252,6 +2259,13 @@
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/monterisi/4952",
       "birthDate": "2001-12-19",
       "checkedAt": "2026-08-19T03:16:05.525Z"
+    },
+    {
+      "key": "mora",
+      "name": "Mora",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/mora/7556",
+      "birthDate": "2007-05-05",
+      "checkedAt": "2026-08-19T09:54:32.189Z"
     },
     {
       "key": "morata",
