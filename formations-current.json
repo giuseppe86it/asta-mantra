@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-18T21:49:11Z",
+  "generatedAt": "2026-08-19T08:04:07Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -1667,6 +1667,10 @@
         {
           "name": "Lontani",
           "probability": 55
+        },
+        {
+          "name": "De Martis",
+          "probability": 15
         },
         {
           "name": "Elphege",
