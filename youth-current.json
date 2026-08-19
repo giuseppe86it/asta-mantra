@@ -2,7 +2,7 @@
   "schema": 1,
   "sourceName": "Fantacalcio.it · profili calciatori",
   "sourceUrl": "https://www.fantacalcio.it/quotazioni-fantacalcio",
-  "generatedAt": "2026-08-19T14:08:52.247Z",
+  "generatedAt": "2026-08-19T16:00:24.788Z",
   "u23MinBirthYear": 2003,
   "u21MinBirthYear": 2005,
   "players": [
@@ -2455,6 +2455,13 @@
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/olivera/5840",
       "birthDate": "1997-10-31",
       "checkedAt": "2026-08-19T03:16:16.763Z"
+    },
+    {
+      "key": "omarfayed",
+      "name": "Omar Fayed",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/omar-fayed/7553",
+      "birthDate": "2003-07-04",
+      "checkedAt": "2026-08-19T16:00:24.427Z"
     },
     {
       "key": "ondrejka",
