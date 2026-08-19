@@ -599,6 +599,35 @@ function soldMeta(id){
   if(Number(sale.price)>0) parts.push(`${fmt(sale.price)} cr`);
   return parts.join(" · ");
 }
+
+/* v1.45.3 — stato assegnazione condiviso tra Giocatori e Asta Live.
+   Un giocatore assegnato resta visibile nel mercato e mostra immediatamente
+   la squadra che lo ha acquistato, indipendentemente da dove è stata
+   registrata l'operazione (Asta Live, dettaglio Giocatore o Lega). */
+function playerAssignment(p){
+  if(!p)return {assigned:false,mine:false,teamName:"",price:0};
+  const own=state.purchases?.[p.id];
+  if(own){
+    const team=mineTeam();
+    return {assigned:true,mine:true,teamName:team?.name||"La mia squadra",price:Number(own.price||0),at:Number(own.at||0)};
+  }
+  const sale=state.sold?.[p.id];
+  if(sale){
+    return {assigned:true,mine:false,teamName:soldTeamName(sale),price:Number(sale.price||0),at:Number(sale.at||0)};
+  }
+  return {assigned:false,mine:false,teamName:"",price:0,at:0};
+}
+function assignedPlayers(){return allPlayers.filter(p=>playerAssignment(p).assigned)}
+function playersAuctionLiveStripHTML(){
+  const assigned=assignedPlayers().length;
+  if(!state.league && !assigned)return "";
+  const available=allPlayers.filter(p=>isMarketEligiblePlayer(p)&&!playerAssignment(p).assigned).length;
+  return `<div class="players-auction-live-strip">
+    <span><i></i> ASTA LIVE</span>
+    <b>${assigned} assegnati</b>
+    <small>${available} disponibili · sincronizzazione immediata</small>
+  </div>`;
+}
 function roleTokens(role){return String(role||"").split("/").map(x=>x.trim()).filter(Boolean)}
 function activeStrategy(){return STRATEGIES[state.strategy] || STRATEGIES.A}
 function slotCompatible(p,slot){
@@ -1353,6 +1382,121 @@ function pctLabel(v,count=1){
   const n=Math.round(Number(v||0));
   return `${n>0?"+":""}${n}%`;
 }
+/* v1.45.4 — editor unificato delle assegnazioni dalla Dashboard.
+   Permette di correggere in un unico punto squadra, prezzo o annullare
+   un'assegnazione registrata durante Asta Live. */
+function dashboardAssignmentData(id){
+  const p=getPlayer(id);if(!p)return null;
+  const own=state.purchases?.[p.id];
+  if(own)return {p,mine:true,teamKey:"__mine__",team:mineTeam(),price:Number(own.price||0),at:Number(own.at||0)};
+  const sale=state.sold?.[p.id];
+  if(sale)return {p,mine:false,teamKey:sale.teamId||"__unassigned__",team:leagueTeamById(sale.teamId),price:Number(sale.price||0),at:Number(sale.at||0)};
+  return null;
+}
+function dashboardAssignmentTargetTeam(key){
+  if(key==="__mine__")return mineTeam();
+  if(key==="__unassigned__")return null;
+  return leagueTeamById(key);
+}
+function dashboardAssignmentTeamOptions(current){
+  const teams=state.league?.teams||[];
+  let rows=[];
+  if(teams.length){
+    rows=teams.map(t=>`<option value="${t.isMine?"__mine__":escAttr(t.id)}">${esc(t.name)}${t.isMine?" · MIA SQUADRA":""}</option>`);
+  }else{
+    rows.push('<option value="__mine__">La mia squadra</option>');
+  }
+  if(current?.teamKey==="__unassigned__" || (current?.teamKey && current.teamKey!=="__mine__" && !leagueTeamById(current.teamKey))){
+    rows.push('<option value="__unassigned__">Non assegnato</option>');
+  }
+  return rows.join("");
+}
+function updateDashboardAssignmentEconomicInfo(){
+  const id=$("#dashAssignPlayerId")?.value;
+  const p=getPlayer(id);if(!p)return;
+  const key=$("#dashAssignTeam")?.value||"__mine__";
+  const team=dashboardAssignmentTargetTeam(key);
+  const box=$("#dashAssignEconomicInfo");if(!box)return;
+  if(!team){box.textContent="Assegnazione senza squadra: seleziona una squadra della lega per collegarla correttamente.";return;}
+  const econ=teamEconomy(team,p.id);
+  box.innerHTML=`<span>${team.isMine?"Mia squadra":esc(team.name)}</span><b>${fmt(econ.remaining)} cr residui · ${econ.missing} posti · MAX ${fmt(econ.maxNext)}</b>`;
+}
+function openDashboardAssignmentEditor(id){
+  const current=dashboardAssignmentData(id);if(!current)return;
+  const p=current.p;
+  $("#safetyDialogContent").innerHTML=`<div class="dialog-body dashboard-assignment-editor">
+    <div class="safety-modal-head"><div><div class="eyebrow">Asta Live</div><h2>Modifica assegnazione</h2></div><button class="ghost" onclick="closeSafetyDialog()">✕</button></div>
+    <div class="dashboard-assignment-player">${kitHTML(p.club,'sm',p.club)}<span><b>${playerNameHTML(p)}</b><small>${p.club} · ${p.role}</small></span></div>
+    <input id="dashAssignPlayerId" type="hidden" value="${escAttr(p.id)}">
+    <label>Squadra aggiudicataria
+      <select id="dashAssignTeam">${dashboardAssignmentTeamOptions(current)}</select>
+    </label>
+    <label>Prezzo di aggiudicazione
+      <input id="dashAssignPrice" type="number" min="1" step="1" inputmode="numeric" value="${current.price||""}">
+    </label>
+    <div id="dashAssignEconomicInfo" class="dashboard-assignment-economic"></div>
+    <div class="dashboard-assignment-actions">
+      <button class="dangerbtn" id="dashAssignDelete">Annulla assegnazione</button>
+      <button class="primary" id="dashAssignSave">Salva modifiche</button>
+    </div>
+  </div>`;
+  const select=$("#dashAssignTeam");
+  if(select){
+    const desired=current.teamKey;
+    if([...select.options].some(o=>o.value===desired))select.value=desired;
+    else if(current.mine)select.value="__mine__";
+    select.addEventListener("change",updateDashboardAssignmentEconomicInfo);
+  }
+  $("#dashAssignSave").onclick=saveDashboardAssignmentEdit;
+  $("#dashAssignDelete").onclick=cancelDashboardAssignment;
+  updateDashboardAssignmentEconomicInfo();
+  if(!$("#safetyDialog").open)$("#safetyDialog").showModal();
+}
+window.openDashboardAssignmentEditor=openDashboardAssignmentEditor;
+function saveDashboardAssignmentEdit(){
+  const id=$("#dashAssignPlayerId")?.value;
+  const current=dashboardAssignmentData(id);if(!current)return;
+  if(!protectedPermission("modificare l'assegnazione"))return;
+  const p=current.p;
+  const price=Number($("#dashAssignPrice")?.value||0);
+  if(!Number.isInteger(price)||price<1){alert("Inserisci un prezzo valido.");return;}
+  const teamKey=$("#dashAssignTeam")?.value||"__mine__";
+  const target=dashboardAssignmentTargetTeam(teamKey);
+  if(target){
+    const clubCount=teamClubCount(target,p.club,p.id);
+    if(clubCount>=5){alert(clubLimitMessage(target,p));return;}
+    const econ=teamEconomy(target,p.id);
+    if(price>econ.maxNext){alert(`${target.isMine?"La tua squadra":target.name} può spendere al massimo ${econ.maxNext} crediti su questa assegnazione, conservando 1 credito per ogni slot successivo.`);return;}
+  }
+  const before=captureAuctionCore();
+  const oldTeam=current.mine?(current.team?.name||"La mia squadra"):(current.team?.name||"Non assegnato");
+  const newTeam=target?.name||"Non assegnato";
+  delete state.purchases[p.id];
+  delete state.sold[p.id];
+  if(teamKey==="__mine__"){
+    state.purchases[p.id]={price,at:current.at||Date.now()};
+  }else{
+    state.sold[p.id]={price,at:current.at||Date.now(),teamId:teamKey==="__unassigned__"?"":teamKey,leagueId:state.league?.id||""};
+  }
+  save();saveSold();invalidateAuctionIntel();
+  recordOperation("MODIFICA_ASSEGNAZIONE",`${p.name}: ${oldTeam} → ${newTeam} · ${current.price} → ${price} cr`,before);
+  closeSafetyDialog();refresh();
+}
+function cancelDashboardAssignment(){
+  const id=$("#dashAssignPlayerId")?.value;
+  const current=dashboardAssignmentData(id);if(!current)return;
+  if(!protectedPermission("annullare l'assegnazione"))return;
+  if(!confirm(`Annullare l'assegnazione di ${current.p.name}?\n\nIl giocatore tornerà disponibile in Asta Live.`))return;
+  const before=captureAuctionCore();
+  delete state.purchases[current.p.id];
+  delete state.sold[current.p.id];
+  save();saveSold();invalidateAuctionIntel();
+  recordOperation("ANNULLA_ASSEGNAZIONE",`${current.p.name}: assegnazione annullata`,before);
+  closeSafetyDialog();refresh();
+}
+window.saveDashboardAssignmentEdit=saveDashboardAssignmentEdit;
+window.cancelDashboardAssignment=cancelDashboardAssignment;
+
 function renderDashboard(){
   invalidateAuctionIntel();
   const intel=getAuctionIntel();
@@ -1370,7 +1514,8 @@ function renderDashboard(){
   const nextPhase=AUCTION_PHASES[phaseIndex()+1]||null;
   const leader=intel.economy[0];
   const clubAlerts=SERIES_A_CLUBS.map(([code])=>[code,countClub(code)]).filter(([,count])=>count>5);
-  const recent=bought.slice().sort((a,b)=>(state.purchases[b.id]?.at||0)-(state.purchases[a.id]?.at||0)).slice(0,5);
+  // v1.45.4 — ultimi 5 movimenti di tutta l'asta, non solo della mia rosa.
+  const recent=auctionTransactions().slice().sort((a,b)=>(b.at||0)-(a.at||0)).slice(0,5);
   const scarcityOrder=["Dd","Ds","Dc","MC","T","WA","APc","Pc"];
   const pressure=scarcityOrder.map(id=>({id,x:intel.scarcity[id],f:familyById(id)})).sort((a,b)=>(b.x?.risk||0)-(a.x?.risk||0))[0];
   const leagueOverview=(state.league?.teams||[])
@@ -1392,11 +1537,17 @@ function renderDashboard(){
     return `<div class="finance-rep"><span data-short="${rep}">${repLabel[rep]}</span><strong>${fmt(byRep[rep])}</strong><small>su ${fmt(guide)} crediti</small><i><em style="width:${pct}%"></em></i><b>${Math.round(pct)}%</b></div>`;
   }).join("");
 
-  const recentRows=recent.length?recent.map(p=>{
-    const tr=state.purchases[p.id]||{};
-    const time=tr.at?new Date(tr.at).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"}):"—";
-    return `<button class="finance-recent-row" onclick='openPlayer(${idArg(p.id)})'><time>${time}</time>${kitHTML(p.club,'xs',p.club)}<span><b>${playerNameHTML(p)}</b><small>${p.club} · ${p.role}</small></span><strong>${fmt(tr.price)}<small>cr</small></strong></button>`;
-  }).join(""):`<div class="finance-empty">Nessun acquisto ancora.</div>`;
+  const recentRows=recent.length?recent.map(tx=>{
+    const p=tx.p;
+    const time=tx.at?new Date(tx.at).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"}):"—";
+    const team=tx.teamId==="mine"?mineTeam():leagueTeamById(tx.teamId);
+    const teamName=team?.name||(tx.teamId?"Squadra non disponibile":"Non assegnato");
+    return `<button class="finance-recent-row finance-assignment-row ${team?.isMine?"mine":""}" onclick='openDashboardAssignmentEditor(${idArg(p.id)})'>
+      <time>${time}</time>${kitHTML(p.club,'xs',p.club)}
+      <span><b>${playerNameHTML(p)}</b><small><em>${esc(teamName)}</em> · ${p.club} · ${p.role}</small></span>
+      <strong>${fmt(tx.price)}<small>cr</small></strong>
+    </button>`;
+  }).join(""):`<div class="finance-empty">Nessuna assegnazione ancora.</div>`;
 
   $("#dashboardView").innerHTML=`
     <div class="finance-dashboard">
@@ -1457,9 +1608,9 @@ function renderDashboard(){
 
       <section class="finance-bottom-grid finance-bottom-grid-single">
         <div class="finance-panel finance-recent-panel">
-          <div class="finance-panel-title"><b>ULTIMI 5 ACQUISTI</b><span>${fmt(s)} crediti spesi</span></div>
+          <div class="finance-panel-title"><b>ULTIME 5 ASSEGNAZIONI</b><span>${auctionTransactions().length} totali</span></div>
           <div class="finance-recent-list">${recentRows}</div>
-          ${recent.length?`<button id="undoLastPurchaseBtn" class="finance-text-btn">Annulla ultimo acquisto</button>`:""}
+          ${recent.length?`<div class="finance-recent-hint">Tocca un giocatore per modificare squadra, prezzo o annullare l'assegnazione.</div>`:""}
         </div>
       </section>
 
@@ -1482,7 +1633,6 @@ function renderDashboard(){
       </details>
     </div>`;
 
-  const undoBtn=$("#undoLastPurchaseBtn");if(undoBtn)undoBtn.onclick=undoLastPurchase;
   const nextBtn=$("#nextPhaseBtn");if(nextBtn)nextBtn.onclick=nextAuctionPhase;
   const liveBtn=$("#openLiveBtn");if(liveBtn)liveBtn.onclick=openAuctionLive;
   const listoneBtn=$("#dashboardListoneBtn");if(listoneBtn)listoneBtn.onclick=()=>switchView("playersView");
@@ -1993,8 +2143,9 @@ window.applyPendingListoneUpdate=applyPendingListoneUpdate;
 
 function playerRow(p){
   const b=state.purchases[p.id], sold=isSold(p.id); const sig=b?signal(p,b.price):null;
-  const strategic=!!p.strategic;
-  return `<div class="player ${b?"bought":""} ${sold?"sold":""} ${strategic?"strategic-player":"market-player"}" data-id="${p.id}">
+  const strategic=!!p.strategic, assignment=playerAssignment(p);
+  const assignedClass=assignment.assigned?`assigned ${assignment.mine?"assigned-mine":"assigned-opponent"}`:"";
+  return `<div class="player ${b?"bought":""} ${sold?"sold":""} ${assignedClass} ${strategic?"strategic-player":"market-player"}" data-id="${p.id}">
     <div class="player-main">
       ${kitHTML(p.club,'row',p.club)}
       <div class="player-copy">
@@ -2004,18 +2155,20 @@ function playerRow(p){
           ${p.outOfListone?'<span class="badge out-listone-badge">FUORI LISTONE</span>':""}
         </h3>
         <div class="meta">${p.club} · ${p.role} · ${p.tier||"—"}</div>
+        ${assignment.assigned?`<div class="player-assignment-line"><span>${assignment.mine?"MIA ROSA":"ASSEGNATO"}</span><b>${esc(assignment.teamName)}</b>${assignment.price>0?`<small>${fmt(assignment.price)} cr</small>`:""}</div>`:""}
         ${p.reparto==="ATT"&&primaryOffensiveRole(p)?`<span class="badge primary-role-badge">PRIM. ${primaryOffensiveRole(p)}</span>`:""}
         <span class="badge">FVM ${p.fvm||0}</span>
         ${strategic&&p.starter?`<span class="badge">${p.starter}</span>`:""}
         ${p.u23?'<span class="badge">U23</span>':""}${p.u21?'<span class="badge">U21</span>':""}
       </div>
     </div>
-    <div>
-      <div class="price">${sold?"VENDUTO":b?fmt(b.price):"MAX "+fmt(p.maxPrice)}</div>
-      <div class="meta">${sold?soldMeta(p.id):b?sig.t:strategic?"strategico":"da FVM"}</div>
+    <div class="player-market-state">
+      <div class="price">${assignment.assigned?"ASSEGNATO":b?fmt(b.price):"MAX "+fmt(p.maxPrice)}</div>
+      <div class="meta">${assignment.assigned?esc(assignment.teamName):b?sig.t:strategic?"strategico":"da FVM"}</div>
     </div>
   </div>`;
 }
+
 function currentClubOptions(){
   const names=Object.fromEntries(SERIES_A_CLUBS);
   const codes=[...new Set(allPlayers.filter(p=>isMarketEligiblePlayer(p)&&p.club).map(p=>String(p.club)))];
@@ -2089,25 +2242,43 @@ function openClubFilter(){
 window.openClubFilter=openClubFilter;
 
 function playerViewData(){
-  const visiblePool=state.filter==="Venduti"
+  const q=state.query.trim().toLowerCase();
+  const searching=!!q;
+
+  // v1.45.2: la ricerca è un localizzatore globale. Durante un'asta reale un
+  // giocatore può essere già VENDUTO o MIO: deve comunque essere trovabile,
+  // indipendentemente dal pool Strategici/Tutto il listone. I tab continuano
+  // invece a governare la navigazione quando il campo ricerca è vuoto.
+  const visiblePool=(state.filter==="Venduti" || searching)
     ? allPlayers
     : state.poolMode==="all" ? allPlayers : currentStrategicPlayers();
 
   const baseFiltered=visiblePool.filter(p=>{
-    const q=state.query.trim().toLowerCase();
     const okq=!q || (p.name+" "+p.club+" "+p.role+" "+(p.primaryRole||"")).toLowerCase().includes(q);
     let okr;
     if(state.filter==="Venduti"){
       okr=isSold(p.id);
+    }else if(searching){
+      // In ricerca non nascondere assegnati/venduti: il loro stato è già
+      // mostrato nella riga e nel dettaglio giocatore. Manteniamo solo ruolo,
+      // preferiti e filtro club scelti dall'utente.
+      const visibleMarket=!p.outOfListone || playerIsRosterAssigned(p);
+      okr=visibleMarket && playerMatchesRoleFilter(p,state.filter,state.poolMode);
     }else{
-      const visibleMarket=!p.outOfListone || !!state.purchases[p.id];
-      okr=visibleMarket && playerMatchesRoleFilter(p,state.filter,state.poolMode) && !isSold(p.id);
+      // v1.45.3: durante l'asta anche gli assegnati restano visibili.
+      // Il contorno rosso e il nome squadra rendono evidente che non sono più disponibili.
+      const visibleMarket=!p.outOfListone || playerAssignment(p).assigned;
+      okr=visibleMarket && playerMatchesRoleFilter(p,state.filter,state.poolMode);
     }
     const okc=playerMatchesClubFilter(p);
     return okq&&okr&&okc;
   });
 
   const sorter=(a,b)=>{
+    if(!searching && state.filter!=="Venduti"){
+      const aa=playerAssignment(a).assigned?1:0, ab=playerAssignment(b).assigned?1:0;
+      if(aa!==ab)return aa-ab;
+    }
     const ta=(a.notes||"").includes("TARGET")?0:1;
     const tb=(b.notes||"").includes("TARGET")?0:1;
     return ta-tb || Number(b.maxPrice||0)-Number(a.maxPrice||0) || Number(b.fvm||0)-Number(a.fvm||0);
@@ -2141,7 +2312,16 @@ function playerViewData(){
         ${compatible.length?compatible.map(playerRow).join(""):`<div class="card muted">Nessun ${role} compatibile.</div>`}
       </div>`;
   }else{
-    content=`<div>${list.map(playerRow).join("")}</div>`;
+    if(list.length){
+      content=`<div>${list.map(playerRow).join("")}</div>`;
+    }else{
+      const q=state.query.trim();
+      content=`<div class="players-empty-state">
+        <b>${q?`Nessun risultato per “${esc(q)}”`:`Nessun giocatore con questi filtri`}</b>
+        <span>${q?"La ricerca include anche giocatori venduti e già acquistati.":"Prova a cambiare ruolo, squadra o pool."}</span>
+        ${q?'<button type="button" class="ghost" onclick="clearPlayerSearch()">Azzera ricerca</button>':""}
+      </div>`;
+    }
   }
 
   return {list,content};
@@ -2149,11 +2329,22 @@ function playerViewData(){
 
 function playerResultsInfo(list){
   return `${list.length} giocatori
+    ${state.query.trim()?" · ricerca globale (disponibili, miei e venduti)":""}
     ${ROLE_DETAIL_FILTERS.has(state.filter)?" · principali + compatibili":""}
     ${state.filter==="Venduti"?" · assegnati ad altre squadre":""}
     ${state.filter==="Preferiti"?" · watchlist personale":""}
     ${state.clubFilter?.length?` · ${state.clubFilter.length===1?state.clubFilter[0]:state.clubFilter.length+" squadre"}`:""}`;
 }
+
+function clearPlayerSearch(){
+  state.query="";
+  const input=$("#searchInput");
+  if(input) input.value="";
+  const clear=$("#clearPlayerSearchBtn");
+  if(clear) clear.classList.add("hidden");
+  updatePlayerSearchResults();
+}
+window.clearPlayerSearch=clearPlayerSearch;
 
 function updatePlayerSearchResults(){
   const data=playerViewData();
@@ -2180,6 +2371,7 @@ function renderPlayers(){
 
   $("#playersView").innerHTML=`
     ${listoneSyncCardHTML()}
+    ${playersAuctionLiveStripHTML()}
     <div class="pool-switch">
       <button id="poolStrategic" class="${state.poolMode==="strategic"?"active":""}">
         <b>Strategici</b><span>${currentStrategicPlayers().filter(p=>!p.outOfListone).length}</span>
@@ -2189,17 +2381,20 @@ function renderPlayers(){
       </button>
     </div>
 
-    <input class="search" id="searchInput"
-      placeholder="Cerca giocatore, club o ruolo…"
-      autocomplete="off"
-      autocapitalize="off"
-      spellcheck="false"
-      value="${state.query.replaceAll('"','&quot;')}">
+    <div class="player-search-wrap">
+      <input class="search" id="searchInput"
+        placeholder="Cerca giocatore, club o ruolo…"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        value="${state.query.replaceAll('"','&quot;')}">
+      <button type="button" id="clearPlayerSearchBtn" class="search-clear ${state.query.trim()?"":"hidden"}" aria-label="Azzera ricerca">×</button>
+    </div>
 
     <div class="market-universe-strip">
       <span>${state.poolMode==="all"?"Universo mercato":"Shortlist strategica"}</span>
       <b>${availableModePool.length} disponibili</b>
-      <b>${soldPlayers().filter(playerMatchesClubFilter).length} venduti</b>
+      <b>${assignedPlayers().filter(playerMatchesClubFilter).length} assegnati</b>
     </div>
 
     ${state.poolMode==="strategic"?`
@@ -2223,12 +2418,12 @@ function renderPlayers(){
       ${roles.map(r=>{
         const poolForCount=(r==="Venduti"?allPlayers:modePool).filter(playerMatchesClubFilter);
         const count=r==="Tutti"
-          ? poolForCount.filter(p=>!isSold(p.id)).length
+          ? poolForCount.filter(p=>!p.outOfListone || playerAssignment(p).assigned).length
           : r==="Preferiti"
-            ? poolForCount.filter(p=>!isSold(p.id)&&isWatchlisted(p.id)).length
+            ? poolForCount.filter(p=>(!p.outOfListone || playerAssignment(p).assigned)&&isWatchlisted(p.id)).length
           : r==="Venduti"
             ? poolForCount.filter(p=>isSold(p.id)).length
-            : poolForCount.filter(p=>!isSold(p.id)&&playerMatchesRoleFilter(p,r,state.poolMode)).length;
+            : poolForCount.filter(p=>(!p.outOfListone || playerAssignment(p).assigned)&&playerMatchesRoleFilter(p,r,state.poolMode)).length;
         return `<button class="chip ${state.filter===r?"active":""}" data-role="${r}">
           ${r}<small>${count}</small>
         </button>`;
@@ -2275,8 +2470,14 @@ function renderPlayers(){
    */
   $("#searchInput").addEventListener("input",e=>{
     state.query=e.target.value;
+    const clear=$("#clearPlayerSearchBtn");
+    if(clear) clear.classList.toggle("hidden",!state.query.trim());
     updatePlayerSearchResults();
   });
+  $("#clearPlayerSearchBtn").onclick=()=>{
+    clearPlayerSearch();
+    $("#searchInput")?.focus();
+  };
 
   $$(".chip").forEach(b=>b.onclick=()=>{
     state.filter=b.dataset.role;
@@ -2312,11 +2513,11 @@ function openPlayer(id){
       ${strategic?`<div class="line"><span>Giovane</span><b>${p.u21?"U21 + U23":p.u23?"U23":"—"}</b></div>`:""}
       ${strategic?`<div class="line"><span>Modificatore</span><b>${p.modifier||"—"}</b></div>`:""}
       <div class="line"><span>Fit ${state.strategy} · ${activeStrategy().module}</span><b>${strategyPlayerFit(p).length?strategyPlayerFit(p).join(" · "):"ruolo condiviso / non chiave"}</b></div>
-      <div class="line"><span>Stato mercato</span><b>${b?"MIO":sold?"VENDUTO":p.outOfListone?"FUORI LISTONE":"DISPONIBILE"}</b></div>
+      <div class="line"><span>Stato mercato</span><b>${playerAssignment(p).assigned?"ASSEGNATO":p.outOfListone?"FUORI LISTONE":"DISPONIBILE"}</b></div>
       ${p.syncGeneratedAt?`<div class="line"><span>Listone ufficiale</span><b>${listoneSyncDateLabel(p.syncGeneratedAt)}</b></div>`:""}
       <div class="line"><span>Scarsità live</span><b>${riskIcon(live.risk)} ${live.risk}/100 · ${live.activeComp} rivali probabili</b></div>
-      ${sold?`<div class="line"><span>Assegnato a</span><b>${esc(soldTeamName(state.sold[p.id]))}</b></div>`:""}
-      ${sold?`<div class="line"><span>Prezzo vendita</span><b>${Number(state.sold[p.id]?.price)>0?fmt(state.sold[p.id].price)+" cr":"—"}</b></div>`:""}
+      ${playerAssignment(p).assigned?`<div class="line"><span>Assegnato a</span><b>${esc(playerAssignment(p).teamName)}</b></div>`:""}
+      ${playerAssignment(p).assigned?`<div class="line"><span>Prezzo assegnazione</span><b>${playerAssignment(p).price>0?fmt(playerAssignment(p).price)+" cr":"—"}</b></div>`:""}
       ${p.notes?`<div class="line"><span>Note</span><b>${p.notes}</b></div>`:""}
     </div>
     <div class="dialog-actions">
@@ -2909,4 +3110,4 @@ function lockInit(){
 ensureInitialSnapshot();refresh();lockInit();maybeRefreshFormationsLive();
 setInterval(()=>{if(document.visibilityState==="visible")maybeRefreshFormationsLive()},5*60*1000);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")maybeRefreshFormationsLive()},{passive:true});
-if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.45").catch(()=>{}));
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js?v=1.45.2").catch(()=>{}));

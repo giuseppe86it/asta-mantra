@@ -2982,3 +2982,77 @@ body{
 .formation-dialog-bench{margin:12px 0;padding:12px;border:1px solid #2d4966;border-radius:14px;background:#0d1b2f}.formation-dialog-bench>b{display:block;margin-bottom:8px;font-size:11px;color:#c9d7e7}.formation-dialog-bench>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.formation-dialog-bench span{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 7px;padding:7px 8px;border-radius:9px;background:#14263b;font-size:10px}.formation-dialog-bench strong{color:#ffd27a}.formation-dialog-bench small{grid-column:1/-1;color:#8fa5bd;font-size:8px}
 .live-result-badge.starter{background:#15283d;color:#cfe0f0;border:1px solid #385572}
 @media(max-width:390px){.formation-algo-note{align-items:flex-start;flex-direction:column;gap:4px}.formation-algo-note span{text-align:left}.formations-update-card{align-items:flex-start}.formation-refresh-btn{min-width:78px;padding:9px 8px}.formation-dialog-bench>div{grid-template-columns:1fr}.starter-prob{font-size:8px!important;padding:3px 5px}}
+
+/* v1.45.2 — ricerca Giocatori robusta durante l'asta reale */
+.player-search-wrap{position:relative}
+.player-search-wrap .search{padding-right:48px}
+.search-clear{
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  width:34px;height:34px;border:0;border-radius:999px;
+  background:var(--card2);color:var(--text);font-size:23px;line-height:1;
+  display:grid;place-items:center;padding:0
+}
+.search-clear.hidden{display:none}
+.players-empty-state{
+  margin:12px 0;padding:18px;background:var(--card);border:1px solid var(--line);
+  border-radius:16px;display:flex;flex-direction:column;gap:7px;align-items:flex-start
+}
+.players-empty-state b{font-size:15px}
+.players-empty-state span{color:var(--muted);font-size:12px;line-height:1.4}
+.players-empty-state .ghost{margin-top:4px}
+
+
+/* v1.45.3 — Giocatori sincronizzato con Asta Live */
+.players-auction-live-strip{
+  display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:center;gap:8px;
+  margin:10px 0 12px;padding:10px 12px;border:1px solid #315c88;border-radius:14px;
+  background:linear-gradient(135deg,#10243a,#0d1c2f)
+}
+.players-auction-live-strip span{display:flex;align-items:center;gap:6px;color:#8dc7ff;font-size:10px;font-weight:950;letter-spacing:.08em}
+.players-auction-live-strip span i{width:8px;height:8px;border-radius:50%;background:#48dc72;box-shadow:0 0 0 4px rgba(72,220,114,.09)}
+.players-auction-live-strip b{font-size:11px;color:#fff;white-space:nowrap}
+.players-auction-live-strip small{font-size:9px;color:#9fb0c4;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Ogni giocatore già assegnato resta visibile ma diventa inequivocabilmente non disponibile. */
+.player.assigned,
+.player.sold.assigned,
+.player.bought.assigned{
+  opacity:1!important;
+  border:2px solid #ef5b70!important;
+  border-style:solid!important;
+  outline:none!important;
+  box-shadow:0 0 0 1px rgba(239,91,112,.12),0 10px 28px rgba(0,0,0,.22)!important;
+}
+.player.assigned .price{color:#ff8ea0!important;font-size:15px!important;letter-spacing:.04em}
+.player-assignment-line{
+  display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:7px 0 4px;padding:6px 8px;
+  border:1px solid rgba(239,91,112,.45);border-radius:9px;background:rgba(91,24,39,.28)
+}
+.player-assignment-line span{font-size:8px;font-weight:950;letter-spacing:.07em;color:#ff9cad}
+.player-assignment-line b{font-size:11px;color:#fff;max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.player-assignment-line small{font-size:9px;color:#ffb8c3;margin-left:auto}
+.player.assigned-mine .player-assignment-line span{color:#72e0ae}
+.player.assigned-mine .player-assignment-line{border-color:rgba(72,220,114,.35)}
+.player-market-state{min-width:96px;text-align:right}
+.player.assigned .player-market-state .meta{color:#ffc0ca!important;font-weight:800;max-width:130px;white-space:normal}
+@media(max-width:390px){
+  .players-auction-live-strip{grid-template-columns:auto auto;gap:5px 8px}
+  .players-auction-live-strip small{grid-column:1/-1;text-align:left}
+  .player-assignment-line b{max-width:145px}
+  .player-market-state{min-width:82px}
+}
+
+
+/* v1.45.4 — Dashboard: ultime 5 assegnazioni di tutta la lega + editor rapido */
+.finance-assignment-row span small em{font-style:normal;color:#d9e7f5;font-weight:850}
+.finance-assignment-row.mine{background:linear-gradient(90deg,rgba(29,92,69,.25),#0b1b2d 38%)}
+.finance-assignment-row.mine span small em{color:#72e0ae}
+.finance-recent-hint{padding:8px 4px 1px;color:#8fa3b8;font-size:9px;line-height:1.35;text-align:center}
+.dashboard-assignment-editor h2{margin-bottom:0}
+.dashboard-assignment-player{display:flex;align-items:center;gap:10px;margin:14px 0;padding:11px;border:1px solid #294864;border-radius:12px;background:#0d1d31}
+.dashboard-assignment-player>span{min-width:0}.dashboard-assignment-player b{display:block;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dashboard-assignment-player small{display:block;margin-top:2px;color:#91a4ba;font-size:10px}
+.dashboard-assignment-editor select{width:100%;margin-top:6px;background:#0d1627;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px}
+.dashboard-assignment-economic{display:flex;flex-direction:column;gap:3px;margin-top:10px;padding:9px 10px;border:1px solid #294864;border-radius:10px;background:#0c1a2b;color:#9fb0c4;font-size:9px}
+.dashboard-assignment-economic span{color:#dce9f6;font-weight:850}.dashboard-assignment-economic b{font-size:10px;color:#9fb0c4}
+.dashboard-assignment-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}.dashboard-assignment-actions button{min-height:44px}
+@media(max-width:390px){.finance-recent-row{grid-template-columns:36px auto minmax(0,1fr) auto}.dashboard-assignment-actions{grid-template-columns:1fr}.dashboard-assignment-player b{font-size:15px}}
