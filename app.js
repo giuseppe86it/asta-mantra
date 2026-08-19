@@ -30,6 +30,46 @@ function normalizePlayerName(name){
     .replace(/[^a-z0-9]+/g,"")
     .trim();
 }
+
+// v1.45.5 — requisiti giovani 2026/27.
+// L'app usa l'anno di nascita quando disponibile dal profilo ufficiale
+// Fantacalcio. I flag storici dei giocatori strategici restano validi.
+const YOUTH_RULES_2627={u23MinBirthYear:2003,u21MinBirthYear:2005};
+const YOUTH_BIRTHDATE_OVERRIDES_2627={
+  adzic:"2006-05-12"
+};
+function normalizedBirthDate(value){
+  const raw=String(value||"").trim();
+  const m=raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  return m?raw:"";
+}
+function playerBirthDate(p){
+  if(!p)return "";
+  return normalizedBirthDate(p.birthDate)||YOUTH_BIRTHDATE_OVERRIDES_2627[normalizePlayerName(p.name)]||"";
+}
+function playerBirthYear(p){
+  const date=playerBirthDate(p);
+  if(date)return Number(date.slice(0,4))||0;
+  const y=Number(p?.birthYear||0);
+  return Number.isFinite(y)?y:0;
+}
+function isU21Player(p){
+  const y=playerBirthYear(p);
+  return !!p && (!!p.u21 || (y>0 && y>=YOUTH_RULES_2627.u21MinBirthYear));
+}
+function isU23Player(p){
+  const y=playerBirthYear(p);
+  return !!p && (isU21Player(p) || !!p.u23 || (y>0 && y>=YOUTH_RULES_2627.u23MinBirthYear));
+}
+function youthLabel(p){
+  return isU21Player(p)?"U21 + U23":isU23Player(p)?"U23":"—";
+}
+function birthDateLabel(p){
+  const d=playerBirthDate(p);
+  if(!d)return "";
+  const [y,m,day]=d.split("-");
+  return `${day}/${m}/${y}`;
+}
 function validMantraRole(role){
   const allowed=new Set(["Por","Dd","Ds","Dc","B","E","M","C","W","T","A","Pc"]);
   const tokens=String(role||"").split("/").filter(Boolean);
@@ -57,14 +97,20 @@ function marketTier(fvm){
   return "LOW COST";
 }
 function enrichMarketPlayer(p){
+  const birthDate=playerBirthDate(p);
+  const birthYear=birthDate?Number(birthDate.slice(0,4)):(Number(p.birthYear||0)||0);
+  const u21=!!p.u21 || (birthYear>0 && birthYear>=YOUTH_RULES_2627.u21MinBirthYear);
+  const u23=u21 || !!p.u23 || (birthYear>0 && birthYear>=YOUTH_RULES_2627.u23MinBirthYear);
   return {
     ...p,
     maxPrice:Number(p.maxPrice??p.marketMax??Math.max(1,Math.round(Number(p.fvm||0)*2.5))),
     tier:p.tier||marketTier(p.fvm),
     starter:p.starter||"Listone",
     setPieces:p.setPieces||"—",
-    u23:!!p.u23,
-    u21:!!p.u21,
+    birthDate,
+    birthYear,
+    u23,
+    u21,
     modifier:p.modifier||"—",
     notes:p.notes||"LISTONE COMPLETO · MAX neutro da FVM ×2,5",
     strategic:!!p.strategic,
@@ -102,6 +148,8 @@ function buildAllPlayers(){
         classic:s.classic||base?.classic||"",
         quote:Number(s.quote??base?.quote??0),
         fvm,
+        birthDate:normalizedBirthDate(s.birthDate)||base?.birthDate||"",
+        birthYear:Number(s.birthYear??base?.birthYear??0)||0,
         strategic,
         officialActive:s.active!==false,
         outOfListone:s.active===false,
@@ -564,7 +612,7 @@ function finalReportData(){
   const byRep={POR:0,DIF:0,CEN:0,ATT:0};owned.forEach(p=>byRep[p.reparto]+=Number(state.purchases[p.id]?.price||0));
   const deals=owned.map(p=>({p,price:Number(state.purchases[p.id]?.price||0),ratio:Number(state.purchases[p.id]?.price||0)/Math.max(1,Number(p.maxPrice||1))})).sort((a,b)=>a.ratio-b.ratio);
   const overs=deals.filter(x=>x.ratio>1).sort((a,b)=>b.ratio-a.ratio);
-  const u23=owned.filter(p=>p.u23).length,u21=owned.filter(p=>p.u21).length;
+  const u23=owned.filter(isU23Player).length,u21=owned.filter(isU21Player).length;
   const valid=owned.length===25&&owned.filter(p=>p.reparto==="POR").length===3&&u23>=2&&u21>=1&&SERIES_A_CLUBS.every(([c])=>owned.filter(p=>p.club===c).length<=5);
   return {owned,total,remaining,byRep,deals,overs,u23,u21,valid,avg:owned.length?Math.round(total/owned.length):0};
 }
@@ -831,6 +879,8 @@ function roleFilterCount(role){
 function playerMatchesRoleFilter(p,role,mode=state.poolMode){
   if(role==="Tutti") return true;
   if(role==="Preferiti") return isWatchlisted(p.id);
+  if(role==="U23") return isU23Player(p);
+  if(role==="U21") return isU21Player(p);
   if(ROLE_DETAIL_FILTERS.has(role)) return roleTokens(p.role).includes(role);
   return false;
 }
@@ -1300,10 +1350,10 @@ function dynamicAlternativeScore(candidate,lost,intel=getAuctionIntel(),ctx=null
   if(guide>0 && quality<=guide)score+=4;
   else if(guide>0 && quality>guide*1.35)score-=5;
 
-  const u23Owned=ctx?.u23Owned??purchasedPlayers().filter(p=>p.u23).length;
-  const u21Owned=ctx?.u21Owned??purchasedPlayers().filter(p=>p.u21).length;
-  if(u23Owned<2 && candidate.u23)score+=4;
-  if(u21Owned<1 && candidate.u21)score+=5;
+  const u23Owned=ctx?.u23Owned??purchasedPlayers().filter(isU23Player).length;
+  const u21Owned=ctx?.u21Owned??purchasedPlayers().filter(isU21Player).length;
+  if(u23Owned<2 && isU23Player(candidate))score+=4;
+  if(u21Owned<1 && isU21Player(candidate))score+=5;
 
   const risk=familyRiskForPlayer(candidate,intel).risk;
   score+=Math.min(8,risk*.08); // se il ruolo si sta esaurendo, priorità maggiore
@@ -1316,8 +1366,8 @@ function bestAlternativeForTarget(lost,intel=getAuctionIntel()){
     missing:currentMissingStrategySlots(),
     mine:teamEconomy(mineTeam()),
     guide:phaseBudgetRemaining(playerAuctionPhase(lost)),
-    u23Owned:owned.filter(p=>p.u23).length,
-    u21Owned:owned.filter(p=>p.u21).length
+    u23Owned:owned.filter(isU23Player).length,
+    u21Owned:owned.filter(isU21Player).length
   };
   const rank=pool=>pool
     .map(p=>({p,score:dynamicAlternativeScore(p,lost,intel,ctx)}))
@@ -1505,8 +1555,8 @@ function renderDashboard(){
   const byRep={POR:0,DIF:0,CEN:0,ATT:0};
   bought.forEach(p=>byRep[p.reparto]+=Number(state.purchases[p.id].price||0));
 
-  const u23=bought.filter(p=>p.u23).length;
-  const u21=bought.filter(p=>p.u21).length;
+  const u23=bought.filter(isU23Player).length;
+  const u21=bought.filter(isU21Player).length;
   const porCount=bought.filter(p=>p.reparto==="POR").length;
   const movCount=bought.length-porCount;
   const mineEcon=teamEconomy(mineTeam());
@@ -1568,8 +1618,8 @@ function renderDashboard(){
       <section class="finance-kpis">
         <div class="finance-kpi finance-kpi-primary"><span>BUDGET RESIDUO</span><strong>${fmt(rem)}</strong><small>CREDITI</small></div>
         <div class="finance-kpi"><span>ROSA</span><strong>${bought.length}<em>/25</em></strong><small>${porCount} POR · ${movCount} MOV.</small></div>
-        <div class="finance-kpi ${u23>=2?"ok":"warn"}"><span>U23</span><strong>${u23}<em>/2</em></strong><small>REQUISITO</small></div>
-        <div class="finance-kpi ${u21>=1?"ok":"warn"}"><span>U21</span><strong>${u21}<em>/1</em></strong><small>REQUISITO</small></div>
+        <div class="finance-kpi ${u23>=2?"ok":"warn"}"><span>U23</span><strong>${u23}<em>/2</em></strong><small>REQUISITO · nati dal ${YOUTH_RULES_2627.u23MinBirthYear}</small></div>
+        <div class="finance-kpi ${u21>=1?"ok":"warn"}"><span>U21</span><strong>${u21}<em>/1</em></strong><small>REQUISITO · nati dal ${YOUTH_RULES_2627.u21MinBirthYear}</small></div>
       </section>
 
       <section class="finance-panel finance-budget-panel">
@@ -1852,8 +1902,8 @@ function liveGeneralOpportunityScore(p,intel=getAuctionIntel(),ctx=null){
   if(quality<=mine.maxNext)score+=6;
   else score-=12;
   const owned=purchasedPlayers();
-  if(owned.filter(x=>x.u23).length<2&&p.u23)score+=5;
-  if(owned.filter(x=>x.u21).length<1&&p.u21)score+=6;
+  if(owned.filter(isU23Player).length<2&&isU23Player(p))score+=5;
+  if(owned.filter(isU21Player).length<1&&isU21Player(p))score+=6;
   if(countClub(p.club)>=4)score-=6;
   return score;
 }
@@ -1872,8 +1922,8 @@ function livePriorityRows(list,intel=getAuctionIntel(),recommendations=null){
         missing:currentMissingStrategySlots(),
         mine:teamEconomy(mineTeam()),
         guide:phaseBudgetRemaining(phase),
-        u23Owned:owned.filter(p=>p.u23).length,
-        u21Owned:owned.filter(p=>p.u21).length
+        u23Owned:owned.filter(isU23Player).length,
+        u21Owned:owned.filter(isU21Player).length
       });
     }
     return phaseCtx.get(phase);
@@ -2159,7 +2209,7 @@ function playerRow(p){
         ${p.reparto==="ATT"&&primaryOffensiveRole(p)?`<span class="badge primary-role-badge">PRIM. ${primaryOffensiveRole(p)}</span>`:""}
         <span class="badge">FVM ${p.fvm||0}</span>
         ${strategic&&p.starter?`<span class="badge">${p.starter}</span>`:""}
-        ${p.u23?'<span class="badge">U23</span>':""}${p.u21?'<span class="badge">U21</span>':""}
+        ${isU23Player(p)?'<span class="badge">U23</span>':""}${isU21Player(p)?'<span class="badge">U21</span>':""}
       </div>
     </div>
     <div class="player-market-state">
@@ -2333,6 +2383,8 @@ function playerResultsInfo(list){
     ${ROLE_DETAIL_FILTERS.has(state.filter)?" · principali + compatibili":""}
     ${state.filter==="Venduti"?" · assegnati ad altre squadre":""}
     ${state.filter==="Preferiti"?" · watchlist personale":""}
+    ${state.filter==="U23"?` · nati dal ${YOUTH_RULES_2627.u23MinBirthYear}`:""}
+    ${state.filter==="U21"?` · nati dal ${YOUTH_RULES_2627.u21MinBirthYear}`:""}
     ${state.clubFilter?.length?` · ${state.clubFilter.length===1?state.clubFilter[0]:state.clubFilter.length+" squadre"}`:""}`;
 }
 
@@ -2356,7 +2408,7 @@ function updatePlayerSearchResults(){
 }
 
 function renderPlayers(){
-  let roles=["Tutti","Preferiti",...roleOrder,"Venduti"];
+  let roles=["Tutti","Preferiti","U23","U21",...roleOrder,"Venduti"];
   const data=playerViewData();
 
   const modePool=state.poolMode==="all"?allPlayers:currentStrategicPlayers();
@@ -2510,7 +2562,7 @@ function openPlayer(id){
       ${strategic?`<div class="line"><span>Titolarità</span><b>${p.starter||"—"}</b></div>`:`<div class="line"><span>Dati</span><b>Listone completo</b></div>`}
       ${strategic?`<div class="line"><span>Rigori / piazzati</span><b>${p.setPieces||"—"}</b></div>`:""}
       ${p.reparto==="ATT"&&primaryOffensiveRole(p)?`<div class="line"><span>Ruolo offensivo principale</span><b>${primaryOffensiveRole(p)}</b></div>`:""}
-      ${strategic?`<div class="line"><span>Giovane</span><b>${p.u21?"U21 + U23":p.u23?"U23":"—"}</b></div>`:""}
+      <div class="line"><span>Giovane</span><b>${youthLabel(p)}${birthDateLabel(p)?` · ${birthDateLabel(p)}`:""}</b></div>
       ${strategic?`<div class="line"><span>Modificatore</span><b>${p.modifier||"—"}</b></div>`:""}
       <div class="line"><span>Fit ${state.strategy} · ${activeStrategy().module}</span><b>${strategyPlayerFit(p).length?strategyPlayerFit(p).join(" · "):"ruolo condiviso / non chiave"}</b></div>
       <div class="line"><span>Stato mercato</span><b>${playerAssignment(p).assigned?"ASSEGNATO":p.outOfListone?"FUORI LISTONE":"DISPONIBILE"}</b></div>
