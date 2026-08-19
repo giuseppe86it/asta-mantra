@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-19T19:12:13Z",
+  "generatedAt": "2026-08-19T19:56:58Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -110,7 +110,7 @@
         },
         {
           "name": "Vitik",
-          "probability": 60
+          "probability": 55
         },
         {
           "name": "Heggem",
@@ -366,7 +366,7 @@
         },
         {
           "name": "Paz N.",
-          "probability": 90
+          "probability": 75
         },
         {
           "name": "Baturina",
@@ -514,7 +514,7 @@
         },
         {
           "name": "Dodò",
-          "probability": 25
+          "probability": 15
         },
         {
           "name": "Ranieri L.",
@@ -530,11 +530,11 @@
         },
         {
           "name": "Mandragora",
-          "probability": 55
+          "probability": 50
         },
         {
           "name": "Brescianini",
-          "probability": 50
+          "probability": 55
         },
         {
           "name": "Fabbian",
@@ -765,8 +765,12 @@
           "probability": 55
         },
         {
-          "name": "Havel",
+          "name": "Meichtry",
           "probability": 55
+        },
+        {
+          "name": "Havel",
+          "probability": 30
         }
       ]
     },
@@ -892,7 +896,7 @@
         },
         {
           "name": "Cambiaso",
-          "probability": 90
+          "probability": 75
         },
         {
           "name": "McKennie",
@@ -1108,11 +1112,11 @@
         },
         {
           "name": "Vitik",
-          "probability": 60
+          "probability": 55
         },
         {
           "name": "Helland",
-          "probability": 40
+          "probability": 45
         },
         {
           "name": "Moro N.",
@@ -1638,10 +1642,6 @@
       "bench": [
         {
           "name": "Daffara",
-          "probability": 5
-        },
-        {
-          "name": "Suzuki",
           "probability": 5
         },
         {
