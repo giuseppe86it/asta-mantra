@@ -4,7 +4,7 @@
   "sourceKind": "official-fantacalcio",
   "sourceName": "Fantacalcio.it · Quotazioni e FVM 2026/27",
   "sourceUrl": "https://www.fantacalcio.it/quotazioni-fantacalcio",
-  "generatedAt": "2026-08-18T23:55:02.202Z",
+  "generatedAt": "2026-08-19T03:15:25.092Z",
   "activePlayers": 505,
   "totalPlayers": 521,
   "roleParsedCount": 505,
@@ -29,7 +29,10 @@
       "fvmClassic": 370,
       "qiMantra": 35,
       "qaMantra": 35,
-      "fvmMantra": 370
+      "fvmMantra": 370,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/martinez-l/2764",
+      "birthDate": "1997-08-22",
+      "birthYear": 1997
     },
     {
       "id": 62,
@@ -50,7 +53,10 @@
       "fvmClassic": 365,
       "qiMantra": 34,
       "qaMantra": 34,
-      "fvmMantra": 365
+      "fvmMantra": 365,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/malen/5585",
+      "birthDate": "1999-01-19",
+      "birthYear": 1999
     },
     {
       "id": 181,
@@ -71,7 +77,10 @@
       "fvmClassic": 265,
       "qiMantra": 30,
       "qaMantra": 30,
-      "fvmMantra": 265
+      "fvmMantra": 265,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/dimarco/254",
+      "birthDate": "1997-11-10",
+      "birthYear": 1997
     },
     {
       "id": 68,
@@ -92,7 +101,10 @@
       "fvmClassic": 250,
       "qiMantra": 28,
       "qaMantra": 28,
-      "fvmMantra": 250
+      "fvmMantra": 250,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/paz-n/6875",
+      "birthDate": "2004-09-08",
+      "birthYear": 2004
     },
     {
       "id": 63,
@@ -113,7 +125,10 @@
       "fvmClassic": 280,
       "qiMantra": 29,
       "qaMantra": 29,
-      "fvmMantra": 280
+      "fvmMantra": 280,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/thuram/4871",
+      "birthDate": "1997-08-06",
+      "birthYear": 1997
     },
     {
       "id": 39,
@@ -134,7 +149,10 @@
       "fvmClassic": 240,
       "qiMantra": 28,
       "qaMantra": 28,
-      "fvmMantra": 240
+      "fvmMantra": 240,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/mctominay/4777",
+      "birthDate": "1996-12-08",
+      "birthYear": 1996
     },
     {
       "id": 64,
@@ -155,7 +173,10 @@
       "fvmClassic": 271,
       "qiMantra": 28,
       "qaMantra": 28,
-      "fvmMantra": 271
+      "fvmMantra": 271,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/hojlund/6052",
+      "birthDate": "2003-02-04",
+      "birthYear": 2003
     },
     {
       "id": 38,
@@ -176,7 +197,10 @@
       "fvmClassic": 230,
       "qiMantra": 28,
       "qaMantra": 28,
-      "fvmMantra": 260
+      "fvmMantra": 260,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/calhanoglu/2194",
+      "birthDate": "1994-02-08",
+      "birthYear": 1994
     },
     {
       "id": 65,
@@ -197,7 +221,10 @@
       "fvmClassic": 232,
       "qiMantra": 27,
       "qaMantra": 27,
-      "fvmMantra": 232
+      "fvmMantra": 232,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/ramos-g/6397",
+      "birthDate": "2001-06-20",
+      "birthYear": 2001
     },
     {
       "id": 67,
@@ -218,7 +245,10 @@
       "fvmClassic": 200,
       "qiMantra": 25,
       "qaMantra": 25,
-      "fvmMantra": 200
+      "fvmMantra": 200,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/orsolini/2167",
+      "birthDate": "1997-01-24",
+      "birthYear": 1997
     },
     {
       "id": 66,
@@ -239,7 +269,10 @@
       "fvmClassic": 225,
       "qiMantra": 26,
       "qaMantra": 26,
-      "fvmMantra": 225
+      "fvmMantra": 225,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/kolo-muani/5951",
+      "birthDate": "1998-12-05",
+      "birthYear": 1998
     },
     {
       "id": 71,
@@ -260,7 +293,10 @@
       "fvmClassic": 200,
       "qiMantra": 25,
       "qaMantra": 25,
-      "fvmMantra": 197
+      "fvmMantra": 197,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/kean/2097",
+      "birthDate": "2000-02-28",
+      "birthYear": 2000
     },
     {
       "id": 69,
@@ -281,7 +317,10 @@
       "fvmClassic": 180,
       "qiMantra": 23,
       "qaMantra": 23,
-      "fvmMantra": 180
+      "fvmMantra": 180,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/pulisic/2423",
+      "birthDate": "1998-09-18",
+      "birthYear": 1998
     },
     {
       "id": 70,
@@ -302,7 +341,10 @@
       "fvmClassic": 192,
       "qiMantra": 24,
       "qaMantra": 24,
-      "fvmMantra": 190
+      "fvmMantra": 190,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/yildiz/6434",
+      "birthDate": "2005-05-04",
+      "birthYear": 2005
     },
     {
       "id": 40,
@@ -323,7 +365,10 @@
       "fvmClassic": 128,
       "qiMantra": 22,
       "qaMantra": 22,
-      "fvmMantra": 128
+      "fvmMantra": 128,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/rabiot/2379",
+      "birthDate": "1995-04-03",
+      "birthYear": 1995
     },
     {
       "id": 72,
@@ -344,7 +389,10 @@
       "fvmClassic": 157,
       "qiMantra": 20,
       "qaMantra": 20,
-      "fvmMantra": 154
+      "fvmMantra": 154,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/douvikas/7017",
+      "birthDate": "1999-08-02",
+      "birthYear": 1999
     },
     {
       "id": 73,
@@ -365,7 +413,10 @@
       "fvmClassic": 131,
       "qiMantra": 18,
       "qaMantra": 18,
-      "fvmMantra": 128
+      "fvmMantra": 128,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/scamacca/2137",
+      "birthDate": "1999-01-01",
+      "birthYear": 1999
     },
     {
       "id": "m10093",
@@ -386,7 +437,10 @@
       "fvmClassic": 102,
       "qiMantra": 18,
       "qaMantra": 18,
-      "fvmMantra": 100
+      "fvmMantra": 100,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/baturina/7126",
+      "birthDate": "2003-02-16",
+      "birthYear": 2003
     },
     {
       "id": 74,
@@ -407,7 +461,10 @@
       "fvmClassic": 122,
       "qiMantra": 19,
       "qaMantra": 19,
-      "fvmMantra": 119
+      "fvmMantra": 119,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/davis-k/5637",
+      "birthDate": "1998-02-13",
+      "birthYear": 1998
     },
     {
       "id": 183,
@@ -428,7 +485,10 @@
       "fvmClassic": 95,
       "qiMantra": 17,
       "qaMantra": 17,
-      "fvmMantra": 92
+      "fvmMantra": 92,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/krstovic/6435",
+      "birthDate": "2000-04-05",
+      "birthYear": 2000
     },
     {
       "id": 43,
@@ -449,7 +509,10 @@
       "fvmClassic": 90,
       "qiMantra": 18,
       "qaMantra": 18,
-      "fvmMantra": 90
+      "fvmMantra": 90,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/da-cunha/5559",
+      "birthDate": "2001-06-09",
+      "birthYear": 2001
     },
     {
       "id": 193,
@@ -470,7 +533,10 @@
       "fvmClassic": 120,
       "qiMantra": 19,
       "qaMantra": 19,
-      "fvmMantra": 123
+      "fvmMantra": 123,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/leao/4510",
+      "birthDate": "1999-06-10",
+      "birthYear": 1999
     },
     {
       "id": 1,
@@ -491,7 +557,10 @@
       "fvmClassic": 65,
       "qiMantra": 18,
       "qaMantra": 18,
-      "fvmMantra": 65
+      "fvmMantra": 65,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/svilar/5841",
+      "birthDate": "1999-08-27",
+      "birthYear": 1999
     },
     {
       "id": 78,
@@ -512,7 +581,10 @@
       "fvmClassic": 115,
       "qiMantra": 19,
       "qaMantra": 19,
-      "fvmMantra": 118
+      "fvmMantra": 118,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/berardi/531",
+      "birthDate": "1994-08-01",
+      "birthYear": 1994
     },
     {
       "id": 79,
@@ -533,7 +605,10 @@
       "fvmClassic": 100,
       "qiMantra": 17,
       "qaMantra": 17,
-      "fvmMantra": 100
+      "fvmMantra": 100,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/zaniolo/2766",
+      "birthDate": "1999-07-02",
+      "birthYear": 1999
     },
     {
       "id": "fc_molinan",
@@ -554,7 +629,10 @@
       "fvmClassic": 87,
       "qiMantra": 18,
       "qaMantra": 18,
-      "fvmMantra": 87
+      "fvmMantra": 87,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/molina-n/4998",
+      "birthDate": "1998-04-06",
+      "birthYear": 1998
     },
     {
       "id": 82,
@@ -575,7 +653,10 @@
       "fvmClassic": 106,
       "qiMantra": 18,
       "qaMantra": 18,
-      "fvmMantra": 108
+      "fvmMantra": 108,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/de-ketelaere/5995",
+      "birthDate": "2001-03-10",
+      "birthYear": 2001
     },
     {
       "id": 41,
@@ -596,7 +677,10 @@
       "fvmClassic": 87,
       "qiMantra": 17,
       "qaMantra": 17,
-      "fvmMantra": 87
+      "fvmMantra": 87,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/atta/6908",
+      "birthDate": "2003-01-14",
+      "birthYear": 2003
     },
     {
       "id": 2,
@@ -617,7 +701,10 @@
       "fvmClassic": 63,
       "qiMantra": 17,
       "qaMantra": 17,
-      "fvmMantra": 63
+      "fvmMantra": 63,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/martinez-jo/5116",
+      "birthDate": "1998-05-27",
+      "birthYear": 1998
     },
     {
       "id": 42,
@@ -638,7 +725,10 @@
       "fvmClassic": 80,
       "qiMantra": 17,
       "qaMantra": 17,
-      "fvmMantra": 80
+      "fvmMantra": 80,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/barella/1870",
+      "birthDate": "1997-02-07",
+      "birthYear": 1997
     },
     {
       "id": 44,
@@ -659,7 +749,10 @@
       "fvmClassic": 68,
       "qiMantra": 17,
       "qaMantra": 17,
-      "fvmMantra": 68
+      "fvmMantra": 68,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/mckennie/4973",
+      "birthDate": "1998-08-28",
+      "birthYear": 1998
     },
     {
       "id": "m10381",
@@ -680,7 +773,10 @@
       "fvmClassic": 83,
       "qiMantra": 16,
       "qaMantra": 16,
-      "fvmMantra": 80
+      "fvmMantra": 80,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/wesley/7181",
+      "birthDate": "2003-09-06",
+      "birthYear": 2003
     },
     {
       "id": 4,
@@ -701,7 +797,10 @@
       "fvmClassic": 52,
       "qiMantra": 16,
       "qaMantra": 16,
-      "fvmMantra": 52
+      "fvmMantra": 52,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/carnesecchi/4431",
+      "birthDate": "2000-07-01",
+      "birthYear": 2000
     },
     {
       "id": 76,
@@ -722,7 +821,10 @@
       "fvmClassic": 73,
       "qiMantra": 16,
       "qaMantra": 16,
-      "fvmMantra": 70
+      "fvmMantra": 70,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/dovbyk/6675",
+      "birthDate": "1997-06-21",
+      "birthYear": 1997
     },
     {
       "id": 3,
@@ -743,7 +845,10 @@
       "fvmClassic": 56,
       "qiMantra": 16,
       "qaMantra": 16,
-      "fvmMantra": 56
+      "fvmMantra": 56,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/butez/6966",
+      "birthDate": "1995-06-08",
+      "birthYear": 1995
     },
     {
       "id": 16,
@@ -764,7 +869,10 @@
       "fvmClassic": 55,
       "qiMantra": 16,
       "qaMantra": 16,
-      "fvmMantra": 55
+      "fvmMantra": 55,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/akanji/4159",
+      "birthDate": "1995-07-19",
+      "birthYear": 1995
     },
     {
       "id": 96,
@@ -785,7 +893,10 @@
       "fvmClassic": 93,
       "qiMantra": 16,
       "qaMantra": 16,
-      "fvmMantra": 90
+      "fvmMantra": 90,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/esposito-f-p/7071",
+      "birthDate": "2005-06-28",
+      "birthYear": 2005
     },
     {
       "id": 77,
@@ -806,7 +917,10 @@
       "fvmClassic": 91,
       "qiMantra": 15,
       "qaMantra": 15,
-      "fvmMantra": 88
+      "fvmMantra": 88,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/zaccagni/632",
+      "birthDate": "1995-06-16",
+      "birthYear": 1995
     },
     {
       "id": "fc_vicario",
@@ -827,7 +941,10 @@
       "fvmClassic": 55,
       "qiMantra": 16,
       "qaMantra": 16,
-      "fvmMantra": 55
+      "fvmMantra": 55,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/vicario/4964",
+      "birthDate": "1996-10-07",
+      "birthYear": 1996
     },
     {
       "id": 12,
@@ -848,7 +965,10 @@
       "fvmClassic": 50,
       "qiMantra": 15,
       "qaMantra": 15,
-      "fvmMantra": 50
+      "fvmMantra": 50,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/bremer/2788",
+      "birthDate": "1997-03-18",
+      "birthYear": 1997
     },
     {
       "id": 5,
@@ -869,7 +989,10 @@
       "fvmClassic": 50,
       "qiMantra": 15,
       "qaMantra": 15,
-      "fvmMantra": 50
+      "fvmMantra": 50,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/maignan/4312",
+      "birthDate": "1995-07-03",
+      "birthYear": 1995
     },
     {
       "id": "m10339",
@@ -890,7 +1013,10 @@
       "fvmClassic": 98,
       "qiMantra": 14,
       "qaMantra": 14,
-      "fvmMantra": 95
+      "fvmMantra": 95,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/de-bruyne/2517",
+      "birthDate": "1991-06-28",
+      "birthYear": 1991
     },
     {
       "id": 199,
@@ -911,7 +1037,10 @@
       "fvmClassic": 60,
       "qiMantra": 15,
       "qaMantra": 15,
-      "fvmMantra": 57
+      "fvmMantra": 57,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/pellegrino-m/7023",
+      "birthDate": "2001-10-22",
+      "birthYear": 2001
     },
     {
       "id": 17,
@@ -932,7 +1061,10 @@
       "fvmClassic": 49,
       "qiMantra": 15,
       "qaMantra": 15,
-      "fvmMantra": 49
+      "fvmMantra": 49,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/mancini/2296",
+      "birthDate": "1996-04-17",
+      "birthYear": 1996
     },
     {
       "id": 81,
@@ -953,7 +1085,10 @@
       "fvmClassic": 88,
       "qiMantra": 16,
       "qaMantra": 16,
-      "fvmMantra": 91
+      "fvmMantra": 91,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/laurient%C3%A8/6060",
+      "birthDate": "1998-12-04",
+      "birthYear": 1998
     },
     {
       "id": 75,
@@ -974,7 +1109,10 @@
       "fvmClassic": 82,
       "qiMantra": 15,
       "qaMantra": 15,
-      "fvmMantra": 79
+      "fvmMantra": 79,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/simeone/2061",
+      "birthDate": "1995-07-05",
+      "birthYear": 1995
     },
     {
       "id": 13,
@@ -995,7 +1133,10 @@
       "fvmClassic": 44,
       "qiMantra": 14,
       "qaMantra": 14,
-      "fvmMantra": 44
+      "fvmMantra": 44,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/bastoni/2120",
+      "birthDate": "1999-04-13",
+      "birthYear": 1999
     },
     {
       "id": 15,
@@ -1016,7 +1157,10 @@
       "fvmClassic": 48,
       "qiMantra": 14,
       "qaMantra": 14,
-      "fvmMantra": 48
+      "fvmMantra": 48,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/pavlovic/5022",
+      "birthDate": "2001-05-24",
+      "birthYear": 2001
     },
     {
       "id": 18,
@@ -1037,7 +1181,10 @@
       "fvmClassic": 47,
       "qiMantra": 14,
       "qaMantra": 14,
-      "fvmMantra": 47
+      "fvmMantra": 47,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/rrahmani/4409",
+      "birthDate": "1994-02-24",
+      "birthYear": 1994
     },
     {
       "id": 196,
@@ -1058,7 +1205,10 @@
       "fvmClassic": 57,
       "qiMantra": 15,
       "qaMantra": 15,
-      "fvmMantra": 57
+      "fvmMantra": 57,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/santos-a/7351",
+      "birthDate": "2002-09-27",
+      "birthYear": 2002
     },
     {
       "id": 80,
@@ -1079,7 +1229,10 @@
       "fvmClassic": 67,
       "qiMantra": 15,
       "qaMantra": 15,
-      "fvmMantra": 67
+      "fvmMantra": 67,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/dybala/309",
+      "birthDate": "1993-11-15",
+      "birthYear": 1993
     },
     {
       "id": 95,
@@ -1100,7 +1253,10 @@
       "fvmClassic": 81,
       "qiMantra": 13,
       "qaMantra": 13,
-      "fvmMantra": 78
+      "fvmMantra": 78,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/castro-s/6572",
+      "birthDate": "2004-09-18",
+      "birthYear": 2004
     },
     {
       "id": "m10431",
@@ -1121,7 +1277,10 @@
       "fvmClassic": 80,
       "qiMantra": 13,
       "qaMantra": 13,
-      "fvmMantra": 77
+      "fvmMantra": 77,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/vlasic/5687",
+      "birthDate": "1997-10-04",
+      "birthYear": 1997
     },
     {
       "id": 184,
@@ -1142,7 +1301,10 @@
       "fvmClassic": 62,
       "qiMantra": 14,
       "qaMantra": 14,
-      "fvmMantra": 64
+      "fvmMantra": 64,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/raspadori/4371",
+      "birthDate": "2000-02-18",
+      "birthYear": 2000
     },
     {
       "id": "m10071",
@@ -1163,7 +1325,10 @@
       "fvmClassic": 40,
       "qiMantra": 14,
       "qaMantra": 14,
-      "fvmMantra": 40
+      "fvmMantra": 40,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/esposito-se/4463",
+      "birthDate": "2002-07-02",
+      "birthYear": 2002
     },
     {
       "id": 7,
@@ -1184,7 +1349,10 @@
       "fvmClassic": 45,
       "qiMantra": 13,
       "qaMantra": 13,
-      "fvmMantra": 45
+      "fvmMantra": 45,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/de-gea/2521",
+      "birthDate": "1990-11-07",
+      "birthYear": 1990
     },
     {
       "id": 83,
@@ -1205,7 +1373,10 @@
       "fvmClassic": 61,
       "qiMantra": 12,
       "qaMantra": 12,
-      "fvmMantra": 58
+      "fvmMantra": 58,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/gudmundsson-a/5800",
+      "birthDate": "1997-06-15",
+      "birthYear": 1997
     },
     {
       "id": 19,
@@ -1226,7 +1397,10 @@
       "fvmClassic": 46,
       "qiMantra": 14,
       "qaMantra": 14,
-      "fvmMantra": 48
+      "fvmMantra": 48,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/kalulu/4976",
+      "birthDate": "2000-06-05",
+      "birthYear": 2000
     },
     {
       "id": 56,
@@ -1247,7 +1421,10 @@
       "fvmClassic": 64,
       "qiMantra": 13,
       "qaMantra": 13,
-      "fvmMantra": 64
+      "fvmMantra": 64,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/taylor-k/7314",
+      "birthDate": "2002-05-16",
+      "birthYear": 2002
     },
     {
       "id": 194,
@@ -1268,7 +1445,10 @@
       "fvmClassic": 25,
       "qiMantra": 14,
       "qaMantra": 14,
-      "fvmMantra": 25
+      "fvmMantra": 25,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/nkunku/4728",
+      "birthDate": "1997-11-14",
+      "birthYear": 1997
     },
     {
       "id": 20,
@@ -1289,7 +1469,10 @@
       "fvmClassic": 44,
       "qiMantra": 13,
       "qaMantra": 13,
-      "fvmMantra": 44
+      "fvmMantra": 44,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/n-dicka/4317",
+      "birthDate": "1999-08-20",
+      "birthYear": 1999
     },
     {
       "id": 94,
@@ -1310,7 +1493,10 @@
       "fvmClassic": 55,
       "qiMantra": 12,
       "qaMantra": 12,
-      "fvmMantra": 52
+      "fvmMantra": 52,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/pinamonti/2038",
+      "birthDate": "1999-05-19",
+      "birthYear": 1999
     },
     {
       "id": 14,
@@ -1331,7 +1517,10 @@
       "fvmClassic": 46,
       "qiMantra": 13,
       "qaMantra": 13,
-      "fvmMantra": 46
+      "fvmMantra": 46,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/solet/6956",
+      "birthDate": "2000-02-07",
+      "birthYear": 2000
     },
     {
       "id": 198,
@@ -1352,7 +1541,10 @@
       "fvmClassic": 47,
       "qiMantra": 12,
       "qaMantra": 12,
-      "fvmMantra": 44
+      "fvmMantra": 44,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/kevin-carlos/7547",
+      "birthDate": "2001-04-10",
+      "birthYear": 2001
     },
     {
       "id": 50,
@@ -1373,7 +1565,10 @@
       "fvmClassic": 45,
       "qiMantra": 13,
       "qaMantra": 13,
-      "fvmMantra": 48
+      "fvmMantra": 48,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/ederson-d-s/5792",
+      "birthDate": "1999-07-07",
+      "birthYear": 1999
     },
     {
       "id": 53,
@@ -1394,7 +1589,10 @@
       "fvmClassic": 42,
       "qiMantra": 12,
       "qaMantra": 12,
-      "fvmMantra": 42
+      "fvmMantra": 42,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/samardzic/5119",
+      "birthDate": "2002-02-24",
+      "birthYear": 2002
     },
     {
       "id": 186,
@@ -1415,7 +1613,10 @@
       "fvmClassic": 32,
       "qiMantra": 11,
       "qaMantra": 11,
-      "fvmMantra": 31
+      "fvmMantra": 31,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/rodriguez-je/7129",
+      "birthDate": "2005-11-21",
+      "birthYear": 2005
     },
     {
       "id": 21,
@@ -1436,7 +1637,10 @@
       "fvmClassic": 38,
       "qiMantra": 12,
       "qaMantra": 12,
-      "fvmMantra": 38
+      "fvmMantra": 38,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/stones/2514",
+      "birthDate": "1994-05-28",
+      "birthYear": 1994
     },
     {
       "id": 188,
@@ -1457,7 +1661,10 @@
       "fvmClassic": 56,
       "qiMantra": 12,
       "qaMantra": 12,
-      "fvmMantra": 56
+      "fvmMantra": 56,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/alajbegovic/7436",
+      "birthDate": "2007-09-21",
+      "birthYear": 2007
     },
     {
       "id": 88,
@@ -1478,7 +1685,10 @@
       "fvmClassic": 60,
       "qiMantra": 11,
       "qaMantra": 11,
-      "fvmMantra": 60
+      "fvmMantra": 60,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/conceicao/6884",
+      "birthDate": "2002-12-14",
+      "birthYear": 2002
     },
     {
       "id": 24,
@@ -1499,7 +1709,10 @@
       "fvmClassic": 31,
       "qiMantra": 12,
       "qaMantra": 12,
-      "fvmMantra": 31
+      "fvmMantra": 31,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/gila/5833",
+      "birthDate": "2000-08-29",
+      "birthYear": 2000
     },
     {
       "id": 47,
@@ -1520,7 +1733,10 @@
       "fvmClassic": 50,
       "qiMantra": 13,
       "qaMantra": 13,
-      "fvmMantra": 60
+      "fvmMantra": 60,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/modric/2606",
+      "birthDate": "1985-09-09",
+      "birthYear": 1985
     },
     {
       "id": 27,
@@ -1541,7 +1757,10 @@
       "fvmClassic": 40,
       "qiMantra": 12,
       "qaMantra": 12,
-      "fvmMantra": 40
+      "fvmMantra": 40,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/di-lorenzo/2816",
+      "birthDate": "1993-08-04",
+      "birthYear": 1993
     },
     {
       "id": 197,
@@ -1562,7 +1781,10 @@
       "fvmClassic": 53,
       "qiMantra": 13,
       "qaMantra": 13,
-      "fvmMantra": 53
+      "fvmMantra": 53,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/soul%C3%A8/5734",
+      "birthDate": "2003-04-15",
+      "birthYear": 2003
     },
     {
       "id": 93,
@@ -1583,7 +1805,10 @@
       "fvmClassic": 51,
       "qiMantra": 11,
       "qaMantra": 11,
-      "fvmMantra": 48
+      "fvmMantra": 48,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/adams-a/7484",
+      "birthDate": "2000-01-29",
+      "birthYear": 2000
     },
     {
       "id": 182,
@@ -1604,7 +1829,10 @@
       "fvmClassic": 58,
       "qiMantra": 12,
       "qaMantra": 12,
-      "fvmMantra": 58
+      "fvmMantra": 58,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/mastantuono/7078",
+      "birthDate": "2007-08-14",
+      "birthYear": 2007
     },
     {
       "id": 142,
@@ -1625,7 +1853,10 @@
       "fvmClassic": 41,
       "qiMantra": 11,
       "qaMantra": 11,
-      "fvmMantra": 39
+      "fvmMantra": 39,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/spence/5982",
+      "birthDate": "2000-08-09",
+      "birthYear": 2000
     },
     {
       "id": 89,
@@ -1646,7 +1877,10 @@
       "fvmClassic": 37,
       "qiMantra": 11,
       "qaMantra": 11,
-      "fvmMantra": 40
+      "fvmMantra": 40,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/rowe/6844",
+      "birthDate": "2003-04-30",
+      "birthYear": 2003
     },
     {
       "id": 84,
@@ -1667,7 +1901,10 @@
       "fvmClassic": 50,
       "qiMantra": 12,
       "qaMantra": 12,
-      "fvmMantra": 52
+      "fvmMantra": 52,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/diao/6967",
+      "birthDate": "2005-09-07",
+      "birthYear": 2005
     },
     {
       "id": 110,
@@ -1688,7 +1925,10 @@
       "fvmClassic": 40,
       "qiMantra": 11,
       "qaMantra": 11,
-      "fvmMantra": 40
+      "fvmMantra": 40,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/ostigard/5750",
+      "birthDate": "1999-11-28",
+      "birthYear": 1999
     },
     {
       "id": "m10172",
@@ -1709,7 +1949,10 @@
       "fvmClassic": 30,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 27
+      "fvmMantra": 27,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/baldanzi/5823",
+      "birthDate": "2003-03-23",
+      "birthYear": 2003
     },
     {
       "id": 92,
@@ -1730,7 +1973,10 @@
       "fvmClassic": 63,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 60
+      "fvmMantra": 60,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/colombo/4923",
+      "birthDate": "2002-03-08",
+      "birthYear": 2002
     },
     {
       "id": 111,
@@ -1751,7 +1997,10 @@
       "fvmClassic": 33,
       "qiMantra": 11,
       "qaMantra": 11,
-      "fvmMantra": 33
+      "fvmMantra": 33,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/bisseck/6217",
+      "birthDate": "2000-11-29",
+      "birthYear": 2000
     },
     {
       "id": 6,
@@ -1772,7 +2021,10 @@
       "fvmClassic": 45,
       "qiMantra": 11,
       "qaMantra": 11,
-      "fvmMantra": 45
+      "fvmMantra": 45,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/meret/572",
+      "birthDate": "1997-03-22",
+      "birthYear": 1997
     },
     {
       "id": 170,
@@ -1793,7 +2045,10 @@
       "fvmClassic": 54,
       "qiMantra": 11,
       "qaMantra": 11,
-      "fvmMantra": 54
+      "fvmMantra": 54,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/zambo-anguissa/4220",
+      "birthDate": "1995-11-16",
+      "birthYear": 1995
     },
     {
       "id": 200,
@@ -1814,7 +2069,10 @@
       "fvmClassic": 43,
       "qiMantra": 11,
       "qaMantra": 11,
-      "fvmMantra": 43
+      "fvmMantra": 43,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/tour%C3%A8-e/6229",
+      "birthDate": "2001-10-03",
+      "birthYear": 2001
     },
     {
       "id": 25,
@@ -1835,7 +2093,10 @@
       "fvmClassic": 28,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 28
+      "fvmMantra": 28,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/scalvini/5526",
+      "birthDate": "2003-12-11",
+      "birthYear": 2003
     },
     {
       "id": 8,
@@ -1856,7 +2117,10 @@
       "fvmClassic": 37,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 37
+      "fvmMantra": 37,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/skorupski/133",
+      "birthDate": "1991-05-05",
+      "birthYear": 1991
     },
     {
       "id": 23,
@@ -1877,7 +2141,10 @@
       "fvmClassic": 32,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 32
+      "fvmMantra": 32,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/ramon/6869",
+      "birthDate": "2005-01-06",
+      "birthYear": 2005
     },
     {
       "id": 49,
@@ -1898,7 +2165,10 @@
       "fvmClassic": 38,
       "qiMantra": 11,
       "qaMantra": 11,
-      "fvmMantra": 41
+      "fvmMantra": 41,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/perrone/6151",
+      "birthDate": "2003-01-07",
+      "birthYear": 2003
     },
     {
       "id": 28,
@@ -1919,7 +2189,10 @@
       "fvmClassic": 30,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 30
+      "fvmMantra": 30,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/dod%C3%B2/5885",
+      "birthDate": "1998-11-17",
+      "birthYear": 1998
     },
     {
       "id": 46,
@@ -1940,7 +2213,10 @@
       "fvmClassic": 41,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 41
+      "fvmMantra": 41,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/zielinski/152",
+      "birthDate": "1994-05-20",
+      "birthYear": 1994
     },
     {
       "id": 45,
@@ -1961,7 +2237,10 @@
       "fvmClassic": 41,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 41
+      "fvmMantra": 41,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/thuram-k/5562",
+      "birthDate": "2001-03-26",
+      "birthYear": 2001
     },
     {
       "id": 191,
@@ -1982,7 +2261,10 @@
       "fvmClassic": 31,
       "qiMantra": 11,
       "qaMantra": 11,
-      "fvmMantra": 33
+      "fvmMantra": 33,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/dia/5672",
+      "birthDate": "1996-11-16",
+      "birthYear": 1996
     },
     {
       "id": "m10248",
@@ -2003,7 +2285,10 @@
       "fvmClassic": 32,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 29
+      "fvmMantra": 29,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/ratkov/7313",
+      "birthDate": "2003-08-18",
+      "birthYear": 2003
     },
     {
       "id": 195,
@@ -2024,7 +2309,10 @@
       "fvmClassic": 43,
       "qiMantra": 11,
       "qaMantra": 11,
-      "fvmMantra": 45
+      "fvmMantra": 45,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/saelemaekers/4892",
+      "birthDate": "1999-06-27",
+      "birthYear": 1999
     },
     {
       "id": 87,
@@ -2045,7 +2333,10 @@
       "fvmClassic": 47,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 43
+      "fvmMantra": 43,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/politano/536",
+      "birthDate": "1993-08-03",
+      "birthYear": 1993
     },
     {
       "id": 114,
@@ -2066,7 +2357,10 @@
       "fvmClassic": 26,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 26
+      "fvmMantra": 26,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/hermoso/4807",
+      "birthDate": "1995-06-18",
+      "birthYear": 1995
     },
     {
       "id": 48,
@@ -2087,7 +2381,10 @@
       "fvmClassic": 42,
       "qiMantra": 11,
       "qaMantra": 11,
-      "fvmMantra": 45
+      "fvmMantra": 45,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/kon%C3%A8-m/5589",
+      "birthDate": "2001-05-17",
+      "birthYear": 2001
     },
     {
       "id": 55,
@@ -2108,7 +2405,10 @@
       "fvmClassic": 41,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 41
+      "fvmMantra": 41,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/thorstvedt/5844",
+      "birthDate": "1999-03-13",
+      "birthYear": 1999
     },
     {
       "id": "m10412",
@@ -2129,7 +2429,10 @@
       "fvmClassic": 39,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 36
+      "fvmMantra": 36,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/bowie/7347",
+      "birthDate": "2002-09-21",
+      "birthYear": 2002
     },
     {
       "id": 59,
@@ -2150,7 +2453,10 @@
       "fvmClassic": 37,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 37
+      "fvmMantra": 37,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/casadei/5888",
+      "birthDate": "2003-01-10",
+      "birthYear": 2003
     },
     {
       "id": 54,
@@ -2171,7 +2477,10 @@
       "fvmClassic": 41,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 41
+      "fvmMantra": 41,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/ekkelenkamp/6684",
+      "birthDate": "2000-04-05",
+      "birthYear": 2000
     },
     {
       "id": "fc_pellegrinilo",
@@ -2192,7 +2501,10 @@
       "fvmClassic": 28,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 28
+      "fvmMantra": 28,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/pellegrini-lo/530",
+      "birthDate": "1996-06-19",
+      "birthYear": 1996
     },
     {
       "id": "fc_romerod",
@@ -2213,7 +2525,10 @@
       "fvmClassic": 38,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 38
+      "fvmMantra": 38,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/romero-d/7554",
+      "birthDate": "2003-03-25",
+      "birthYear": 2003
     },
     {
       "id": 148,
@@ -2234,7 +2549,10 @@
       "fvmClassic": 32,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 32
+      "fvmMantra": 32,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/pasalic/2077",
+      "birthDate": "1995-02-09",
+      "birthYear": 1995
     },
     {
       "id": 185,
@@ -2255,7 +2573,10 @@
       "fvmClassic": 21,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 21
+      "fvmMantra": 21,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/bernardeschi/184",
+      "birthDate": "1994-02-16",
+      "birthYear": 1994
     },
     {
       "id": 11,
@@ -2276,7 +2597,10 @@
       "fvmClassic": 27,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 27
+      "fvmMantra": 27,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/caprile/4360",
+      "birthDate": "2001-08-25",
+      "birthYear": 2001
     },
     {
       "id": 57,
@@ -2297,7 +2621,10 @@
       "fvmClassic": 28,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 28
+      "fvmMantra": 28,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/mandragora/1933",
+      "birthDate": "1997-06-29",
+      "birthYear": 1997
     },
     {
       "id": 91,
@@ -2318,7 +2645,10 @@
       "fvmClassic": 30,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 32
+      "fvmMantra": 32,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/ghedjemis/6530",
+      "birthDate": "2002-09-06",
+      "birthYear": 2002
     },
     {
       "id": 22,
@@ -2339,7 +2669,10 @@
       "fvmClassic": 33,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 35
+      "fvmMantra": 35,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/vasquez/5514",
+      "birthDate": "1998-10-22",
+      "birthYear": 1998
     },
     {
       "id": 100,
@@ -2360,7 +2693,10 @@
       "fvmClassic": 10,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/di-gregorio/5876",
+      "birthDate": "1997-07-27",
+      "birthYear": 1997
     },
     {
       "id": 29,
@@ -2381,7 +2717,10 @@
       "fvmClassic": 27,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 30
+      "fvmMantra": 30,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/cambiaso/5520",
+      "birthDate": "2000-02-20",
+      "birthYear": 2000
     },
     {
       "id": 190,
@@ -2402,7 +2741,10 @@
       "fvmClassic": 40,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 37
+      "fvmMantra": 37,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/david/5544",
+      "birthDate": "2000-01-14",
+      "birthYear": 2000
     },
     {
       "id": 9,
@@ -2423,7 +2765,10 @@
       "fvmClassic": 30,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 30
+      "fvmMantra": 30,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/mandas/6482",
+      "birthDate": "2001-09-17",
+      "birthYear": 2001
     },
     {
       "id": 192,
@@ -2444,7 +2789,10 @@
       "fvmClassic": 28,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 26
+      "fvmMantra": 26,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/cancellieri/5500",
+      "birthDate": "2002-02-12",
+      "birthYear": 2002
     },
     {
       "id": 85,
@@ -2465,7 +2813,10 @@
       "fvmClassic": 25,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 23
+      "fvmMantra": 23,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/isaksen/6398",
+      "birthDate": "2001-04-19",
+      "birthYear": 2001
     },
     {
       "id": "m10270",
@@ -2486,7 +2837,10 @@
       "fvmClassic": 25,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 23
+      "fvmMantra": 23,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/geubbels/5029",
+      "birthDate": "2001-08-16",
+      "birthYear": 2001
     },
     {
       "id": "m10316",
@@ -2507,7 +2861,10 @@
       "fvmClassic": 33,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 30
+      "fvmMantra": 30,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/cutrone/2155",
+      "birthDate": "1998-01-03",
+      "birthYear": 1998
     },
     {
       "id": 175,
@@ -2528,7 +2885,10 @@
       "fvmClassic": 20,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 20
+      "fvmMantra": 20,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/kon%C3%A8-i/6717",
+      "birthDate": "2002-06-16",
+      "birthYear": 2002
     },
     {
       "id": "m10434",
@@ -2549,7 +2909,10 @@
       "fvmClassic": 32,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 34
+      "fvmMantra": 34,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/adams-c/6646",
+      "birthDate": "1996-07-13",
+      "birthYear": 1996
     },
     {
       "id": 10,
@@ -2570,7 +2933,10 @@
       "fvmClassic": 29,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 29
+      "fvmMantra": 29,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/okoye/6462",
+      "birthDate": "1999-08-28",
+      "birthYear": 1999
     },
     {
       "id": 144,
@@ -2591,7 +2957,10 @@
       "fvmClassic": 26,
       "qiMantra": 10,
       "qaMantra": 10,
-      "fvmMantra": 28
+      "fvmMantra": 28,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/chalobah-t/5641",
+      "birthDate": "1999-07-05",
+      "birthYear": 1999
     },
     {
       "id": 135,
@@ -2612,7 +2981,10 @@
       "fvmClassic": 16,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 16
+      "fvmMantra": 16,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/hien/6046",
+      "birthDate": "1999-01-13",
+      "birthYear": 1999
     },
     {
       "id": 30,
@@ -2633,7 +3005,10 @@
       "fvmClassic": 24,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 24
+      "fvmMantra": 24,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/zappacosta/554",
+      "birthDate": "1992-06-11",
+      "birthYear": 1992
     },
     {
       "id": "m10029",
@@ -2654,7 +3029,10 @@
       "fvmClassic": 18,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 18
+      "fvmMantra": 18,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/lucum%C3%AC/6042",
+      "birthDate": "1998-06-26",
+      "birthYear": 1998
     },
     {
       "id": 116,
@@ -2675,7 +3053,10 @@
       "fvmClassic": 24,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 24
+      "fvmMantra": 24,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/miranda-j/4734",
+      "birthDate": "2000-01-19",
+      "birthYear": 2000
     },
     {
       "id": "m10045",
@@ -2696,7 +3077,10 @@
       "fvmClassic": 22,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 20
+      "fvmMantra": 20,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/odgaard/2765",
+      "birthDate": "1999-03-31",
+      "birthYear": 1999
     },
     {
       "id": 90,
@@ -2717,7 +3101,10 @@
       "fvmClassic": 25,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 25
+      "fvmMantra": 25,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/cambiaghi/4436",
+      "birthDate": "2000-12-28",
+      "birthYear": 2000
     },
     {
       "id": 33,
@@ -2738,7 +3125,10 @@
       "fvmClassic": 20,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 20
+      "fvmMantra": 20,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/mina/4210",
+      "birthDate": "1994-09-23",
+      "birthYear": 1994
     },
     {
       "id": 26,
@@ -2759,7 +3149,10 @@
       "fvmClassic": 27,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 27
+      "fvmMantra": 27,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/dragusin/5365",
+      "birthDate": "2002-02-03",
+      "birthYear": 2002
     },
     {
       "id": 31,
@@ -2780,7 +3173,10 @@
       "fvmClassic": 23,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 25
+      "fvmMantra": 25,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/jimenez-a/6531",
+      "birthDate": "2005-05-08",
+      "birthYear": 2005
     },
     {
       "id": 159,
@@ -2801,7 +3197,10 @@
       "fvmClassic": 23,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 25
+      "fvmMantra": 25,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/fagioli/4465",
+      "birthDate": "2001-02-12",
+      "birthYear": 2001
     },
     {
       "id": 60,
@@ -2822,7 +3221,10 @@
       "fvmClassic": 25,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 25
+      "fvmMantra": 25,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/ndour/6294",
+      "birthDate": "2004-07-27",
+      "birthYear": 2004
     },
     {
       "id": "m10124",
@@ -2843,7 +3245,10 @@
       "fvmClassic": 31,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 28
+      "fvmMantra": 28,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/piccoli/4359",
+      "birthDate": "2001-01-27",
+      "birthYear": 2001
     },
     {
       "id": 102,
@@ -2864,7 +3269,10 @@
       "fvmClassic": 18,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 18
+      "fvmMantra": 18,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/bijlow/7332",
+      "birthDate": "1998-01-22",
+      "birthYear": 1998
     },
     {
       "id": 32,
@@ -2885,7 +3293,10 @@
       "fvmClassic": 22,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 22
+      "fvmMantra": 22,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/norton-cuffy/6814",
+      "birthDate": "2004-01-12",
+      "birthYear": 2004
     },
     {
       "id": 187,
@@ -2906,7 +3317,10 @@
       "fvmClassic": 20,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 21
+      "fvmMantra": 21,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/vitinha-o/6164",
+      "birthDate": "2000-03-15",
+      "birthYear": 2000
     },
     {
       "id": "m10186",
@@ -2927,7 +3341,10 @@
       "fvmClassic": 37,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 40
+      "fvmMantra": 40,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/diouf/6274",
+      "birthDate": "2003-05-17",
+      "birthYear": 2003
     },
     {
       "id": 58,
@@ -2948,7 +3365,10 @@
       "fvmClassic": 26,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 26
+      "fvmMantra": 26,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/sucic-p/7070",
+      "birthDate": "2003-10-25",
+      "birthYear": 2003
     },
     {
       "id": 121,
@@ -2969,7 +3389,10 @@
       "fvmClassic": 13,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 15
+      "fvmMantra": 15,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/celik/4657",
+      "birthDate": "1997-02-17",
+      "birthYear": 1997
     },
     {
       "id": 51,
@@ -2990,7 +3413,10 @@
       "fvmClassic": 32,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 35
+      "fvmMantra": 35,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/locatelli/827",
+      "birthDate": "1998-01-08",
+      "birthYear": 1998
     },
     {
       "id": 101,
@@ -3011,7 +3437,10 @@
       "fvmClassic": 25,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 25
+      "fvmMantra": 25,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/falcone/2134",
+      "birthDate": "1995-04-12",
+      "birthYear": 1995
     },
     {
       "id": 36,
@@ -3032,7 +3461,10 @@
       "fvmClassic": 25,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 25
+      "fvmMantra": 25,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/bartesaghi/6496",
+      "birthDate": "2005-12-29",
+      "birthYear": 2005
     },
     {
       "id": "m10314",
@@ -3053,7 +3485,10 @@
       "fvmClassic": 25,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 22
+      "fvmMantra": 22,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/colpani/5878",
+      "birthDate": "1999-05-11",
+      "birthYear": 1999
     },
     {
       "id": 34,
@@ -3074,7 +3509,10 @@
       "fvmClassic": 24,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 24
+      "fvmMantra": 24,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/spinazzola/1852",
+      "birthDate": "1993-03-25",
+      "birthYear": 1993
     },
     {
       "id": "m10338",
@@ -3095,7 +3533,10 @@
       "fvmClassic": 34,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 34
+      "fvmMantra": 34,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/vergara/7223",
+      "birthDate": "2003-01-16",
+      "birthYear": 2003
     },
     {
       "id": 117,
@@ -3116,7 +3557,10 @@
       "fvmClassic": 21,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 24
+      "fvmMantra": 24,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/delprato/6664",
+      "birthDate": "1999-11-10",
+      "birthYear": 1999
     },
     {
       "id": 118,
@@ -3137,7 +3581,10 @@
       "fvmClassic": 24,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 24
+      "fvmMantra": 24,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/valeri/5862",
+      "birthDate": "1998-12-07",
+      "birthYear": 1998
     },
     {
       "id": 143,
@@ -3158,7 +3605,10 @@
       "fvmClassic": 20,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 20
+      "fvmMantra": 20,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/koulierakis/7529",
+      "birthDate": "2003-11-28",
+      "birthYear": 2003
     },
     {
       "id": 52,
@@ -3179,7 +3629,10 @@
       "fvmClassic": 29,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 32
+      "fvmMantra": 32,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/cristante/779",
+      "birthDate": "1995-03-03",
+      "birthYear": 1995
     },
     {
       "id": 126,
@@ -3200,7 +3653,10 @@
       "fvmClassic": 19,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 19
+      "fvmMantra": 19,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/vojvoda/4994",
+      "birthDate": "1995-02-01",
+      "birthYear": 1995
     },
     {
       "id": "m10489",
@@ -3221,7 +3677,10 @@
       "fvmClassic": 28,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 29
+      "fvmMantra": 29,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/yeboah-j/6904",
+      "birthDate": "2000-06-23",
+      "birthYear": 2000
     },
     {
       "id": "m10493",
@@ -3242,7 +3701,10 @@
       "fvmClassic": 20,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/rrahmani-al/7449",
+      "birthDate": "2000-08-31",
+      "birthYear": 2000
     },
     {
       "id": "fc_couto",
@@ -3263,7 +3725,10 @@
       "fvmClassic": 27,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 27
+      "fvmMantra": 27,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/couto/6727",
+      "birthDate": "2002-06-03",
+      "birthYear": 2002
     },
     {
       "id": "fc_schmid",
@@ -3284,7 +3749,10 @@
       "fvmClassic": 30,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 30
+      "fvmMantra": 30,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/schmid/7551",
+      "birthDate": "2000-01-27",
+      "birthYear": 2000
     },
     {
       "id": 149,
@@ -3305,7 +3773,10 @@
       "fvmClassic": 24,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 27
+      "fvmMantra": 27,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/gaetano/4364",
+      "birthDate": "2000-05-05",
+      "birthYear": 2000
     },
     {
       "id": 151,
@@ -3326,7 +3797,10 @@
       "fvmClassic": 18,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 21
+      "fvmMantra": 21,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/ferguson/5858",
+      "birthDate": "1999-08-24",
+      "birthYear": 1999
     },
     {
       "id": 136,
@@ -3347,7 +3821,10 @@
       "fvmClassic": 14,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 16
+      "fvmMantra": 16,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/obert/5701",
+      "birthDate": "2002-08-23",
+      "birthYear": 2002
     },
     {
       "id": 153,
@@ -3368,7 +3845,10 @@
       "fvmClassic": 19,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 21
+      "fvmMantra": 21,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/fazzini/6010",
+      "birthDate": "2003-03-16",
+      "birthYear": 2003
     },
     {
       "id": 120,
@@ -3389,7 +3869,10 @@
       "fvmClassic": 23,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 23
+      "fvmMantra": 23,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/kaiki/7414",
+      "birthDate": "2003-03-08",
+      "birthYear": 2003
     },
     {
       "id": 160,
@@ -3410,7 +3893,10 @@
       "fvmClassic": 25,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 28
+      "fvmMantra": 28,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/cal%C3%B2/7472",
+      "birthDate": "1997-02-05",
+      "birthYear": 1997
     },
     {
       "id": "m10149",
@@ -3431,7 +3917,10 @@
       "fvmClassic": 24,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 21
+      "fvmMantra": 21,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/raimondo/5436",
+      "birthDate": "2004-03-18",
+      "birthYear": 2004
     },
     {
       "id": 161,
@@ -3452,7 +3941,10 @@
       "fvmClassic": 19,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 21
+      "fvmMantra": 21,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/frendrup/5791",
+      "birthDate": "2001-04-07",
+      "birthYear": 2001
     },
     {
       "id": 112,
@@ -3473,7 +3965,10 @@
       "fvmClassic": 27,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 30
+      "fvmMantra": 30,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/carlos-augusto/5877",
+      "birthDate": "1999-01-07",
+      "birthYear": 1999
     },
     {
       "id": 164,
@@ -3494,7 +3989,10 @@
       "fvmClassic": 55,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 55
+      "fvmMantra": 55,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/frattesi/2848",
+      "birthDate": "1999-09-22",
+      "birthYear": 1999
     },
     {
       "id": "m10195",
@@ -3515,7 +4013,10 @@
       "fvmClassic": 21,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 18
+      "fvmMantra": 18,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/bonny/6669",
+      "birthDate": "2003-10-25",
+      "birthYear": 2003
     },
     {
       "id": 123,
@@ -3536,7 +4037,10 @@
       "fvmClassic": 22,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 22
+      "fvmMantra": 22,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/doekhi/6320",
+      "birthDate": "1998-06-30",
+      "birthYear": 1998
     },
     {
       "id": 115,
@@ -3557,7 +4061,10 @@
       "fvmClassic": 24,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 24
+      "fvmMantra": 24,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/romagnoli/460",
+      "birthDate": "1995-01-12",
+      "birthYear": 1995
     },
     {
       "id": 133,
@@ -3578,7 +4085,10 @@
       "fvmClassic": 17,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/tiago-gabriel/6989",
+      "birthDate": "2004-12-26",
+      "birthYear": 2004
     },
     {
       "id": "m10271",
@@ -3599,7 +4109,10 @@
       "fvmClassic": 18,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 16
+      "fvmMantra": 16,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/stulic/7252",
+      "birthDate": "2001-09-08",
+      "birthYear": 2001
     },
     {
       "id": 122,
@@ -3620,7 +4133,10 @@
       "fvmClassic": 25,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 25
+      "fvmMantra": 25,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/gabbia/4401",
+      "birthDate": "1999-10-21",
+      "birthYear": 1999
     },
     {
       "id": 146,
@@ -3641,7 +4157,10 @@
       "fvmClassic": 11,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/tomori/4751",
+      "birthDate": "1997-12-19",
+      "birthYear": 1997
     },
     {
       "id": 169,
@@ -3662,7 +4181,10 @@
       "fvmClassic": 15,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 20
+      "fvmMantra": 20,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/pessina/2741",
+      "birthDate": "1997-04-21",
+      "birthYear": 1997
     },
     {
       "id": 127,
@@ -3683,7 +4205,10 @@
       "fvmClassic": 15,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 15
+      "fvmMantra": 15,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/buongiorno/2724",
+      "birthDate": "1999-06-06",
+      "birthYear": 1999
     },
     {
       "id": 171,
@@ -3704,7 +4229,10 @@
       "fvmClassic": 20,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 22
+      "fvmMantra": 22,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/lobotka/4287",
+      "birthDate": "1994-11-25",
+      "birthYear": 1994
     },
     {
       "id": 103,
@@ -3725,7 +4253,10 @@
       "fvmClassic": 5,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/daffara/7411",
+      "birthDate": "2004-12-05",
+      "birthYear": 2004
     },
     {
       "id": "m10349",
@@ -3746,7 +4277,10 @@
       "fvmClassic": 20,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 20
+      "fvmMantra": 20,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/suzuki/6641",
+      "birthDate": "2002-08-21",
+      "birthYear": 2002
     },
     {
       "id": 172,
@@ -3767,7 +4301,10 @@
       "fvmClassic": 36,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 36
+      "fvmMantra": 36,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/bernab%C3%A8/6666",
+      "birthDate": "2001-05-26",
+      "birthYear": 2001
     },
     {
       "id": 104,
@@ -3788,7 +4325,10 @@
       "fvmClassic": 15,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 15
+      "fvmMantra": 15,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/muric/4236",
+      "birthDate": "1998-11-07",
+      "birthYear": 1998
     },
     {
       "id": "m10394",
@@ -3809,7 +4349,10 @@
       "fvmClassic": 19,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 19
+      "fvmMantra": 19,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/idzes/6672",
+      "birthDate": "2000-06-02",
+      "birthYear": 2000
     },
     {
       "id": "m10408",
@@ -3830,7 +4373,10 @@
       "fvmClassic": 23,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 23
+      "fvmMantra": 23,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/volpato/5735",
+      "birthDate": "2003-11-15",
+      "birthYear": 2003
     },
     {
       "id": 129,
@@ -3851,7 +4397,10 @@
       "fvmClassic": 18,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 18
+      "fvmMantra": 18,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/coco/6642",
+      "birthDate": "1999-02-09",
+      "birthYear": 1999
     },
     {
       "id": 130,
@@ -3872,7 +4421,10 @@
       "fvmClassic": 18,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 18
+      "fvmMantra": 18,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/ismajli/5010",
+      "birthDate": "1996-09-30",
+      "birthYear": 1996
     },
     {
       "id": "m10430",
@@ -3893,7 +4445,10 @@
       "fvmClassic": 27,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 27
+      "fvmMantra": 27,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/oristanio/6218",
+      "birthDate": "2002-09-28",
+      "birthYear": 2002
     },
     {
       "id": "m10437",
@@ -3914,7 +4469,10 @@
       "fvmClassic": 18,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 16
+      "fvmMantra": 16,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/zapata-d/608",
+      "birthDate": "1991-04-01",
+      "birthYear": 1991
     },
     {
       "id": 131,
@@ -3935,7 +4493,10 @@
       "fvmClassic": 20,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 22
+      "fvmMantra": 22,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/kristensen-t/6485",
+      "birthDate": "2002-01-17",
+      "birthYear": 2002
     },
     {
       "id": "m10460",
@@ -3956,7 +4517,10 @@
       "fvmClassic": 23,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 20
+      "fvmMantra": 20,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/unai-gomez/6783",
+      "birthDate": "2003-05-25",
+      "birthYear": 2003
     },
     {
       "id": "fc_sow",
@@ -3977,7 +4541,10 @@
       "fvmClassic": 14,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/sow/5946",
+      "birthDate": "1997-02-06",
+      "birthYear": 1997
     },
     {
       "id": 37,
@@ -3998,7 +4565,10 @@
       "fvmClassic": 16,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 18
+      "fvmMantra": 18,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/ahanor/6916",
+      "birthDate": "2008-02-23",
+      "birthYear": 2008
     },
     {
       "id": 137,
@@ -4019,7 +4589,10 @@
       "fvmClassic": 15,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 15
+      "fvmMantra": 15,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/bellanova/4887",
+      "birthDate": "2000-05-17",
+      "birthYear": 2000
     },
     {
       "id": 134,
@@ -4040,7 +4613,10 @@
       "fvmClassic": 17,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/bernasconi/7219",
+      "birthDate": "2003-11-16",
+      "birthYear": 2003
     },
     {
       "id": "m10018",
@@ -4061,7 +4637,10 @@
       "fvmClassic": 21,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 19
+      "fvmMantra": 19,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/zalewski/5422",
+      "birthDate": "2002-01-23",
+      "birthYear": 2002
     },
     {
       "id": "m10021",
@@ -4082,7 +4661,10 @@
       "fvmClassic": 16,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/sulemana-k/5918",
+      "birthDate": "2002-02-15",
+      "birthYear": 2002
     },
     {
       "id": 124,
@@ -4103,7 +4685,10 @@
       "fvmClassic": 15,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/heggem/7212",
+      "birthDate": "1999-01-12",
+      "birthYear": 1999
     },
     {
       "id": 125,
@@ -4124,7 +4709,10 @@
       "fvmClassic": 19,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 19
+      "fvmMantra": 19,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/zortea/4433",
+      "birthDate": "1999-06-19",
+      "birthYear": 1999
     },
     {
       "id": 152,
@@ -4145,7 +4733,10 @@
       "fvmClassic": 14,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/pobega/5298",
+      "birthDate": "1999-07-15",
+      "birthYear": 1999
     },
     {
       "id": 155,
@@ -4166,7 +4757,10 @@
       "fvmClassic": 13,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 16
+      "fvmMantra": 16,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/adopo/4870",
+      "birthDate": "2000-07-19",
+      "birthYear": 2000
     },
     {
       "id": 154,
@@ -4187,7 +4781,10 @@
       "fvmClassic": 14,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/winks/4260",
+      "birthDate": "1996-02-02",
+      "birthYear": 1996
     },
     {
       "id": "m10074",
@@ -4208,7 +4805,10 @@
       "fvmClassic": 15,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/mutandwa/6598",
+      "birthDate": "2003-01-05",
+      "birthYear": 2003
     },
     {
       "id": 35,
@@ -4229,7 +4829,10 @@
       "fvmClassic": 18,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 18
+      "fvmMantra": 18,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/valle/6867",
+      "birthDate": "2004-04-25",
+      "birthYear": 2004
     },
     {
       "id": 156,
@@ -4250,7 +4853,10 @@
       "fvmClassic": 20,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 20
+      "fvmMantra": 20,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/caqueret/5036",
+      "birthDate": "2000-02-15",
+      "birthYear": 2000
     },
     {
       "id": "m10094",
@@ -4271,7 +4877,10 @@
       "fvmClassic": 22,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 20
+      "fvmMantra": 20,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/liberali/6678",
+      "birthDate": "2007-04-06",
+      "birthYear": 2007
     },
     {
       "id": "m10109",
@@ -4292,7 +4901,10 @@
       "fvmClassic": 18,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 20
+      "fvmMantra": 20,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/valdepenas/7294",
+      "birthDate": "2006-10-20",
+      "birthYear": 2006
     },
     {
       "id": "m10110",
@@ -4313,7 +4925,10 @@
       "fvmClassic": 19,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 21
+      "fvmMantra": 21,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/viery/7410",
+      "birthDate": "2005-01-02",
+      "birthYear": 2005
     },
     {
       "id": 158,
@@ -4334,7 +4949,10 @@
       "fvmClassic": 20,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 22
+      "fvmMantra": 22,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/oulai/7464",
+      "birthDate": "2006-04-06",
+      "birthYear": 2006
     },
     {
       "id": 141,
@@ -4355,7 +4973,10 @@
       "fvmClassic": 14,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/monterisi/4952",
+      "birthDate": "2001-12-19",
+      "birthYear": 2001
     },
     {
       "id": "m10153",
@@ -4376,7 +4997,10 @@
       "fvmClassic": 13,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/marcandalli/6660",
+      "birthDate": "2002-02-25",
+      "birthYear": 2002
     },
     {
       "id": 162,
@@ -4397,7 +5021,10 @@
       "fvmClassic": 18,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 21
+      "fvmMantra": 21,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/ellertsson/6020",
+      "birthDate": "2002-03-11",
+      "birthYear": 2002
     },
     {
       "id": "m10183",
@@ -4418,7 +5045,10 @@
       "fvmClassic": 18,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 20
+      "fvmMantra": 20,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/pavard/4177",
+      "birthDate": "1996-03-28",
+      "birthYear": 1996
     },
     {
       "id": "m10200",
@@ -4439,7 +5069,10 @@
       "fvmClassic": 5,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/perin/218",
+      "birthDate": "1992-11-10",
+      "birthYear": 1992
     },
     {
       "id": "m10216",
@@ -4460,7 +5093,10 @@
       "fvmClassic": 18,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 16
+      "fvmMantra": 16,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/zhegrova/5761",
+      "birthDate": "1999-03-31",
+      "birthYear": 1999
     },
     {
       "id": 189,
@@ -4481,7 +5117,10 @@
       "fvmClassic": 25,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 28
+      "fvmMantra": 28,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/boga/2832",
+      "birthDate": "1997-01-03",
+      "birthYear": 1997
     },
     {
       "id": 132,
@@ -4502,7 +5141,10 @@
       "fvmClassic": 17,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/tavares-n/5620",
+      "birthDate": "2000-01-26",
+      "birthYear": 2000
     },
     {
       "id": 119,
@@ -4523,7 +5165,10 @@
       "fvmClassic": 20,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 23
+      "fvmMantra": 23,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/marusic/2188",
+      "birthDate": "1992-10-17",
+      "birthYear": 1992
     },
     {
       "id": 165,
@@ -4544,7 +5189,10 @@
       "fvmClassic": 16,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 19
+      "fvmMantra": 19,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/rovella/4459",
+      "birthDate": "2001-12-04",
+      "birthYear": 2001
     },
     {
       "id": "m10247",
@@ -4565,7 +5213,10 @@
       "fvmClassic": 17,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/noslin/6556",
+      "birthDate": "1999-07-07",
+      "birthYear": 1999
     },
     {
       "id": "m10258",
@@ -4586,7 +5237,10 @@
       "fvmClassic": 13,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/gallo/4502",
+      "birthDate": "2000-01-05",
+      "birthYear": 2000
     },
     {
       "id": 166,
@@ -4607,7 +5261,10 @@
       "fvmClassic": 14,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 16
+      "fvmMantra": 16,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/coulibaly-l/5504",
+      "birthDate": "1996-04-10",
+      "birthYear": 1996
     },
     {
       "id": "m10268",
@@ -4628,7 +5285,10 @@
       "fvmClassic": 19,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/pierotti/6549",
+      "birthDate": "2001-04-03",
+      "birthYear": 2001
     },
     {
       "id": "m10292",
@@ -4649,7 +5309,10 @@
       "fvmClassic": 11,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 9
+      "fvmMantra": 9,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/chukwueze/4856",
+      "birthDate": "1999-05-22",
+      "birthYear": 1999
     },
     {
       "id": "m10297",
@@ -4670,7 +5333,10 @@
       "fvmClassic": 14,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/gimenez/7008",
+      "birthDate": "2001-04-18",
+      "birthYear": 2001
     },
     {
       "id": "m10308",
@@ -4691,7 +5357,10 @@
       "fvmClassic": 15,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 15
+      "fvmMantra": 15,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/mangas/7485",
+      "birthDate": "1998-03-19",
+      "birthYear": 1998
     },
     {
       "id": "m10313",
@@ -4712,7 +5381,10 @@
       "fvmClassic": 16,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 16
+      "fvmMantra": 16,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/akinsanmiro/6593",
+      "birthDate": "2004-11-25",
+      "birthYear": 2004
     },
     {
       "id": 147,
@@ -4733,7 +5405,10 @@
       "fvmClassic": 13,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/beukema/6202",
+      "birthDate": "1998-11-17",
+      "birthYear": 1998
     },
     {
       "id": 86,
@@ -4754,7 +5429,10 @@
       "fvmClassic": 22,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 25
+      "fvmMantra": 25,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/neres/6831",
+      "birthDate": "1997-03-03",
+      "birthYear": 1997
     },
     {
       "id": 128,
@@ -4775,7 +5453,10 @@
       "fvmClassic": 18,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 18
+      "fvmMantra": 18,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/circati/6663",
+      "birthDate": "2003-10-10",
+      "birthYear": 2003
     },
     {
       "id": 173,
@@ -4796,7 +5477,10 @@
       "fvmClassic": 18,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 20
+      "fvmMantra": 20,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/nicolussi-caviglia/4349",
+      "birthDate": "2000-06-18",
+      "birthYear": 2000
     },
     {
       "id": "m10419",
@@ -4817,7 +5501,10 @@
       "fvmClassic": 11,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/comuzzo/6495",
+      "birthDate": "2005-02-20",
+      "birthYear": 2005
     },
     {
       "id": "m10452",
@@ -4838,7 +5525,10 @@
       "fvmClassic": 12,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/kamara-h/5555",
+      "birthDate": "1994-03-05",
+      "birthYear": 1994
     },
     {
       "id": 179,
@@ -4859,7 +5549,10 @@
       "fvmClassic": 20,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 23
+      "fvmMantra": 23,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/karlstrom/6680",
+      "birthDate": "1995-06-21",
+      "birthYear": 1995
     },
     {
       "id": 105,
@@ -4880,7 +5573,10 @@
       "fvmClassic": 14,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/stankovic-f/6248",
+      "birthDate": "2002-02-25",
+      "birthYear": 2002
     },
     {
       "id": "m10469",
@@ -4901,7 +5597,10 @@
       "fvmClassic": 13,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/bella-kotchap/7253",
+      "birthDate": "2001-12-11",
+      "birthYear": 2001
     },
     {
       "id": 180,
@@ -4922,7 +5621,10 @@
       "fvmClassic": 19,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 20
+      "fvmMantra": 20,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/basic/5674",
+      "birthDate": "1996-11-25",
+      "birthYear": 1996
     },
     {
       "id": "fc_obrador",
@@ -4943,7 +5645,10 @@
       "fvmClassic": 15,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 15
+      "fvmMantra": 15,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/obrador/7329",
+      "birthDate": "2004-02-24",
+      "birthYear": 2004
     },
     {
       "id": "m10007",
@@ -4964,7 +5669,10 @@
       "fvmClassic": 12,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/kolasinac/2640",
+      "birthDate": "1993-06-20",
+      "birthYear": 1993
     },
     {
       "id": "m10019",
@@ -4985,7 +5693,10 @@
       "fvmClassic": 22,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 22
+      "fvmMantra": 22,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/maldini/4896",
+      "birthDate": "2001-10-11",
+      "birthYear": 2001
     },
     {
       "id": "m10030",
@@ -5006,7 +5717,10 @@
       "fvmClassic": 11,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/vitik/7068",
+      "birthDate": "2003-01-21",
+      "birthYear": 2003
     },
     {
       "id": "m10034",
@@ -5027,7 +5741,10 @@
       "fvmClassic": 13,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/holm/5678",
+      "birthDate": "2000-05-13",
+      "birthYear": 2000
     },
     {
       "id": "m10038",
@@ -5048,7 +5765,10 @@
       "fvmClassic": 12,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/amondarain/7528",
+      "birthDate": "2005-01-06",
+      "birthYear": 2005
     },
     {
       "id": "m10054",
@@ -5069,7 +5789,10 @@
       "fvmClassic": 11,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/kofler/7532",
+      "birthDate": "2005-04-26",
+      "birthYear": 2005
     },
     {
       "id": "m10056",
@@ -5090,7 +5813,10 @@
       "fvmClassic": 11,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/z%C3%A8-pedro/7274",
+      "birthDate": "1997-06-06",
+      "birthYear": 1997
     },
     {
       "id": "m10066",
@@ -5111,7 +5837,10 @@
       "fvmClassic": 12,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 15
+      "fvmMantra": 15,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/romano/7311",
+      "birthDate": "2006-06-17",
+      "birthYear": 2006
     },
     {
       "id": "m10069",
@@ -5132,7 +5861,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/felici/6640",
+      "birthDate": "2001-04-17",
+      "birthYear": 2001
     },
     {
       "id": "m10080",
@@ -5153,7 +5885,10 @@
       "fvmClassic": 13,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/kempf/6893",
+      "birthDate": "1995-01-28",
+      "birthYear": 1995
     },
     {
       "id": 157,
@@ -5174,7 +5909,10 @@
       "fvmClassic": 14,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 16
+      "fvmMantra": 16,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/milla/7412",
+      "birthDate": "1994-10-07",
+      "birthYear": 1994
     },
     {
       "id": "m10095",
@@ -5195,7 +5933,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/addai/7127",
+      "birthDate": "2005-08-26",
+      "birthYear": 2005
     },
     {
       "id": "m10113",
@@ -5216,7 +5957,10 @@
       "fvmClassic": 12,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/parisi/5449",
+      "birthDate": "2000-11-09",
+      "birthYear": 2000
     },
     {
       "id": "m10134",
@@ -5237,7 +5981,10 @@
       "fvmClassic": 11,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/bracaglia/7469",
+      "birthDate": "2003-07-19",
+      "birthYear": 2003
     },
     {
       "id": "m10135",
@@ -5258,7 +6005,10 @@
       "fvmClassic": 12,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/oyono-a/6238",
+      "birthDate": "2001-04-12",
+      "birthYear": 2001
     },
     {
       "id": "m10146",
@@ -5279,7 +6029,10 @@
       "fvmClassic": 13,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/zerbin/5998",
+      "birthDate": "1999-03-03",
+      "birthYear": 1999
     },
     {
       "id": "m10160",
@@ -5300,7 +6053,10 @@
       "fvmClassic": 15,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 15
+      "fvmMantra": 15,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/martin/2593",
+      "birthDate": "1997-04-22",
+      "birthYear": 1997
     },
     {
       "id": "m10169",
@@ -5321,7 +6077,10 @@
       "fvmClassic": 14,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/meichtry/7409",
+      "birthDate": "2005-07-08",
+      "birthYear": 2005
     },
     {
       "id": "m10171",
@@ -5342,7 +6101,10 @@
       "fvmClassic": 11,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/traor%C3%A8-hj/2857",
+      "birthDate": "2000-02-18",
+      "birthYear": 2000
     },
     {
       "id": 163,
@@ -5363,7 +6125,10 @@
       "fvmClassic": 19,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 19
+      "fvmMantra": 19,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/mkhitaryan/2529",
+      "birthDate": "1989-01-21",
+      "birthYear": 1989
     },
     {
       "id": 138,
@@ -5384,7 +6149,10 @@
       "fvmClassic": 10,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/kelly-l/6766",
+      "birthDate": "1998-10-06",
+      "birthYear": 1998
     },
     {
       "id": "m10215",
@@ -5405,7 +6173,10 @@
       "fvmClassic": 14,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/koopmeiners/5685",
+      "birthDate": "1998-02-28",
+      "birthYear": 1998
     },
     {
       "id": 145,
@@ -5426,7 +6197,10 @@
       "fvmClassic": 15,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 15
+      "fvmMantra": 15,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/pedraza/4817",
+      "birthDate": "1996-04-09",
+      "birthYear": 1996
     },
     {
       "id": "m10240",
@@ -5447,7 +6221,10 @@
       "fvmClassic": 13,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/dele-bashiru/6629",
+      "birthDate": "2001-02-06",
+      "birthYear": 2001
     },
     {
       "id": "m10252",
@@ -5468,7 +6245,10 @@
       "fvmClassic": 12,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/gaspar-k/6632",
+      "birthDate": "1997-09-27",
+      "birthYear": 1997
     },
     {
       "id": "m10257",
@@ -5489,7 +6269,10 @@
       "fvmClassic": 11,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/veiga-d/6990",
+      "birthDate": "2002-09-25",
+      "birthYear": 2002
     },
     {
       "id": 167,
@@ -5510,7 +6293,10 @@
       "fvmClassic": 16,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 16
+      "fvmMantra": 16,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/berisha-m/6015",
+      "birthDate": "2003-10-21",
+      "birthYear": 2003
     },
     {
       "id": "m10267",
@@ -5531,7 +6317,10 @@
       "fvmClassic": 14,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/gandelman/7318",
+      "birthDate": "2000-05-16",
+      "birthYear": 2000
     },
     {
       "id": 168,
@@ -5552,7 +6341,10 @@
       "fvmClassic": 23,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 26
+      "fvmMantra": 26,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/fofana-y/4686",
+      "birthDate": "1999-01-10",
+      "birthYear": 1999
     },
     {
       "id": "m10296",
@@ -5573,7 +6365,10 @@
       "fvmClassic": 20,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/camarda/6519",
+      "birthDate": "2008-03-10",
+      "birthYear": 2008
     },
     {
       "id": 106,
@@ -5594,7 +6389,10 @@
       "fvmClassic": 12,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/thiam/4485",
+      "birthDate": "1998-03-09",
+      "birthYear": 1998
     },
     {
       "id": "m10315",
@@ -5615,7 +6413,10 @@
       "fvmClassic": 18,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 18
+      "fvmMantra": 18,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/mota/5882",
+      "birthDate": "1998-05-02",
+      "birthYear": 1998
     },
     {
       "id": 109,
@@ -5636,7 +6437,10 @@
       "fvmClassic": 10,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/milinkovic-savic-v/2170",
+      "birthDate": "1997-02-20",
+      "birthYear": 1997
     },
     {
       "id": 139,
@@ -5657,7 +6461,10 @@
       "fvmClassic": 13,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 15
+      "fvmMantra": 15,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/olivera/5840",
+      "birthDate": "1997-10-31",
+      "birthYear": 1997
     },
     {
       "id": "m10359",
@@ -5678,7 +6485,10 @@
       "fvmClassic": 15,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/keita-m/6898",
+      "birthDate": "2002-05-10",
+      "birthYear": 2002
     },
     {
       "id": "m10367",
@@ -5699,7 +6509,10 @@
       "fvmClassic": 13,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/frigan/7213",
+      "birthDate": "2003-02-11",
+      "birthYear": 2003
     },
     {
       "id": "m10379",
@@ -5720,7 +6533,10 @@
       "fvmClassic": 16,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 18
+      "fvmMantra": 18,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/rensch/6986",
+      "birthDate": "2003-01-18",
+      "birthYear": 2003
     },
     {
       "id": "m10385",
@@ -5741,7 +6557,10 @@
       "fvmClassic": 17,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/pisilli/6190",
+      "birthDate": "2004-09-23",
+      "birthYear": 2004
     },
     {
       "id": 176,
@@ -5762,7 +6581,10 @@
       "fvmClassic": 15,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/matic/2528",
+      "birthDate": "1988-08-01",
+      "birthYear": 1988
     },
     {
       "id": "m10405",
@@ -5783,7 +6605,10 @@
       "fvmClassic": 16,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 16
+      "fvmMantra": 16,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/adzic/6677",
+      "birthDate": "2006-05-12",
+      "birthYear": 2006
     },
     {
       "id": "m10406",
@@ -5804,7 +6629,10 @@
       "fvmClassic": 14,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/bakola/7036",
+      "birthDate": "2007-11-30",
+      "birthYear": 2007
     },
     {
       "id": "m10422",
@@ -5825,7 +6653,10 @@
       "fvmClassic": 13,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/pedersen/6426",
+      "birthDate": "2000-07-16",
+      "birthYear": 2000
     },
     {
       "id": "m10423",
@@ -5846,7 +6677,10 @@
       "fvmClassic": 18,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 20
+      "fvmMantra": 20,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/cacciamani/7060",
+      "birthDate": "2007-06-29",
+      "birthYear": 2007
     },
     {
       "id": 178,
@@ -5867,7 +6701,10 @@
       "fvmClassic": 13,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 15
+      "fvmMantra": 15,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/gineitis/6170",
+      "birthDate": "2004-04-15",
+      "birthYear": 2004
     },
     {
       "id": "m10456",
@@ -5888,7 +6725,10 @@
       "fvmClassic": 15,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/piotrowski/7198",
+      "birthDate": "1997-10-04",
+      "birthYear": 1997
     },
     {
       "id": "m10471",
@@ -5909,7 +6749,10 @@
       "fvmClassic": 11,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/moreno-m/6890",
+      "birthDate": "2003-09-24",
+      "birthYear": 2003
     },
     {
       "id": "m10479",
@@ -5930,7 +6773,10 @@
       "fvmClassic": 11,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/haps/5695",
+      "birthDate": "1993-06-12",
+      "birthYear": 1993
     },
     {
       "id": "m10482",
@@ -5951,7 +6797,10 @@
       "fvmClassic": 14,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 17
+      "fvmMantra": 17,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/busio/5507",
+      "birthDate": "2002-05-28",
+      "birthYear": 2002
     },
     {
       "id": "m10485",
@@ -5972,7 +6821,10 @@
       "fvmClassic": 14,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/sohm/5319",
+      "birthDate": "2001-04-11",
+      "birthYear": 2001
     },
     {
       "id": "m10487",
@@ -5993,7 +6845,10 @@
       "fvmClassic": 14,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/perez-k/6994",
+      "birthDate": "1997-02-14",
+      "birthYear": 1997
     },
     {
       "id": "m10491",
@@ -6014,7 +6869,10 @@
       "fvmClassic": 14,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/adorante/4387",
+      "birthDate": "2000-02-05",
+      "birthYear": 2000
     },
     {
       "id": "fc_grillitsch",
@@ -6035,7 +6893,10 @@
       "fvmClassic": 14,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/grillitsch/7550",
+      "birthDate": "1995-08-07",
+      "birthYear": 1995
     },
     {
       "id": "fc_milik",
@@ -6056,7 +6917,10 @@
       "fvmClassic": 13,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/milik/2012",
+      "birthDate": "1994-02-28",
+      "birthYear": 1994
     },
     {
       "id": 150,
@@ -6077,7 +6941,10 @@
       "fvmClassic": 12,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/de-roon/22",
+      "birthDate": "1991-03-29",
+      "birthYear": 1991
     },
     {
       "id": "m10041",
@@ -6098,7 +6965,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/moro-n/6054",
+      "birthDate": "1998-03-12",
+      "birthYear": 1998
     },
     {
       "id": "m10058",
@@ -6119,7 +6989,10 @@
       "fvmClassic": 9,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/zappa/4461",
+      "birthDate": "1999-12-22",
+      "birthYear": 1999
     },
     {
       "id": "m10065",
@@ -6140,7 +7013,10 @@
       "fvmClassic": 7,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/prati/6424",
+      "birthDate": "2003-12-28",
+      "birthYear": 2003
     },
     {
       "id": "m10072",
@@ -6161,7 +7037,10 @@
       "fvmClassic": 9,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/borrelli/6243",
+      "birthDate": "2000-03-10",
+      "birthYear": 2000
     },
     {
       "id": "m10073",
@@ -6182,7 +7061,10 @@
       "fvmClassic": 9,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/mendy-p/7374",
+      "birthDate": "2007-01-13",
+      "birthYear": 2007
     },
     {
       "id": "m10083",
@@ -6203,7 +7085,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/smolcic-i/7014",
+      "birthDate": "2000-08-17",
+      "birthYear": 2000
     },
     {
       "id": "m10102",
@@ -6224,7 +7109,10 @@
       "fvmClassic": 10,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/morata/313",
+      "birthDate": "1992-10-23",
+      "birthYear": 1992
     },
     {
       "id": "m10107",
@@ -6245,7 +7133,10 @@
       "fvmClassic": 8,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/pongracic/5603",
+      "birthDate": "1997-09-11",
+      "birthYear": 1997
     },
     {
       "id": "m10121",
@@ -6266,7 +7157,10 @@
       "fvmClassic": 8,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/fabbian/6206",
+      "birthDate": "2003-01-14",
+      "birthYear": 2003
     },
     {
       "id": 107,
@@ -6287,7 +7181,10 @@
       "fvmClassic": 8,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/palmisani/6415",
+      "birthDate": "2004-06-12",
+      "birthYear": 2004
     },
     {
       "id": "m10130",
@@ -6308,7 +7205,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/calvani/7467",
+      "birthDate": "2004-01-12",
+      "birthYear": 2004
     },
     {
       "id": "m10139",
@@ -6329,7 +7229,10 @@
       "fvmClassic": 11,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/cichella/7473",
+      "birthDate": "2005-10-04",
+      "birthYear": 2005
     },
     {
       "id": "m10142",
@@ -6350,7 +7253,10 @@
       "fvmClassic": 12,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/koutsoupias/7474",
+      "birthDate": "2001-05-10",
+      "birthYear": 2001
     },
     {
       "id": "m10148",
@@ -6371,7 +7277,10 @@
       "fvmClassic": 15,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 16
+      "fvmMantra": 16,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/kvernadze/6204",
+      "birthDate": "2003-02-07",
+      "birthYear": 2003
     },
     {
       "id": "m10161",
@@ -6392,7 +7301,10 @@
       "fvmClassic": 9,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 9
+      "fvmMantra": 9,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/mitaj/7537",
+      "birthDate": "2003-08-06",
+      "birthYear": 2003
     },
     {
       "id": "m10165",
@@ -6413,7 +7325,10 @@
       "fvmClassic": 11,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/amorim/7341",
+      "birthDate": "2005-05-18",
+      "birthYear": 2005
     },
     {
       "id": "m10175",
@@ -6434,7 +7349,10 @@
       "fvmClassic": 9,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/havel/7453",
+      "birthDate": "2003-04-16",
+      "birthYear": 2003
     },
     {
       "id": "m10187",
@@ -6455,7 +7373,10 @@
       "fvmClassic": 13,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 15
+      "fvmMantra": 15,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/luis-henrique/5301",
+      "birthDate": "2001-12-14",
+      "birthYear": 2001
     },
     {
       "id": "m10203",
@@ -6476,7 +7397,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/gatti/5831",
+      "birthDate": "1998-06-24",
+      "birthYear": 1998
     },
     {
       "id": "m10213",
@@ -6497,7 +7421,10 @@
       "fvmClassic": 12,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/douglas-luiz/4911",
+      "birthDate": "1998-05-09",
+      "birthYear": 1998
     },
     {
       "id": "m10238",
@@ -6518,7 +7445,10 @@
       "fvmClassic": 12,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 15
+      "fvmMantra": 15,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/cataldi/333",
+      "birthDate": "1994-08-06",
+      "birthYear": 1994
     },
     {
       "id": "m10254",
@@ -6539,7 +7469,10 @@
       "fvmClassic": 12,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/siebert/7240",
+      "birthDate": "2002-04-02",
+      "birthYear": 2002
     },
     {
       "id": "m10264",
@@ -6560,7 +7493,10 @@
       "fvmClassic": 11,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/ngom/7322",
+      "birthDate": "2004-03-09",
+      "birthYear": 2004
     },
     {
       "id": "m10287",
@@ -6581,7 +7517,10 @@
       "fvmClassic": 11,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 13
+      "fvmMantra": 13,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/ricci-s/5453",
+      "birthDate": "2001-08-21",
+      "birthYear": 2001
     },
     {
       "id": "m10288",
@@ -6602,7 +7541,10 @@
       "fvmClassic": 11,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/jashari/7203",
+      "birthDate": "2002-07-30",
+      "birthYear": 2002
     },
     {
       "id": "m10290",
@@ -6623,7 +7565,10 @@
       "fvmClassic": 11,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/loftus-cheek/4199",
+      "birthDate": "1996-01-23",
+      "birthYear": 1996
     },
     {
       "id": "m10303",
@@ -6644,7 +7589,10 @@
       "fvmClassic": 11,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/delli-carri/2115",
+      "birthDate": "1999-05-03",
+      "birthYear": 1999
     },
     {
       "id": "m10304",
@@ -6665,7 +7613,10 @@
       "fvmClassic": 12,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/lucchesi/6659",
+      "birthDate": "2003-05-09",
+      "birthYear": 2003
     },
     {
       "id": "m10309",
@@ -6686,7 +7637,10 @@
       "fvmClassic": 12,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/birindelli/5838",
+      "birthDate": "1999-07-19",
+      "birthYear": 1999
     },
     {
       "id": "m10335",
@@ -6707,7 +7661,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/folorunsho/6252",
+      "birthDate": "1998-02-07",
+      "birthYear": 1998
     },
     {
       "id": "m10342",
@@ -6728,7 +7685,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/giovane/7162",
+      "birthDate": "2003-11-24",
+      "birthYear": 2003
     },
     {
       "id": "m10353",
@@ -6749,7 +7709,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/valenti/5307",
+      "birthDate": "1999-01-14",
+      "birthYear": 1999
     },
     {
       "id": "m10364",
@@ -6770,7 +7733,10 @@
       "fvmClassic": 14,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/almqvist/6207",
+      "birthDate": "1999-07-10",
+      "birthYear": 1999
     },
     {
       "id": "m10373",
@@ -6791,7 +7757,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/ghilardi/6631",
+      "birthDate": "2003-01-06",
+      "birthYear": 2003
     },
     {
       "id": 174,
@@ -6812,7 +7781,10 @@
       "fvmClassic": 18,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 20
+      "fvmMantra": 20,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/el-aynaoui/6271",
+      "birthDate": "2001-07-02",
+      "birthYear": 2001
     },
     {
       "id": "m10395",
@@ -6833,7 +7805,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/walukiewicz/4374",
+      "birthDate": "2000-04-05",
+      "birthYear": 2000
     },
     {
       "id": "m10398",
@@ -6854,7 +7829,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/doig/5851",
+      "birthDate": "2002-05-18",
+      "birthYear": 2002
     },
     {
       "id": "m10418",
@@ -6875,7 +7853,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/comert/7526",
+      "birthDate": "1998-02-04",
+      "birthYear": 1998
     },
     {
       "id": 177,
@@ -6896,7 +7877,10 @@
       "fvmClassic": 13,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 15
+      "fvmMantra": 15,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/fitz-jim/7535",
+      "birthDate": "2003-07-05",
+      "birthYear": 2003
     },
     {
       "id": "m10426",
@@ -6917,7 +7901,10 @@
       "fvmClassic": 10,
       "qiMantra": 5,
       "qaMantra": 5,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/ilkhan/6005",
+      "birthDate": "2004-06-01",
+      "birthYear": 2004
     },
     {
       "id": "m10433",
@@ -6938,7 +7925,10 @@
       "fvmClassic": 12,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 19
+      "fvmMantra": 19,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/njie/6827",
+      "birthDate": "2005-05-14",
+      "birthYear": 2005
     },
     {
       "id": "m10435",
@@ -6959,7 +7949,10 @@
       "fvmClassic": 9,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/kulenovic/7349",
+      "birthDate": "1999-12-04",
+      "birthYear": 1999
     },
     {
       "id": "m10441",
@@ -6980,7 +7973,10 @@
       "fvmClassic": 9,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 9
+      "fvmMantra": 9,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/kabasele/4263",
+      "birthDate": "1991-02-24",
+      "birthYear": 1991
     },
     {
       "id": 140,
@@ -7001,7 +7997,10 @@
       "fvmClassic": 10,
       "qiMantra": 6,
       "qaMantra": 6,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/bertola/5820",
+      "birthDate": "2003-03-23",
+      "birthYear": 2003
     },
     {
       "id": "m10450",
@@ -7022,7 +8021,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/zanoli/5527",
+      "birthDate": "2000-10-03",
+      "birthYear": 2000
     },
     {
       "id": "m10451",
@@ -7043,7 +8045,10 @@
       "fvmClassic": 8,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/arizala/7312",
+      "birthDate": "2005-10-10",
+      "birthYear": 2005
     },
     {
       "id": "m10465",
@@ -7064,7 +8069,10 @@
       "fvmClassic": 7,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 6
+      "fvmMantra": 6,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/gueye/7272",
+      "birthDate": "2006-09-16",
+      "birthYear": 2006
     },
     {
       "id": "m10470",
@@ -7085,7 +8093,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/halhal/7538",
+      "birthDate": "2003-03-05",
+      "birthYear": 2003
     },
     {
       "id": "m10476",
@@ -7106,7 +8117,10 @@
       "fvmClassic": 12,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/correia-t/4845",
+      "birthDate": "1999-03-09",
+      "birthYear": 1999
     },
     {
       "id": "fc_robinsonj",
@@ -7127,7 +8141,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/robinson-j/7546",
+      "birthDate": "2007-03-15",
+      "birthYear": 2007
     },
     {
       "id": "fc_terzic",
@@ -7148,7 +8165,10 @@
       "fvmClassic": 11,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/terzic/4375",
+      "birthDate": "1999-08-17",
+      "birthYear": 1999
     },
     {
       "id": "m10006",
@@ -7169,7 +8189,10 @@
       "fvmClassic": 7,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/kossounou/5578",
+      "birthDate": "2001-01-04",
+      "birthYear": 2001
     },
     {
       "id": "m10015",
@@ -7190,7 +8213,10 @@
       "fvmClassic": 7,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/sulemana-i/6024",
+      "birthDate": "2003-05-22",
+      "birthYear": 2003
     },
     {
       "id": "m10028",
@@ -7211,7 +8237,10 @@
       "fvmClassic": 6,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 6
+      "fvmMantra": 6,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/casale/5498",
+      "birthDate": "1998-02-14",
+      "birthYear": 1998
     },
     {
       "id": "m10047",
@@ -7232,7 +8261,10 @@
       "fvmClassic": 12,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/dominguez-b/6895",
+      "birthDate": "2003-09-19",
+      "birthYear": 2003
     },
     {
       "id": "m10057",
@@ -7253,7 +8285,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/rodriguez-ju/7268",
+      "birthDate": "2005-05-30",
+      "birthYear": 2005
     },
     {
       "id": "m10061",
@@ -7274,7 +8309,10 @@
       "fvmClassic": 7,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/idrissi-r/7125",
+      "birthDate": "2005-06-13",
+      "birthYear": 2005
     },
     {
       "id": "m10063",
@@ -7295,7 +8333,10 @@
       "fvmClassic": 8,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/deiola/1871",
+      "birthDate": "1995-08-01",
+      "birthYear": 1995
     },
     {
       "id": "m10099",
@@ -7316,7 +8357,10 @@
       "fvmClassic": 5,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/kuhn/7128",
+      "birthDate": "2000-01-01",
+      "birthYear": 2000
     },
     {
       "id": "m10108",
@@ -7337,7 +8381,10 @@
       "fvmClassic": 7,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/ranieri-l/4378",
+      "birthDate": "1999-04-23",
+      "birthYear": 1999
     },
     {
       "id": "m10112",
@@ -7358,7 +8405,10 @@
       "fvmClassic": 7,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/joao-mario/7175",
+      "birthDate": "2000-01-03",
+      "birthYear": 2000
     },
     {
       "id": "m10120",
@@ -7379,7 +8429,10 @@
       "fvmClassic": 7,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/brescianini/4947",
+      "birthDate": "2000-01-20",
+      "birthYear": 2000
     },
     {
       "id": "m10128",
@@ -7400,7 +8453,10 @@
       "fvmClassic": 7,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/akpoguma/7540",
+      "birthDate": "1995-04-19",
+      "birthYear": 1995
     },
     {
       "id": "m10131",
@@ -7421,7 +8477,10 @@
       "fvmClassic": 8,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/cittadini/5757",
+      "birthDate": "2002-04-18",
+      "birthYear": 2002
     },
     {
       "id": "m10143",
@@ -7442,7 +8501,10 @@
       "fvmClassic": 8,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/gelli-f/6241",
+      "birthDate": "1996-10-15",
+      "birthYear": 1996
     },
     {
       "id": "m10145",
@@ -7463,7 +8525,10 @@
       "fvmClassic": 9,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/fini/6506",
+      "birthDate": "2006-06-02",
+      "birthYear": 2006
     },
     {
       "id": "m10170",
@@ -7484,7 +8549,10 @@
       "fvmClassic": 8,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/messias/4970",
+      "birthDate": "1991-05-13",
+      "birthYear": 1991
     },
     {
       "id": "m10189",
@@ -7505,7 +8573,10 @@
       "fvmClassic": 10,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/stankovic-a/6503",
+      "birthDate": "2005-08-03",
+      "birthYear": 2005
     },
     {
       "id": "m10214",
@@ -7526,7 +8597,10 @@
       "fvmClassic": 11,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/miretti/5813",
+      "birthDate": "2003-08-03",
+      "birthYear": 2003
     },
     {
       "id": "m10220",
@@ -7547,7 +8621,10 @@
       "fvmClassic": 10,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/ekhator/6822",
+      "birthDate": "2006-11-11",
+      "birthYear": 2006
     },
     {
       "id": "m10229",
@@ -7568,7 +8645,10 @@
       "fvmClassic": 10,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/provstgaard/7012",
+      "birthDate": "2003-06-04",
+      "birthYear": 2003
     },
     {
       "id": "m10231",
@@ -7589,7 +8669,10 @@
       "fvmClassic": 12,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/floriani-mussolini/7131",
+      "birthDate": "2003-01-27",
+      "birthYear": 2003
     },
     {
       "id": "m10269",
@@ -7610,7 +8693,10 @@
       "fvmClassic": 9,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/n-dri/7001",
+      "birthDate": "2000-10-27",
+      "birthYear": 2000
     },
     {
       "id": "m10279",
@@ -7631,7 +8717,10 @@
       "fvmClassic": 12,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/de-winter/5739",
+      "birthDate": "2002-06-12",
+      "birthYear": 2002
     },
     {
       "id": "m10283",
@@ -7652,7 +8741,10 @@
       "fvmClassic": 9,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 9
+      "fvmMantra": 9,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/estupinan/5273",
+      "birthDate": "1998-01-21",
+      "birthYear": 1998
     },
     {
       "id": "m10305",
@@ -7673,7 +8765,10 @@
       "fvmClassic": 9,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/kouadio/7238",
+      "birthDate": "2006-05-07",
+      "birthYear": 2006
     },
     {
       "id": "m10306",
@@ -7694,7 +8789,10 @@
       "fvmClassic": 9,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 11
+      "fvmMantra": 11,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/carboni-a/4925",
+      "birthDate": "2001-02-04",
+      "birthYear": 2001
     },
     {
       "id": "m10311",
@@ -7715,7 +8813,10 @@
       "fvmClassic": 7,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/colombo-l/7477",
+      "birthDate": "2005-06-04",
+      "birthYear": 2005
     },
     {
       "id": "m10318",
@@ -7736,7 +8837,10 @@
       "fvmClassic": 7,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 6
+      "fvmMantra": 6,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/varela-g/7523",
+      "birthDate": "2005-01-30",
+      "birthYear": 2005
     },
     {
       "id": "m10332",
@@ -7757,7 +8861,10 @@
       "fvmClassic": 9,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 9
+      "fvmMantra": 9,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/gilmour/5131",
+      "birthDate": "2001-06-11",
+      "birthYear": 2001
     },
     {
       "id": "m10343",
@@ -7778,7 +8885,10 @@
       "fvmClassic": 10,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/lang/7120",
+      "birthDate": "1999-06-17",
+      "birthYear": 1999
     },
     {
       "id": "m10345",
@@ -7799,7 +8909,10 @@
       "fvmClassic": 10,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 9
+      "fvmMantra": 9,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/lucca/6215",
+      "birthDate": "2000-09-10",
+      "birthYear": 2000
     },
     {
       "id": "m10352",
@@ -7820,7 +8933,10 @@
       "fvmClassic": 8,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/troilo/7235",
+      "birthDate": "2003-06-28",
+      "birthYear": 2003
     },
     {
       "id": "m10357",
@@ -7841,7 +8957,10 @@
       "fvmClassic": 10,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/britschgi/7255",
+      "birthDate": "2006-08-27",
+      "birthYear": 2006
     },
     {
       "id": "m10363",
@@ -7862,7 +8981,10 @@
       "fvmClassic": 12,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/sorensen-o/7209",
+      "birthDate": "2002-03-10",
+      "birthYear": 2002
     },
     {
       "id": "m10365",
@@ -7883,7 +9005,10 @@
       "fvmClassic": 12,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/diallo-o/7536",
+      "birthDate": "2007-06-12",
+      "birthYear": 2007
     },
     {
       "id": "m10368",
@@ -7904,7 +9029,10 @@
       "fvmClassic": 11,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/elphege/7342",
+      "birthDate": "2001-01-09",
+      "birthYear": 2001
     },
     {
       "id": "m10396",
@@ -7925,7 +9053,10 @@
       "fvmClassic": 12,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 14
+      "fvmMantra": 14,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/cand%C3%A8/6985",
+      "birthDate": "1998-01-24",
+      "birthYear": 1998
     },
     {
       "id": "m10432",
@@ -7946,7 +9077,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/aboukhlal/7183",
+      "birthDate": "2000-02-18",
+      "birthYear": 2000
     },
     {
       "id": "m10455",
@@ -7967,7 +9101,10 @@
       "fvmClassic": 12,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 15
+      "fvmMantra": 15,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/miller-l/7208",
+      "birthDate": "2006-08-25",
+      "birthYear": 2006
     },
     {
       "id": "m10472",
@@ -7988,7 +9125,10 @@
       "fvmClassic": 7,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/schingtienne/6892",
+      "birthDate": "2002-08-14",
+      "birthYear": 2002
     },
     {
       "id": "m10473",
@@ -8009,7 +9149,10 @@
       "fvmClassic": 7,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/sverko/6673",
+      "birthDate": "1998-02-04",
+      "birthYear": 1998
     },
     {
       "id": "m10477",
@@ -8030,7 +9173,10 @@
       "fvmClassic": 7,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/hainaut/6821",
+      "birthDate": "2002-02-18",
+      "birthYear": 2002
     },
     {
       "id": "m10486",
@@ -8051,7 +9197,10 @@
       "fvmClassic": 7,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/helgason/5872",
+      "birthDate": "2000-09-28",
+      "birthYear": 2000
     },
     {
       "id": "fc_cissea",
@@ -8072,7 +9221,10 @@
       "fvmClassic": 8,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/ciss%C3%A8-a/6618",
+      "birthDate": "2006-10-22",
+      "birthYear": 2006
     },
     {
       "id": "m10031",
@@ -8093,7 +9245,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/helland/7326",
+      "birthDate": "2005-04-25",
+      "birthYear": 2005
     },
     {
       "id": "m10036",
@@ -8114,7 +9269,10 @@
       "fvmClassic": 6,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 6
+      "fvmMantra": 6,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/alhassane/7483",
+      "birthDate": "2002-01-01",
+      "birthYear": 2002
     },
     {
       "id": "m10039",
@@ -8135,7 +9293,10 @@
       "fvmClassic": 4,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/el-azzouzi-o/6225",
+      "birthDate": "2001-05-29",
+      "birthYear": 2001
     },
     {
       "id": "m10084",
@@ -8156,7 +9317,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/van-der-brempt/6896",
+      "birthDate": "2002-04-01",
+      "birthYear": 2002
     },
     {
       "id": "m10092",
@@ -8177,7 +9341,10 @@
       "fvmClassic": 3,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/fadera/6815",
+      "birthDate": "2001-11-03",
+      "birthYear": 2001
     },
     {
       "id": "m10125",
@@ -8198,7 +9365,10 @@
       "fvmClassic": 8,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/desplanches/7463",
+      "birthDate": "2003-03-11",
+      "birthYear": 2003
     },
     {
       "id": "m10144",
@@ -8219,7 +9389,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/hasa/6903",
+      "birthDate": "2004-01-06",
+      "birthYear": 2004
     },
     {
       "id": "m10155",
@@ -8240,7 +9413,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/otoa/6977",
+      "birthDate": "2004-05-13",
+      "birthYear": 2004
     },
     {
       "id": "m10162",
@@ -8261,7 +9437,10 @@
       "fvmClassic": 7,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 7
+      "fvmMantra": 7,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/puczka/7413",
+      "birthDate": "2005-01-26",
+      "birthYear": 2005
     },
     {
       "id": "m10163",
@@ -8282,7 +9461,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/sabelli/791",
+      "birthDate": "1993-01-13",
+      "birthYear": 1993
     },
     {
       "id": "m10167",
@@ -8303,7 +9485,10 @@
       "fvmClassic": 4,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/masini/6917",
+      "birthDate": "2001-01-27",
+      "birthYear": 2001
     },
     {
       "id": "m10168",
@@ -8324,7 +9509,10 @@
       "fvmClassic": 6,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/venturino/6980",
+      "birthDate": "2006-06-22",
+      "birthYear": 2006
     },
     {
       "id": 108,
@@ -8345,7 +9533,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/provedel/2814",
+      "birthDate": "1994-03-17",
+      "birthYear": 1994
     },
     {
       "id": "m10232",
@@ -8366,7 +9557,10 @@
       "fvmClassic": 8,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/lazzari/2263",
+      "birthDate": "1993-11-29",
+      "birthYear": 1993
     },
     {
       "id": "m10234",
@@ -8387,7 +9581,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/pellegrini-lu/2728",
+      "birthDate": "1999-03-07",
+      "birthYear": 1999
     },
     {
       "id": "m10253",
@@ -8408,7 +9605,10 @@
       "fvmClassic": 4,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/jean/6883",
+      "birthDate": "2000-02-19",
+      "birthYear": 2000
     },
     {
       "id": "m10263",
@@ -8429,7 +9629,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/maleh/5457",
+      "birthDate": "1998-08-22",
+      "birthYear": 1998
     },
     {
       "id": "m10280",
@@ -8450,7 +9653,10 @@
       "fvmClassic": 4,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/diawara-s/7525",
+      "birthDate": "2006-01-13",
+      "birthYear": 2006
     },
     {
       "id": "m10289",
@@ -8471,7 +9677,10 @@
       "fvmClassic": 6,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 6
+      "fvmMantra": 6,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/musah/5295",
+      "birthDate": "2002-11-29",
+      "birthYear": 2002
     },
     {
       "id": "m10310",
@@ -8492,7 +9701,10 @@
       "fvmClassic": 6,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 6
+      "fvmMantra": 6,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/ciurria/5880",
+      "birthDate": "1995-02-09",
+      "birthYear": 1995
     },
     {
       "id": "m10317",
@@ -8513,7 +9725,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/petagna/383",
+      "birthDate": "1995-06-30",
+      "birthYear": 1995
     },
     {
       "id": "m10325",
@@ -8534,7 +9749,10 @@
       "fvmClassic": 6,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 6
+      "fvmMantra": 6,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/marin-r/6638",
+      "birthDate": "2002-05-19",
+      "birthYear": 2002
     },
     {
       "id": "m10361",
@@ -8555,7 +9773,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 6
+      "fvmMantra": 6,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/ordonez-c/7138",
+      "birthDate": "2004-07-24",
+      "birthYear": 2004
     },
     {
       "id": "m10400",
@@ -8576,7 +9797,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/boloca/6219",
+      "birthDate": "1998-12-22",
+      "birthYear": 1998
     },
     {
       "id": "m10402",
@@ -8597,7 +9821,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/lipani/6246",
+      "birthDate": "2005-05-18",
+      "birthYear": 2005
     },
     {
       "id": "m10421",
@@ -8618,7 +9845,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 6
+      "fvmMantra": 6,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/biraghi/252",
+      "birthDate": "1992-09-12",
+      "birthYear": 1992
     },
     {
       "id": "m10443",
@@ -8639,7 +9869,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/palma/6925",
+      "birthDate": "2008-03-13",
+      "birthYear": 2008
     },
     {
       "id": "m10447",
@@ -8660,7 +9893,10 @@
       "fvmClassic": 4,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/ebosse/5994",
+      "birthDate": "1999-03-11",
+      "birthYear": 1999
     },
     {
       "id": "m10459",
@@ -8681,7 +9917,10 @@
       "fvmClassic": 6,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 6
+      "fvmMantra": 6,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/chakvetadze/7418",
+      "birthDate": "1999-08-29",
+      "birthYear": 1999
     },
     {
       "id": "m10463",
@@ -8702,7 +9941,10 @@
       "fvmClassic": 4,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/buksa/7249",
+      "birthDate": "1996-07-12",
+      "birthYear": 1996
     },
     {
       "id": "m10475",
@@ -8723,7 +9965,10 @@
       "fvmClassic": 4,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/franjic/7478",
+      "birthDate": "2000-01-14",
+      "birthYear": 2000
     },
     {
       "id": "m10478",
@@ -8744,7 +9989,10 @@
       "fvmClassic": 4,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/sagrado/6681",
+      "birthDate": "2004-01-30",
+      "birthYear": 2004
     },
     {
       "id": "m10484",
@@ -8765,7 +10013,10 @@
       "fvmClassic": 4,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/duncan/526",
+      "birthDate": "1993-03-10",
+      "birthYear": 1993
     },
     {
       "id": "fc_aurelio",
@@ -8786,7 +10037,10 @@
       "fvmClassic": 5,
       "qiMantra": 2,
       "qaMantra": 2,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/aurelio/7548",
+      "birthDate": "2000-03-22",
+      "birthYear": 2000
     },
     {
       "id": 98,
@@ -8807,7 +10061,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/sportiello/4",
+      "birthDate": "1992-05-10",
+      "birthYear": 1992
     },
     {
       "id": "m10025",
@@ -8828,7 +10085,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/happonen/7533",
+      "birthDate": "2007-03-13",
+      "birthYear": 2007
     },
     {
       "id": "m10026",
@@ -8849,7 +10109,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/pessina-mas/7172",
+      "birthDate": "2007-12-25",
+      "birthYear": 2007
     },
     {
       "id": "m10033",
@@ -8870,7 +10133,10 @@
       "fvmClassic": 4,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/de-silvestri/487",
+      "birthDate": "1988-05-23",
+      "birthYear": 1988
     },
     {
       "id": "m10053",
@@ -8891,7 +10157,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/sherri/6650",
+      "birthDate": "1997-12-15",
+      "birthYear": 1997
     },
     {
       "id": "m10064",
@@ -8912,7 +10181,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/liteta/7165",
+      "birthDate": "2006-02-22",
+      "birthYear": 2006
     },
     {
       "id": "m10070",
@@ -8933,7 +10205,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/albarracin/7338",
+      "birthDate": "2005-08-29",
+      "birthYear": 2005
     },
     {
       "id": "m10075",
@@ -8954,7 +10229,10 @@
       "fvmClassic": 2,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 2
+      "fvmMantra": 2,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/trepy/7317",
+      "birthDate": "2006-05-20",
+      "birthYear": 2006
     },
     {
       "id": 99,
@@ -8975,7 +10253,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/tornqvist/7301",
+      "birthDate": "2002-02-01",
+      "birthYear": 2002
     },
     {
       "id": "m10078",
@@ -8996,7 +10277,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/vigorito/2809",
+      "birthDate": "1990-05-22",
+      "birthYear": 1990
     },
     {
       "id": "m10079",
@@ -9017,7 +10301,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/goldaniga/418",
+      "birthDate": "1993-11-02",
+      "birthYear": 1993
     },
     {
       "id": "m10091",
@@ -9038,7 +10325,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/lahdo/7357",
+      "birthDate": "2007-12-26",
+      "birthYear": 2007
     },
     {
       "id": "m10100",
@@ -9059,7 +10349,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/azon/7027",
+      "birthDate": "2002-12-24",
+      "birthYear": 2002
     },
     {
       "id": "m10103",
@@ -9080,7 +10373,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/christensen-o/6403",
+      "birthDate": "1999-03-22",
+      "birthYear": 1999
     },
     {
       "id": "m10105",
@@ -9101,7 +10397,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/lezzerini/158",
+      "birthDate": "1995-03-24",
+      "birthYear": 1995
     },
     {
       "id": "m10126",
@@ -9122,7 +10421,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/lolic/7466",
+      "birthDate": "2004-05-15",
+      "birthYear": 2004
     },
     {
       "id": "m10129",
@@ -9143,7 +10445,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/amey/5424",
+      "birthDate": "2005-08-11",
+      "birthYear": 2005
     },
     {
       "id": "m10132",
@@ -9164,7 +10469,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/gelli-j/7468",
+      "birthDate": "2001-05-11",
+      "birthYear": 2001
     },
     {
       "id": "m10136",
@@ -9185,7 +10493,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/oyono-j/7470",
+      "birthDate": "2001-04-12",
+      "birthYear": 2001
     },
     {
       "id": "m10137",
@@ -9206,7 +10517,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/corrado/7471",
+      "birthDate": "2000-03-19",
+      "birthYear": 2000
     },
     {
       "id": "m10140",
@@ -9227,7 +10541,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/el-azzouzi-a/7456",
+      "birthDate": "2001-05-29",
+      "birthYear": 2001
     },
     {
       "id": "m10141",
@@ -9248,7 +10565,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/kone-b/5725",
+      "birthDate": "2000-03-14",
+      "birthYear": 2000
     },
     {
       "id": "m10151",
@@ -9269,7 +10589,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/sommariva/219",
+      "birthDate": "1997-07-18",
+      "birthYear": 1997
     },
     {
       "id": "m10152",
@@ -9290,7 +10613,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/stolz/6569",
+      "birthDate": "2001-02-14",
+      "birthYear": 2001
     },
     {
       "id": "m10157",
@@ -9311,7 +10637,10 @@
       "fvmClassic": 2,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 2
+      "fvmMantra": 2,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/matturro/6244",
+      "birthDate": "2004-10-11",
+      "birthYear": 2004
     },
     {
       "id": "m10176",
@@ -9332,7 +10661,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/di-gennaro/1926",
+      "birthDate": "1993-10-03",
+      "birthYear": 1993
     },
     {
       "id": "m10201",
@@ -9353,7 +10685,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/pinsoglio/1930",
+      "birthDate": "1990-03-16",
+      "birthYear": 1990
     },
     {
       "id": "m10204",
@@ -9374,7 +10709,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/rugani/294",
+      "birthDate": "1994-07-29",
+      "birthYear": 1994
     },
     {
       "id": "m10208",
@@ -9395,7 +10733,10 @@
       "fvmClassic": 4,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/cabal/6039",
+      "birthDate": "2001-01-08",
+      "birthYear": 2001
     },
     {
       "id": "m10225",
@@ -9416,7 +10757,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/motta/7337",
+      "birthDate": "2005-01-13",
+      "birthYear": 2005
     },
     {
       "id": "m10226",
@@ -9437,7 +10781,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/renzetti/7534",
+      "birthDate": "2006-06-09",
+      "birthYear": 2006
     },
     {
       "id": "m10230",
@@ -9458,7 +10805,10 @@
       "fvmClassic": 4,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/patric/327",
+      "birthDate": "1993-04-17",
+      "birthYear": 1993
     },
     {
       "id": "m10237",
@@ -9479,7 +10829,10 @@
       "fvmClassic": 5,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/belahyane/6191",
+      "birthDate": "2004-06-01",
+      "birthYear": 2004
     },
     {
       "id": "m10242",
@@ -9500,7 +10853,10 @@
       "fvmClassic": 5,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 5
+      "fvmMantra": 5,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/przyborek/7345",
+      "birthDate": "2007-01-01",
+      "birthYear": 2007
     },
     {
       "id": "m10259",
@@ -9521,7 +10877,10 @@
       "fvmClassic": 4,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/ndaba/7182",
+      "birthDate": "1999-12-25",
+      "birthYear": 1999
     },
     {
       "id": "m10261",
@@ -9542,7 +10901,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/gorter/7248",
+      "birthDate": "2005-01-31",
+      "birthYear": 2005
     },
     {
       "id": "m10262",
@@ -9563,7 +10925,10 @@
       "fvmClassic": 2,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 2
+      "fvmMantra": 2,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/kaba/6410",
+      "birthDate": "2001-10-27",
+      "birthYear": 2001
     },
     {
       "id": "m10265",
@@ -9584,7 +10949,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/fofana-sa/7319",
+      "birthDate": "2003-05-16",
+      "birthYear": 2003
     },
     {
       "id": "m10273",
@@ -9605,7 +10973,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/terracciano/2815",
+      "birthDate": "1990-03-08",
+      "birthYear": 1990
     },
     {
       "id": "m10274",
@@ -9626,7 +10997,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/torriani/6813",
+      "birthDate": "2005-01-31",
+      "birthYear": 2005
     },
     {
       "id": "m10299",
@@ -9647,7 +11021,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/pizzignacco/6682",
+      "birthDate": "2001-09-01",
+      "birthYear": 2001
     },
     {
       "id": "m10300",
@@ -9668,7 +11045,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/strajnar/7475",
+      "birthDate": "2007-08-16",
+      "birthYear": 2007
     },
     {
       "id": "m10302",
@@ -9689,7 +11069,10 @@
       "fvmClassic": 2,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 2
+      "fvmMantra": 2,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/antov/5399",
+      "birthDate": "2000-11-09",
+      "birthYear": 2000
     },
     {
       "id": "m10307",
@@ -9710,7 +11093,10 @@
       "fvmClassic": 4,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/bakoune/7476",
+      "birthDate": "2006-02-06",
+      "birthYear": 2006
     },
     {
       "id": "m10319",
@@ -9731,7 +11117,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/contini/2845",
+      "birthDate": "1996-05-21",
+      "birthYear": 1996
     },
     {
       "id": "m10324",
@@ -9752,7 +11141,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/marianucci/6809",
+      "birthDate": "2004-07-23",
+      "birthYear": 2004
     },
     {
       "id": "m10331",
@@ -9773,7 +11165,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/mazzocchi/5481",
+      "birthDate": "1995-07-27",
+      "birthYear": 1995
     },
     {
       "id": "m10347",
@@ -9794,7 +11189,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/corvi/6662",
+      "birthDate": "2001-03-23",
+      "birthYear": 2001
     },
     {
       "id": "m10351",
@@ -9815,7 +11213,10 @@
       "fvmClassic": 4,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/ndiaye/7202",
+      "birthDate": "2002-04-10",
+      "birthYear": 2002
     },
     {
       "id": "m10355",
@@ -9836,7 +11237,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/carboni-f/6149",
+      "birthDate": "2003-04-04",
+      "birthYear": 2003
     },
     {
       "id": "m10358",
@@ -9857,7 +11261,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/cremaschi/7276",
+      "birthDate": "2005-03-02",
+      "birthYear": 2005
     },
     {
       "id": "m10370",
@@ -9878,7 +11285,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/de-marzi/7048",
+      "birthDate": "2007-04-18",
+      "birthYear": 2007
     },
     {
       "id": 97,
@@ -9899,7 +11309,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/gollini/610",
+      "birthDate": "1995-03-18",
+      "birthYear": 1995
     },
     {
       "id": "m10378",
@@ -9920,7 +11333,10 @@
       "fvmClassic": 2,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 2
+      "fvmMantra": 2,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/ziolkowski/7260",
+      "birthDate": "2005-06-05",
+      "birthYear": 2005
     },
     {
       "id": "m10390",
@@ -9941,7 +11357,10 @@
       "fvmClassic": 4,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/vaz/6981",
+      "birthDate": "2007-02-17",
+      "birthYear": 2007
     },
     {
       "id": "m10392",
@@ -9962,7 +11381,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/russo-a/4518",
+      "birthDate": "2001-03-31",
+      "birthYear": 2001
     },
     {
       "id": "m10393",
@@ -9983,7 +11405,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/turati/4867",
+      "birthDate": "2001-09-05",
+      "birthYear": 2001
     },
     {
       "id": "m10397",
@@ -10004,7 +11429,10 @@
       "fvmClassic": 2,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 2
+      "fvmMantra": 2,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/missori/6189",
+      "birthDate": "2004-03-24",
+      "birthYear": 2004
     },
     {
       "id": "m10399",
@@ -10025,7 +11453,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/pieragnolo/7156",
+      "birthDate": "2003-01-03",
+      "birthYear": 2003
     },
     {
       "id": "m10401",
@@ -10046,7 +11477,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/iannoni/7157",
+      "birthDate": "2001-04-11",
+      "birthYear": 2001
     },
     {
       "id": "m10411",
@@ -10067,7 +11501,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/moro-l/7158",
+      "birthDate": "2001-01-25",
+      "birthYear": 2001
     },
     {
       "id": "m10414",
@@ -10088,7 +11525,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/mascardi/7457",
+      "birthDate": "2006-09-26",
+      "birthYear": 2006
     },
     {
       "id": "m10415",
@@ -10109,7 +11549,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/paleari/5320",
+      "birthDate": "1992-08-29",
+      "birthYear": 1992
     },
     {
       "id": "m10416",
@@ -10130,7 +11573,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/siviero/7363",
+      "birthDate": "2006-11-23",
+      "birthYear": 2006
     },
     {
       "id": "m10427",
@@ -10151,7 +11597,10 @@
       "fvmClassic": 4,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/ilic/5007",
+      "birthDate": "2001-03-17",
+      "birthYear": 2001
     },
     {
       "id": "m10429",
@@ -10172,7 +11621,10 @@
       "fvmClassic": 4,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/anjorin/6889",
+      "birthDate": "2001-11-23",
+      "birthYear": 2001
     },
     {
       "id": "m10439",
@@ -10193,7 +11645,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/padelli/543",
+      "birthDate": "1985-10-25",
+      "birthYear": 1985
     },
     {
       "id": "m10440",
@@ -10214,7 +11669,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/piana/5707",
+      "birthDate": "2003-09-29",
+      "birthYear": 2003
     },
     {
       "id": "m10442",
@@ -10235,7 +11693,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/mlacic/7356",
+      "birthDate": "2007-03-12",
+      "birthYear": 2007
     },
     {
       "id": "m10445",
@@ -10256,7 +11717,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/abankwah/6021",
+      "birthDate": "2004-01-16",
+      "birthYear": 2004
     },
     {
       "id": "m10453",
@@ -10277,7 +11741,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/camara-a/7392",
+      "birthDate": "2008-09-28",
+      "birthYear": 2008
     },
     {
       "id": "m10457",
@@ -10298,7 +11765,10 @@
       "fvmClassic": 4,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 4
+      "fvmMantra": 4,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/zarraga/6212",
+      "birthDate": "1999-01-04",
+      "birthYear": 1999
     },
     {
       "id": "m10462",
@@ -10319,7 +11789,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/bayo-v/7161",
+      "birthDate": "1997-01-10",
+      "birthYear": 1997
     },
     {
       "id": "m10466",
@@ -10340,7 +11813,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/grandi/6671",
+      "birthDate": "1992-10-12",
+      "birthYear": 1992
     },
     {
       "id": "m10467",
@@ -10361,7 +11837,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/pozzi/7531",
+      "birthDate": "2000-12-14",
+      "birthYear": 2000
     },
     {
       "id": "m10474",
@@ -10382,7 +11861,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/gomes/7454",
+      "birthDate": "2008-02-14",
+      "birthYear": 2008
     },
     {
       "id": "m10483",
@@ -10403,7 +11885,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/dagasso/7481",
+      "birthDate": "2004-04-01",
+      "birthYear": 2004
     },
     {
       "id": "m10488",
@@ -10424,7 +11909,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/lisman/7408",
+      "birthDate": "2006-02-20",
+      "birthYear": 2006
     },
     {
       "id": "m10492",
@@ -10445,7 +11933,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/lauberbach/7482",
+      "birthDate": "1998-02-15",
+      "birthYear": 1998
     },
     {
       "id": "fc_vismara",
@@ -10466,7 +11957,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/vismara/7545",
+      "birthDate": "2003-03-28",
+      "birthYear": 2003
     },
     {
       "id": "fc_satalino",
@@ -10487,7 +11981,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/satalino/2127",
+      "birthDate": "1999-05-20",
+      "birthYear": 1999
     },
     {
       "id": "fc_penev",
@@ -10508,7 +12005,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/penev/7557",
+      "birthDate": "2008-04-22",
+      "birthYear": 2008
     },
     {
       "id": "fc_pisseri",
@@ -10529,7 +12029,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/pisseri/7560",
+      "birthDate": "1991-11-21",
+      "birthYear": 1991
     },
     {
       "id": "fc_radunovic",
@@ -10550,7 +12053,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/radunovic/3",
+      "birthDate": "1996-05-26",
+      "birthYear": 1996
     },
     {
       "id": "fc_lontani",
@@ -10571,7 +12077,10 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/lontani/7561",
+      "birthDate": "2008-01-18",
+      "birthYear": 2008
     },
     {
       "id": "fc_forsono",
@@ -10592,7 +12101,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/forson-o/6592",
+      "birthDate": "2004-07-20",
+      "birthYear": 2004
     },
     {
       "id": "fc_demartis",
@@ -10613,7 +12125,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/de-martis/7568",
+      "birthDate": "2008-06-26",
+      "birthYear": 2008
     },
     {
       "id": "m10346",
@@ -10634,7 +12149,10 @@
       "fvmClassic": 45,
       "qiMantra": 9,
       "qaMantra": 9,
-      "fvmMantra": 41
+      "fvmMantra": 41,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/lukaku/2531",
+      "birthDate": "1993-03-13",
+      "birthYear": 1993
     },
     {
       "id": "m10049",
@@ -10655,7 +12173,10 @@
       "fvmClassic": 10,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 10
+      "fvmMantra": 10,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/dallinga/6643",
+      "birthDate": "2000-08-03",
+      "birthYear": 2000
     },
     {
       "id": 113,
@@ -10676,7 +12197,10 @@
       "fvmClassic": 26,
       "qiMantra": 8,
       "qaMantra": 8,
-      "fvmMantra": 26
+      "fvmMantra": 26,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/gutierrez/5427",
+      "birthDate": "2001-07-27",
+      "birthYear": 2001
     },
     {
       "id": "m10003",
@@ -10697,7 +12221,10 @@
       "fvmClassic": 16,
       "qiMantra": 7,
       "qaMantra": 7,
-      "fvmMantra": 16
+      "fvmMantra": 16,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/djimsiti/787",
+      "birthDate": "1993-02-19",
+      "birthYear": 1993
     },
     {
       "id": "m10366",
@@ -10718,7 +12245,10 @@
       "fvmClassic": 18,
       "qiMantra": 4,
       "qaMantra": 4,
-      "fvmMantra": 16
+      "fvmMantra": 16,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/ondrejka/6984",
+      "birthDate": "2002-09-02",
+      "birthYear": 2002
     },
     {
       "id": "m10281",
@@ -10739,7 +12269,10 @@
       "fvmClassic": 8,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/athekame/7211",
+      "birthDate": "2004-12-13",
+      "birthYear": 2004
     },
     {
       "id": "m10380",
@@ -10760,7 +12293,10 @@
       "fvmClassic": 12,
       "qiMantra": 3,
       "qaMantra": 3,
-      "fvmMantra": 12
+      "fvmMantra": 12,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/angelino/4772",
+      "birthDate": "1997-01-04",
+      "birthYear": 1997
     },
     {
       "id": "m10001",
@@ -10781,7 +12317,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/rossi-f/2297",
+      "birthDate": "1991-04-27",
+      "birthYear": 1991
     },
     {
       "id": "m10052",
@@ -10802,7 +12341,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/ciocci/4929",
+      "birthDate": "2002-01-24",
+      "birthYear": 2002
     },
     {
       "id": "m10060",
@@ -10823,7 +12365,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/raterink/7346",
+      "birthDate": "2006-04-07",
+      "birthYear": 2006
     },
     {
       "id": "m10082",
@@ -10844,7 +12389,10 @@
       "fvmClassic": 8,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 8
+      "fvmMantra": 8,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/cuenca-a/7407",
+      "birthDate": "2007-06-11",
+      "birthYear": 2007
     },
     {
       "id": "m10156",
@@ -10865,7 +12413,10 @@
       "fvmClassic": 2,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 2
+      "fvmMantra": 2,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/vogliacco/6245",
+      "birthDate": "1998-09-14",
+      "birthYear": 1998
     },
     {
       "id": "m10250",
@@ -10886,7 +12437,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/fruchtl/2401",
+      "birthDate": "2000-01-28",
+      "birthYear": 2000
     },
     {
       "id": "m10251",
@@ -10907,7 +12461,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/samooja/6523",
+      "birthDate": "2003-07-21",
+      "birthYear": 2003
     },
     {
       "id": "m10256",
@@ -10928,7 +12485,10 @@
       "fvmClassic": 1,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 1
+      "fvmMantra": 1,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/perez-m/7164",
+      "birthDate": "2005-04-13",
+      "birthYear": 2005
     },
     {
       "id": "m10480",
@@ -10949,7 +12509,17 @@
       "fvmClassic": 3,
       "qiMantra": 1,
       "qaMantra": 1,
-      "fvmMantra": 3
+      "fvmMantra": 3,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/bjarkason/5485",
+      "birthDate": "2000-05-11",
+      "birthYear": 2000
     }
-  ]
+  ],
+  "youthMeta": {
+    "sourceName": "Fantacalcio.it · profili calciatori",
+    "generatedAt": "2026-08-19T03:17:04.465Z",
+    "birthDateCoverage": 521,
+    "u23MinBirthYear": 2003,
+    "u21MinBirthYear": 2005
+  }
 }

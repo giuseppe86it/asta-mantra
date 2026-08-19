@@ -1,0 +1,3657 @@
+{
+  "schema": 1,
+  "sourceName": "Fantacalcio.it · profili calciatori",
+  "sourceUrl": "https://www.fantacalcio.it/quotazioni-fantacalcio",
+  "generatedAt": "2026-08-19T03:17:04.473Z",
+  "u23MinBirthYear": 2003,
+  "u21MinBirthYear": 2005,
+  "players": [
+    {
+      "key": "abankwah",
+      "name": "Abankwah",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/abankwah/6021",
+      "birthDate": "2004-01-16",
+      "checkedAt": "2026-08-19T03:16:58.017Z"
+    },
+    {
+      "key": "aboukhlal",
+      "name": "Aboukhlal",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/aboukhlal/7183",
+      "birthDate": "2000-02-18",
+      "checkedAt": "2026-08-19T03:16:37.110Z"
+    },
+    {
+      "key": "adamsa",
+      "name": "Adams A.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/adams-a/7484",
+      "birthDate": "2000-01-29",
+      "checkedAt": "2026-08-19T03:15:40.746Z"
+    },
+    {
+      "key": "adamsc",
+      "name": "Adams C.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/adams-c/6646",
+      "birthDate": "1996-07-13",
+      "checkedAt": "2026-08-19T03:15:49.443Z"
+    },
+    {
+      "key": "addai",
+      "name": "Addai",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/addai/7127",
+      "birthDate": "2005-08-26",
+      "checkedAt": "2026-08-19T03:16:12.656Z"
+    },
+    {
+      "key": "adopo",
+      "name": "Adopo",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/adopo/4870",
+      "birthDate": "2000-07-19",
+      "checkedAt": "2026-08-19T03:16:03.987Z"
+    },
+    {
+      "key": "adorante",
+      "name": "Adorante",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/adorante/4387",
+      "birthDate": "2000-02-05",
+      "checkedAt": "2026-08-19T03:16:19.681Z"
+    },
+    {
+      "key": "adzic",
+      "name": "Adzic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/adzic/6677",
+      "birthDate": "2006-05-12",
+      "checkedAt": "2026-08-19T03:16:17.784Z"
+    },
+    {
+      "key": "ahanor",
+      "name": "Ahanor",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/ahanor/6916",
+      "birthDate": "2008-02-23",
+      "checkedAt": "2026-08-19T03:16:02.220Z"
+    },
+    {
+      "key": "akanji",
+      "name": "Akanji",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/akanji/4159",
+      "birthDate": "1995-07-19",
+      "checkedAt": "2026-08-19T03:15:33.586Z"
+    },
+    {
+      "key": "akinsanmiro",
+      "name": "Akinsanmiro",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/akinsanmiro/6593",
+      "birthDate": "2004-11-25",
+      "checkedAt": "2026-08-19T03:16:08.564Z"
+    },
+    {
+      "key": "akpoguma",
+      "name": "Akpoguma",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/akpoguma/7540",
+      "birthDate": "1995-04-19",
+      "checkedAt": "2026-08-19T03:16:31.995Z"
+    },
+    {
+      "key": "alajbegovic",
+      "name": "Alajbegovic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/alajbegovic/7436",
+      "birthDate": "2007-09-21",
+      "checkedAt": "2026-08-19T03:15:39.570Z"
+    },
+    {
+      "key": "albarracin",
+      "name": "Albarracin",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/albarracin/7338",
+      "birthDate": "2005-08-29",
+      "checkedAt": "2026-08-19T03:16:45.881Z"
+    },
+    {
+      "key": "alhassane",
+      "name": "Alhassane",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/alhassane/7483",
+      "birthDate": "2002-01-01",
+      "checkedAt": "2026-08-19T03:16:38.780Z"
+    },
+    {
+      "key": "almqvist",
+      "name": "Almqvist",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/almqvist/6207",
+      "birthDate": "1999-07-10",
+      "checkedAt": "2026-08-19T03:16:26.757Z"
+    },
+    {
+      "key": "amey",
+      "name": "Amey",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/amey/5424",
+      "birthDate": "2005-08-11",
+      "checkedAt": "2026-08-19T03:16:48.136Z"
+    },
+    {
+      "key": "amondarain",
+      "name": "Amondarain",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/amondarain/7528",
+      "birthDate": "2005-01-06",
+      "checkedAt": "2026-08-19T03:16:11.360Z"
+    },
+    {
+      "key": "amorim",
+      "name": "Amorim",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/amorim/7341",
+      "birthDate": "2005-05-18",
+      "checkedAt": "2026-08-19T03:16:23.541Z"
+    },
+    {
+      "key": "angelino",
+      "name": "Angelino",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/angelino/4772",
+      "birthDate": "1997-01-04",
+      "checkedAt": "2026-08-19T03:17:02.467Z"
+    },
+    {
+      "key": "anjorin",
+      "name": "Anjorin",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/anjorin/6889",
+      "birthDate": "2001-11-23",
+      "checkedAt": "2026-08-19T03:16:57.310Z"
+    },
+    {
+      "key": "antov",
+      "name": "Antov",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/antov/5399",
+      "birthDate": "2000-11-09",
+      "checkedAt": "2026-08-19T03:16:53.258Z"
+    },
+    {
+      "key": "arizala",
+      "name": "Arizala",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/arizala/7312",
+      "birthDate": "2005-10-10",
+      "checkedAt": "2026-08-19T03:16:29.045Z"
+    },
+    {
+      "key": "athekame",
+      "name": "Athekame",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/athekame/7211",
+      "birthDate": "2004-12-13",
+      "checkedAt": "2026-08-19T03:17:02.853Z"
+    },
+    {
+      "key": "atta",
+      "name": "Atta",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/atta/6908",
+      "birthDate": "2003-01-14",
+      "checkedAt": "2026-08-19T03:15:32.119Z"
+    },
+    {
+      "key": "aurelio",
+      "name": "Aurelio",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/aurelio/7548",
+      "birthDate": "2000-03-22",
+      "checkedAt": "2026-08-19T03:16:45.192Z"
+    },
+    {
+      "key": "azon",
+      "name": "Azon",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/azon/7027",
+      "birthDate": "2002-12-24",
+      "checkedAt": "2026-08-19T03:16:47.273Z"
+    },
+    {
+      "key": "bakola",
+      "name": "Bakola",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/bakola/7036",
+      "birthDate": "2007-11-30",
+      "checkedAt": "2026-08-19T03:16:17.814Z"
+    },
+    {
+      "key": "bakoune",
+      "name": "Bakoune",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/bakoune/7476",
+      "birthDate": "2006-02-06",
+      "checkedAt": "2026-08-19T03:16:53.367Z"
+    },
+    {
+      "key": "baldanzi",
+      "name": "Baldanzi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/baldanzi/5823",
+      "birthDate": "2003-03-23",
+      "checkedAt": "2026-08-19T03:15:41.762Z"
+    },
+    {
+      "key": "barella",
+      "name": "Barella",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/barella/1870",
+      "birthDate": "1997-02-07",
+      "checkedAt": "2026-08-19T03:15:32.569Z"
+    },
+    {
+      "key": "bartesaghi",
+      "name": "Bartesaghi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/bartesaghi/6496",
+      "birthDate": "2005-12-29",
+      "checkedAt": "2026-08-19T03:15:53.601Z"
+    },
+    {
+      "key": "basic",
+      "name": "Basic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/basic/5674",
+      "birthDate": "1996-11-25",
+      "checkedAt": "2026-08-19T03:16:10.348Z"
+    },
+    {
+      "key": "bastoni",
+      "name": "Bastoni",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/bastoni/2120",
+      "birthDate": "1999-04-13",
+      "checkedAt": "2026-08-19T03:15:35.642Z"
+    },
+    {
+      "key": "baturina",
+      "name": "Baturina",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/baturina/7126",
+      "birthDate": "2003-02-16",
+      "checkedAt": "2026-08-19T03:15:30.422Z"
+    },
+    {
+      "key": "bayov",
+      "name": "Bayo V.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/bayo-v/7161",
+      "birthDate": "1997-01-10",
+      "checkedAt": "2026-08-19T03:16:58.578Z"
+    },
+    {
+      "key": "belahyane",
+      "name": "Belahyane",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/belahyane/6191",
+      "birthDate": "2004-06-01",
+      "checkedAt": "2026-08-19T03:16:51.616Z"
+    },
+    {
+      "key": "bellakotchap",
+      "name": "Bella-Kotchap",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/bella-kotchap/7253",
+      "birthDate": "2001-12-11",
+      "checkedAt": "2026-08-19T03:16:10.106Z"
+    },
+    {
+      "key": "bellanova",
+      "name": "Bellanova",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/bellanova/4887",
+      "birthDate": "2000-05-17",
+      "checkedAt": "2026-08-19T03:16:02.385Z"
+    },
+    {
+      "key": "berardi",
+      "name": "Berardi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/berardi/531",
+      "birthDate": "1994-08-01",
+      "checkedAt": "2026-08-19T03:15:31.555Z"
+    },
+    {
+      "key": "berisham",
+      "name": "Berisha M.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/berisha-m/6015",
+      "birthDate": "2003-10-21",
+      "checkedAt": "2026-08-19T03:16:15.629Z"
+    },
+    {
+      "key": "bernabe",
+      "name": "Bernabè",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/bernab%C3%A8/6666",
+      "birthDate": "2001-05-26",
+      "checkedAt": "2026-08-19T03:16:00.320Z"
+    },
+    {
+      "key": "bernardeschi",
+      "name": "Bernardeschi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/bernardeschi/184",
+      "birthDate": "1994-02-16",
+      "checkedAt": "2026-08-19T03:15:46.593Z"
+    },
+    {
+      "key": "bernasconi",
+      "name": "Bernasconi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/bernasconi/7219",
+      "birthDate": "2003-11-16",
+      "checkedAt": "2026-08-19T03:16:02.505Z"
+    },
+    {
+      "key": "bertola",
+      "name": "Bertola",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/bertola/5820",
+      "birthDate": "2003-03-23",
+      "checkedAt": "2026-08-19T03:16:28.695Z"
+    },
+    {
+      "key": "beukema",
+      "name": "Beukema",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/beukema/6202",
+      "birthDate": "1998-11-17",
+      "checkedAt": "2026-08-19T03:16:08.807Z"
+    },
+    {
+      "key": "bijlow",
+      "name": "Bijlow",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/bijlow/7332",
+      "birthDate": "1998-01-22",
+      "checkedAt": "2026-08-19T03:15:52.046Z"
+    },
+    {
+      "key": "biraghi",
+      "name": "Biraghi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/biraghi/252",
+      "birthDate": "1992-09-12",
+      "checkedAt": "2026-08-19T03:16:43.088Z"
+    },
+    {
+      "key": "birindelli",
+      "name": "Birindelli",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/birindelli/5838",
+      "birthDate": "1999-07-19",
+      "checkedAt": "2026-08-19T03:16:25.699Z"
+    },
+    {
+      "key": "bisseck",
+      "name": "Bisseck",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/bisseck/6217",
+      "birthDate": "2000-11-29",
+      "checkedAt": "2026-08-19T03:15:42.125Z"
+    },
+    {
+      "key": "bjarkason",
+      "name": "Bjarkason",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/bjarkason/5485",
+      "birthDate": "2000-05-11",
+      "checkedAt": "2026-08-19T03:17:04.113Z"
+    },
+    {
+      "key": "boga",
+      "name": "Boga",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/boga/2832",
+      "birthDate": "1997-01-03",
+      "checkedAt": "2026-08-19T03:16:06.546Z"
+    },
+    {
+      "key": "boloca",
+      "name": "Boloca",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/boloca/6219",
+      "birthDate": "1998-12-22",
+      "checkedAt": "2026-08-19T03:16:42.622Z"
+    },
+    {
+      "key": "bonny",
+      "name": "Bonny",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/bonny/6669",
+      "birthDate": "2003-10-25",
+      "checkedAt": "2026-08-19T03:15:58.287Z"
+    },
+    {
+      "key": "borrelli",
+      "name": "Borrelli",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/borrelli/6243",
+      "birthDate": "2000-03-10",
+      "checkedAt": "2026-08-19T03:16:20.847Z"
+    },
+    {
+      "key": "bowie",
+      "name": "Bowie",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/bowie/7347",
+      "birthDate": "2002-09-21",
+      "checkedAt": "2026-08-19T03:15:45.799Z"
+    },
+    {
+      "key": "bracaglia",
+      "name": "Bracaglia",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/bracaglia/7469",
+      "birthDate": "2003-07-19",
+      "checkedAt": "2026-08-19T03:16:12.884Z"
+    },
+    {
+      "key": "bremer",
+      "name": "Bremer",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/bremer/2788",
+      "birthDate": "1997-03-18",
+      "checkedAt": "2026-08-19T03:15:34.456Z"
+    },
+    {
+      "key": "brescianini",
+      "name": "Brescianini",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/brescianini/4947",
+      "birthDate": "2000-01-20",
+      "checkedAt": "2026-08-19T03:16:31.740Z"
+    },
+    {
+      "key": "britschgi",
+      "name": "Britschgi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/britschgi/7255",
+      "birthDate": "2006-08-27",
+      "checkedAt": "2026-08-19T03:16:35.751Z"
+    },
+    {
+      "key": "buksa",
+      "name": "Buksa",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/buksa/7249",
+      "birthDate": "1996-07-12",
+      "checkedAt": "2026-08-19T03:16:43.636Z"
+    },
+    {
+      "key": "buongiorno",
+      "name": "Buongiorno",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/buongiorno/2724",
+      "birthDate": "1999-06-06",
+      "checkedAt": "2026-08-19T03:15:59.641Z"
+    },
+    {
+      "key": "busio",
+      "name": "Busio",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/busio/5507",
+      "birthDate": "2002-05-28",
+      "checkedAt": "2026-08-19T03:16:19.178Z"
+    },
+    {
+      "key": "butez",
+      "name": "Butez",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/butez/6966",
+      "birthDate": "1995-06-08",
+      "checkedAt": "2026-08-19T03:15:33.451Z"
+    },
+    {
+      "key": "cabal",
+      "name": "Cabal",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/cabal/6039",
+      "birthDate": "2001-01-08",
+      "checkedAt": "2026-08-19T03:16:50.409Z"
+    },
+    {
+      "key": "cacciamani",
+      "name": "Cacciamani",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/cacciamani/7060",
+      "birthDate": "2007-06-29",
+      "checkedAt": "2026-08-19T03:16:18.290Z"
+    },
+    {
+      "key": "calhanoglu",
+      "name": "Calhanoglu",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/calhanoglu/2194",
+      "birthDate": "1994-02-08",
+      "checkedAt": "2026-08-19T03:15:27.762Z"
+    },
+    {
+      "key": "calo",
+      "name": "Calò",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/cal%C3%B2/7472",
+      "birthDate": "1997-02-05",
+      "checkedAt": "2026-08-19T03:15:56.920Z"
+    },
+    {
+      "key": "calvani",
+      "name": "Calvani",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/calvani/7467",
+      "birthDate": "2004-01-12",
+      "checkedAt": "2026-08-19T03:16:22.030Z"
+    },
+    {
+      "key": "camaraa",
+      "name": "Camara A.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/camara-a/7392",
+      "birthDate": "2008-09-28",
+      "checkedAt": "2026-08-19T03:16:58.903Z"
+    },
+    {
+      "key": "camarda",
+      "name": "Camarda",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/camarda/6519",
+      "birthDate": "2008-03-10",
+      "checkedAt": "2026-08-19T03:16:16.135Z"
+    },
+    {
+      "key": "cambiaghi",
+      "name": "Cambiaghi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/cambiaghi/4436",
+      "birthDate": "2000-12-28",
+      "checkedAt": "2026-08-19T03:15:50.899Z"
+    },
+    {
+      "key": "cambiaso",
+      "name": "Cambiaso",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/cambiaso/5520",
+      "birthDate": "2000-02-20",
+      "checkedAt": "2026-08-19T03:15:47.808Z"
+    },
+    {
+      "key": "cancellieri",
+      "name": "Cancellieri",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/cancellieri/5500",
+      "birthDate": "2002-02-12",
+      "checkedAt": "2026-08-19T03:15:48.319Z"
+    },
+    {
+      "key": "cande",
+      "name": "Candè",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/cand%C3%A8/6985",
+      "birthDate": "1998-01-24",
+      "checkedAt": "2026-08-19T03:16:36.556Z"
+    },
+    {
+      "key": "caprile",
+      "name": "Caprile",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/caprile/4360",
+      "birthDate": "2001-08-25",
+      "checkedAt": "2026-08-19T03:15:46.929Z"
+    },
+    {
+      "key": "caqueret",
+      "name": "Caqueret",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/caqueret/5036",
+      "birthDate": "2000-02-15",
+      "checkedAt": "2026-08-19T03:16:04.701Z"
+    },
+    {
+      "key": "carbonia",
+      "name": "Carboni A.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/carboni-a/4925",
+      "birthDate": "2001-02-04",
+      "checkedAt": "2026-08-19T03:16:34.533Z"
+    },
+    {
+      "key": "carbonif",
+      "name": "Carboni F.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/carboni-f/6149",
+      "birthDate": "2003-04-04",
+      "checkedAt": "2026-08-19T03:16:54.383Z"
+    },
+    {
+      "key": "carlosaugusto",
+      "name": "Carlos Augusto",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/carlos-augusto/5877",
+      "birthDate": "1999-01-07",
+      "checkedAt": "2026-08-19T03:15:57.787Z"
+    },
+    {
+      "key": "carnesecchi",
+      "name": "Carnesecchi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/carnesecchi/4431",
+      "birthDate": "2000-07-01",
+      "checkedAt": "2026-08-19T03:15:33.076Z"
+    },
+    {
+      "key": "casadei",
+      "name": "Casadei",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/casadei/5888",
+      "birthDate": "2003-01-10",
+      "checkedAt": "2026-08-19T03:15:45.579Z"
+    },
+    {
+      "key": "casale",
+      "name": "Casale",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/casale/5498",
+      "birthDate": "1998-02-14",
+      "checkedAt": "2026-08-19T03:16:30.464Z"
+    },
+    {
+      "key": "castros",
+      "name": "Castro S.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/castro-s/6572",
+      "birthDate": "2004-09-18",
+      "checkedAt": "2026-08-19T03:15:36.608Z"
+    },
+    {
+      "key": "cataldi",
+      "name": "Cataldi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/cataldi/333",
+      "birthDate": "1994-08-06",
+      "checkedAt": "2026-08-19T03:16:24.067Z"
+    },
+    {
+      "key": "celik",
+      "name": "Celik",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/celik/4657",
+      "birthDate": "1997-02-17",
+      "checkedAt": "2026-08-19T03:15:53.653Z"
+    },
+    {
+      "key": "chakvetadze",
+      "name": "Chakvetadze",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/chakvetadze/7418",
+      "birthDate": "1999-08-29",
+      "checkedAt": "2026-08-19T03:16:43.600Z"
+    },
+    {
+      "key": "chalobaht",
+      "name": "Chalobah T.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/chalobah-t/5641",
+      "birthDate": "1999-07-05",
+      "checkedAt": "2026-08-19T03:15:49.883Z"
+    },
+    {
+      "key": "christenseno",
+      "name": "Christensen O.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/christensen-o/6403",
+      "birthDate": "1999-03-22",
+      "checkedAt": "2026-08-19T03:16:47.520Z"
+    },
+    {
+      "key": "chukwueze",
+      "name": "Chukwueze",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/chukwueze/4856",
+      "birthDate": "1999-05-22",
+      "checkedAt": "2026-08-19T03:16:08.055Z"
+    },
+    {
+      "key": "cichella",
+      "name": "Cichella",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/cichella/7473",
+      "birthDate": "2005-10-04",
+      "checkedAt": "2026-08-19T03:16:22.545Z"
+    },
+    {
+      "key": "ciocci",
+      "name": "Ciocci",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/ciocci/4929",
+      "birthDate": "2002-01-24",
+      "checkedAt": "2026-08-19T03:17:02.971Z"
+    },
+    {
+      "key": "circati",
+      "name": "Circati",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/circati/6663",
+      "birthDate": "2003-10-10",
+      "checkedAt": "2026-08-19T03:16:09.070Z"
+    },
+    {
+      "key": "cissea",
+      "name": "Cissè A.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/ciss%C3%A8-a/6618",
+      "birthDate": "2006-10-22",
+      "checkedAt": "2026-08-19T03:16:38.155Z"
+    },
+    {
+      "key": "cittadini",
+      "name": "Cittadini",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/cittadini/5757",
+      "birthDate": "2002-04-18",
+      "checkedAt": "2026-08-19T03:16:32.209Z"
+    },
+    {
+      "key": "ciurria",
+      "name": "Ciurria",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/ciurria/5880",
+      "birthDate": "1995-02-09",
+      "checkedAt": "2026-08-19T03:16:41.962Z"
+    },
+    {
+      "key": "coco",
+      "name": "Coco",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/coco/6642",
+      "birthDate": "1999-02-09",
+      "checkedAt": "2026-08-19T03:16:00.851Z"
+    },
+    {
+      "key": "colombo",
+      "name": "Colombo",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/colombo/4923",
+      "birthDate": "2002-03-08",
+      "checkedAt": "2026-08-19T03:15:41.888Z"
+    },
+    {
+      "key": "colombol",
+      "name": "Colombo L.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/colombo-l/7477",
+      "birthDate": "2005-06-04",
+      "checkedAt": "2026-08-19T03:16:34.720Z"
+    },
+    {
+      "key": "colpani",
+      "name": "Colpani",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/colpani/5878",
+      "birthDate": "1999-05-11",
+      "checkedAt": "2026-08-19T03:15:53.794Z"
+    },
+    {
+      "key": "comert",
+      "name": "Comert",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/comert/7526",
+      "birthDate": "1998-02-04",
+      "checkedAt": "2026-08-19T03:16:27.379Z"
+    },
+    {
+      "key": "comuzzo",
+      "name": "Comuzzo",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/comuzzo/6495",
+      "birthDate": "2005-02-20",
+      "checkedAt": "2026-08-19T03:16:09.532Z"
+    },
+    {
+      "key": "conceicao",
+      "name": "Conceicao",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/conceicao/6884",
+      "birthDate": "2002-12-14",
+      "checkedAt": "2026-08-19T03:15:40.241Z"
+    },
+    {
+      "key": "contini",
+      "name": "Contini",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/contini/2845",
+      "birthDate": "1996-05-21",
+      "checkedAt": "2026-08-19T03:16:53.520Z"
+    },
+    {
+      "key": "corrado",
+      "name": "Corrado",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/corrado/7471",
+      "birthDate": "2000-03-19",
+      "checkedAt": "2026-08-19T03:16:48.698Z"
+    },
+    {
+      "key": "correiat",
+      "name": "Correia T.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/correia-t/4845",
+      "birthDate": "1999-03-09",
+      "checkedAt": "2026-08-19T03:16:29.550Z"
+    },
+    {
+      "key": "corvi",
+      "name": "Corvi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/corvi/6662",
+      "birthDate": "2001-03-23",
+      "checkedAt": "2026-08-19T03:16:54.029Z"
+    },
+    {
+      "key": "coulibalyl",
+      "name": "Coulibaly L.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/coulibaly-l/5504",
+      "birthDate": "1996-04-10",
+      "checkedAt": "2026-08-19T03:16:08.007Z"
+    },
+    {
+      "key": "couto",
+      "name": "Couto",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/couto/6727",
+      "birthDate": "2002-06-03",
+      "checkedAt": "2026-08-19T03:15:55.620Z"
+    },
+    {
+      "key": "cremaschi",
+      "name": "Cremaschi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/cremaschi/7276",
+      "birthDate": "2005-03-02",
+      "checkedAt": "2026-08-19T03:16:54.543Z"
+    },
+    {
+      "key": "cristante",
+      "name": "Cristante",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/cristante/779",
+      "birthDate": "1995-03-03",
+      "checkedAt": "2026-08-19T03:15:54.925Z"
+    },
+    {
+      "key": "cuencaa",
+      "name": "Cuenca A.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/cuenca-a/7407",
+      "birthDate": "2007-06-11",
+      "checkedAt": "2026-08-19T03:17:03.365Z"
+    },
+    {
+      "key": "cutrone",
+      "name": "Cutrone",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/cutrone/2155",
+      "birthDate": "1998-01-03",
+      "checkedAt": "2026-08-19T03:15:48.824Z"
+    },
+    {
+      "key": "dacunha",
+      "name": "Da Cunha",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/da-cunha/5559",
+      "birthDate": "2001-06-09",
+      "checkedAt": "2026-08-19T03:15:31.045Z"
+    },
+    {
+      "key": "daffara",
+      "name": "Daffara",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/daffara/7411",
+      "birthDate": "2004-12-05",
+      "checkedAt": "2026-08-19T03:15:59.835Z"
+    },
+    {
+      "key": "dagasso",
+      "name": "Dagasso",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/dagasso/7481",
+      "birthDate": "2004-04-01",
+      "checkedAt": "2026-08-19T03:16:59.543Z"
+    },
+    {
+      "key": "dallinga",
+      "name": "Dallinga",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/dallinga/6643",
+      "birthDate": "2000-08-03",
+      "checkedAt": "2026-08-19T03:17:01.560Z"
+    },
+    {
+      "key": "david",
+      "name": "David",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/david/5544",
+      "birthDate": "2000-01-14",
+      "checkedAt": "2026-08-19T03:15:47.940Z"
+    },
+    {
+      "key": "davisk",
+      "name": "Davis K.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/davis-k/5637",
+      "birthDate": "1998-02-13",
+      "checkedAt": "2026-08-19T03:15:30.593Z"
+    },
+    {
+      "key": "debruyne",
+      "name": "De Bruyne",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/de-bruyne/2517",
+      "birthDate": "1991-06-28",
+      "checkedAt": "2026-08-19T03:15:34.629Z"
+    },
+    {
+      "key": "degea",
+      "name": "De Gea",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/de-gea/2521",
+      "birthDate": "1990-11-07",
+      "checkedAt": "2026-08-19T03:15:37.281Z"
+    },
+    {
+      "key": "deketelaere",
+      "name": "De Ketelaere",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/de-ketelaere/5995",
+      "birthDate": "2001-03-10",
+      "checkedAt": "2026-08-19T03:15:32.059Z"
+    },
+    {
+      "key": "demartis",
+      "name": "De Martis",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/de-martis/7568",
+      "birthDate": "2008-06-26",
+      "checkedAt": "2026-08-19T03:17:01.254Z"
+    },
+    {
+      "key": "demarzi",
+      "name": "De Marzi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/de-marzi/7048",
+      "birthDate": "2007-04-18",
+      "checkedAt": "2026-08-19T03:16:54.767Z"
+    },
+    {
+      "key": "deroon",
+      "name": "De Roon",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/de-roon/22",
+      "birthDate": "1991-03-29",
+      "checkedAt": "2026-08-19T03:16:20.184Z"
+    },
+    {
+      "key": "desilvestri",
+      "name": "De Silvestri",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/de-silvestri/487",
+      "birthDate": "1988-05-23",
+      "checkedAt": "2026-08-19T03:16:45.376Z"
+    },
+    {
+      "key": "dewinter",
+      "name": "De Winter",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/de-winter/5739",
+      "birthDate": "2002-06-12",
+      "checkedAt": "2026-08-19T03:16:34.027Z"
+    },
+    {
+      "key": "deiola",
+      "name": "Deiola",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/deiola/1871",
+      "birthDate": "1995-08-01",
+      "checkedAt": "2026-08-19T03:16:31.194Z"
+    },
+    {
+      "key": "delebashiru",
+      "name": "Dele-Bashiru",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/dele-bashiru/6629",
+      "birthDate": "2001-02-06",
+      "checkedAt": "2026-08-19T03:16:15.009Z"
+    },
+    {
+      "key": "dellicarri",
+      "name": "Delli Carri",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/delli-carri/2115",
+      "birthDate": "1999-05-03",
+      "checkedAt": "2026-08-19T03:16:25.197Z"
+    },
+    {
+      "key": "delprato",
+      "name": "Delprato",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/delprato/6664",
+      "birthDate": "1999-11-10",
+      "checkedAt": "2026-08-19T03:15:54.413Z"
+    },
+    {
+      "key": "desplanches",
+      "name": "Desplanches",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/desplanches/7463",
+      "birthDate": "2003-03-11",
+      "checkedAt": "2026-08-19T03:16:39.453Z"
+    },
+    {
+      "key": "digennaro",
+      "name": "Di Gennaro",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/di-gennaro/1926",
+      "birthDate": "1993-10-03",
+      "checkedAt": "2026-08-19T03:16:49.905Z"
+    },
+    {
+      "key": "digregorio",
+      "name": "Di Gregorio",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/di-gregorio/5876",
+      "birthDate": "1997-07-27",
+      "checkedAt": "2026-08-19T03:15:47.728Z"
+    },
+    {
+      "key": "dilorenzo",
+      "name": "Di Lorenzo",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/di-lorenzo/2816",
+      "birthDate": "1993-08-04",
+      "checkedAt": "2026-08-19T03:15:40.359Z"
+    },
+    {
+      "key": "dia",
+      "name": "Dia",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/dia/5672",
+      "birthDate": "1996-11-16",
+      "checkedAt": "2026-08-19T03:15:43.950Z"
+    },
+    {
+      "key": "dialloo",
+      "name": "Diallo O.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/diallo-o/7536",
+      "birthDate": "2007-06-12",
+      "checkedAt": "2026-08-19T03:16:36.049Z"
+    },
+    {
+      "key": "diao",
+      "name": "Diao",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/diao/6967",
+      "birthDate": "2005-09-07",
+      "checkedAt": "2026-08-19T03:15:41.378Z"
+    },
+    {
+      "key": "diawaras",
+      "name": "Diawara S.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/diawara-s/7525",
+      "birthDate": "2006-01-13",
+      "checkedAt": "2026-08-19T03:16:41.609Z"
+    },
+    {
+      "key": "dimarco",
+      "name": "Dimarco",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/dimarco/254",
+      "birthDate": "1997-11-10",
+      "checkedAt": "2026-08-19T03:15:26.175Z"
+    },
+    {
+      "key": "diouf",
+      "name": "Diouf",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/diouf/6274",
+      "birthDate": "2003-05-17",
+      "checkedAt": "2026-08-19T03:15:52.557Z"
+    },
+    {
+      "key": "djimsiti",
+      "name": "Djimsiti",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/djimsiti/787",
+      "birthDate": "1993-02-19",
+      "checkedAt": "2026-08-19T03:17:01.955Z"
+    },
+    {
+      "key": "dodo",
+      "name": "Dodò",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/dod%C3%B2/5885",
+      "birthDate": "1998-11-17",
+      "checkedAt": "2026-08-19T03:15:43.438Z"
+    },
+    {
+      "key": "doekhi",
+      "name": "Doekhi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/doekhi/6320",
+      "birthDate": "1998-06-30",
+      "checkedAt": "2026-08-19T03:15:58.306Z"
+    },
+    {
+      "key": "doig",
+      "name": "Doig",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/doig/5851",
+      "birthDate": "2002-05-18",
+      "checkedAt": "2026-08-19T03:16:27.805Z"
+    },
+    {
+      "key": "dominguezb",
+      "name": "Dominguez B.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/dominguez-b/6895",
+      "birthDate": "2003-09-19",
+      "checkedAt": "2026-08-19T03:16:30.692Z"
+    },
+    {
+      "key": "douglasluiz",
+      "name": "Douglas Luiz",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/douglas-luiz/4911",
+      "birthDate": "1998-05-09",
+      "checkedAt": "2026-08-19T03:16:24.046Z"
+    },
+    {
+      "key": "douvikas",
+      "name": "Douvikas",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/douvikas/7017",
+      "birthDate": "1999-08-02",
+      "checkedAt": "2026-08-19T03:15:29.792Z"
+    },
+    {
+      "key": "dovbyk",
+      "name": "Dovbyk",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/dovbyk/6675",
+      "birthDate": "1997-06-21",
+      "checkedAt": "2026-08-19T03:15:33.603Z"
+    },
+    {
+      "key": "dragusin",
+      "name": "Dragusin",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/dragusin/5365",
+      "birthDate": "2002-02-03",
+      "checkedAt": "2026-08-19T03:15:51.062Z"
+    },
+    {
+      "key": "duncan",
+      "name": "Duncan",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/duncan/526",
+      "birthDate": "1993-03-10",
+      "checkedAt": "2026-08-19T03:16:44.148Z"
+    },
+    {
+      "key": "dybala",
+      "name": "Dybala",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/dybala/309",
+      "birthDate": "1993-11-15",
+      "checkedAt": "2026-08-19T03:15:36.168Z"
+    },
+    {
+      "key": "ebosse",
+      "name": "Ebosse",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/ebosse/5994",
+      "birthDate": "1999-03-11",
+      "checkedAt": "2026-08-19T03:16:43.456Z"
+    },
+    {
+      "key": "edersonds",
+      "name": "Ederson D.S.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/ederson-d-s/5792",
+      "birthDate": "1999-07-07",
+      "checkedAt": "2026-08-19T03:15:38.817Z"
+    },
+    {
+      "key": "ekhator",
+      "name": "Ekhator",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/ekhator/6822",
+      "birthDate": "2006-11-11",
+      "checkedAt": "2026-08-19T03:16:33.456Z"
+    },
+    {
+      "key": "ekkelenkamp",
+      "name": "Ekkelenkamp",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/ekkelenkamp/6684",
+      "birthDate": "2000-04-05",
+      "checkedAt": "2026-08-19T03:15:45.632Z"
+    },
+    {
+      "key": "elaynaoui",
+      "name": "El Aynaoui",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/el-aynaoui/6271",
+      "birthDate": "2001-07-02",
+      "checkedAt": "2026-08-19T03:16:26.719Z"
+    },
+    {
+      "key": "elazzouzia",
+      "name": "El Azzouzi A.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/el-azzouzi-a/7456",
+      "birthDate": "2001-05-29",
+      "checkedAt": "2026-08-19T03:16:48.988Z"
+    },
+    {
+      "key": "elazzouzio",
+      "name": "El Azzouzi O.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/el-azzouzi-o/6225",
+      "birthDate": "2001-05-29",
+      "checkedAt": "2026-08-19T03:16:38.824Z"
+    },
+    {
+      "key": "ellertsson",
+      "name": "Ellertsson",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/ellertsson/6020",
+      "birthDate": "2002-03-11",
+      "checkedAt": "2026-08-19T03:16:05.892Z"
+    },
+    {
+      "key": "elphege",
+      "name": "Elphege",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/elphege/7342",
+      "birthDate": "2001-01-09",
+      "checkedAt": "2026-08-19T03:16:36.255Z"
+    },
+    {
+      "key": "espositofp",
+      "name": "Esposito F.P.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/esposito-f-p/7071",
+      "birthDate": "2005-06-28",
+      "checkedAt": "2026-08-19T03:15:33.954Z"
+    },
+    {
+      "key": "espositose",
+      "name": "Esposito Se.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/esposito-se/4463",
+      "birthDate": "2002-07-02",
+      "checkedAt": "2026-08-19T03:15:37.120Z"
+    },
+    {
+      "key": "estupinan",
+      "name": "Estupinan",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/estupinan/5273",
+      "birthDate": "1998-01-21",
+      "checkedAt": "2026-08-19T03:16:34.215Z"
+    },
+    {
+      "key": "fabbian",
+      "name": "Fabbian",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/fabbian/6206",
+      "birthDate": "2003-01-14",
+      "checkedAt": "2026-08-19T03:16:22.057Z"
+    },
+    {
+      "key": "fadera",
+      "name": "Fadera",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/fadera/6815",
+      "birthDate": "2001-11-03",
+      "checkedAt": "2026-08-19T03:16:39.290Z"
+    },
+    {
+      "key": "fagioli",
+      "name": "Fagioli",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/fagioli/4465",
+      "birthDate": "2001-02-12",
+      "checkedAt": "2026-08-19T03:15:51.535Z"
+    },
+    {
+      "key": "falcone",
+      "name": "Falcone",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/falcone/2134",
+      "birthDate": "1995-04-12",
+      "checkedAt": "2026-08-19T03:15:53.282Z"
+    },
+    {
+      "key": "fazzini",
+      "name": "Fazzini",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/fazzini/6010",
+      "birthDate": "2003-03-16",
+      "checkedAt": "2026-08-19T03:15:56.455Z"
+    },
+    {
+      "key": "felici",
+      "name": "Felici",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/felici/6640",
+      "birthDate": "2001-04-17",
+      "checkedAt": "2026-08-19T03:16:12.146Z"
+    },
+    {
+      "key": "ferguson",
+      "name": "Ferguson",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/ferguson/5858",
+      "birthDate": "1999-08-24",
+      "checkedAt": "2026-08-19T03:15:56.128Z"
+    },
+    {
+      "key": "fini",
+      "name": "Fini",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/fini/6506",
+      "birthDate": "2006-06-02",
+      "checkedAt": "2026-08-19T03:16:32.502Z"
+    },
+    {
+      "key": "fitzjim",
+      "name": "Fitz-Jim",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/fitz-jim/7535",
+      "birthDate": "2003-07-05",
+      "checkedAt": "2026-08-19T03:16:27.686Z"
+    },
+    {
+      "key": "florianimussolini",
+      "name": "Floriani Mussolini",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/floriani-mussolini/7131",
+      "birthDate": "2003-01-27",
+      "checkedAt": "2026-08-19T03:16:33.707Z"
+    },
+    {
+      "key": "fofanasa",
+      "name": "Fofana Sa.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/fofana-sa/7319",
+      "birthDate": "2003-05-16",
+      "checkedAt": "2026-08-19T03:16:52.243Z"
+    },
+    {
+      "key": "fofanay",
+      "name": "Fofana Y.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/fofana-y/4686",
+      "birthDate": "1999-01-10",
+      "checkedAt": "2026-08-19T03:16:15.761Z"
+    },
+    {
+      "key": "folorunsho",
+      "name": "Folorunsho",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/folorunsho/6252",
+      "birthDate": "1998-02-07",
+      "checkedAt": "2026-08-19T03:16:25.907Z"
+    },
+    {
+      "key": "forsono",
+      "name": "Forson O.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/forson-o/6592",
+      "birthDate": "2004-07-20",
+      "checkedAt": "2026-08-19T03:17:01.053Z"
+    },
+    {
+      "key": "franjic",
+      "name": "Franjic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/franjic/7478",
+      "birthDate": "2000-01-14",
+      "checkedAt": "2026-08-19T03:16:44.312Z"
+    },
+    {
+      "key": "frattesi",
+      "name": "Frattesi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/frattesi/2848",
+      "birthDate": "1999-09-22",
+      "checkedAt": "2026-08-19T03:15:58.010Z"
+    },
+    {
+      "key": "frendrup",
+      "name": "Frendrup",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/frendrup/5791",
+      "birthDate": "2001-04-07",
+      "checkedAt": "2026-08-19T03:15:57.779Z"
+    },
+    {
+      "key": "frigan",
+      "name": "Frigan",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/frigan/7213",
+      "birthDate": "2003-02-11",
+      "checkedAt": "2026-08-19T03:16:17.151Z"
+    },
+    {
+      "key": "fruchtl",
+      "name": "Fruchtl",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/fruchtl/2401",
+      "birthDate": "2000-01-28",
+      "checkedAt": "2026-08-19T03:17:03.609Z"
+    },
+    {
+      "key": "gabbia",
+      "name": "Gabbia",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/gabbia/4401",
+      "birthDate": "1999-10-21",
+      "checkedAt": "2026-08-19T03:15:59.137Z"
+    },
+    {
+      "key": "gaetano",
+      "name": "Gaetano",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/gaetano/4364",
+      "birthDate": "2000-05-05",
+      "checkedAt": "2026-08-19T03:15:55.946Z"
+    },
+    {
+      "key": "gallo",
+      "name": "Gallo",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/gallo/4502",
+      "birthDate": "2000-01-05",
+      "checkedAt": "2026-08-19T03:16:07.551Z"
+    },
+    {
+      "key": "gandelman",
+      "name": "Gandelman",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/gandelman/7318",
+      "birthDate": "2000-05-16",
+      "checkedAt": "2026-08-19T03:16:15.745Z"
+    },
+    {
+      "key": "gaspark",
+      "name": "Gaspar K.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/gaspar-k/6632",
+      "birthDate": "1997-09-27",
+      "checkedAt": "2026-08-19T03:16:15.235Z"
+    },
+    {
+      "key": "gatti",
+      "name": "Gatti",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/gatti/5831",
+      "birthDate": "1998-06-24",
+      "checkedAt": "2026-08-19T03:16:23.860Z"
+    },
+    {
+      "key": "gellif",
+      "name": "Gelli F.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/gelli-f/6241",
+      "birthDate": "1996-10-15",
+      "checkedAt": "2026-08-19T03:16:32.335Z"
+    },
+    {
+      "key": "gellij",
+      "name": "Gelli J.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/gelli-j/7468",
+      "birthDate": "2001-05-11",
+      "checkedAt": "2026-08-19T03:16:48.073Z"
+    },
+    {
+      "key": "geubbels",
+      "name": "Geubbels",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/geubbels/5029",
+      "birthDate": "2001-08-16",
+      "checkedAt": "2026-08-19T03:15:48.746Z"
+    },
+    {
+      "key": "ghedjemis",
+      "name": "Ghedjemis",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/ghedjemis/6530",
+      "birthDate": "2002-09-06",
+      "checkedAt": "2026-08-19T03:15:47.295Z"
+    },
+    {
+      "key": "ghilardi",
+      "name": "Ghilardi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/ghilardi/6631",
+      "birthDate": "2003-01-06",
+      "checkedAt": "2026-08-19T03:16:26.436Z"
+    },
+    {
+      "key": "gila",
+      "name": "Gila",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/gila/5833",
+      "birthDate": "2000-08-29",
+      "checkedAt": "2026-08-19T03:15:39.841Z"
+    },
+    {
+      "key": "gilmour",
+      "name": "Gilmour",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/gilmour/5131",
+      "birthDate": "2001-06-11",
+      "checkedAt": "2026-08-19T03:16:35.037Z"
+    },
+    {
+      "key": "gimenez",
+      "name": "Gimenez",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/gimenez/7008",
+      "birthDate": "2001-04-18",
+      "checkedAt": "2026-08-19T03:16:08.291Z"
+    },
+    {
+      "key": "gineitis",
+      "name": "Gineitis",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/gineitis/6170",
+      "birthDate": "2004-04-15",
+      "checkedAt": "2026-08-19T03:16:18.320Z"
+    },
+    {
+      "key": "giovane",
+      "name": "Giovane",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/giovane/7162",
+      "birthDate": "2003-11-24",
+      "checkedAt": "2026-08-19T03:16:25.931Z"
+    },
+    {
+      "key": "goldaniga",
+      "name": "Goldaniga",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/goldaniga/418",
+      "birthDate": "1993-11-02",
+      "checkedAt": "2026-08-19T03:16:46.878Z"
+    },
+    {
+      "key": "gollini",
+      "name": "Gollini",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/gollini/610",
+      "birthDate": "1995-03-18",
+      "checkedAt": "2026-08-19T03:16:54.890Z"
+    },
+    {
+      "key": "gomes",
+      "name": "Gomes",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/gomes/7454",
+      "birthDate": "2008-02-14",
+      "checkedAt": "2026-08-19T03:16:59.411Z"
+    },
+    {
+      "key": "gorter",
+      "name": "Gorter",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/gorter/7248",
+      "birthDate": "2005-01-31",
+      "checkedAt": "2026-08-19T03:16:51.734Z"
+    },
+    {
+      "key": "grandi",
+      "name": "Grandi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/grandi/6671",
+      "birthDate": "1992-10-12",
+      "checkedAt": "2026-08-19T03:16:59.034Z"
+    },
+    {
+      "key": "grillitsch",
+      "name": "Grillitsch",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/grillitsch/7550",
+      "birthDate": "1995-08-07",
+      "checkedAt": "2026-08-19T03:16:19.822Z"
+    },
+    {
+      "key": "gudmundssona",
+      "name": "Gudmundsson A.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/gudmundsson-a/5800",
+      "birthDate": "1997-06-15",
+      "checkedAt": "2026-08-19T03:15:37.184Z"
+    },
+    {
+      "key": "gueye",
+      "name": "Gueye",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/gueye/7272",
+      "birthDate": "2006-09-16",
+      "checkedAt": "2026-08-19T03:16:29.202Z"
+    },
+    {
+      "key": "gutierrez",
+      "name": "Gutierrez",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/gutierrez/5427",
+      "birthDate": "2001-07-27",
+      "checkedAt": "2026-08-19T03:17:01.767Z"
+    },
+    {
+      "key": "hainaut",
+      "name": "Hainaut",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/hainaut/6821",
+      "birthDate": "2002-02-18",
+      "checkedAt": "2026-08-19T03:16:38.198Z"
+    },
+    {
+      "key": "halhal",
+      "name": "Halhal",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/halhal/7538",
+      "birthDate": "2003-03-05",
+      "checkedAt": "2026-08-19T03:16:29.457Z"
+    },
+    {
+      "key": "happonen",
+      "name": "Happonen",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/happonen/7533",
+      "birthDate": "2007-03-13",
+      "checkedAt": "2026-08-19T03:16:44.816Z"
+    },
+    {
+      "key": "haps",
+      "name": "Haps",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/haps/5695",
+      "birthDate": "1993-06-12",
+      "checkedAt": "2026-08-19T03:16:18.823Z"
+    },
+    {
+      "key": "hasa",
+      "name": "Hasa",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/hasa/6903",
+      "birthDate": "2004-01-06",
+      "checkedAt": "2026-08-19T03:16:39.519Z"
+    },
+    {
+      "key": "havel",
+      "name": "Havel",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/havel/7453",
+      "birthDate": "2003-04-16",
+      "checkedAt": "2026-08-19T03:16:23.355Z"
+    },
+    {
+      "key": "heggem",
+      "name": "Heggem",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/heggem/7212",
+      "birthDate": "1999-01-12",
+      "checkedAt": "2026-08-19T03:16:03.016Z"
+    },
+    {
+      "key": "helgason",
+      "name": "Helgason",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/helgason/5872",
+      "birthDate": "2000-09-28",
+      "checkedAt": "2026-08-19T03:16:37.884Z"
+    },
+    {
+      "key": "helland",
+      "name": "Helland",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/helland/7326",
+      "birthDate": "2005-04-25",
+      "checkedAt": "2026-08-19T03:16:38.504Z"
+    },
+    {
+      "key": "hermoso",
+      "name": "Hermoso",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/hermoso/4807",
+      "birthDate": "1995-06-18",
+      "checkedAt": "2026-08-19T03:15:44.941Z"
+    },
+    {
+      "key": "hien",
+      "name": "Hien",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/hien/6046",
+      "birthDate": "1999-01-13",
+      "checkedAt": "2026-08-19T03:15:49.955Z"
+    },
+    {
+      "key": "hojlund",
+      "name": "Hojlund",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/hojlund/6052",
+      "birthDate": "2003-02-04",
+      "checkedAt": "2026-08-19T03:15:27.889Z"
+    },
+    {
+      "key": "holm",
+      "name": "Holm",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/holm/5678",
+      "birthDate": "2000-05-13",
+      "checkedAt": "2026-08-19T03:16:11.130Z"
+    },
+    {
+      "key": "iannoni",
+      "name": "Iannoni",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/iannoni/7157",
+      "birthDate": "2001-04-11",
+      "checkedAt": "2026-08-19T03:16:56.659Z"
+    },
+    {
+      "key": "idrissir",
+      "name": "Idrissi R.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/idrissi-r/7125",
+      "birthDate": "2005-06-13",
+      "checkedAt": "2026-08-19T03:16:30.971Z"
+    },
+    {
+      "key": "idzes",
+      "name": "Idzes",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/idzes/6672",
+      "birthDate": "2000-06-02",
+      "checkedAt": "2026-08-19T03:16:00.659Z"
+    },
+    {
+      "key": "ilic",
+      "name": "Ilic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/ilic/5007",
+      "birthDate": "2001-03-17",
+      "checkedAt": "2026-08-19T03:16:57.511Z"
+    },
+    {
+      "key": "ilkhan",
+      "name": "Ilkhan",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/ilkhan/6005",
+      "birthDate": "2004-06-01",
+      "checkedAt": "2026-08-19T03:16:28.019Z"
+    },
+    {
+      "key": "isaksen",
+      "name": "Isaksen",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/isaksen/6398",
+      "birthDate": "2001-04-19",
+      "checkedAt": "2026-08-19T03:15:49.025Z"
+    },
+    {
+      "key": "ismajli",
+      "name": "Ismajli",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/ismajli/5010",
+      "birthDate": "1996-09-30",
+      "checkedAt": "2026-08-19T03:16:01.162Z"
+    },
+    {
+      "key": "jashari",
+      "name": "Jashari",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/jashari/7203",
+      "birthDate": "2002-07-30",
+      "checkedAt": "2026-08-19T03:16:24.894Z"
+    },
+    {
+      "key": "jean",
+      "name": "Jean",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/jean/6883",
+      "birthDate": "2000-02-19",
+      "checkedAt": "2026-08-19T03:16:41.104Z"
+    },
+    {
+      "key": "jimeneza",
+      "name": "Jimenez A.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/jimenez-a/6531",
+      "birthDate": "2005-05-08",
+      "checkedAt": "2026-08-19T03:15:51.406Z"
+    },
+    {
+      "key": "joaomario",
+      "name": "Joao Mario",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/joao-mario/7175",
+      "birthDate": "2000-01-03",
+      "checkedAt": "2026-08-19T03:16:31.699Z"
+    },
+    {
+      "key": "kaba",
+      "name": "Kaba",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/kaba/6410",
+      "birthDate": "2001-10-27",
+      "checkedAt": "2026-08-19T03:16:52.123Z"
+    },
+    {
+      "key": "kabasele",
+      "name": "Kabasele",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/kabasele/4263",
+      "birthDate": "1991-02-24",
+      "checkedAt": "2026-08-19T03:16:28.537Z"
+    },
+    {
+      "key": "kaiki",
+      "name": "Kaiki",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/kaiki/7414",
+      "birthDate": "2003-03-08",
+      "checkedAt": "2026-08-19T03:15:56.691Z"
+    },
+    {
+      "key": "kalulu",
+      "name": "Kalulu",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/kalulu/4976",
+      "birthDate": "2000-06-05",
+      "checkedAt": "2026-08-19T03:15:37.632Z"
+    },
+    {
+      "key": "kamarah",
+      "name": "Kamara H.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/kamara-h/5555",
+      "birthDate": "1994-03-05",
+      "checkedAt": "2026-08-19T03:16:09.576Z"
+    },
+    {
+      "key": "karlstrom",
+      "name": "Karlstrom",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/karlstrom/6680",
+      "birthDate": "1995-06-21",
+      "checkedAt": "2026-08-19T03:16:09.823Z"
+    },
+    {
+      "key": "kean",
+      "name": "Kean",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/kean/2097",
+      "birthDate": "2000-02-28",
+      "checkedAt": "2026-08-19T03:15:29.173Z"
+    },
+    {
+      "key": "keitam",
+      "name": "Keita M.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/keita-m/6898",
+      "birthDate": "2002-05-10",
+      "checkedAt": "2026-08-19T03:16:16.801Z"
+    },
+    {
+      "key": "kellyl",
+      "name": "Kelly L.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/kelly-l/6766",
+      "birthDate": "1998-10-06",
+      "checkedAt": "2026-08-19T03:16:14.489Z"
+    },
+    {
+      "key": "kempf",
+      "name": "Kempf",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/kempf/6893",
+      "birthDate": "1995-01-28",
+      "checkedAt": "2026-08-19T03:16:12.194Z"
+    },
+    {
+      "key": "kevincarlos",
+      "name": "Kevin Carlos",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/kevin-carlos/7547",
+      "birthDate": "2001-04-10",
+      "checkedAt": "2026-08-19T03:15:38.646Z"
+    },
+    {
+      "key": "kofler",
+      "name": "Kofler",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/kofler/7532",
+      "birthDate": "2005-04-26",
+      "checkedAt": "2026-08-19T03:16:11.641Z"
+    },
+    {
+      "key": "kolasinac",
+      "name": "Kolasinac",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/kolasinac/2640",
+      "birthDate": "1993-06-20",
+      "checkedAt": "2026-08-19T03:16:10.614Z"
+    },
+    {
+      "key": "kolomuani",
+      "name": "Kolo Muani",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/kolo-muani/5951",
+      "birthDate": "1998-12-05",
+      "checkedAt": "2026-08-19T03:15:28.422Z"
+    },
+    {
+      "key": "koneb",
+      "name": "Kone B.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/kone-b/5725",
+      "birthDate": "2000-03-14",
+      "checkedAt": "2026-08-19T03:16:49.202Z"
+    },
+    {
+      "key": "konei",
+      "name": "Konè I.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/kon%C3%A8-i/6717",
+      "birthDate": "2002-06-16",
+      "checkedAt": "2026-08-19T03:15:49.369Z"
+    },
+    {
+      "key": "konem",
+      "name": "Konè M.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/kon%C3%A8-m/5589",
+      "birthDate": "2001-05-17",
+      "checkedAt": "2026-08-19T03:15:45.120Z"
+    },
+    {
+      "key": "koopmeiners",
+      "name": "Koopmeiners",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/koopmeiners/5685",
+      "birthDate": "1998-02-28",
+      "checkedAt": "2026-08-19T03:16:14.724Z"
+    },
+    {
+      "key": "kossounou",
+      "name": "Kossounou",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/kossounou/5578",
+      "birthDate": "2001-01-04",
+      "checkedAt": "2026-08-19T03:16:30.168Z"
+    },
+    {
+      "key": "kouadio",
+      "name": "Kouadio",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/kouadio/7238",
+      "birthDate": "2006-05-07",
+      "checkedAt": "2026-08-19T03:16:34.489Z"
+    },
+    {
+      "key": "koulierakis",
+      "name": "Koulierakis",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/koulierakis/7529",
+      "birthDate": "2003-11-28",
+      "checkedAt": "2026-08-19T03:15:54.783Z"
+    },
+    {
+      "key": "koutsoupias",
+      "name": "Koutsoupias",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/koutsoupias/7474",
+      "birthDate": "2001-05-10",
+      "checkedAt": "2026-08-19T03:16:22.681Z"
+    },
+    {
+      "key": "kristensent",
+      "name": "Kristensen T.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/kristensen-t/6485",
+      "birthDate": "2002-01-17",
+      "checkedAt": "2026-08-19T03:16:01.675Z"
+    },
+    {
+      "key": "krstovic",
+      "name": "Krstovic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/krstovic/6435",
+      "birthDate": "2000-04-05",
+      "checkedAt": "2026-08-19T03:15:30.531Z"
+    },
+    {
+      "key": "kuhn",
+      "name": "Kuhn",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/kuhn/7128",
+      "birthDate": "2000-01-01",
+      "checkedAt": "2026-08-19T03:16:31.232Z"
+    },
+    {
+      "key": "kulenovic",
+      "name": "Kulenovic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/kulenovic/7349",
+      "birthDate": "1999-12-04",
+      "checkedAt": "2026-08-19T03:16:28.325Z"
+    },
+    {
+      "key": "kvernadze",
+      "name": "Kvernadze",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/kvernadze/6204",
+      "birthDate": "2003-02-07",
+      "checkedAt": "2026-08-19T03:16:22.848Z"
+    },
+    {
+      "key": "lahdo",
+      "name": "Lahdo",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/lahdo/7357",
+      "birthDate": "2007-12-26",
+      "checkedAt": "2026-08-19T03:16:47.058Z"
+    },
+    {
+      "key": "lang",
+      "name": "Lang",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/lang/7120",
+      "birthDate": "1999-06-17",
+      "checkedAt": "2026-08-19T03:16:35.242Z"
+    },
+    {
+      "key": "lauberbach",
+      "name": "Lauberbach",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/lauberbach/7482",
+      "birthDate": "1998-02-15",
+      "checkedAt": "2026-08-19T03:16:59.912Z"
+    },
+    {
+      "key": "lauriente",
+      "name": "Laurientè",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/laurient%C3%A8/6060",
+      "birthDate": "1998-12-04",
+      "checkedAt": "2026-08-19T03:15:35.138Z"
+    },
+    {
+      "key": "lazzari",
+      "name": "Lazzari",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/lazzari/2263",
+      "birthDate": "1993-11-29",
+      "checkedAt": "2026-08-19T03:16:40.945Z"
+    },
+    {
+      "key": "leao",
+      "name": "Leao",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/leao/4510",
+      "birthDate": "1999-06-10",
+      "checkedAt": "2026-08-19T03:15:31.060Z"
+    },
+    {
+      "key": "lezzerini",
+      "name": "Lezzerini",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/lezzerini/158",
+      "birthDate": "1995-03-24",
+      "checkedAt": "2026-08-19T03:16:47.571Z"
+    },
+    {
+      "key": "liberali",
+      "name": "Liberali",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/liberali/6678",
+      "birthDate": "2007-04-06",
+      "checkedAt": "2026-08-19T03:16:04.857Z"
+    },
+    {
+      "key": "lipani",
+      "name": "Lipani",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/lipani/6246",
+      "birthDate": "2005-05-18",
+      "checkedAt": "2026-08-19T03:16:42.954Z"
+    },
+    {
+      "key": "lisman",
+      "name": "Lisman",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/lisman/7408",
+      "birthDate": "2006-02-20",
+      "checkedAt": "2026-08-19T03:16:59.709Z"
+    },
+    {
+      "key": "liteta",
+      "name": "Liteta",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/liteta/7165",
+      "birthDate": "2006-02-22",
+      "checkedAt": "2026-08-19T03:16:45.872Z"
+    },
+    {
+      "key": "lobotka",
+      "name": "Lobotka",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/lobotka/4287",
+      "birthDate": "1994-11-25",
+      "checkedAt": "2026-08-19T03:15:59.814Z"
+    },
+    {
+      "key": "locatelli",
+      "name": "Locatelli",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/locatelli/827",
+      "birthDate": "1998-01-08",
+      "checkedAt": "2026-08-19T03:15:53.094Z"
+    },
+    {
+      "key": "loftuscheek",
+      "name": "Loftus-Cheek",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/loftus-cheek/4199",
+      "birthDate": "1996-01-23",
+      "checkedAt": "2026-08-19T03:16:25.419Z"
+    },
+    {
+      "key": "lolic",
+      "name": "Lolic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/lolic/7466",
+      "birthDate": "2004-05-15",
+      "checkedAt": "2026-08-19T03:16:47.808Z"
+    },
+    {
+      "key": "lontani",
+      "name": "Lontani",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/lontani/7561",
+      "birthDate": "2008-01-18",
+      "checkedAt": "2026-08-19T03:17:00.925Z"
+    },
+    {
+      "key": "lucca",
+      "name": "Lucca",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/lucca/6215",
+      "birthDate": "2000-09-10",
+      "checkedAt": "2026-08-19T03:16:35.500Z"
+    },
+    {
+      "key": "lucchesi",
+      "name": "Lucchesi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/lucchesi/6659",
+      "birthDate": "2003-05-09",
+      "checkedAt": "2026-08-19T03:16:25.405Z"
+    },
+    {
+      "key": "lucumi",
+      "name": "Lucumì",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/lucum%C3%AC/6042",
+      "birthDate": "1998-06-26",
+      "checkedAt": "2026-08-19T03:15:50.389Z"
+    },
+    {
+      "key": "luishenrique",
+      "name": "Luis Henrique",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/luis-henrique/5301",
+      "birthDate": "2001-12-14",
+      "checkedAt": "2026-08-19T03:16:23.561Z"
+    },
+    {
+      "key": "lukaku",
+      "name": "Lukaku",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/lukaku/2531",
+      "birthDate": "1993-03-13",
+      "checkedAt": "2026-08-19T03:17:01.444Z"
+    },
+    {
+      "key": "maignan",
+      "name": "Maignan",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/maignan/4312",
+      "birthDate": "1995-07-03",
+      "checkedAt": "2026-08-19T03:15:34.614Z"
+    },
+    {
+      "key": "maldini",
+      "name": "Maldini",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/maldini/4896",
+      "birthDate": "2001-10-11",
+      "checkedAt": "2026-08-19T03:16:10.855Z"
+    },
+    {
+      "key": "maleh",
+      "name": "Maleh",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/maleh/5457",
+      "birthDate": "1998-08-22",
+      "checkedAt": "2026-08-19T03:16:41.450Z"
+    },
+    {
+      "key": "malen",
+      "name": "Malen",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/malen/5585",
+      "birthDate": "1999-01-19",
+      "checkedAt": "2026-08-19T03:15:26.507Z"
+    },
+    {
+      "key": "mancini",
+      "name": "Mancini",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/mancini/2296",
+      "birthDate": "1996-04-17",
+      "checkedAt": "2026-08-19T03:15:35.123Z"
+    },
+    {
+      "key": "mandas",
+      "name": "Mandas",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/mandas/6482",
+      "birthDate": "2001-09-17",
+      "checkedAt": "2026-08-19T03:15:48.233Z"
+    },
+    {
+      "key": "mandragora",
+      "name": "Mandragora",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/mandragora/1933",
+      "birthDate": "1997-06-29",
+      "checkedAt": "2026-08-19T03:15:47.101Z"
+    },
+    {
+      "key": "mangas",
+      "name": "Mangas",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/mangas/7485",
+      "birthDate": "1998-03-19",
+      "checkedAt": "2026-08-19T03:16:08.513Z"
+    },
+    {
+      "key": "marcandalli",
+      "name": "Marcandalli",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/marcandalli/6660",
+      "birthDate": "2002-02-25",
+      "checkedAt": "2026-08-19T03:16:05.714Z"
+    },
+    {
+      "key": "marianucci",
+      "name": "Marianucci",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/marianucci/6809",
+      "birthDate": "2004-07-23",
+      "checkedAt": "2026-08-19T03:16:53.760Z"
+    },
+    {
+      "key": "marinr",
+      "name": "Marin R.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/marin-r/6638",
+      "birthDate": "2002-05-19",
+      "checkedAt": "2026-08-19T03:16:42.437Z"
+    },
+    {
+      "key": "martin",
+      "name": "Martin",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/martin/2593",
+      "birthDate": "1997-04-22",
+      "checkedAt": "2026-08-19T03:16:13.557Z"
+    },
+    {
+      "key": "martinezjo",
+      "name": "Martinez Jo.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/martinez-jo/5116",
+      "birthDate": "1998-05-27",
+      "checkedAt": "2026-08-19T03:15:32.433Z"
+    },
+    {
+      "key": "martinezl",
+      "name": "Martinez L.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/martinez-l/2764",
+      "birthDate": "1997-08-22",
+      "checkedAt": "2026-08-19T03:15:26.528Z"
+    },
+    {
+      "key": "marusic",
+      "name": "Marusic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/marusic/2188",
+      "birthDate": "1992-10-17",
+      "checkedAt": "2026-08-19T03:16:06.909Z"
+    },
+    {
+      "key": "mascardi",
+      "name": "Mascardi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/mascardi/7457",
+      "birthDate": "2006-09-26",
+      "checkedAt": "2026-08-19T03:16:56.412Z"
+    },
+    {
+      "key": "masini",
+      "name": "Masini",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/masini/6917",
+      "birthDate": "2001-01-27",
+      "checkedAt": "2026-08-19T03:16:40.433Z"
+    },
+    {
+      "key": "mastantuono",
+      "name": "Mastantuono",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/mastantuono/7078",
+      "birthDate": "2007-08-14",
+      "checkedAt": "2026-08-19T03:15:40.867Z"
+    },
+    {
+      "key": "matic",
+      "name": "Matic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/matic/2528",
+      "birthDate": "1988-08-01",
+      "checkedAt": "2026-08-19T03:16:17.660Z"
+    },
+    {
+      "key": "matturro",
+      "name": "Matturro",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/matturro/6244",
+      "birthDate": "2004-10-11",
+      "checkedAt": "2026-08-19T03:16:49.713Z"
+    },
+    {
+      "key": "mazzocchi",
+      "name": "Mazzocchi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/mazzocchi/5481",
+      "birthDate": "1995-07-27",
+      "checkedAt": "2026-08-19T03:16:53.875Z"
+    },
+    {
+      "key": "mckennie",
+      "name": "McKennie",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/mckennie/4973",
+      "birthDate": "1998-08-28",
+      "checkedAt": "2026-08-19T03:15:32.742Z"
+    },
+    {
+      "key": "mctominay",
+      "name": "McTominay",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/mctominay/4777",
+      "birthDate": "1996-12-08",
+      "checkedAt": "2026-08-19T03:15:27.258Z"
+    },
+    {
+      "key": "meichtry",
+      "name": "Meichtry",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/meichtry/7409",
+      "birthDate": "2005-07-08",
+      "checkedAt": "2026-08-19T03:16:13.719Z"
+    },
+    {
+      "key": "mendyp",
+      "name": "Mendy P.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/mendy-p/7374",
+      "birthDate": "2007-01-13",
+      "checkedAt": "2026-08-19T03:16:20.963Z"
+    },
+    {
+      "key": "meret",
+      "name": "Meret",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/meret/572",
+      "birthDate": "1997-03-22",
+      "checkedAt": "2026-08-19T03:15:42.393Z"
+    },
+    {
+      "key": "messias",
+      "name": "Messias",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/messias/4970",
+      "birthDate": "1991-05-13",
+      "checkedAt": "2026-08-19T03:16:32.711Z"
+    },
+    {
+      "key": "milik",
+      "name": "Milik",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/milik/2012",
+      "birthDate": "1994-02-28",
+      "checkedAt": "2026-08-19T03:16:19.945Z"
+    },
+    {
+      "key": "milinkovicsavicv",
+      "name": "Milinkovic-Savic V.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/milinkovic-savic-v/2170",
+      "birthDate": "1997-02-20",
+      "checkedAt": "2026-08-19T03:16:16.639Z"
+    },
+    {
+      "key": "milla",
+      "name": "Milla",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/milla/7412",
+      "birthDate": "1994-10-07",
+      "checkedAt": "2026-08-19T03:16:12.379Z"
+    },
+    {
+      "key": "millerl",
+      "name": "Miller L.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/miller-l/7208",
+      "birthDate": "2006-08-25",
+      "checkedAt": "2026-08-19T03:16:36.871Z"
+    },
+    {
+      "key": "mina",
+      "name": "Mina",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/mina/4210",
+      "birthDate": "1994-09-23",
+      "checkedAt": "2026-08-19T03:15:51.024Z"
+    },
+    {
+      "key": "mirandaj",
+      "name": "Miranda J.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/miranda-j/4734",
+      "birthDate": "2000-01-19",
+      "checkedAt": "2026-08-19T03:15:50.467Z"
+    },
+    {
+      "key": "miretti",
+      "name": "Miretti",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/miretti/5813",
+      "birthDate": "2003-08-03",
+      "checkedAt": "2026-08-19T03:16:33.011Z"
+    },
+    {
+      "key": "missori",
+      "name": "Missori",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/missori/6189",
+      "birthDate": "2004-03-24",
+      "checkedAt": "2026-08-19T03:16:55.782Z"
+    },
+    {
+      "key": "mitaj",
+      "name": "Mitaj",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/mitaj/7537",
+      "birthDate": "2003-08-06",
+      "checkedAt": "2026-08-19T03:16:23.048Z"
+    },
+    {
+      "key": "mkhitaryan",
+      "name": "Mkhitaryan",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/mkhitaryan/2529",
+      "birthDate": "1989-01-21",
+      "checkedAt": "2026-08-19T03:16:14.228Z"
+    },
+    {
+      "key": "mlacic",
+      "name": "Mlacic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/mlacic/7356",
+      "birthDate": "2007-03-12",
+      "checkedAt": "2026-08-19T03:16:58.069Z"
+    },
+    {
+      "key": "modric",
+      "name": "Modric",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/modric/2606",
+      "birthDate": "1985-09-09",
+      "checkedAt": "2026-08-19T03:15:40.080Z"
+    },
+    {
+      "key": "molinan",
+      "name": "Molina N.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/molina-n/4998",
+      "birthDate": "1998-04-06",
+      "checkedAt": "2026-08-19T03:15:31.613Z"
+    },
+    {
+      "key": "monterisi",
+      "name": "Monterisi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/monterisi/4952",
+      "birthDate": "2001-12-19",
+      "checkedAt": "2026-08-19T03:16:05.525Z"
+    },
+    {
+      "key": "morata",
+      "name": "Morata",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/morata/313",
+      "birthDate": "1992-10-23",
+      "checkedAt": "2026-08-19T03:16:21.371Z"
+    },
+    {
+      "key": "morenom",
+      "name": "Moreno M.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/moreno-m/6890",
+      "birthDate": "2003-09-24",
+      "checkedAt": "2026-08-19T03:16:18.801Z"
+    },
+    {
+      "key": "morol",
+      "name": "Moro L.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/moro-l/7158",
+      "birthDate": "2001-01-25",
+      "checkedAt": "2026-08-19T03:16:56.285Z"
+    },
+    {
+      "key": "moron",
+      "name": "Moro N.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/moro-n/6054",
+      "birthDate": "1998-03-12",
+      "checkedAt": "2026-08-19T03:16:20.329Z"
+    },
+    {
+      "key": "mota",
+      "name": "Mota",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/mota/5882",
+      "birthDate": "1998-05-02",
+      "checkedAt": "2026-08-19T03:16:16.285Z"
+    },
+    {
+      "key": "motta",
+      "name": "Motta",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/motta/7337",
+      "birthDate": "2005-01-13",
+      "checkedAt": "2026-08-19T03:16:50.532Z"
+    },
+    {
+      "key": "muric",
+      "name": "Muric",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/muric/4236",
+      "birthDate": "1998-11-07",
+      "checkedAt": "2026-08-19T03:16:00.343Z"
+    },
+    {
+      "key": "musah",
+      "name": "Musah",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/musah/5295",
+      "birthDate": "2002-11-29",
+      "checkedAt": "2026-08-19T03:16:41.929Z"
+    },
+    {
+      "key": "mutandwa",
+      "name": "Mutandwa",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/mutandwa/6598",
+      "birthDate": "2003-01-05",
+      "checkedAt": "2026-08-19T03:16:04.338Z"
+    },
+    {
+      "key": "ndicka",
+      "name": "N'Dicka",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/n-dicka/4317",
+      "birthDate": "1999-08-20",
+      "checkedAt": "2026-08-19T03:15:38.135Z"
+    },
+    {
+      "key": "ndri",
+      "name": "N'Dri",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/n-dri/7001",
+      "birthDate": "2000-10-27",
+      "checkedAt": "2026-08-19T03:16:33.981Z"
+    },
+    {
+      "key": "ndaba",
+      "name": "Ndaba",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/ndaba/7182",
+      "birthDate": "1999-12-25",
+      "checkedAt": "2026-08-19T03:16:51.766Z"
+    },
+    {
+      "key": "ndiaye",
+      "name": "Ndiaye",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/ndiaye/7202",
+      "birthDate": "2002-04-10",
+      "checkedAt": "2026-08-19T03:16:54.264Z"
+    },
+    {
+      "key": "ndour",
+      "name": "Ndour",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/ndour/6294",
+      "birthDate": "2004-07-27",
+      "checkedAt": "2026-08-19T03:15:51.568Z"
+    },
+    {
+      "key": "neres",
+      "name": "Neres",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/neres/6831",
+      "birthDate": "1997-03-03",
+      "checkedAt": "2026-08-19T03:16:09.024Z"
+    },
+    {
+      "key": "ngom",
+      "name": "Ngom",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/ngom/7322",
+      "birthDate": "2004-03-09",
+      "checkedAt": "2026-08-19T03:16:24.555Z"
+    },
+    {
+      "key": "nicolussicaviglia",
+      "name": "Nicolussi Caviglia",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/nicolussi-caviglia/4349",
+      "birthDate": "2000-06-18",
+      "checkedAt": "2026-08-19T03:16:09.321Z"
+    },
+    {
+      "key": "njie",
+      "name": "Njie",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/njie/6827",
+      "birthDate": "2005-05-14",
+      "checkedAt": "2026-08-19T03:16:28.187Z"
+    },
+    {
+      "key": "nkunku",
+      "name": "Nkunku",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/nkunku/4728",
+      "birthDate": "1997-11-14",
+      "checkedAt": "2026-08-19T03:15:37.792Z"
+    },
+    {
+      "key": "nortoncuffy",
+      "name": "Norton-Cuffy",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/norton-cuffy/6814",
+      "birthDate": "2004-01-12",
+      "checkedAt": "2026-08-19T03:15:52.075Z"
+    },
+    {
+      "key": "noslin",
+      "name": "Noslin",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/noslin/6556",
+      "birthDate": "1999-07-07",
+      "checkedAt": "2026-08-19T03:16:07.251Z"
+    },
+    {
+      "key": "obert",
+      "name": "Obert",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/obert/5701",
+      "birthDate": "2002-08-23",
+      "checkedAt": "2026-08-19T03:15:56.416Z"
+    },
+    {
+      "key": "obrador",
+      "name": "Obrador",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/obrador/7329",
+      "birthDate": "2004-02-24",
+      "checkedAt": "2026-08-19T03:16:10.554Z"
+    },
+    {
+      "key": "odgaard",
+      "name": "Odgaard",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/odgaard/2765",
+      "birthDate": "1999-03-31",
+      "checkedAt": "2026-08-19T03:15:50.548Z"
+    },
+    {
+      "key": "okoye",
+      "name": "Okoye",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/okoye/6462",
+      "birthDate": "1999-08-28",
+      "checkedAt": "2026-08-19T03:15:49.530Z"
+    },
+    {
+      "key": "olivera",
+      "name": "Olivera",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/olivera/5840",
+      "birthDate": "1997-10-31",
+      "checkedAt": "2026-08-19T03:16:16.763Z"
+    },
+    {
+      "key": "ondrejka",
+      "name": "Ondrejka",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/ondrejka/6984",
+      "birthDate": "2002-09-02",
+      "checkedAt": "2026-08-19T03:17:02.067Z"
+    },
+    {
+      "key": "ordonezc",
+      "name": "Ordonez C.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/ordonez-c/7138",
+      "birthDate": "2004-07-24",
+      "checkedAt": "2026-08-19T03:16:42.585Z"
+    },
+    {
+      "key": "oristanio",
+      "name": "Oristanio",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/oristanio/6218",
+      "birthDate": "2002-09-28",
+      "checkedAt": "2026-08-19T03:16:01.336Z"
+    },
+    {
+      "key": "orsolini",
+      "name": "Orsolini",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/orsolini/2167",
+      "birthDate": "1997-01-24",
+      "checkedAt": "2026-08-19T03:15:28.403Z"
+    },
+    {
+      "key": "ostigard",
+      "name": "Ostigard",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/ostigard/5750",
+      "birthDate": "1999-11-28",
+      "checkedAt": "2026-08-19T03:15:41.614Z"
+    },
+    {
+      "key": "otoa",
+      "name": "Otoa",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/otoa/6977",
+      "birthDate": "2004-05-13",
+      "checkedAt": "2026-08-19T03:16:39.912Z"
+    },
+    {
+      "key": "oulai",
+      "name": "Oulai",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/oulai/7464",
+      "birthDate": "2006-04-06",
+      "checkedAt": "2026-08-19T03:16:05.371Z"
+    },
+    {
+      "key": "oyonoa",
+      "name": "Oyono A.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/oyono-a/6238",
+      "birthDate": "2001-04-12",
+      "checkedAt": "2026-08-19T03:16:13.167Z"
+    },
+    {
+      "key": "oyonoj",
+      "name": "Oyono J.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/oyono-j/7470",
+      "birthDate": "2001-04-12",
+      "checkedAt": "2026-08-19T03:16:48.893Z"
+    },
+    {
+      "key": "padelli",
+      "name": "Padelli",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/padelli/543",
+      "birthDate": "1985-10-25",
+      "checkedAt": "2026-08-19T03:16:57.445Z"
+    },
+    {
+      "key": "paleari",
+      "name": "Paleari",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/paleari/5320",
+      "birthDate": "1992-08-29",
+      "checkedAt": "2026-08-19T03:16:56.795Z"
+    },
+    {
+      "key": "palma",
+      "name": "Palma",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/palma/6925",
+      "birthDate": "2008-03-13",
+      "checkedAt": "2026-08-19T03:16:43.127Z"
+    },
+    {
+      "key": "palmisani",
+      "name": "Palmisani",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/palmisani/6415",
+      "birthDate": "2004-06-12",
+      "checkedAt": "2026-08-19T03:16:22.225Z"
+    },
+    {
+      "key": "parisi",
+      "name": "Parisi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/parisi/5449",
+      "birthDate": "2000-11-09",
+      "checkedAt": "2026-08-19T03:16:13.049Z"
+    },
+    {
+      "key": "pasalic",
+      "name": "Pasalic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/pasalic/2077",
+      "birthDate": "1995-02-09",
+      "checkedAt": "2026-08-19T03:15:46.426Z"
+    },
+    {
+      "key": "patric",
+      "name": "Patric",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/patric/327",
+      "birthDate": "1993-04-17",
+      "checkedAt": "2026-08-19T03:16:50.919Z"
+    },
+    {
+      "key": "pavard",
+      "name": "Pavard",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/pavard/4177",
+      "birthDate": "1996-03-28",
+      "checkedAt": "2026-08-19T03:16:06.034Z"
+    },
+    {
+      "key": "pavlovic",
+      "name": "Pavlovic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/pavlovic/5022",
+      "birthDate": "2001-05-24",
+      "checkedAt": "2026-08-19T03:15:35.652Z"
+    },
+    {
+      "key": "pazn",
+      "name": "Paz N.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/paz-n/6875",
+      "birthDate": "2004-09-08",
+      "checkedAt": "2026-08-19T03:15:26.809Z"
+    },
+    {
+      "key": "pedersen",
+      "name": "Pedersen",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/pedersen/6426",
+      "birthDate": "2000-07-16",
+      "checkedAt": "2026-08-19T03:16:18.164Z"
+    },
+    {
+      "key": "pedraza",
+      "name": "Pedraza",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/pedraza/4817",
+      "birthDate": "1996-04-09",
+      "checkedAt": "2026-08-19T03:16:14.736Z"
+    },
+    {
+      "key": "pellegrinilo",
+      "name": "Pellegrini Lo.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/pellegrini-lo/530",
+      "birthDate": "1996-06-19",
+      "checkedAt": "2026-08-19T03:15:46.083Z"
+    },
+    {
+      "key": "pellegrinilu",
+      "name": "Pellegrini Lu.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/pellegrini-lu/2728",
+      "birthDate": "1999-03-07",
+      "checkedAt": "2026-08-19T03:16:41.415Z"
+    },
+    {
+      "key": "pellegrinom",
+      "name": "Pellegrino M.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/pellegrino-m/7023",
+      "birthDate": "2001-10-22",
+      "checkedAt": "2026-08-19T03:15:34.968Z"
+    },
+    {
+      "key": "penev",
+      "name": "Penev",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/penev/7557",
+      "birthDate": "2008-04-22",
+      "checkedAt": "2026-08-19T03:17:00.414Z"
+    },
+    {
+      "key": "perezk",
+      "name": "Perez K.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/perez-k/6994",
+      "birthDate": "1997-02-14",
+      "checkedAt": "2026-08-19T03:16:19.330Z"
+    },
+    {
+      "key": "perezm",
+      "name": "Perez M.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/perez-m/7164",
+      "birthDate": "2005-04-13",
+      "checkedAt": "2026-08-19T03:17:03.984Z"
+    },
+    {
+      "key": "perin",
+      "name": "Perin",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/perin/218",
+      "birthDate": "1992-11-10",
+      "checkedAt": "2026-08-19T03:16:06.223Z"
+    },
+    {
+      "key": "perrone",
+      "name": "Perrone",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/perrone/6151",
+      "birthDate": "2003-01-07",
+      "checkedAt": "2026-08-19T03:15:43.407Z"
+    },
+    {
+      "key": "pessina",
+      "name": "Pessina",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/pessina/2741",
+      "birthDate": "1997-04-21",
+      "checkedAt": "2026-08-19T03:15:59.322Z"
+    },
+    {
+      "key": "pessinamas",
+      "name": "Pessina Mas.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/pessina-mas/7172",
+      "birthDate": "2007-12-25",
+      "checkedAt": "2026-08-19T03:16:45.253Z"
+    },
+    {
+      "key": "petagna",
+      "name": "Petagna",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/petagna/383",
+      "birthDate": "1995-06-30",
+      "checkedAt": "2026-08-19T03:16:42.114Z"
+    },
+    {
+      "key": "piana",
+      "name": "Piana",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/piana/5707",
+      "birthDate": "2003-09-29",
+      "checkedAt": "2026-08-19T03:16:57.816Z"
+    },
+    {
+      "key": "piccoli",
+      "name": "Piccoli",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/piccoli/4359",
+      "birthDate": "2001-01-27",
+      "checkedAt": "2026-08-19T03:15:51.917Z"
+    },
+    {
+      "key": "pieragnolo",
+      "name": "Pieragnolo",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/pieragnolo/7156",
+      "birthDate": "2003-01-03",
+      "checkedAt": "2026-08-19T03:16:55.901Z"
+    },
+    {
+      "key": "pierotti",
+      "name": "Pierotti",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/pierotti/6549",
+      "birthDate": "2001-04-03",
+      "checkedAt": "2026-08-19T03:16:07.786Z"
+    },
+    {
+      "key": "pinamonti",
+      "name": "Pinamonti",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/pinamonti/2038",
+      "birthDate": "1999-05-19",
+      "checkedAt": "2026-08-19T03:15:38.552Z"
+    },
+    {
+      "key": "pinsoglio",
+      "name": "Pinsoglio",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/pinsoglio/1930",
+      "birthDate": "1990-03-16",
+      "checkedAt": "2026-08-19T03:16:50.004Z"
+    },
+    {
+      "key": "piotrowski",
+      "name": "Piotrowski",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/piotrowski/7198",
+      "birthDate": "1997-10-04",
+      "checkedAt": "2026-08-19T03:16:18.671Z"
+    },
+    {
+      "key": "pisilli",
+      "name": "Pisilli",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/pisilli/6190",
+      "birthDate": "2004-09-23",
+      "checkedAt": "2026-08-19T03:16:17.304Z"
+    },
+    {
+      "key": "pisseri",
+      "name": "Pisseri",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/pisseri/7560",
+      "birthDate": "1991-11-21",
+      "checkedAt": "2026-08-19T03:17:00.549Z"
+    },
+    {
+      "key": "pizzignacco",
+      "name": "Pizzignacco",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/pizzignacco/6682",
+      "birthDate": "2001-09-01",
+      "checkedAt": "2026-08-19T03:16:52.859Z"
+    },
+    {
+      "key": "pobega",
+      "name": "Pobega",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/pobega/5298",
+      "birthDate": "1999-07-15",
+      "checkedAt": "2026-08-19T03:16:03.568Z"
+    },
+    {
+      "key": "politano",
+      "name": "Politano",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/politano/536",
+      "birthDate": "1993-08-03",
+      "checkedAt": "2026-08-19T03:15:44.498Z"
+    },
+    {
+      "key": "pongracic",
+      "name": "Pongracic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/pongracic/5603",
+      "birthDate": "1997-09-11",
+      "checkedAt": "2026-08-19T03:16:21.481Z"
+    },
+    {
+      "key": "pozzi",
+      "name": "Pozzi",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/pozzi/7531",
+      "birthDate": "2000-12-14",
+      "checkedAt": "2026-08-19T03:16:59.197Z"
+    },
+    {
+      "key": "prati",
+      "name": "Prati",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/prati/6424",
+      "birthDate": "2003-12-28",
+      "checkedAt": "2026-08-19T03:16:20.693Z"
+    },
+    {
+      "key": "provedel",
+      "name": "Provedel",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/provedel/2814",
+      "birthDate": "1994-03-17",
+      "checkedAt": "2026-08-19T03:16:40.590Z"
+    },
+    {
+      "key": "provstgaard",
+      "name": "Provstgaard",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/provstgaard/7012",
+      "birthDate": "2003-06-04",
+      "checkedAt": "2026-08-19T03:16:33.521Z"
+    },
+    {
+      "key": "przyborek",
+      "name": "Przyborek",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/przyborek/7345",
+      "birthDate": "2007-01-01",
+      "checkedAt": "2026-08-19T03:16:51.232Z"
+    },
+    {
+      "key": "puczka",
+      "name": "Puczka",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/puczka/7413",
+      "birthDate": "2005-01-26",
+      "checkedAt": "2026-08-19T03:16:40.041Z"
+    },
+    {
+      "key": "pulisic",
+      "name": "Pulisic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/pulisic/2423",
+      "birthDate": "1998-09-18",
+      "checkedAt": "2026-08-19T03:15:28.919Z"
+    },
+    {
+      "key": "rabiot",
+      "name": "Rabiot",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/rabiot/2379",
+      "birthDate": "1995-04-03",
+      "checkedAt": "2026-08-19T03:15:30.016Z"
+    },
+    {
+      "key": "radunovic",
+      "name": "Radunovic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/radunovic/3",
+      "birthDate": "1996-05-26",
+      "checkedAt": "2026-08-19T03:17:00.739Z"
+    },
+    {
+      "key": "raimondo",
+      "name": "Raimondo",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/raimondo/5436",
+      "birthDate": "2004-03-18",
+      "checkedAt": "2026-08-19T03:15:56.981Z"
+    },
+    {
+      "key": "ramon",
+      "name": "Ramon",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/ramon/6869",
+      "birthDate": "2005-01-06",
+      "checkedAt": "2026-08-19T03:15:43.144Z"
+    },
+    {
+      "key": "ramosg",
+      "name": "Ramos G.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/ramos-g/6397",
+      "birthDate": "2001-06-20",
+      "checkedAt": "2026-08-19T03:15:28.348Z"
+    },
+    {
+      "key": "ranieril",
+      "name": "Ranieri L.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/ranieri-l/4378",
+      "birthDate": "1999-04-23",
+      "checkedAt": "2026-08-19T03:16:31.476Z"
+    },
+    {
+      "key": "raspadori",
+      "name": "Raspadori",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/raspadori/4371",
+      "birthDate": "2000-02-18",
+      "checkedAt": "2026-08-19T03:15:36.678Z"
+    },
+    {
+      "key": "raterink",
+      "name": "Raterink",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/raterink/7346",
+      "birthDate": "2006-04-07",
+      "checkedAt": "2026-08-19T03:17:03.091Z"
+    },
+    {
+      "key": "ratkov",
+      "name": "Ratkov",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/ratkov/7313",
+      "birthDate": "2003-08-18",
+      "checkedAt": "2026-08-19T03:15:44.511Z"
+    },
+    {
+      "key": "rensch",
+      "name": "Rensch",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/rensch/6986",
+      "birthDate": "2003-01-18",
+      "checkedAt": "2026-08-19T03:16:17.271Z"
+    },
+    {
+      "key": "renzetti",
+      "name": "Renzetti",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/renzetti/7534",
+      "birthDate": "2006-06-09",
+      "checkedAt": "2026-08-19T03:16:50.726Z"
+    },
+    {
+      "key": "riccis",
+      "name": "Ricci S.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/ricci-s/5453",
+      "birthDate": "2001-08-21",
+      "checkedAt": "2026-08-19T03:16:24.691Z"
+    },
+    {
+      "key": "robinsonj",
+      "name": "Robinson J.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/robinson-j/7546",
+      "birthDate": "2007-03-15",
+      "checkedAt": "2026-08-19T03:16:29.709Z"
+    },
+    {
+      "key": "rodriguezje",
+      "name": "Rodriguez Je.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/rodriguez-je/7129",
+      "birthDate": "2005-11-21",
+      "checkedAt": "2026-08-19T03:15:39.156Z"
+    },
+    {
+      "key": "rodriguezju",
+      "name": "Rodriguez Ju.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/rodriguez-ju/7268",
+      "birthDate": "2005-05-30",
+      "checkedAt": "2026-08-19T03:16:30.723Z"
+    },
+    {
+      "key": "romagnoli",
+      "name": "Romagnoli",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/romagnoli/460",
+      "birthDate": "1995-01-12",
+      "checkedAt": "2026-08-19T03:15:58.629Z"
+    },
+    {
+      "key": "romano",
+      "name": "Romano",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/romano/7311",
+      "birthDate": "2006-06-17",
+      "checkedAt": "2026-08-19T03:16:11.868Z"
+    },
+    {
+      "key": "romerod",
+      "name": "Romero D.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/romero-d/7554",
+      "birthDate": "2003-03-25",
+      "checkedAt": "2026-08-19T03:15:46.727Z"
+    },
+    {
+      "key": "rossif",
+      "name": "Rossi F.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/rossi-f/2297",
+      "birthDate": "1991-04-27",
+      "checkedAt": "2026-08-19T03:17:02.580Z"
+    },
+    {
+      "key": "rovella",
+      "name": "Rovella",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/rovella/4459",
+      "birthDate": "2001-12-04",
+      "checkedAt": "2026-08-19T03:16:07.068Z"
+    },
+    {
+      "key": "rowe",
+      "name": "Rowe",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/rowe/6844",
+      "birthDate": "2003-04-30",
+      "checkedAt": "2026-08-19T03:15:41.253Z"
+    },
+    {
+      "key": "rrahmani",
+      "name": "Rrahmani",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/rrahmani/4409",
+      "birthDate": "1994-02-24",
+      "checkedAt": "2026-08-19T03:15:35.988Z"
+    },
+    {
+      "key": "rrahmanial",
+      "name": "Rrahmani Al.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/rrahmani-al/7449",
+      "birthDate": "2000-08-31",
+      "checkedAt": "2026-08-19T03:15:55.436Z"
+    },
+    {
+      "key": "rugani",
+      "name": "Rugani",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/rugani/294",
+      "birthDate": "1994-07-29",
+      "checkedAt": "2026-08-19T03:16:50.217Z"
+    },
+    {
+      "key": "russoa",
+      "name": "Russo A.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/russo-a/4518",
+      "birthDate": "2001-03-31",
+      "checkedAt": "2026-08-19T03:16:55.397Z"
+    },
+    {
+      "key": "sabelli",
+      "name": "Sabelli",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/sabelli/791",
+      "birthDate": "1993-01-13",
+      "checkedAt": "2026-08-19T03:16:40.076Z"
+    },
+    {
+      "key": "saelemaekers",
+      "name": "Saelemaekers",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/saelemaekers/4892",
+      "birthDate": "1999-06-27",
+      "checkedAt": "2026-08-19T03:15:44.432Z"
+    },
+    {
+      "key": "sagrado",
+      "name": "Sagrado",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/sagrado/6681",
+      "birthDate": "2004-01-30",
+      "checkedAt": "2026-08-19T03:16:44.105Z"
+    },
+    {
+      "key": "samardzic",
+      "name": "Samardzic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/samardzic/5119",
+      "birthDate": "2002-02-24",
+      "checkedAt": "2026-08-19T03:15:39.056Z"
+    },
+    {
+      "key": "samooja",
+      "name": "Samooja",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/samooja/6523",
+      "birthDate": "2003-07-21",
+      "checkedAt": "2026-08-19T03:17:03.872Z"
+    },
+    {
+      "key": "santosa",
+      "name": "Santos A.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/santos-a/7351",
+      "birthDate": "2002-09-27",
+      "checkedAt": "2026-08-19T03:15:36.153Z"
+    },
+    {
+      "key": "satalino",
+      "name": "Satalino",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/satalino/2127",
+      "birthDate": "1999-05-20",
+      "checkedAt": "2026-08-19T03:17:00.215Z"
+    },
+    {
+      "key": "scalvini",
+      "name": "Scalvini",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/scalvini/5526",
+      "birthDate": "2003-12-11",
+      "checkedAt": "2026-08-19T03:15:42.902Z"
+    },
+    {
+      "key": "scamacca",
+      "name": "Scamacca",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/scamacca/2137",
+      "birthDate": "1999-01-01",
+      "checkedAt": "2026-08-19T03:15:29.971Z"
+    },
+    {
+      "key": "schingtienne",
+      "name": "Schingtienne",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/schingtienne/6892",
+      "birthDate": "2002-08-14",
+      "checkedAt": "2026-08-19T03:16:37.651Z"
+    },
+    {
+      "key": "schmid",
+      "name": "Schmid",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/schmid/7551",
+      "birthDate": "2000-01-27",
+      "checkedAt": "2026-08-19T03:15:55.791Z"
+    },
+    {
+      "key": "sherri",
+      "name": "Sherri",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/sherri/6650",
+      "birthDate": "1997-12-15",
+      "checkedAt": "2026-08-19T03:16:46.046Z"
+    },
+    {
+      "key": "siebert",
+      "name": "Siebert",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/siebert/7240",
+      "birthDate": "2002-04-02",
+      "checkedAt": "2026-08-19T03:16:24.389Z"
+    },
+    {
+      "key": "simeone",
+      "name": "Simeone",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/simeone/2061",
+      "birthDate": "1995-07-05",
+      "checkedAt": "2026-08-19T03:15:35.480Z"
+    },
+    {
+      "key": "siviero",
+      "name": "Siviero",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/siviero/7363",
+      "birthDate": "2006-11-23",
+      "checkedAt": "2026-08-19T03:16:56.934Z"
+    },
+    {
+      "key": "skorupski",
+      "name": "Skorupski",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/skorupski/133",
+      "birthDate": "1991-05-05",
+      "checkedAt": "2026-08-19T03:15:42.922Z"
+    },
+    {
+      "key": "smolcici",
+      "name": "Smolcic I.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/smolcic-i/7014",
+      "birthDate": "2000-08-17",
+      "checkedAt": "2026-08-19T03:16:21.203Z"
+    },
+    {
+      "key": "sohm",
+      "name": "Sohm",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/sohm/5319",
+      "birthDate": "2001-04-11",
+      "checkedAt": "2026-08-19T03:16:19.308Z"
+    },
+    {
+      "key": "solet",
+      "name": "Solet",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/solet/6956",
+      "birthDate": "2000-02-07",
+      "checkedAt": "2026-08-19T03:15:38.299Z"
+    },
+    {
+      "key": "sommariva",
+      "name": "Sommariva",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/sommariva/219",
+      "birthDate": "1997-07-18",
+      "checkedAt": "2026-08-19T03:16:49.402Z"
+    },
+    {
+      "key": "sorenseno",
+      "name": "Sorensen O.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/sorensen-o/7209",
+      "birthDate": "2002-03-10",
+      "checkedAt": "2026-08-19T03:16:36.365Z"
+    },
+    {
+      "key": "soule",
+      "name": "Soulè",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/soul%C3%A8/5734",
+      "birthDate": "2003-04-15",
+      "checkedAt": "2026-08-19T03:15:40.590Z"
+    },
+    {
+      "key": "sow",
+      "name": "Sow",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/sow/5946",
+      "birthDate": "1997-02-06",
+      "checkedAt": "2026-08-19T03:16:01.998Z"
+    },
+    {
+      "key": "spence",
+      "name": "Spence",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/spence/5982",
+      "birthDate": "2000-08-09",
+      "checkedAt": "2026-08-19T03:15:41.094Z"
+    },
+    {
+      "key": "spinazzola",
+      "name": "Spinazzola",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/spinazzola/1852",
+      "birthDate": "1993-03-25",
+      "checkedAt": "2026-08-19T03:15:54.106Z"
+    },
+    {
+      "key": "sportiello",
+      "name": "Sportiello",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/sportiello/4",
+      "birthDate": "1992-05-10",
+      "checkedAt": "2026-08-19T03:16:44.662Z"
+    },
+    {
+      "key": "stankovica",
+      "name": "Stankovic A.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/stankovic-a/6503",
+      "birthDate": "2005-08-03",
+      "checkedAt": "2026-08-19T03:16:33.192Z"
+    },
+    {
+      "key": "stankovicf",
+      "name": "Stankovic F.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/stankovic-f/6248",
+      "birthDate": "2002-02-25",
+      "checkedAt": "2026-08-19T03:16:10.043Z"
+    },
+    {
+      "key": "stolz",
+      "name": "Stolz",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/stolz/6569",
+      "birthDate": "2001-02-14",
+      "checkedAt": "2026-08-19T03:16:49.500Z"
+    },
+    {
+      "key": "stones",
+      "name": "Stones",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/stones/2514",
+      "birthDate": "1994-05-28",
+      "checkedAt": "2026-08-19T03:15:39.330Z"
+    },
+    {
+      "key": "strajnar",
+      "name": "Strajnar",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/strajnar/7475",
+      "birthDate": "2007-08-16",
+      "checkedAt": "2026-08-19T03:16:53.009Z"
+    },
+    {
+      "key": "stulic",
+      "name": "Stulic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/stulic/7252",
+      "birthDate": "2001-09-08",
+      "checkedAt": "2026-08-19T03:15:58.815Z"
+    },
+    {
+      "key": "sucicp",
+      "name": "Sucic P.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/sucic-p/7070",
+      "birthDate": "2003-10-25",
+      "checkedAt": "2026-08-19T03:15:52.581Z"
+    },
+    {
+      "key": "sulemanai",
+      "name": "Sulemana I.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/sulemana-i/6024",
+      "birthDate": "2003-05-22",
+      "checkedAt": "2026-08-19T03:16:30.210Z"
+    },
+    {
+      "key": "sulemanak",
+      "name": "Sulemana K.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/sulemana-k/5918",
+      "birthDate": "2002-02-15",
+      "checkedAt": "2026-08-19T03:16:03.477Z"
+    },
+    {
+      "key": "suzuki",
+      "name": "Suzuki",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/suzuki/6641",
+      "birthDate": "2002-08-21",
+      "checkedAt": "2026-08-19T03:16:00.149Z"
+    },
+    {
+      "key": "sverko",
+      "name": "Sverko",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/sverko/6673",
+      "birthDate": "1998-02-04",
+      "checkedAt": "2026-08-19T03:16:37.378Z"
+    },
+    {
+      "key": "svilar",
+      "name": "Svilar",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/svilar/5841",
+      "birthDate": "1999-08-27",
+      "checkedAt": "2026-08-19T03:15:31.102Z"
+    },
+    {
+      "key": "tavaresn",
+      "name": "Tavares N.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/tavares-n/5620",
+      "birthDate": "2000-01-26",
+      "checkedAt": "2026-08-19T03:16:06.747Z"
+    },
+    {
+      "key": "taylork",
+      "name": "Taylor K.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/taylor-k/7314",
+      "birthDate": "2002-05-16",
+      "checkedAt": "2026-08-19T03:15:37.699Z"
+    },
+    {
+      "key": "terracciano",
+      "name": "Terracciano",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/terracciano/2815",
+      "birthDate": "1990-03-08",
+      "checkedAt": "2026-08-19T03:16:52.275Z"
+    },
+    {
+      "key": "terzic",
+      "name": "Terzic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/terzic/4375",
+      "birthDate": "1999-08-17",
+      "checkedAt": "2026-08-19T03:16:29.960Z"
+    },
+    {
+      "key": "thiam",
+      "name": "Thiam",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/thiam/4485",
+      "birthDate": "1998-03-09",
+      "checkedAt": "2026-08-19T03:16:16.255Z"
+    },
+    {
+      "key": "thorstvedt",
+      "name": "Thorstvedt",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/thorstvedt/5844",
+      "birthDate": "1999-03-13",
+      "checkedAt": "2026-08-19T03:15:45.066Z"
+    },
+    {
+      "key": "thuram",
+      "name": "Thuram",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/thuram/4871",
+      "birthDate": "1997-08-06",
+      "checkedAt": "2026-08-19T03:15:27.019Z"
+    },
+    {
+      "key": "thuramk",
+      "name": "Thuram K.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/thuram-k/5562",
+      "birthDate": "2001-03-26",
+      "checkedAt": "2026-08-19T03:15:43.923Z"
+    },
+    {
+      "key": "tiagogabriel",
+      "name": "Tiago Gabriel",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/tiago-gabriel/6989",
+      "birthDate": "2004-12-26",
+      "checkedAt": "2026-08-19T03:15:58.791Z"
+    },
+    {
+      "key": "tomori",
+      "name": "Tomori",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/tomori/4751",
+      "birthDate": "1997-12-19",
+      "checkedAt": "2026-08-19T03:15:59.302Z"
+    },
+    {
+      "key": "tornqvist",
+      "name": "Tornqvist",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/tornqvist/7301",
+      "birthDate": "2002-02-01",
+      "checkedAt": "2026-08-19T03:16:46.748Z"
+    },
+    {
+      "key": "torriani",
+      "name": "Torriani",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/torriani/6813",
+      "birthDate": "2005-01-31",
+      "checkedAt": "2026-08-19T03:16:52.742Z"
+    },
+    {
+      "key": "touree",
+      "name": "Tourè E.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/tour%C3%A8-e/6229",
+      "birthDate": "2001-10-03",
+      "checkedAt": "2026-08-19T03:15:42.640Z"
+    },
+    {
+      "key": "traorehj",
+      "name": "Traorè Hj.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/traor%C3%A8-hj/2857",
+      "birthDate": "2000-02-18",
+      "checkedAt": "2026-08-19T03:16:14.215Z"
+    },
+    {
+      "key": "trepy",
+      "name": "Trepy",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/trepy/7317",
+      "birthDate": "2006-05-20",
+      "checkedAt": "2026-08-19T03:16:46.375Z"
+    },
+    {
+      "key": "troilo",
+      "name": "Troilo",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/troilo/7235",
+      "birthDate": "2003-06-28",
+      "checkedAt": "2026-08-19T03:16:35.542Z"
+    },
+    {
+      "key": "turati",
+      "name": "Turati",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/turati/4867",
+      "birthDate": "2001-09-05",
+      "checkedAt": "2026-08-19T03:16:55.556Z"
+    },
+    {
+      "key": "unaigomez",
+      "name": "Unai Gomez",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/unai-gomez/6783",
+      "birthDate": "2003-05-25",
+      "checkedAt": "2026-08-19T03:16:01.855Z"
+    },
+    {
+      "key": "valdepenas",
+      "name": "Valdepenas",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/valdepenas/7294",
+      "birthDate": "2006-10-20",
+      "checkedAt": "2026-08-19T03:16:05.013Z"
+    },
+    {
+      "key": "valenti",
+      "name": "Valenti",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/valenti/5307",
+      "birthDate": "1999-01-14",
+      "checkedAt": "2026-08-19T03:16:26.211Z"
+    },
+    {
+      "key": "valeri",
+      "name": "Valeri",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/valeri/5862",
+      "birthDate": "1998-12-07",
+      "checkedAt": "2026-08-19T03:15:54.609Z"
+    },
+    {
+      "key": "valle",
+      "name": "Valle",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/valle/6867",
+      "birthDate": "2004-04-25",
+      "checkedAt": "2026-08-19T03:16:04.497Z"
+    },
+    {
+      "key": "vanderbrempt",
+      "name": "Van Der Brempt",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/van-der-brempt/6896",
+      "birthDate": "2002-04-01",
+      "checkedAt": "2026-08-19T03:16:39.007Z"
+    },
+    {
+      "key": "varelag",
+      "name": "Varela G.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/varela-g/7523",
+      "birthDate": "2005-01-30",
+      "checkedAt": "2026-08-19T03:16:34.992Z"
+    },
+    {
+      "key": "vasquez",
+      "name": "Vasquez",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/vasquez/5514",
+      "birthDate": "1998-10-22",
+      "checkedAt": "2026-08-19T03:15:47.434Z"
+    },
+    {
+      "key": "vaz",
+      "name": "Vaz",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/vaz/6981",
+      "birthDate": "2007-02-17",
+      "checkedAt": "2026-08-19T03:16:55.273Z"
+    },
+    {
+      "key": "veigad",
+      "name": "Veiga D.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/veiga-d/6990",
+      "birthDate": "2002-09-25",
+      "checkedAt": "2026-08-19T03:16:15.250Z"
+    },
+    {
+      "key": "venturino",
+      "name": "Venturino",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/venturino/6980",
+      "birthDate": "2006-06-22",
+      "checkedAt": "2026-08-19T03:16:40.556Z"
+    },
+    {
+      "key": "vergara",
+      "name": "Vergara",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/vergara/7223",
+      "birthDate": "2003-01-16",
+      "checkedAt": "2026-08-19T03:15:54.160Z"
+    },
+    {
+      "key": "vicario",
+      "name": "Vicario",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/vicario/4964",
+      "birthDate": "1996-10-07",
+      "checkedAt": "2026-08-19T03:15:34.119Z"
+    },
+    {
+      "key": "viery",
+      "name": "Viery",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/fiorentina/viery/7410",
+      "birthDate": "2005-01-02",
+      "checkedAt": "2026-08-19T03:16:05.211Z"
+    },
+    {
+      "key": "vigorito",
+      "name": "Vigorito",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/vigorito/2809",
+      "birthDate": "1990-05-22",
+      "checkedAt": "2026-08-19T03:16:46.556Z"
+    },
+    {
+      "key": "vismara",
+      "name": "Vismara",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/vismara/7545",
+      "birthDate": "2003-03-28",
+      "checkedAt": "2026-08-19T03:17:00.045Z"
+    },
+    {
+      "key": "vitik",
+      "name": "Vitik",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/vitik/7068",
+      "birthDate": "2003-01-21",
+      "checkedAt": "2026-08-19T03:16:11.179Z"
+    },
+    {
+      "key": "vitinhao",
+      "name": "Vitinha O.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/vitinha-o/6164",
+      "birthDate": "2000-03-15",
+      "checkedAt": "2026-08-19T03:15:52.776Z"
+    },
+    {
+      "key": "vlasic",
+      "name": "Vlasic",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/vlasic/5687",
+      "birthDate": "1997-10-04",
+      "checkedAt": "2026-08-19T03:15:36.658Z"
+    },
+    {
+      "key": "vogliacco",
+      "name": "Vogliacco",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/vogliacco/6245",
+      "birthDate": "1998-09-14",
+      "checkedAt": "2026-08-19T03:17:03.474Z"
+    },
+    {
+      "key": "vojvoda",
+      "name": "Vojvoda",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/vojvoda/4994",
+      "birthDate": "1995-02-01",
+      "checkedAt": "2026-08-19T03:15:55.113Z"
+    },
+    {
+      "key": "volpato",
+      "name": "Volpato",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/volpato/5735",
+      "birthDate": "2003-11-15",
+      "checkedAt": "2026-08-19T03:16:00.824Z"
+    },
+    {
+      "key": "walukiewicz",
+      "name": "Walukiewicz",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/walukiewicz/4374",
+      "birthDate": "2000-04-05",
+      "checkedAt": "2026-08-19T03:16:26.941Z"
+    },
+    {
+      "key": "wesley",
+      "name": "Wesley",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/wesley/7181",
+      "birthDate": "2003-09-06",
+      "checkedAt": "2026-08-19T03:15:32.940Z"
+    },
+    {
+      "key": "winks",
+      "name": "Winks",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/winks/4260",
+      "birthDate": "1996-02-02",
+      "checkedAt": "2026-08-19T03:16:04.191Z"
+    },
+    {
+      "key": "yeboahj",
+      "name": "Yeboah J.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/yeboah-j/6904",
+      "birthDate": "2000-06-23",
+      "checkedAt": "2026-08-19T03:15:55.287Z"
+    },
+    {
+      "key": "yildiz",
+      "name": "Yildiz",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/yildiz/6434",
+      "birthDate": "2005-05-04",
+      "checkedAt": "2026-08-19T03:15:29.454Z"
+    },
+    {
+      "key": "zaccagni",
+      "name": "Zaccagni",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/zaccagni/632",
+      "birthDate": "1995-06-16",
+      "checkedAt": "2026-08-19T03:15:34.103Z"
+    },
+    {
+      "key": "zalewski",
+      "name": "Zalewski",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/zalewski/5422",
+      "birthDate": "2002-01-23",
+      "checkedAt": "2026-08-19T03:16:02.729Z"
+    },
+    {
+      "key": "zamboanguissa",
+      "name": "Zambo Anguissa",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/zambo-anguissa/4220",
+      "birthDate": "1995-11-16",
+      "checkedAt": "2026-08-19T03:15:42.406Z"
+    },
+    {
+      "key": "zaniolo",
+      "name": "Zaniolo",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/zaniolo/2766",
+      "birthDate": "1999-07-02",
+      "checkedAt": "2026-08-19T03:15:31.921Z"
+    },
+    {
+      "key": "zanoli",
+      "name": "Zanoli",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/zanoli/5527",
+      "birthDate": "2000-10-03",
+      "checkedAt": "2026-08-19T03:16:28.839Z"
+    },
+    {
+      "key": "zapatad",
+      "name": "Zapata D.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/zapata-d/608",
+      "birthDate": "1991-04-01",
+      "checkedAt": "2026-08-19T03:16:01.374Z"
+    },
+    {
+      "key": "zappa",
+      "name": "Zappa",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/zappa/4461",
+      "birthDate": "1999-12-22",
+      "checkedAt": "2026-08-19T03:16:20.457Z"
+    },
+    {
+      "key": "zappacosta",
+      "name": "Zappacosta",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/zappacosta/554",
+      "birthDate": "1992-06-11",
+      "checkedAt": "2026-08-19T03:15:50.037Z"
+    },
+    {
+      "key": "zarraga",
+      "name": "Zarraga",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/udinese/zarraga/6212",
+      "birthDate": "1999-01-04",
+      "checkedAt": "2026-08-19T03:16:58.528Z"
+    },
+    {
+      "key": "zepedro",
+      "name": "Zè Pedro",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/z%C3%A8-pedro/7274",
+      "birthDate": "1997-06-06",
+      "checkedAt": "2026-08-19T03:16:11.688Z"
+    },
+    {
+      "key": "zerbin",
+      "name": "Zerbin",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/zerbin/5998",
+      "birthDate": "1999-03-03",
+      "checkedAt": "2026-08-19T03:16:13.981Z"
+    },
+    {
+      "key": "zhegrova",
+      "name": "Zhegrova",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/juventus/zhegrova/5761",
+      "birthDate": "1999-03-31",
+      "checkedAt": "2026-08-19T03:16:06.402Z"
+    },
+    {
+      "key": "zielinski",
+      "name": "Zielinski",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/zielinski/152",
+      "birthDate": "1994-05-20",
+      "checkedAt": "2026-08-19T03:15:43.651Z"
+    },
+    {
+      "key": "ziolkowski",
+      "name": "Ziolkowski",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/roma/ziolkowski/7260",
+      "birthDate": "2005-06-05",
+      "checkedAt": "2026-08-19T03:16:55.045Z"
+    },
+    {
+      "key": "zortea",
+      "name": "Zortea",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/bologna/zortea/4433",
+      "birthDate": "1999-06-19",
+      "checkedAt": "2026-08-19T03:16:03.828Z"
+    }
+  ]
+}
