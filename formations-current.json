@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-19T17:54:36Z",
+  "generatedAt": "2026-08-19T19:12:13Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -1651,10 +1651,6 @@
         {
           "name": "Carboni F.",
           "probability": 30
-        },
-        {
-          "name": "Circati",
-          "probability": 20
         },
         {
           "name": "Ordonez C.",
