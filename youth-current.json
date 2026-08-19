@@ -2,7 +2,7 @@
   "schema": 1,
   "sourceName": "Fantacalcio.it · profili calciatori",
   "sourceUrl": "https://www.fantacalcio.it/quotazioni-fantacalcio",
-  "generatedAt": "2026-08-19T09:54:32.555Z",
+  "generatedAt": "2026-08-19T11:01:29.099Z",
   "u23MinBirthYear": 2003,
   "u21MinBirthYear": 2005,
   "players": [
@@ -2259,6 +2259,13 @@
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/monterisi/4952",
       "birthDate": "2001-12-19",
       "checkedAt": "2026-08-19T03:16:05.525Z"
+    },
+    {
+      "key": "montipo",
+      "name": "Montipò",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/venezia/montip%C3%B2/4957",
+      "birthDate": "1996-02-20",
+      "checkedAt": "2026-08-19T11:01:28.742Z"
     },
     {
       "key": "mora",
