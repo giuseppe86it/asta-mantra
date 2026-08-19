@@ -7,6 +7,7 @@ on:
   push:
     paths:
       - "scripts/update-listone.mjs"
+      - "scripts/update-youth.mjs"
       - ".github/workflows/update-listone.yml"
 
 permissions:
@@ -19,7 +20,6 @@ concurrency:
 jobs:
   aggiorna-listone:
     runs-on: ubuntu-latest
-
     steps:
       - name: Scarica il repository
         uses: actions/checkout@v4
@@ -35,16 +35,18 @@ jobs:
       - name: Leggi e valida il listone ufficiale
         run: node scripts/update-listone.mjs
 
-      - name: Salva il nuovo snapshot se è cambiato
+      - name: Aggiorna date di nascita U23/U21
+        run: node scripts/update-youth.mjs
+
+      - name: Salva i nuovi snapshot se sono cambiati
         shell: bash
         run: |
-          if git diff --quiet -- listone-current.json; then
-            echo "Nessuna modifica nel listone: niente da salvare."
+          if git diff --quiet -- listone-current.json youth-current.json; then
+            echo "Nessuna modifica: niente da salvare."
             exit 0
           fi
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add listone-current.json
-          git commit -m "Aggiorna listone Fantacalcio"
+          git add listone-current.json youth-current.json
+          git commit -m "Aggiorna listone e requisiti U23 U21"
           git push
