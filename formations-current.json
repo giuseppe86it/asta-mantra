@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-20T09:55:29Z",
+  "generatedAt": "2026-08-20T11:01:59Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -262,7 +262,7 @@
         },
         {
           "name": "Zappa",
-          "probability": 55
+          "probability": 50
         },
         {
           "name": "Kofler",
@@ -350,7 +350,7 @@
         },
         {
           "name": "Kaiki",
-          "probability": 60
+          "probability": 70
         },
         {
           "name": "Perrone",
@@ -366,7 +366,7 @@
         },
         {
           "name": "Paz N.",
-          "probability": 75
+          "probability": 65
         },
         {
           "name": "Baturina",
@@ -399,10 +399,6 @@
           "probability": 25
         },
         {
-          "name": "Van Der Brempt",
-          "probability": 20
-        },
-        {
           "name": "Valle",
           "probability": 55
         },
@@ -420,7 +416,7 @@
         },
         {
           "name": "Fadera",
-          "probability": 20
+          "probability": 15
         },
         {
           "name": "Liberali",
@@ -433,6 +429,10 @@
         {
           "name": "Kuhn",
           "probability": 35
+        },
+        {
+          "name": "Azon",
+          "probability": 20
         },
         {
           "name": "Morata",
@@ -1449,10 +1449,6 @@
           "probability": 55
         },
         {
-          "name": "Petagna",
-          "probability": 30
-        },
-        {
           "name": "Zielinski",
           "probability": 60
         },
@@ -1552,7 +1548,7 @@
         },
         {
           "name": "Folorunsho",
-          "probability": 25
+          "probability": 20
         },
         {
           "name": "Vergara",
@@ -1568,7 +1564,7 @@
         },
         {
           "name": "Lang",
-          "probability": 25
+          "probability": 20
         },
         {
           "name": "Lucca",
@@ -2091,10 +2087,6 @@
         {
           "name": "Unai Gomez",
           "probability": 60
-        },
-        {
-          "name": "Camara A.",
-          "probability": 25
         },
         {
           "name": "Bayo V.",
