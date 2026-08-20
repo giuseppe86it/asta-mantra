@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-20T20:59:50Z",
+  "generatedAt": "2026-08-20T21:57:51Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -399,6 +399,10 @@
           "probability": 55
         },
         {
+          "name": "Van Der Brempt",
+          "probability": 20
+        },
+        {
           "name": "Caqueret",
           "probability": 60
         },
@@ -408,10 +412,6 @@
         },
         {
           "name": "Lahdo",
-          "probability": 15
-        },
-        {
-          "name": "Fadera",
           "probability": 15
         },
         {
