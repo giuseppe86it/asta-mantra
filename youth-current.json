@@ -2,7 +2,7 @@
   "schema": 1,
   "sourceName": "Fantacalcio.it · profili calciatori",
   "sourceUrl": "https://www.fantacalcio.it/quotazioni-fantacalcio",
-  "generatedAt": "2026-08-20T11:04:33.386Z",
+  "generatedAt": "2026-08-20T14:19:26.655Z",
   "u23MinBirthYear": 2003,
   "u21MinBirthYear": 2005,
   "players": [
@@ -3372,6 +3372,13 @@
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/parma/tour%C3%A8-e/6229",
       "birthDate": "2001-10-03",
       "checkedAt": "2026-08-19T03:15:42.640Z"
+    },
+    {
+      "key": "tourei",
+      "name": "Tourè I.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/tour%C3%A8-i/7146",
+      "birthDate": "1998-04-29",
+      "checkedAt": "2026-08-20T14:19:26.294Z"
     },
     {
       "key": "traorehj",
