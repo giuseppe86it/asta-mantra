@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-19T21:55:16Z",
+  "generatedAt": "2026-08-20T06:03:56Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -546,11 +546,11 @@
         },
         {
           "name": "Soulè",
-          "probability": 60
+          "probability": 55
         },
         {
-          "name": "Pisilli",
-          "probability": 40
+          "name": "Mora",
+          "probability": 45
         }
       ]
     },
@@ -1726,7 +1726,7 @@
         },
         {
           "name": "Soulè",
-          "probability": 60
+          "probability": 55
         },
         {
           "name": "Dybala",
@@ -1772,7 +1772,7 @@
         },
         {
           "name": "Mora",
-          "probability": 50
+          "probability": 55
         },
         {
           "name": "Pisilli",
