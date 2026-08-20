@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-20T06:03:56Z",
+  "generatedAt": "2026-08-20T09:55:29Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -24,7 +24,7 @@
         },
         {
           "name": "Scalvini",
-          "probability": 90
+          "probability": 80
         },
         {
           "name": "Bernasconi",
@@ -32,7 +32,7 @@
         },
         {
           "name": "Samardzic",
-          "probability": 90
+          "probability": 75
         },
         {
           "name": "Gaetano",
@@ -48,7 +48,7 @@
         },
         {
           "name": "Scamacca",
-          "probability": 60
+          "probability": 55
         },
         {
           "name": "Raspadori",
@@ -484,11 +484,11 @@
         },
         {
           "name": "Atta",
-          "probability": 85
+          "probability": 70
         },
         {
           "name": "Mastantuono",
-          "probability": 80
+          "probability": 85
         },
         {
           "name": "Kean",
@@ -496,7 +496,7 @@
         },
         {
           "name": "Gudmundsson A.",
-          "probability": 85
+          "probability": 90
         }
       ],
       "bench": [
@@ -518,7 +518,7 @@
         },
         {
           "name": "Ranieri L.",
-          "probability": 35
+          "probability": 50
         },
         {
           "name": "Jimenez A.",
@@ -530,7 +530,7 @@
         },
         {
           "name": "Mandragora",
-          "probability": 50
+          "probability": 30
         },
         {
           "name": "Brescianini",
@@ -767,10 +767,6 @@
         {
           "name": "Meichtry",
           "probability": 55
-        },
-        {
-          "name": "Havel",
-          "probability": 30
         }
       ]
     },
@@ -1898,11 +1894,11 @@
         },
         {
           "name": "Scamacca",
-          "probability": 60
+          "probability": 55
         },
         {
           "name": "Krstovic",
-          "probability": 40
+          "probability": 45
         }
       ]
     },
