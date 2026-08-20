@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-20T19:44:12Z",
+  "generatedAt": "2026-08-20T20:59:50Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -36,7 +36,7 @@
         },
         {
           "name": "Gaetano",
-          "probability": 80
+          "probability": 60
         },
         {
           "name": "Ederson D.S.",
@@ -52,7 +52,7 @@
         },
         {
           "name": "Raspadori",
-          "probability": 90
+          "probability": 80
         }
       ],
       "bench": [
@@ -1788,7 +1788,7 @@
         },
         {
           "name": "Missori",
-          "probability": 80
+          "probability": 70
         },
         {
           "name": "Odenthal",
@@ -1861,10 +1861,6 @@
           "probability": 50
         },
         {
-          "name": "Moro L.",
-          "probability": 25
-        },
-        {
           "name": "Berardi",
           "probability": 20
         },
@@ -1875,6 +1871,14 @@
         {
           "name": "Zappacosta",
           "probability": 45
+        },
+        {
+          "name": "Gaetano",
+          "probability": 60
+        },
+        {
+          "name": "De Roon",
+          "probability": 40
         },
         {
           "name": "Samardzic",
