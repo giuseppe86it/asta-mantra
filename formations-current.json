@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-20T12:02:01Z",
+  "generatedAt": "2026-08-20T16:00:55Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -1384,7 +1384,7 @@
         },
         {
           "name": "Birindelli",
-          "probability": 85
+          "probability": 90
         },
         {
           "name": "Colombo L.",
@@ -1434,11 +1434,11 @@
         },
         {
           "name": "Ciurria",
-          "probability": 50
+          "probability": 55
         },
         {
           "name": "Colpani",
-          "probability": 55
+          "probability": 50
         },
         {
           "name": "Mota",
