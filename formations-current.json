@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-20T16:00:55Z",
+  "generatedAt": "2026-08-20T19:44:12Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -19,11 +19,11 @@
           "probability": 55
         },
         {
-          "name": "Kristensen T.",
-          "probability": 60
+          "name": "Kossounou",
+          "probability": 80
         },
         {
-          "name": "Scalvini",
+          "name": "Kristensen T.",
           "probability": 80
         },
         {
@@ -32,7 +32,7 @@
         },
         {
           "name": "Samardzic",
-          "probability": 75
+          "probability": 55
         },
         {
           "name": "Gaetano",
@@ -71,10 +71,6 @@
         {
           "name": "Zappacosta",
           "probability": 55
-        },
-        {
-          "name": "Kossounou",
-          "probability": 50
         },
         {
           "name": "Pasalic",
@@ -1881,12 +1877,12 @@
           "probability": 45
         },
         {
-          "name": "Kristensen T.",
-          "probability": 60
+          "name": "Samardzic",
+          "probability": 55
         },
         {
-          "name": "Kossounou",
-          "probability": 40
+          "name": "Pasalic",
+          "probability": 45
         },
         {
           "name": "Scamacca",
