@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-20T11:01:59Z",
+  "generatedAt": "2026-08-20T12:02:01Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -460,7 +460,7 @@
         },
         {
           "name": "Joao Mario",
-          "probability": 60
+          "probability": 55
         },
         {
           "name": "Dragusin",
@@ -484,7 +484,7 @@
         },
         {
           "name": "Atta",
-          "probability": 70
+          "probability": 75
         },
         {
           "name": "Mastantuono",
@@ -492,7 +492,7 @@
         },
         {
           "name": "Kean",
-          "probability": 90
+          "probability": 65
         },
         {
           "name": "Gudmundsson A.",
@@ -692,7 +692,7 @@
         },
         {
           "name": "Norton-Cuffy",
-          "probability": 90
+          "probability": 80
         },
         {
           "name": "Frendrup",
@@ -700,7 +700,7 @@
         },
         {
           "name": "Sow",
-          "probability": 60
+          "probability": 55
         },
         {
           "name": "Ellertsson",
@@ -1572,11 +1572,11 @@
         },
         {
           "name": "Sow",
-          "probability": 60
+          "probability": 55
         },
         {
           "name": "Amorim",
-          "probability": 40
+          "probability": 45
         },
         {
           "name": "Vitinha O.",
