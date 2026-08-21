@@ -2,7 +2,7 @@
   "schema": 1,
   "sourceName": "Fantacalcio.it · profili calciatori",
   "sourceUrl": "https://www.fantacalcio.it/quotazioni-fantacalcio",
-  "generatedAt": "2026-08-21T20:02:48.564Z",
+  "generatedAt": "2026-08-21T20:59:00.299Z",
   "u23MinBirthYear": 2003,
   "u21MinBirthYear": 2005,
   "players": [
@@ -3351,6 +3351,13 @@
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/terracciano/2815",
       "birthDate": "1990-03-08",
       "checkedAt": "2026-08-19T03:16:52.275Z"
+    },
+    {
+      "key": "terraccianof",
+      "name": "Terracciano F.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/terracciano-f/5812",
+      "birthDate": "2003-02-08",
+      "checkedAt": "2026-08-21T20:58:59.939Z"
     },
     {
       "key": "terzic",
