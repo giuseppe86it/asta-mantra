@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-20T21:57:51Z",
+  "generatedAt": "2026-08-21T07:56:12Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -1363,12 +1363,12 @@
       "module": "3-4-2-1",
       "starters": [
         {
-          "name": "Thiam",
+          "name": "Pizzignacco",
           "probability": 90
         },
         {
           "name": "Kouadio",
-          "probability": 85
+          "probability": 90
         },
         {
           "name": "Delli Carri",
@@ -1384,19 +1384,19 @@
         },
         {
           "name": "Colombo L.",
-          "probability": 80
+          "probability": 75
         },
         {
           "name": "Akinsanmiro",
-          "probability": 80
+          "probability": 75
         },
         {
           "name": "Mangas",
-          "probability": 85
+          "probability": 90
         },
         {
           "name": "Forson O.",
-          "probability": 55
+          "probability": 60
         },
         {
           "name": "Cutrone",
@@ -1409,16 +1409,12 @@
       ],
       "bench": [
         {
-          "name": "Pizzignacco",
+          "name": "Strajnar",
           "probability": 5
         },
         {
-          "name": "Strajnar",
-          "probability": 1
-        },
-        {
           "name": "Lucchesi",
-          "probability": 55
+          "probability": 60
         },
         {
           "name": "Antov",
@@ -1426,7 +1422,7 @@
         },
         {
           "name": "Bakoune",
-          "probability": 40
+          "probability": 55
         },
         {
           "name": "Ciurria",
@@ -1437,12 +1433,8 @@
           "probability": 50
         },
         {
-          "name": "Mota",
-          "probability": 60
-        },
-        {
           "name": "Robinson J.",
-          "probability": 55
+          "probability": 60
         },
         {
           "name": "Zielinski",
