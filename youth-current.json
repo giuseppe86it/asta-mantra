@@ -2,7 +2,7 @@
   "schema": 1,
   "sourceName": "Fantacalcio.it · profili calciatori",
   "sourceUrl": "https://www.fantacalcio.it/quotazioni-fantacalcio",
-  "generatedAt": "2026-08-21T12:02:42.050Z",
+  "generatedAt": "2026-08-21T14:08:38.432Z",
   "u23MinBirthYear": 2003,
   "u21MinBirthYear": 2005,
   "players": [
@@ -649,6 +649,13 @@
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/cichella/7473",
       "birthDate": "2005-10-04",
       "checkedAt": "2026-08-19T03:16:22.545Z"
+    },
+    {
+      "key": "cinquegrano",
+      "name": "Cinquegrano",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/cinquegrano/7573",
+      "birthDate": "2004-06-25",
+      "checkedAt": "2026-08-21T14:08:38.071Z"
     },
     {
       "key": "ciocci",
