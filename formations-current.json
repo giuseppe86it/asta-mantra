@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-21T15:53:20Z",
+  "generatedAt": "2026-08-21T17:06:01Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -929,7 +929,7 @@
       ],
       "bench": [
         {
-          "name": "Di Gregorio",
+          "name": "Perin",
           "probability": 5
         },
         {
