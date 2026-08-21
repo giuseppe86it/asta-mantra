@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-21T18:03:14Z",
+  "generatedAt": "2026-08-21T19:33:18Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -1423,10 +1423,6 @@
         {
           "name": "Bakoune",
           "probability": 60
-        },
-        {
-          "name": "Akinsanmiro",
-          "probability": 15
         },
         {
           "name": "Colpani",
