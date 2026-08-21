@@ -2,7 +2,7 @@
   "schema": 1,
   "sourceName": "Fantacalcio.it · profili calciatori",
   "sourceUrl": "https://www.fantacalcio.it/quotazioni-fantacalcio",
-  "generatedAt": "2026-08-21T08:01:16.591Z",
+  "generatedAt": "2026-08-21T09:56:54.625Z",
   "u23MinBirthYear": 2003,
   "u21MinBirthYear": 2005,
   "players": [
@@ -721,6 +721,13 @@
       "checkedAt": "2026-08-19T03:16:27.379Z"
     },
     {
+      "key": "comotto",
+      "name": "Comotto",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/comotto/7572",
+      "birthDate": "2008-04-25",
+      "checkedAt": "2026-08-21T09:56:54.265Z"
+    },
+    {
       "key": "comuzzo",
       "name": "Comuzzo",
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/comuzzo/6495",
@@ -1265,6 +1272,13 @@
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/monza/forson-o/6592",
       "birthDate": "2004-07-20",
       "checkedAt": "2026-08-19T03:17:01.053Z"
+    },
+    {
+      "key": "fortini",
+      "name": "Fortini",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/torino/fortini/7069",
+      "birthDate": "2006-02-13",
+      "checkedAt": "2026-08-21T09:56:53.905Z"
     },
     {
       "key": "franjic",
@@ -1832,6 +1846,13 @@
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/frosinone/kvernadze/6204",
       "birthDate": "2003-02-07",
       "checkedAt": "2026-08-19T03:16:22.848Z"
+    },
+    {
+      "key": "laerke",
+      "name": "Laerke",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/laerke/7571",
+      "birthDate": "2007-04-23",
+      "checkedAt": "2026-08-21T09:56:53.875Z"
     },
     {
       "key": "lahdo",
@@ -2448,6 +2469,13 @@
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/obrador/7329",
       "birthDate": "2004-02-24",
       "checkedAt": "2026-08-19T03:16:10.554Z"
+    },
+    {
+      "key": "odenthal",
+      "name": "Odenthal",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/odenthal/7154",
+      "birthDate": "2000-09-26",
+      "checkedAt": "2026-08-21T09:56:54.190Z"
     },
     {
       "key": "odgaard",
