@@ -2,7 +2,7 @@
   "schema": 1,
   "sourceName": "Fantacalcio.it · profili calciatori",
   "sourceUrl": "https://www.fantacalcio.it/quotazioni-fantacalcio",
-  "generatedAt": "2026-08-21T19:14:46.690Z",
+  "generatedAt": "2026-08-21T20:02:48.564Z",
   "u23MinBirthYear": 2003,
   "u21MinBirthYear": 2005,
   "players": [
@@ -1185,7 +1185,7 @@
     {
       "key": "fadera",
       "name": "Fadera",
-      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/fadera/6815",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/cagliari/fadera/6815",
       "birthDate": "2001-11-03",
       "checkedAt": "2026-08-19T03:16:39.290Z"
     },
@@ -1666,6 +1666,13 @@
       "checkedAt": "2026-08-19T03:16:31.699Z"
     },
     {
+      "key": "jonesc",
+      "name": "Jones C.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/inter/jones-c/5172",
+      "birthDate": "2001-01-30",
+      "checkedAt": "2026-08-21T20:02:48.203Z"
+    },
+    {
       "key": "kaba",
       "name": "Kaba",
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lecce/kaba/6410",
@@ -1902,6 +1909,13 @@
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/milan/leao/4510",
       "birthDate": "1999-06-10",
       "checkedAt": "2026-08-19T03:15:31.060Z"
+    },
+    {
+      "key": "leysenf",
+      "name": "Leysen F.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/sassuolo/leysen-f/7564",
+      "birthDate": "2003-07-09",
+      "checkedAt": "2026-08-21T20:02:48.029Z"
     },
     {
       "key": "lezzerini",
