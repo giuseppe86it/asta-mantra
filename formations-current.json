@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-21T19:33:18Z",
+  "generatedAt": "2026-08-21T20:44:49Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -848,6 +848,10 @@
         },
         {
           "name": "Luis Henrique",
+          "probability": 25
+        },
+        {
+          "name": "Jones C.",
           "probability": 30
         },
         {
@@ -1307,8 +1311,12 @@
           "probability": 40
         },
         {
-          "name": "Diawara S.",
+          "name": "Terracciano F.",
           "probability": 25
+        },
+        {
+          "name": "Diawara S.",
+          "probability": 20
         },
         {
           "name": "Bartesaghi",
@@ -1837,6 +1845,10 @@
           "probability": 60
         },
         {
+          "name": "Leysen F.",
+          "probability": 55
+        },
+        {
           "name": "Macchioni",
           "probability": 30
         },
@@ -1846,7 +1858,7 @@
         },
         {
           "name": "Thorstvedt",
-          "probability": 50
+          "probability": 40
         },
         {
           "name": "Lipani",
