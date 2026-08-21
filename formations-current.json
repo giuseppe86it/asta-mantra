@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-21T14:09:04Z",
+  "generatedAt": "2026-08-21T15:53:20Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -431,6 +431,14 @@
           "probability": 30
         },
         {
+          "name": "Palma",
+          "probability": 60
+        },
+        {
+          "name": "Ebosse",
+          "probability": 40
+        },
+        {
           "name": "Piotrowski",
           "probability": 60
         },
@@ -440,11 +448,11 @@
         },
         {
           "name": "Davis K.",
-          "probability": 60
+          "probability": 65
         },
         {
-          "name": "Buksa",
-          "probability": 45
+          "name": "Bayo V.",
+          "probability": 35
         }
       ]
     },
@@ -1528,15 +1536,11 @@
         },
         {
           "name": "Beukema",
-          "probability": 20
+          "probability": 25
         },
         {
           "name": "Gilmour",
           "probability": 40
-        },
-        {
-          "name": "Folorunsho",
-          "probability": 15
         },
         {
           "name": "Vergara",
@@ -1552,7 +1556,11 @@
         },
         {
           "name": "Lang",
-          "probability": 20
+          "probability": 30
+        },
+        {
+          "name": "Neres",
+          "probability": 25
         },
         {
           "name": "Lucca",
@@ -2019,16 +2027,16 @@
           "probability": 90
         },
         {
-          "name": "Bertola",
-          "probability": 85
-        },
-        {
           "name": "Palma",
-          "probability": 80
+          "probability": 60
         },
         {
           "name": "Solet",
           "probability": 90
+        },
+        {
+          "name": "Bertola",
+          "probability": 85
         },
         {
           "name": "Vojvoda",
@@ -2056,7 +2064,7 @@
         },
         {
           "name": "Davis K.",
-          "probability": 60
+          "probability": 65
         }
       ],
       "bench": [
@@ -2094,7 +2102,7 @@
         },
         {
           "name": "Zarraga",
-          "probability": 40
+          "probability": 30
         },
         {
           "name": "Unai Gomez",
@@ -2102,15 +2110,11 @@
         },
         {
           "name": "Bayo V.",
-          "probability": 40
-        },
-        {
-          "name": "Buksa",
           "probability": 60
         },
         {
           "name": "Gueye",
-          "probability": 35
+          "probability": 40
         }
       ]
     },
@@ -2180,7 +2184,7 @@
         },
         {
           "name": "Gomes",
-          "probability": 20
+          "probability": 25
         },
         {
           "name": "Correia T.",
