@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-22T16:57:50Z",
+  "generatedAt": "2026-08-22T18:01:27Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -204,47 +204,47 @@
       "starters": [
         {
           "name": "Caprile",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Zè Pedro",
-          "probability": 90
+          "probability": 100
         },
         {
-          "name": "Mina",
-          "probability": 65
+          "name": "Deiola",
+          "probability": 100
         },
         {
           "name": "Rodriguez Ju.",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Obert",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Adopo",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Winks",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Romano",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Fazzini",
-          "probability": 85
+          "probability": 100
+        },
+        {
+          "name": "Mendy P.",
+          "probability": 100
         },
         {
           "name": "Maldini",
-          "probability": 60
-        },
-        {
-          "name": "Kevin Carlos",
-          "probability": 55
+          "probability": 100
         }
       ],
       "bench": [
@@ -255,6 +255,10 @@
         {
           "name": "Radunovic",
           "probability": 1
+        },
+        {
+          "name": "Mina",
+          "probability": 55
         },
         {
           "name": "Zappa",
@@ -277,10 +281,6 @@
           "probability": 40
         },
         {
-          "name": "Deiola",
-          "probability": 55
-        },
-        {
           "name": "Felici",
           "probability": 60
         },
@@ -289,40 +289,16 @@
           "probability": 50
         },
         {
+          "name": "Kevin Carlos",
+          "probability": 55
+        },
+        {
           "name": "Mutandwa",
           "probability": 55
         },
         {
           "name": "Borrelli",
           "probability": 40
-        },
-        {
-          "name": "Mendy P.",
-          "probability": 60
-        },
-        {
-          "name": "Valenti",
-          "probability": 55
-        },
-        {
-          "name": "Ndiaye",
-          "probability": 45
-        },
-        {
-          "name": "Sorensen O.",
-          "probability": 55
-        },
-        {
-          "name": "Ordonez C.",
-          "probability": 45
-        },
-        {
-          "name": "Romero D.",
-          "probability": 55
-        },
-        {
-          "name": "Lontani",
-          "probability": 45
         }
       ]
     },
@@ -656,47 +632,47 @@
       "starters": [
         {
           "name": "Bijlow",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Marcandalli",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Ostigard",
-          "probability": 65
+          "probability": 100
         },
         {
           "name": "Vasquez",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Norton-Cuffy",
-          "probability": 85
+          "probability": 100
         },
         {
           "name": "Frendrup",
-          "probability": 90
+          "probability": 100
         },
         {
-          "name": "Sow",
-          "probability": 55
+          "name": "Amorim",
+          "probability": 100
         },
         {
           "name": "Ellertsson",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Baldanzi",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Vitinha O.",
-          "probability": 60
+          "probability": 100
         },
         {
           "name": "Colombo",
-          "probability": 90
+          "probability": 100
         }
       ],
       "bench": [
@@ -729,8 +705,8 @@
           "probability": 35
         },
         {
-          "name": "Amorim",
-          "probability": 60
+          "name": "Sow",
+          "probability": 55
         },
         {
           "name": "Messias",
@@ -1390,47 +1366,47 @@
       "starters": [
         {
           "name": "Meret",
-          "probability": 80
+          "probability": 100
         },
         {
           "name": "Di Lorenzo",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Rrahmani",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Marin R.",
-          "probability": 80
+          "probability": 100
         },
         {
           "name": "Spinazzola",
-          "probability": 55
+          "probability": 100
         },
         {
           "name": "Zambo Anguissa",
-          "probability": 55
+          "probability": 100
         },
         {
           "name": "Lobotka",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "McTominay",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Politano",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Hojlund",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Santos A.",
-          "probability": 85
+          "probability": 100
         }
       ],
       "bench": [
@@ -1481,30 +1457,6 @@
         {
           "name": "Lucca",
           "probability": 55
-        },
-        {
-          "name": "Ostigard",
-          "probability": 65
-        },
-        {
-          "name": "Otoa",
-          "probability": 35
-        },
-        {
-          "name": "Sow",
-          "probability": 55
-        },
-        {
-          "name": "Amorim",
-          "probability": 45
-        },
-        {
-          "name": "Vitinha O.",
-          "probability": 60
-        },
-        {
-          "name": "Mitaj",
-          "probability": 40
         }
       ]
     },
@@ -1512,51 +1464,51 @@
       "club": "PAR",
       "team": "Parma",
       "sourceTeam": "Parma",
-      "module": "4-3-3",
+      "module": "4-3-1-2",
       "starters": [
         {
           "name": "Corvi",
-          "probability": 80
+          "probability": 100
         },
         {
           "name": "Delprato",
-          "probability": 90
+          "probability": 100
         },
         {
           "name": "Troilo",
-          "probability": 90
+          "probability": 100
         },
         {
-          "name": "Valenti",
-          "probability": 55
+          "name": "Ndiaye",
+          "probability": 100
         },
         {
           "name": "Valeri",
-          "probability": 90
+          "probability": 100
+        },
+        {
+          "name": "Ordonez C.",
+          "probability": 100
+        },
+        {
+          "name": "Keita M.",
+          "probability": 100
         },
         {
           "name": "Sorensen O.",
           "probability": 55
         },
         {
-          "name": "Keita M.",
-          "probability": 90
-        },
-        {
           "name": "Bernabè",
-          "probability": 90
-        },
-        {
-          "name": "Frigan",
-          "probability": 70
-        },
-        {
-          "name": "Romero D.",
-          "probability": 55
+          "probability": 100
         },
         {
           "name": "Tourè E.",
-          "probability": 90
+          "probability": 100
+        },
+        {
+          "name": "Lontani",
+          "probability": 100
         }
       ],
       "bench": [
@@ -1565,16 +1517,12 @@
           "probability": 5
         },
         {
-          "name": "Ndiaye",
-          "probability": 50
+          "name": "Valenti",
+          "probability": 55
         },
         {
           "name": "Carboni F.",
           "probability": 30
-        },
-        {
-          "name": "Ordonez C.",
-          "probability": 60
         },
         {
           "name": "Diallo O.",
@@ -1586,19 +1534,23 @@
         },
         {
           "name": "Almqvist",
-          "probability": 55
+          "probability": 35
         },
         {
-          "name": "Lontani",
-          "probability": 40
+          "name": "Frigan",
+          "probability": 60
         },
         {
           "name": "De Martis",
           "probability": 15
         },
         {
-          "name": "Elphege",
+          "name": "Romero D.",
           "probability": 55
+        },
+        {
+          "name": "Elphege",
+          "probability": 40
         }
       ]
     },
