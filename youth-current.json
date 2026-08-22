@@ -2,7 +2,7 @@
   "schema": 1,
   "sourceName": "Fantacalcio.it · profili calciatori",
   "sourceUrl": "https://www.fantacalcio.it/quotazioni-fantacalcio",
-  "generatedAt": "2026-08-22T19:05:22.580Z",
+  "generatedAt": "2026-08-22T19:51:37.475Z",
   "u23MinBirthYear": 2003,
   "u21MinBirthYear": 2005,
   "players": [
@@ -194,6 +194,13 @@
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/como/azon/7027",
       "birthDate": "2002-12-24",
       "checkedAt": "2026-08-19T03:16:47.273Z"
+    },
+    {
+      "key": "badiashile",
+      "name": "Badiashile",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/napoli/badiashile/4664",
+      "birthDate": "2001-03-26",
+      "checkedAt": "2026-08-22T19:51:36.601Z"
     },
     {
       "key": "bakola",
@@ -3316,6 +3323,13 @@
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/sulemana-k/5918",
       "birthDate": "2002-02-15",
       "checkedAt": "2026-08-19T03:16:03.477Z"
+    },
+    {
+      "key": "sutaloj",
+      "name": "Sutalo J.",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/lazio/sutalo-j/7580",
+      "birthDate": "2000-02-28",
+      "checkedAt": "2026-08-22T19:51:37.113Z"
     },
     {
       "key": "suzuki",
