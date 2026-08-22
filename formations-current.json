@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-22T15:42:09Z",
+  "generatedAt": "2026-08-22T16:00:56Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -1308,14 +1308,10 @@
       "club": "MON",
       "team": "Monza",
       "sourceTeam": "Monza",
-      "module": "4-4-1-1",
+      "module": "3-4-2-1",
       "starters": [
         {
           "name": "Pizzignacco",
-          "probability": 100
-        },
-        {
-          "name": "Bakoune",
           "probability": 100
         },
         {
@@ -1343,11 +1339,15 @@
           "probability": 100
         },
         {
-          "name": "Mangas",
+          "name": "Bakoune",
           "probability": 100
         },
         {
           "name": "Colpani",
+          "probability": 100
+        },
+        {
+          "name": "Mangas",
           "probability": 100
         },
         {
