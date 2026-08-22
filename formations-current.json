@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-21T20:44:49Z",
+  "generatedAt": "2026-08-22T09:02:22Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -228,11 +228,11 @@
         },
         {
           "name": "Romano",
-          "probability": 85
+          "probability": 90
         },
         {
           "name": "Fazzini",
-          "probability": 80
+          "probability": 85
         },
         {
           "name": "Maldini",
@@ -293,20 +293,20 @@
           "probability": 60
         },
         {
+          "name": "Valenti",
+          "probability": 55
+        },
+        {
+          "name": "Ndiaye",
+          "probability": 45
+        },
+        {
           "name": "Sorensen O.",
-          "probability": 60
+          "probability": 55
         },
         {
           "name": "Ordonez C.",
-          "probability": 40
-        },
-        {
-          "name": "Frigan",
-          "probability": 60
-        },
-        {
-          "name": "Almqvist",
-          "probability": 40
+          "probability": 45
         },
         {
           "name": "Romero D.",
@@ -334,15 +334,15 @@
         },
         {
           "name": "Chalobah T.",
-          "probability": 80
+          "probability": 85
         },
         {
           "name": "Ramon",
-          "probability": 80
+          "probability": 85
         },
         {
           "name": "Kaiki",
-          "probability": 70
+          "probability": 80
         },
         {
           "name": "Perrone",
@@ -354,7 +354,7 @@
         },
         {
           "name": "Diao",
-          "probability": 80
+          "probability": 85
         },
         {
           "name": "Paz N.",
@@ -366,7 +366,7 @@
         },
         {
           "name": "Douvikas",
-          "probability": 80
+          "probability": 85
         }
       ],
       "bench": [
@@ -423,15 +423,15 @@
           "probability": 60
         },
         {
-          "name": "Ebosse",
+          "name": "Abankwah",
           "probability": 40
         },
         {
-          "name": "Piotrowski",
+          "name": "Bertola",
           "probability": 60
         },
         {
-          "name": "Miller L.",
+          "name": "Ebosse",
           "probability": 40
         },
         {
@@ -743,14 +743,6 @@
         {
           "name": "Puczka",
           "probability": 35
-        },
-        {
-          "name": "Matturro",
-          "probability": 15
-        },
-        {
-          "name": "Venturino",
-          "probability": 30
         },
         {
           "name": "Amorim",
@@ -1600,11 +1592,11 @@
         },
         {
           "name": "Troilo",
-          "probability": 80
+          "probability": 90
         },
         {
           "name": "Valenti",
-          "probability": 90
+          "probability": 55
         },
         {
           "name": "Valeri",
@@ -1612,7 +1604,7 @@
         },
         {
           "name": "Sorensen O.",
-          "probability": 60
+          "probability": 55
         },
         {
           "name": "Keita M.",
@@ -1624,7 +1616,7 @@
         },
         {
           "name": "Frigan",
-          "probability": 60
+          "probability": 70
         },
         {
           "name": "Romero D.",
@@ -2032,7 +2024,7 @@
         },
         {
           "name": "Bertola",
-          "probability": 85
+          "probability": 60
         },
         {
           "name": "Vojvoda",
@@ -2040,7 +2032,7 @@
         },
         {
           "name": "Piotrowski",
-          "probability": 60
+          "probability": 80
         },
         {
           "name": "Karlstrom",
@@ -2082,11 +2074,11 @@
         },
         {
           "name": "Goglichidze",
-          "probability": 30
+          "probability": 25
         },
         {
           "name": "Abankwah",
-          "probability": 15
+          "probability": 30
         },
         {
           "name": "Arizala",
