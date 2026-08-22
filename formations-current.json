@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-22T10:53:04Z",
+  "generatedAt": "2026-08-22T11:41:23Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -1223,22 +1223,6 @@
         {
           "name": "Stulic",
           "probability": 60
-        },
-        {
-          "name": "Haps",
-          "probability": 60
-        },
-        {
-          "name": "Correia T.",
-          "probability": 40
-        },
-        {
-          "name": "Perez K.",
-          "probability": 55
-        },
-        {
-          "name": "Sohm",
-          "probability": 45
         }
       ]
     },
@@ -2126,23 +2110,23 @@
         },
         {
           "name": "Schingtienne",
-          "probability": 80
+          "probability": 90
         },
         {
           "name": "Bella-Kotchap",
           "probability": 90
         },
         {
-          "name": "Halhal",
-          "probability": 85
+          "name": "Franjic",
+          "probability": 90
         },
         {
-          "name": "Hainaut",
+          "name": "Correia T.",
           "probability": 85
         },
         {
           "name": "Perez K.",
-          "probability": 55
+          "probability": 90
         },
         {
           "name": "Busio",
@@ -2153,8 +2137,8 @@
           "probability": 80
         },
         {
-          "name": "Haps",
-          "probability": 60
+          "name": "Hainaut",
+          "probability": 85
         },
         {
           "name": "Yeboah J.",
@@ -2175,7 +2159,7 @@
           "probability": 1
         },
         {
-          "name": "Moreno M.",
+          "name": "Halhal",
           "probability": 50
         },
         {
@@ -2183,12 +2167,8 @@
           "probability": 25
         },
         {
-          "name": "Correia T.",
+          "name": "Haps",
           "probability": 60
-        },
-        {
-          "name": "Franjic",
-          "probability": 35
         },
         {
           "name": "Sagrado",
@@ -2196,15 +2176,11 @@
         },
         {
           "name": "Sohm",
-          "probability": 60
+          "probability": 55
         },
         {
           "name": "Dagasso",
           "probability": 30
-        },
-        {
-          "name": "Duncan",
-          "probability": 15
         },
         {
           "name": "Helgason",
