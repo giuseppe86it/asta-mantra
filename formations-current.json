@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-22T16:00:56Z",
+  "generatedAt": "2026-08-22T16:57:50Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -349,7 +349,7 @@
           "probability": 100
         },
         {
-          "name": "Kaiki",
+          "name": "Valle",
           "probability": 100
         },
         {
@@ -391,16 +391,16 @@
           "probability": 40
         },
         {
+          "name": "Kaiki",
+          "probability": 55
+        },
+        {
           "name": "Kempf",
           "probability": 35
         },
         {
           "name": "Goldaniga",
           "probability": 20
-        },
-        {
-          "name": "Valle",
-          "probability": 55
         },
         {
           "name": "Caqueret",
