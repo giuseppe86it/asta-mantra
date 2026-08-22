@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-22T09:56:04Z",
+  "generatedAt": "2026-08-22T10:53:04Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -1653,12 +1653,16 @@
           "probability": 60
         },
         {
+          "name": "Cremaschi",
+          "probability": 15
+        },
+        {
           "name": "Almqvist",
           "probability": 55
         },
         {
           "name": "Lontani",
-          "probability": 55
+          "probability": 40
         },
         {
           "name": "De Martis",
@@ -1666,7 +1670,7 @@
         },
         {
           "name": "Elphege",
-          "probability": 40
+          "probability": 55
         }
       ]
     },
