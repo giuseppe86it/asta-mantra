@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-22T09:02:22Z",
+  "generatedAt": "2026-08-22T09:56:04Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -254,7 +254,7 @@
         },
         {
           "name": "Zappa",
-          "probability": 50
+          "probability": 40
         },
         {
           "name": "Kofler",
@@ -279,6 +279,10 @@
         {
           "name": "Felici",
           "probability": 60
+        },
+        {
+          "name": "Fadera",
+          "probability": 50
         },
         {
           "name": "Mutandwa",
@@ -688,7 +692,7 @@
         },
         {
           "name": "Norton-Cuffy",
-          "probability": 80
+          "probability": 85
         },
         {
           "name": "Frendrup",
@@ -700,7 +704,7 @@
         },
         {
           "name": "Ellertsson",
-          "probability": 85
+          "probability": 90
         },
         {
           "name": "Baldanzi",
@@ -712,7 +716,7 @@
         },
         {
           "name": "Colombo",
-          "probability": 85
+          "probability": 90
         }
       ],
       "bench": [
