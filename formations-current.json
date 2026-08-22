@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-22T18:01:27Z",
+  "generatedAt": "2026-08-22T19:10:48Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -1495,8 +1495,8 @@
           "probability": 100
         },
         {
-          "name": "Sorensen O.",
-          "probability": 55
+          "name": "Konaté A.",
+          "probability": 100
         },
         {
           "name": "Bernabè",
@@ -1535,6 +1535,10 @@
         {
           "name": "Almqvist",
           "probability": 35
+        },
+        {
+          "name": "Sorensen O.",
+          "probability": 55
         },
         {
           "name": "Frigan",
