@@ -2,7 +2,7 @@
   "schema": 1,
   "sourceName": "Fantacalcio.it · profili calciatori",
   "sourceUrl": "https://www.fantacalcio.it/quotazioni-fantacalcio",
-  "generatedAt": "2026-08-22T11:53:27.584Z",
+  "generatedAt": "2026-08-22T14:54:54.789Z",
   "u23MinBirthYear": 2003,
   "u21MinBirthYear": 2005,
   "players": [
@@ -1146,6 +1146,13 @@
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/ellertsson/6020",
       "birthDate": "2002-03-11",
       "checkedAt": "2026-08-19T03:16:05.892Z"
+    },
+    {
+      "key": "elmas",
+      "name": "Elmas",
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/elmas/4479",
+      "birthDate": "1999-09-24",
+      "checkedAt": "2026-08-22T14:54:54.428Z"
     },
     {
       "key": "elphege",

@@ -4,10 +4,10 @@
   "sourceKind": "official-fantacalcio",
   "sourceName": "Fantacalcio.it · Quotazioni e FVM 2026/27",
   "sourceUrl": "https://www.fantacalcio.it/quotazioni-fantacalcio",
-  "generatedAt": "2026-08-22T11:53:27.106Z",
-  "activePlayers": 515,
-  "totalPlayers": 536,
-  "roleParsedCount": 515,
+  "generatedAt": "2026-08-22T14:54:53.162Z",
+  "activePlayers": 516,
+  "totalPlayers": 537,
+  "roleParsedCount": 516,
   "unclassified": 0,
   "players": [
     {
@@ -4593,6 +4593,30 @@
       "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/genoa/sow/5946",
       "birthDate": "1997-02-06",
       "birthYear": 1997
+    },
+    {
+      "id": "fc_elmas",
+      "key": "elmas",
+      "name": "Elmas",
+      "club": "ATA",
+      "role": "W/T",
+      "reparto": "CEN",
+      "classic": "C",
+      "quote": 7,
+      "fvm": 28,
+      "strategic": false,
+      "active": true,
+      "officialOutMarker": false,
+      "roleOrigin": "official-row-attribute",
+      "qiClassic": 7,
+      "qaClassic": 7,
+      "fvmClassic": 28,
+      "qiMantra": 7,
+      "qaMantra": 7,
+      "fvmMantra": 28,
+      "profileUrl": "https://www.fantacalcio.it/serie-a/squadre/atalanta/elmas/4479",
+      "birthDate": "1999-09-24",
+      "birthYear": 1999
     },
     {
       "id": 37,
@@ -12877,8 +12901,8 @@
   ],
   "youthMeta": {
     "sourceName": "Fantacalcio.it · profili calciatori",
-    "generatedAt": "2026-08-22T11:53:27.577Z",
-    "birthDateCoverage": 536,
+    "generatedAt": "2026-08-22T14:54:54.781Z",
+    "birthDateCoverage": 537,
     "u23MinBirthYear": 2003,
     "u21MinBirthYear": 2005
   }
