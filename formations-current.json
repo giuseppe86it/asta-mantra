@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-22T13:45:41Z",
+  "generatedAt": "2026-08-22T14:50:10Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -456,7 +456,7 @@
       "club": "FIO",
       "team": "Fiorentina",
       "sourceTeam": "Fiorentina",
-      "module": "4-3-3",
+      "module": "4-3-2-1",
       "starters": [
         {
           "name": "De Gea",
@@ -471,8 +471,8 @@
           "probability": 90
         },
         {
-          "name": "Viery",
-          "probability": 80
+          "name": "Ranieri L.",
+          "probability": 55
         },
         {
           "name": "Valdepenas",
@@ -480,27 +480,27 @@
         },
         {
           "name": "Ndour",
-          "probability": 80
-        },
-        {
-          "name": "Oulai",
-          "probability": 60
-        },
-        {
-          "name": "Atta",
-          "probability": 75
-        },
-        {
-          "name": "Mastantuono",
           "probability": 85
         },
         {
-          "name": "Kean",
-          "probability": 65
+          "name": "Fagioli",
+          "probability": 80
+        },
+        {
+          "name": "Brescianini",
+          "probability": 55
+        },
+        {
+          "name": "Atta",
+          "probability": 80
         },
         {
           "name": "Gudmundsson A.",
           "probability": 90
+        },
+        {
+          "name": "Kean",
+          "probability": 80
         }
       ],
       "bench": [
@@ -518,10 +518,10 @@
         },
         {
           "name": "Dodò",
-          "probability": 15
+          "probability": 10
         },
         {
-          "name": "Ranieri L.",
+          "name": "Viery",
           "probability": 50
         },
         {
@@ -529,16 +529,16 @@
           "probability": 60
         },
         {
-          "name": "Fagioli",
+          "name": "Oulai",
           "probability": 60
         },
         {
           "name": "Mandragora",
-          "probability": 30
+          "probability": 25
         },
         {
-          "name": "Brescianini",
-          "probability": 55
+          "name": "Mastantuono",
+          "probability": 60
         },
         {
           "name": "Fabbian",
@@ -876,7 +876,7 @@
       "starters": [
         {
           "name": "Vicario",
-          "probability": 90
+          "probability": 95
         },
         {
           "name": "Kalulu",
@@ -916,7 +916,7 @@
         },
         {
           "name": "Kolo Muani",
-          "probability": 90
+          "probability": 95
         }
       ],
       "bench": [
@@ -974,7 +974,7 @@
         },
         {
           "name": "Milik",
-          "probability": 35
+          "probability": 30
         },
         {
           "name": "David",
@@ -1026,7 +1026,7 @@
         },
         {
           "name": "Provstgaard",
-          "probability": 80
+          "probability": 85
         },
         {
           "name": "Pedraza",
@@ -1068,7 +1068,7 @@
         },
         {
           "name": "Romagnoli",
-          "probability": 30
+          "probability": 15
         },
         {
           "name": "Floriani Mussolini",
