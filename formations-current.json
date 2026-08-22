@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-22T11:41:23Z",
+  "generatedAt": "2026-08-22T12:01:34Z",
   "sourceName": "Fantacalcio.it",
   "sourceUrl": "https://www.fantacalcio.it/probabili-formazioni-serie-a",
   "teams": [
@@ -1144,11 +1144,11 @@
         },
         {
           "name": "Gaspar K.",
-          "probability": 90
+          "probability": 75
         },
         {
           "name": "Tiago Gabriel",
-          "probability": 90
+          "probability": 60
         },
         {
           "name": "Gallo",
@@ -1160,11 +1160,11 @@
         },
         {
           "name": "Ngom",
-          "probability": 80
+          "probability": 85
         },
         {
           "name": "Maleh",
-          "probability": 55
+          "probability": 80
         },
         {
           "name": "Pierotti",
@@ -1190,19 +1190,19 @@
         },
         {
           "name": "Ndaba",
-          "probability": 50
+          "probability": 30
         },
         {
           "name": "Jean",
-          "probability": 35
+          "probability": 30
         },
         {
           "name": "Siebert",
-          "probability": 25
+          "probability": 40
         },
         {
           "name": "Gorter",
-          "probability": 30
+          "probability": 35
         },
         {
           "name": "Kaba",
@@ -1210,7 +1210,7 @@
         },
         {
           "name": "Laerke",
-          "probability": 30
+          "probability": 50
         },
         {
           "name": "Gandelman",
@@ -1335,12 +1335,12 @@
           "probability": 35
         },
         {
-          "name": "Ismajli",
-          "probability": 60
+          "name": "Pedersen",
+          "probability": 55
         },
         {
-          "name": "Biraghi",
-          "probability": 40
+          "name": "Fortini",
+          "probability": 45
         }
       ]
     },
@@ -1902,7 +1902,7 @@
       "starters": [
         {
           "name": "Mascardi",
-          "probability": 70
+          "probability": 90
         },
         {
           "name": "Comuzzo",
@@ -1910,7 +1910,7 @@
         },
         {
           "name": "Ismajli",
-          "probability": 60
+          "probability": 70
         },
         {
           "name": "Coco",
@@ -1918,7 +1918,7 @@
         },
         {
           "name": "Pedersen",
-          "probability": 90
+          "probability": 55
         },
         {
           "name": "Gineitis",
@@ -1956,7 +1956,7 @@
         },
         {
           "name": "Fortini",
-          "probability": 55
+          "probability": 60
         },
         {
           "name": "Biraghi",
@@ -1976,7 +1976,7 @@
         },
         {
           "name": "Njie",
-          "probability": 30
+          "probability": 50
         },
         {
           "name": "Aboukhlal",
